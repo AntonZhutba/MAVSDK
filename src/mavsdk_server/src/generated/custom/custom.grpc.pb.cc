@@ -25,6 +25,7 @@ namespace custom {
 
 static const char* CustomService_method_names[] = {
   "/mavsdk.rpc.custom.CustomService/SubscribeHeartbeat",
+  "/mavsdk.rpc.custom.CustomService/SubscribeConnectionStatus",
 };
 
 std::unique_ptr< CustomService::Stub> CustomService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -35,6 +36,7 @@ std::unique_ptr< CustomService::Stub> CustomService::NewStub(const std::shared_p
 
 CustomService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_SubscribeHeartbeat_(CustomService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeConnectionStatus_(CustomService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::ClientReader< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* CustomService::Stub::SubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest& request) {
@@ -53,6 +55,22 @@ void CustomService::Stub::async::SubscribeHeartbeat(::grpc::ClientContext* conte
   return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeHeartbeat_, context, request, false, nullptr);
 }
 
+::grpc::ClientReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* CustomService::Stub::SubscribeConnectionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>::Create(channel_.get(), rpcmethod_SubscribeConnectionStatus_, context, request);
+}
+
+void CustomService::Stub::async::SubscribeConnectionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeConnectionStatus_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* CustomService::Stub::AsyncSubscribeConnectionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeConnectionStatus_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* CustomService::Stub::PrepareAsyncSubscribeConnectionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeConnectionStatus_, context, request, false, nullptr);
+}
+
 CustomService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       CustomService_method_names[0],
@@ -64,12 +82,29 @@ CustomService::Service::Service() {
              ::grpc::ServerWriter<::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* writer) {
                return service->SubscribeHeartbeat(ctx, req, writer);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      CustomService_method_names[1],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< CustomService::Service, ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest, ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>(
+          [](CustomService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* writer) {
+               return service->SubscribeConnectionStatus(ctx, req, writer);
+             }, this)));
 }
 
 CustomService::Service::~Service() {
 }
 
 ::grpc::Status CustomService::Service::SubscribeHeartbeat(::grpc::ServerContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status CustomService::Service::SubscribeConnectionStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

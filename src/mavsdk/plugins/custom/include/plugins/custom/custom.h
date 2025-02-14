@@ -94,6 +94,31 @@ public:
 
 
 
+    /**
+     * @brief 
+     */
+    struct ConnectionStatus {
+        
+        bool is_connected{}; /**< @brief Whether the vehicle got connected or disconnected */
+    };
+
+    /**
+     * @brief Equal operator to compare two `Custom::ConnectionStatus` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const Custom::ConnectionStatus& lhs, const Custom::ConnectionStatus& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `Custom::ConnectionStatus`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, Custom::ConnectionStatus const& connection_status);
+
+
+
+
 
         
 
@@ -127,6 +152,42 @@ public:
      * @return One Heartbeat update.
      */
     Heartbeat heartbeat() const;
+
+
+
+
+        
+
+    /**
+     * @brief Callback type for subscribe_connection_status.
+     */
+    using ConnectionStatusCallback = std::function<void(ConnectionStatus)>;
+
+    /**
+     * @brief Handle type for subscribe_connection_status.
+     */
+    using ConnectionStatusHandle = Handle<ConnectionStatus>;
+
+    /**
+     * @brief Subscribe to Connection Status
+     */
+    ConnectionStatusHandle subscribe_connection_status(const ConnectionStatusCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_connection_status
+     */
+    void unsubscribe_connection_status(ConnectionStatusHandle handle);
+
+        
+
+
+
+    /**
+     * @brief Poll for 'ConnectionStatus' (blocking).
+     *
+     * @return One ConnectionStatus update.
+     */
+    ConnectionStatus connection_status() const;
 
 
 

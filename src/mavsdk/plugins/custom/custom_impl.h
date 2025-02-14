@@ -20,7 +20,8 @@ class CustomImpl : public PluginImplBase {
 public:
     explicit CustomImpl(System& system);
     explicit CustomImpl(std::shared_ptr<System> system);
-    ~CustomImpl();
+
+    ~CustomImpl() override;
 
     void init() override;
     void deinit() override;
@@ -28,21 +29,14 @@ public:
     void enable() override;
     void disable() override;
 
-    struct Heartbeat {
-        uint8_t type;
-        uint8_t autopilot;
-        uint8_t base_mode;
-        uint32_t custom_mode;
-        uint8_t system_status;
-    };
 
     Custom::HeartbeatHandle subscribe_heartbeat(const HeartbeatCallback& callback);
     void unsubscribe_heartbeat(HeartbeatHandle handle);
     Heartbeat heartbeat() const;
 
-    Custom::IsConnectedHandle subscribe_is_connected(const Custom::IsConnectedCallback& callback);
-    void unsubscribe_is_connected(Custom::IsConnectedHandle handle);
-    bool is_connected() const;
+    Custom::ConnectionStatusHandle subscribe_connection_status(const Custom::ConnectionStatusCallback& callback);
+    void unsubscribe_connection_status(Custom::ConnectionStatusHandle handle);
+    Custom::ConnectionStatus connection_status() const;
 
 private:
     void set_heartbeat(const Heartbeat& heartbeat);

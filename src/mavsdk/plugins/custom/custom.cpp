@@ -10,6 +10,7 @@
 namespace mavsdk {
 
 using Heartbeat = Custom::Heartbeat;
+using ConnectionStatus = Custom::ConnectionStatus;
 
 
 
@@ -19,6 +20,8 @@ Custom::Custom(std::shared_ptr<System> system) : PluginBase(), _impl{std::make_u
 
 
 Custom::~Custom() {}
+
+
 
     
 Custom::HeartbeatHandle Custom::subscribe_heartbeat(const HeartbeatCallback& callback)
@@ -43,6 +46,29 @@ Custom::heartbeat() const
 
 
 
+    
+Custom::ConnectionStatusHandle Custom::subscribe_connection_status(const ConnectionStatusCallback& callback)
+{
+    return _impl->subscribe_connection_status(callback);
+}
+
+void Custom::unsubscribe_connection_status(ConnectionStatusHandle handle)
+{
+    _impl->unsubscribe_connection_status(handle);
+}
+    
+
+
+
+
+Custom::ConnectionStatus
+Custom::connection_status() const
+{
+    return _impl->connection_status();
+}
+
+
+
 bool operator==(const Custom::Heartbeat& lhs, const Custom::Heartbeat& rhs)
 {
     return
@@ -63,6 +89,23 @@ std::ostream& operator<<(std::ostream& str, Custom::Heartbeat const& heartbeat)
     str << "    base_mode: " << heartbeat.base_mode << '\n';
     str << "    custom_mode: " << heartbeat.custom_mode << '\n';
     str << "    system_status: " << heartbeat.system_status << '\n';
+    str << '}';
+    return str;
+}
+
+
+bool operator==(const Custom::ConnectionStatus& lhs, const Custom::ConnectionStatus& rhs)
+{
+    return
+        (rhs.is_connected == lhs.is_connected);
+}
+
+std::ostream& operator<<(std::ostream& str, Custom::ConnectionStatus const& connection_status)
+{
+    str << std::setprecision(15);
+    str << "connection_status:" << '\n'
+        << "{\n";
+    str << "    is_connected: " << connection_status.is_connected << '\n';
     str << '}';
     return str;
 }

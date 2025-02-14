@@ -7,7 +7,7 @@
 namespace mavsdk {
 
 template class CallbackList<Custom::Heartbeat>;
-template class CallbackList<bool>;
+template class CallbackList<Custom::ConnectionStatus>;
 
 CustomImpl::CustomImpl(System& system) : PluginImplBase(system)
 {
@@ -95,18 +95,18 @@ void CustomImpl::process_heartbeat(const mavlink_message_t& message)
 
 #pragma region IsConnected
 
-Custom::IsConnectedHandle CustomImpl::subscribe_is_connected(const Custom::IsConnectedCallback& callback)
+Custom::ConnectionStatusHandle CustomImpl::subscribe_connection_status(const Custom::ConnectionStatusCallback& callback)
 {
     std::lock_guard<std::mutex> lock(_connection_mutex);
     return _is_connected_callbacks.subscribe(callback);
 }
 
-void CustomImpl::unsubscribe_is_connected(Custom::IsConnectedHandle handle)
+void CustomImpl::unsubscribe_connection_status(Custom::ConnectionStatusHandle handle)
 {
     _is_connected_callbacks.unsubscribe(handle);
 }
 
-bool CustomImpl::is_connected() const
+Custom::ConnectionStatus CustomImpl::connection_status() const
 {
     return _is_connected;
 }

@@ -45,31 +45,24 @@ struct SubscribeHeartbeatRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeHeartbeatRequestDefaultTypeInternal _SubscribeHeartbeatRequest_default_instance_;
-
-inline constexpr SendHeartbeatResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : success_{false},
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR SendHeartbeatResponse::SendHeartbeatResponse(::_pbi::ConstantInitialized)
+              template <typename>
+PROTOBUF_CONSTEXPR SubscribeConnectionStatusRequest::SubscribeConnectionStatusRequest(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
+    : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
 #else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
+    : ::google::protobuf::internal::ZeroFieldsBase() {
 }
-struct SendHeartbeatResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SendHeartbeatResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SendHeartbeatResponseDefaultTypeInternal() {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct SubscribeConnectionStatusRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeConnectionStatusRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeConnectionStatusRequestDefaultTypeInternal() {}
   union {
-    SendHeartbeatResponse _instance;
+    SubscribeConnectionStatusRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SendHeartbeatResponseDefaultTypeInternal _SendHeartbeatResponse_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeConnectionStatusRequestDefaultTypeInternal _SubscribeConnectionStatusRequest_default_instance_;
 
 inline constexpr Heartbeat::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -100,6 +93,31 @@ struct HeartbeatDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HeartbeatDefaultTypeInternal _Heartbeat_default_instance_;
 
+inline constexpr ConnectionStatus::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : is_connected_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ConnectionStatus::ConnectionStatus(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ConnectionStatusDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ConnectionStatusDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ConnectionStatusDefaultTypeInternal() {}
+  union {
+    ConnectionStatus _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ConnectionStatusDefaultTypeInternal _ConnectionStatus_default_instance_;
+
 inline constexpr SubscribeHeartbeatResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -125,13 +143,13 @@ struct SubscribeHeartbeatResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeHeartbeatResponseDefaultTypeInternal _SubscribeHeartbeatResponse_default_instance_;
 
-inline constexpr SendHeartbeatRequest::Impl_::Impl_(
+inline constexpr SubscribeConnectionStatusResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        heartbeat_{nullptr} {}
+        status_{nullptr} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR SendHeartbeatRequest::SendHeartbeatRequest(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR SubscribeConnectionStatusResponse::SubscribeConnectionStatusResponse(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
@@ -139,16 +157,16 @@ PROTOBUF_CONSTEXPR SendHeartbeatRequest::SendHeartbeatRequest(::_pbi::ConstantIn
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct SendHeartbeatRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SendHeartbeatRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SendHeartbeatRequestDefaultTypeInternal() {}
+struct SubscribeConnectionStatusResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeConnectionStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeConnectionStatusResponseDefaultTypeInternal() {}
   union {
-    SendHeartbeatRequest _instance;
+    SubscribeConnectionStatusResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SendHeartbeatRequestDefaultTypeInternal _SendHeartbeatRequest_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeConnectionStatusResponseDefaultTypeInternal _SubscribeConnectionStatusResponse_default_instance_;
 }  // namespace custom
 }  // namespace rpc
 }  // namespace mavsdk
@@ -172,25 +190,15 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::Heartbeat, _impl_.base_mode_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::Heartbeat, _impl_.custom_mode_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::Heartbeat, _impl_.system_status_),
-        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SendHeartbeatRequest, _impl_._has_bits_),
-        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SendHeartbeatRequest, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SendHeartbeatRequest, _impl_.heartbeat_),
-        0,
         ~0u,  // no _has_bits_
-        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SendHeartbeatResponse, _internal_metadata_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::ConnectionStatus, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
         ~0u,  // no _weak_field_map_
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SendHeartbeatResponse, _impl_.success_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::ConnectionStatus, _impl_.is_connected_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SubscribeHeartbeatRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -209,22 +217,42 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SubscribeHeartbeatResponse, _impl_.heartbeat_),
         0,
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SubscribeConnectionStatusRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SubscribeConnectionStatusResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SubscribeConnectionStatusResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::custom::SubscribeConnectionStatusResponse, _impl_.status_),
+        0,
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::mavsdk::rpc::custom::Heartbeat)},
-        {13, 22, -1, sizeof(::mavsdk::rpc::custom::SendHeartbeatRequest)},
-        {23, -1, -1, sizeof(::mavsdk::rpc::custom::SendHeartbeatResponse)},
-        {32, -1, -1, sizeof(::mavsdk::rpc::custom::SubscribeHeartbeatRequest)},
-        {40, 49, -1, sizeof(::mavsdk::rpc::custom::SubscribeHeartbeatResponse)},
+        {13, -1, -1, sizeof(::mavsdk::rpc::custom::ConnectionStatus)},
+        {22, -1, -1, sizeof(::mavsdk::rpc::custom::SubscribeHeartbeatRequest)},
+        {30, 39, -1, sizeof(::mavsdk::rpc::custom::SubscribeHeartbeatResponse)},
+        {40, -1, -1, sizeof(::mavsdk::rpc::custom::SubscribeConnectionStatusRequest)},
+        {48, 57, -1, sizeof(::mavsdk::rpc::custom::SubscribeConnectionStatusResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::custom::_Heartbeat_default_instance_._instance,
-    &::mavsdk::rpc::custom::_SendHeartbeatRequest_default_instance_._instance,
-    &::mavsdk::rpc::custom::_SendHeartbeatResponse_default_instance_._instance,
+    &::mavsdk::rpc::custom::_ConnectionStatus_default_instance_._instance,
     &::mavsdk::rpc::custom::_SubscribeHeartbeatRequest_default_instance_._instance,
     &::mavsdk::rpc::custom::_SubscribeHeartbeatResponse_default_instance_._instance,
+    &::mavsdk::rpc::custom::_SubscribeConnectionStatusRequest_default_instance_._instance,
+    &::mavsdk::rpc::custom::_SubscribeConnectionStatusResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_custom_2fcustom_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -232,16 +260,21 @@ const char descriptor_table_protodef_custom_2fcustom_2eproto[] ABSL_ATTRIBUTE_SE
     "\032\024mavsdk_options.proto\"k\n\tHeartbeat\022\014\n\004t"
     "ype\030\001 \001(\r\022\021\n\tautopilot\030\002 \001(\r\022\021\n\tbase_mod"
     "e\030\003 \001(\r\022\023\n\013custom_mode\030\004 \001(\r\022\025\n\rsystem_s"
-    "tatus\030\005 \001(\r\"G\n\024SendHeartbeatRequest\022/\n\th"
-    "eartbeat\030\001 \001(\0132\034.mavsdk.rpc.custom.Heart"
-    "beat\"(\n\025SendHeartbeatResponse\022\017\n\007success"
-    "\030\001 \001(\010\"\033\n\031SubscribeHeartbeatRequest\"M\n\032S"
-    "ubscribeHeartbeatResponse\022/\n\theartbeat\030\001"
-    " \001(\0132\034.mavsdk.rpc.custom.Heartbeat2\206\001\n\rC"
-    "ustomService\022u\n\022SubscribeHeartbeat\022,.mav"
-    "sdk.rpc.custom.SubscribeHeartbeatRequest"
-    "\032-.mavsdk.rpc.custom.SubscribeHeartbeatR"
-    "esponse\"\0000\001b\006proto3"
+    "tatus\030\005 \001(\r\"(\n\020ConnectionStatus\022\024\n\014is_co"
+    "nnected\030\002 \001(\010\"\033\n\031SubscribeHeartbeatReque"
+    "st\"M\n\032SubscribeHeartbeatResponse\022/\n\thear"
+    "tbeat\030\001 \001(\0132\034.mavsdk.rpc.custom.Heartbea"
+    "t\"\"\n SubscribeConnectionStatusRequest\"X\n"
+    "!SubscribeConnectionStatusResponse\0223\n\006st"
+    "atus\030\001 \001(\0132#.mavsdk.rpc.custom.Connectio"
+    "nStatus2\223\002\n\rCustomService\022u\n\022SubscribeHe"
+    "artbeat\022,.mavsdk.rpc.custom.SubscribeHea"
+    "rtbeatRequest\032-.mavsdk.rpc.custom.Subscr"
+    "ibeHeartbeatResponse\"\0000\001\022\212\001\n\031SubscribeCo"
+    "nnectionStatus\0223.mavsdk.rpc.custom.Subsc"
+    "ribeConnectionStatusRequest\0324.mavsdk.rpc"
+    ".custom.SubscribeConnectionStatusRespons"
+    "e\"\0000\001b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_custom_2fcustom_2eproto_deps[1] =
     {
@@ -251,13 +284,13 @@ static ::absl::once_flag descriptor_table_custom_2fcustom_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_custom_2fcustom_2eproto = {
     false,
     false,
-    539,
+    733,
     descriptor_table_protodef_custom_2fcustom_2eproto,
     "custom/custom.proto",
     &descriptor_table_custom_2fcustom_2eproto_once,
     descriptor_table_custom_2fcustom_2eproto_deps,
     1,
-    5,
+    6,
     schemas,
     file_default_instances,
     TableStruct_custom_2fcustom_2eproto::offsets,
@@ -576,337 +609,87 @@ void Heartbeat::InternalSwap(Heartbeat* PROTOBUF_RESTRICT other) {
 }
 // ===================================================================
 
-class SendHeartbeatRequest::_Internal {
+class ConnectionStatus::_Internal {
  public:
-  using HasBits =
-      decltype(std::declval<SendHeartbeatRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(SendHeartbeatRequest, _impl_._has_bits_);
 };
 
-SendHeartbeatRequest::SendHeartbeatRequest(::google::protobuf::Arena* arena)
+ConnectionStatus::ConnectionStatus(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.custom.SendHeartbeatRequest)
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.custom.ConnectionStatus)
 }
-inline PROTOBUF_NDEBUG_INLINE SendHeartbeatRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from, const ::mavsdk::rpc::custom::SendHeartbeatRequest& from_msg)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
-
-SendHeartbeatRequest::SendHeartbeatRequest(
-    ::google::protobuf::Arena* arena,
-    const SendHeartbeatRequest& from)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SendHeartbeatRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.heartbeat_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::custom::Heartbeat>(
-                              arena, *from._impl_.heartbeat_)
-                        : nullptr;
-
-  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.custom.SendHeartbeatRequest)
+ConnectionStatus::ConnectionStatus(
+    ::google::protobuf::Arena* arena, const ConnectionStatus& from)
+    : ConnectionStatus(arena) {
+  MergeFrom(from);
 }
-inline PROTOBUF_NDEBUG_INLINE SendHeartbeatRequest::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE ConnectionStatus::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0} {}
 
-inline void SendHeartbeatRequest::SharedCtor(::_pb::Arena* arena) {
+inline void ConnectionStatus::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.heartbeat_ = {};
+  _impl_.is_connected_ = {};
 }
-SendHeartbeatRequest::~SendHeartbeatRequest() {
-  // @@protoc_insertion_point(destructor:mavsdk.rpc.custom.SendHeartbeatRequest)
+ConnectionStatus::~ConnectionStatus() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.custom.ConnectionStatus)
   SharedDtor(*this);
 }
-inline void SendHeartbeatRequest::SharedDtor(MessageLite& self) {
-  SendHeartbeatRequest& this_ = static_cast<SendHeartbeatRequest&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  delete this_._impl_.heartbeat_;
-  this_._impl_.~Impl_();
-}
-
-inline void* SendHeartbeatRequest::PlacementNew_(const void*, void* mem,
-                                        ::google::protobuf::Arena* arena) {
-  return ::new (mem) SendHeartbeatRequest(arena);
-}
-constexpr auto SendHeartbeatRequest::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SendHeartbeatRequest),
-                                            alignof(SendHeartbeatRequest));
-}
-PROTOBUF_CONSTINIT
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull SendHeartbeatRequest::_class_data_ = {
-    ::google::protobuf::internal::ClassData{
-        &_SendHeartbeatRequest_default_instance_._instance,
-        &_table_.header,
-        nullptr,  // OnDemandRegisterArenaDtor
-        nullptr,  // IsInitialized
-        &SendHeartbeatRequest::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<SendHeartbeatRequest>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        &SendHeartbeatRequest::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<SendHeartbeatRequest>(), &SendHeartbeatRequest::ByteSizeLong,
-            &SendHeartbeatRequest::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(SendHeartbeatRequest, _impl_._cached_size_),
-        false,
-    },
-    &SendHeartbeatRequest::kDescriptorMethods,
-    &descriptor_table_custom_2fcustom_2eproto,
-    nullptr,  // tracker
-};
-const ::google::protobuf::internal::ClassData* SendHeartbeatRequest::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
-  return _class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SendHeartbeatRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(SendHeartbeatRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    _class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::mavsdk::rpc::custom::SendHeartbeatRequest>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    // .mavsdk.rpc.custom.Heartbeat heartbeat = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SendHeartbeatRequest, _impl_.heartbeat_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .mavsdk.rpc.custom.Heartbeat heartbeat = 1;
-    {PROTOBUF_FIELD_OFFSET(SendHeartbeatRequest, _impl_.heartbeat_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::mavsdk::rpc::custom::Heartbeat>()},
-  }}, {{
-  }},
-};
-
-PROTOBUF_NOINLINE void SendHeartbeatRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.custom.SendHeartbeatRequest)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.heartbeat_ != nullptr);
-    _impl_.heartbeat_->Clear();
-  }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* SendHeartbeatRequest::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const SendHeartbeatRequest& this_ = static_cast<const SendHeartbeatRequest&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* SendHeartbeatRequest::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const SendHeartbeatRequest& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.custom.SendHeartbeatRequest)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          cached_has_bits = this_._impl_._has_bits_[0];
-          // .mavsdk.rpc.custom.Heartbeat heartbeat = 1;
-          if (cached_has_bits & 0x00000001u) {
-            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                1, *this_._impl_.heartbeat_, this_._impl_.heartbeat_->GetCachedSize(), target,
-                stream);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.custom.SendHeartbeatRequest)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t SendHeartbeatRequest::ByteSizeLong(const MessageLite& base) {
-          const SendHeartbeatRequest& this_ = static_cast<const SendHeartbeatRequest&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t SendHeartbeatRequest::ByteSizeLong() const {
-          const SendHeartbeatRequest& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.custom.SendHeartbeatRequest)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-           {
-            // .mavsdk.rpc.custom.Heartbeat heartbeat = 1;
-            cached_has_bits = this_._impl_._has_bits_[0];
-            if (cached_has_bits & 0x00000001u) {
-              total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.heartbeat_);
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void SendHeartbeatRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<SendHeartbeatRequest*>(&to_msg);
-  auto& from = static_cast<const SendHeartbeatRequest&>(from_msg);
-  ::google::protobuf::Arena* arena = _this->GetArena();
-  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.custom.SendHeartbeatRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(from._impl_.heartbeat_ != nullptr);
-    if (_this->_impl_.heartbeat_ == nullptr) {
-      _this->_impl_.heartbeat_ =
-          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::custom::Heartbeat>(arena, *from._impl_.heartbeat_);
-    } else {
-      _this->_impl_.heartbeat_->MergeFrom(*from._impl_.heartbeat_);
-    }
-  }
-  _this->_impl_._has_bits_[0] |= cached_has_bits;
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void SendHeartbeatRequest::CopyFrom(const SendHeartbeatRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.custom.SendHeartbeatRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void SendHeartbeatRequest::InternalSwap(SendHeartbeatRequest* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  swap(_impl_.heartbeat_, other->_impl_.heartbeat_);
-}
-
-::google::protobuf::Metadata SendHeartbeatRequest::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
-}
-// ===================================================================
-
-class SendHeartbeatResponse::_Internal {
- public:
-};
-
-SendHeartbeatResponse::SendHeartbeatResponse(::google::protobuf::Arena* arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.custom.SendHeartbeatResponse)
-}
-SendHeartbeatResponse::SendHeartbeatResponse(
-    ::google::protobuf::Arena* arena, const SendHeartbeatResponse& from)
-    : SendHeartbeatResponse(arena) {
-  MergeFrom(from);
-}
-inline PROTOBUF_NDEBUG_INLINE SendHeartbeatResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
-
-inline void SendHeartbeatResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.success_ = {};
-}
-SendHeartbeatResponse::~SendHeartbeatResponse() {
-  // @@protoc_insertion_point(destructor:mavsdk.rpc.custom.SendHeartbeatResponse)
-  SharedDtor(*this);
-}
-inline void SendHeartbeatResponse::SharedDtor(MessageLite& self) {
-  SendHeartbeatResponse& this_ = static_cast<SendHeartbeatResponse&>(self);
+inline void ConnectionStatus::SharedDtor(MessageLite& self) {
+  ConnectionStatus& this_ = static_cast<ConnectionStatus&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.~Impl_();
 }
 
-inline void* SendHeartbeatResponse::PlacementNew_(const void*, void* mem,
+inline void* ConnectionStatus::PlacementNew_(const void*, void* mem,
                                         ::google::protobuf::Arena* arena) {
-  return ::new (mem) SendHeartbeatResponse(arena);
+  return ::new (mem) ConnectionStatus(arena);
 }
-constexpr auto SendHeartbeatResponse::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SendHeartbeatResponse),
-                                            alignof(SendHeartbeatResponse));
+constexpr auto ConnectionStatus::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ConnectionStatus),
+                                            alignof(ConnectionStatus));
 }
 PROTOBUF_CONSTINIT
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull SendHeartbeatResponse::_class_data_ = {
+const ::google::protobuf::internal::ClassDataFull ConnectionStatus::_class_data_ = {
     ::google::protobuf::internal::ClassData{
-        &_SendHeartbeatResponse_default_instance_._instance,
+        &_ConnectionStatus_default_instance_._instance,
         &_table_.header,
         nullptr,  // OnDemandRegisterArenaDtor
         nullptr,  // IsInitialized
-        &SendHeartbeatResponse::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<SendHeartbeatResponse>(),
+        &ConnectionStatus::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ConnectionStatus>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-        &SendHeartbeatResponse::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<SendHeartbeatResponse>(), &SendHeartbeatResponse::ByteSizeLong,
-            &SendHeartbeatResponse::_InternalSerialize,
+        &ConnectionStatus::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ConnectionStatus>(), &ConnectionStatus::ByteSizeLong,
+            &ConnectionStatus::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(SendHeartbeatResponse, _impl_._cached_size_),
+        PROTOBUF_FIELD_OFFSET(ConnectionStatus, _impl_._cached_size_),
         false,
     },
-    &SendHeartbeatResponse::kDescriptorMethods,
+    &ConnectionStatus::kDescriptorMethods,
     &descriptor_table_custom_2fcustom_2eproto,
     nullptr,  // tracker
 };
-const ::google::protobuf::internal::ClassData* SendHeartbeatResponse::GetClassData() const {
+const ::google::protobuf::internal::ClassData* ConnectionStatus::GetClassData() const {
   ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
   ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> SendHeartbeatResponse::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ConnectionStatus::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
+    2, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
+    4294967293,  // skipmap
     offsetof(decltype(_table_), field_entries),
     1,  // num_field_entries
     0,  // num_aux_entries
@@ -915,17 +698,17 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> SendHeartbeatResponse::_table_ = {
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::mavsdk::rpc::custom::SendHeartbeatResponse>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::custom::ConnectionStatus>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // bool success = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(SendHeartbeatResponse, _impl_.success_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(SendHeartbeatResponse, _impl_.success_)}},
+    // bool is_connected = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ConnectionStatus, _impl_.is_connected_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ConnectionStatus, _impl_.is_connected_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // bool success = 1;
-    {PROTOBUF_FIELD_OFFSET(SendHeartbeatResponse, _impl_.success_), 0, 0,
+    // bool is_connected = 2;
+    {PROTOBUF_FIELD_OFFSET(ConnectionStatus, _impl_.is_connected_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }},
   // no aux_entries
@@ -933,37 +716,37 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> SendHeartbeatResponse::_table_ = {
   }},
 };
 
-PROTOBUF_NOINLINE void SendHeartbeatResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.custom.SendHeartbeatResponse)
+PROTOBUF_NOINLINE void ConnectionStatus::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.custom.ConnectionStatus)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.success_ = false;
+  _impl_.is_connected_ = false;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* SendHeartbeatResponse::_InternalSerialize(
+        ::uint8_t* ConnectionStatus::_InternalSerialize(
             const MessageLite& base, ::uint8_t* target,
             ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const SendHeartbeatResponse& this_ = static_cast<const SendHeartbeatResponse&>(base);
+          const ConnectionStatus& this_ = static_cast<const ConnectionStatus&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* SendHeartbeatResponse::_InternalSerialize(
+        ::uint8_t* ConnectionStatus::_InternalSerialize(
             ::uint8_t* target,
             ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const SendHeartbeatResponse& this_ = *this;
+          const ConnectionStatus& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.custom.SendHeartbeatResponse)
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.custom.ConnectionStatus)
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // bool success = 1;
-          if (this_._internal_success() != 0) {
+          // bool is_connected = 2;
+          if (this_._internal_is_connected() != 0) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteBoolToArray(
-                1, this_._internal_success(), target);
+                2, this_._internal_is_connected(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -971,18 +754,18 @@ PROTOBUF_NOINLINE void SendHeartbeatResponse::Clear() {
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
                     this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
           }
-          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.custom.SendHeartbeatResponse)
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.custom.ConnectionStatus)
           return target;
         }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t SendHeartbeatResponse::ByteSizeLong(const MessageLite& base) {
-          const SendHeartbeatResponse& this_ = static_cast<const SendHeartbeatResponse&>(base);
+        ::size_t ConnectionStatus::ByteSizeLong(const MessageLite& base) {
+          const ConnectionStatus& this_ = static_cast<const ConnectionStatus&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t SendHeartbeatResponse::ByteSizeLong() const {
-          const SendHeartbeatResponse& this_ = *this;
+        ::size_t ConnectionStatus::ByteSizeLong() const {
+          const ConnectionStatus& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.custom.SendHeartbeatResponse)
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.custom.ConnectionStatus)
           ::size_t total_size = 0;
 
           ::uint32_t cached_has_bits = 0;
@@ -990,8 +773,8 @@ PROTOBUF_NOINLINE void SendHeartbeatResponse::Clear() {
           (void)cached_has_bits;
 
            {
-            // bool success = 1;
-            if (this_._internal_success() != 0) {
+            // bool is_connected = 2;
+            if (this_._internal_is_connected() != 0) {
               total_size += 2;
             }
           }
@@ -999,35 +782,35 @@ PROTOBUF_NOINLINE void SendHeartbeatResponse::Clear() {
                                                      &this_._impl_._cached_size_);
         }
 
-void SendHeartbeatResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<SendHeartbeatResponse*>(&to_msg);
-  auto& from = static_cast<const SendHeartbeatResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.custom.SendHeartbeatResponse)
+void ConnectionStatus::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ConnectionStatus*>(&to_msg);
+  auto& from = static_cast<const ConnectionStatus&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.custom.ConnectionStatus)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_success() != 0) {
-    _this->_impl_.success_ = from._impl_.success_;
+  if (from._internal_is_connected() != 0) {
+    _this->_impl_.is_connected_ = from._impl_.is_connected_;
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void SendHeartbeatResponse::CopyFrom(const SendHeartbeatResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.custom.SendHeartbeatResponse)
+void ConnectionStatus::CopyFrom(const ConnectionStatus& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.custom.ConnectionStatus)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void SendHeartbeatResponse::InternalSwap(SendHeartbeatResponse* PROTOBUF_RESTRICT other) {
+void ConnectionStatus::InternalSwap(ConnectionStatus* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.success_, other->_impl_.success_);
+        swap(_impl_.is_connected_, other->_impl_.is_connected_);
 }
 
-::google::protobuf::Metadata SendHeartbeatResponse::GetMetadata() const {
+::google::protobuf::Metadata ConnectionStatus::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -1381,6 +1164,359 @@ void SubscribeHeartbeatResponse::InternalSwap(SubscribeHeartbeatResponse* PROTOB
 }
 
 ::google::protobuf::Metadata SubscribeHeartbeatResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SubscribeConnectionStatusRequest::_Internal {
+ public:
+};
+
+SubscribeConnectionStatusRequest::SubscribeConnectionStatusRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.custom.SubscribeConnectionStatusRequest)
+}
+SubscribeConnectionStatusRequest::SubscribeConnectionStatusRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeConnectionStatusRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SubscribeConnectionStatusRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.custom.SubscribeConnectionStatusRequest)
+}
+
+inline void* SubscribeConnectionStatusRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SubscribeConnectionStatusRequest(arena);
+}
+constexpr auto SubscribeConnectionStatusRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SubscribeConnectionStatusRequest),
+                                            alignof(SubscribeConnectionStatusRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SubscribeConnectionStatusRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SubscribeConnectionStatusRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SubscribeConnectionStatusRequest::MergeImpl,
+        ::google::protobuf::internal::ZeroFieldsBase::GetNewImpl<SubscribeConnectionStatusRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SubscribeConnectionStatusRequest::SharedDtor,
+        ::google::protobuf::internal::ZeroFieldsBase::GetClearImpl<SubscribeConnectionStatusRequest>(), &SubscribeConnectionStatusRequest::ByteSizeLong,
+            &SubscribeConnectionStatusRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SubscribeConnectionStatusRequest, _impl_._cached_size_),
+        false,
+    },
+    &SubscribeConnectionStatusRequest::kDescriptorMethods,
+    &descriptor_table_custom_2fcustom_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SubscribeConnectionStatusRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 0, 0, 0, 2> SubscribeConnectionStatusRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    0, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967295,  // skipmap
+    offsetof(decltype(_table_), field_names),  // no field_entries
+    0,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::custom::SubscribeConnectionStatusRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }},
+  // no field_entries, or aux_entries
+  {{
+  }},
+};
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeConnectionStatusRequest::GetMetadata() const {
+  return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SubscribeConnectionStatusResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<SubscribeConnectionStatusResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(SubscribeConnectionStatusResponse, _impl_._has_bits_);
+};
+
+SubscribeConnectionStatusResponse::SubscribeConnectionStatusResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE SubscribeConnectionStatusResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+SubscribeConnectionStatusResponse::SubscribeConnectionStatusResponse(
+    ::google::protobuf::Arena* arena,
+    const SubscribeConnectionStatusResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SubscribeConnectionStatusResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.status_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::custom::ConnectionStatus>(
+                              arena, *from._impl_.status_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE SubscribeConnectionStatusResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SubscribeConnectionStatusResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.status_ = {};
+}
+SubscribeConnectionStatusResponse::~SubscribeConnectionStatusResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
+  SharedDtor(*this);
+}
+inline void SubscribeConnectionStatusResponse::SharedDtor(MessageLite& self) {
+  SubscribeConnectionStatusResponse& this_ = static_cast<SubscribeConnectionStatusResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.status_;
+  this_._impl_.~Impl_();
+}
+
+inline void* SubscribeConnectionStatusResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SubscribeConnectionStatusResponse(arena);
+}
+constexpr auto SubscribeConnectionStatusResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SubscribeConnectionStatusResponse),
+                                            alignof(SubscribeConnectionStatusResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SubscribeConnectionStatusResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SubscribeConnectionStatusResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SubscribeConnectionStatusResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SubscribeConnectionStatusResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SubscribeConnectionStatusResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SubscribeConnectionStatusResponse>(), &SubscribeConnectionStatusResponse::ByteSizeLong,
+            &SubscribeConnectionStatusResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SubscribeConnectionStatusResponse, _impl_._cached_size_),
+        false,
+    },
+    &SubscribeConnectionStatusResponse::kDescriptorMethods,
+    &descriptor_table_custom_2fcustom_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SubscribeConnectionStatusResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SubscribeConnectionStatusResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SubscribeConnectionStatusResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .mavsdk.rpc.custom.ConnectionStatus status = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SubscribeConnectionStatusResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.custom.ConnectionStatus status = 1;
+    {PROTOBUF_FIELD_OFFSET(SubscribeConnectionStatusResponse, _impl_.status_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::custom::ConnectionStatus>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SubscribeConnectionStatusResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.status_ != nullptr);
+    _impl_.status_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SubscribeConnectionStatusResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SubscribeConnectionStatusResponse& this_ = static_cast<const SubscribeConnectionStatusResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SubscribeConnectionStatusResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SubscribeConnectionStatusResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .mavsdk.rpc.custom.ConnectionStatus status = 1;
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.status_, this_._impl_.status_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SubscribeConnectionStatusResponse::ByteSizeLong(const MessageLite& base) {
+          const SubscribeConnectionStatusResponse& this_ = static_cast<const SubscribeConnectionStatusResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SubscribeConnectionStatusResponse::ByteSizeLong() const {
+          const SubscribeConnectionStatusResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .mavsdk.rpc.custom.ConnectionStatus status = 1;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.status_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SubscribeConnectionStatusResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SubscribeConnectionStatusResponse*>(&to_msg);
+  auto& from = static_cast<const SubscribeConnectionStatusResponse&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.status_ != nullptr);
+    if (_this->_impl_.status_ == nullptr) {
+      _this->_impl_.status_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::custom::ConnectionStatus>(arena, *from._impl_.status_);
+    } else {
+      _this->_impl_.status_->MergeFrom(*from._impl_.status_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SubscribeConnectionStatusResponse::CopyFrom(const SubscribeConnectionStatusResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SubscribeConnectionStatusResponse::InternalSwap(SubscribeConnectionStatusResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.status_, other->_impl_.status_);
+}
+
+::google::protobuf::Metadata SubscribeConnectionStatusResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

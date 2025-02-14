@@ -48,11 +48,23 @@ class CustomService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>> PrepareAsyncSubscribeHeartbeat(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>>(PrepareAsyncSubscribeHeartbeatRaw(context, request, cq));
     }
+    // Subscribe to Connection Status
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>> SubscribeConnectionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>>(SubscribeConnectionStatusRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>> AsyncSubscribeConnectionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>>(AsyncSubscribeConnectionStatusRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>> PrepareAsyncSubscribeConnectionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>>(PrepareAsyncSubscribeConnectionStatusRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
       // Subscribe to Heartbeat
       virtual void SubscribeHeartbeat(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* reactor) = 0;
+      // Subscribe to Connection Status
+      virtual void SubscribeConnectionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -61,6 +73,9 @@ class CustomService final {
     virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* SubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* AsyncSubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* PrepareAsyncSubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* SubscribeConnectionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* AsyncSubscribeConnectionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* PrepareAsyncSubscribeConnectionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -74,10 +89,20 @@ class CustomService final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>> PrepareAsyncSubscribeHeartbeat(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>>(PrepareAsyncSubscribeHeartbeatRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>> SubscribeConnectionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>>(SubscribeConnectionStatusRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>> AsyncSubscribeConnectionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>>(AsyncSubscribeConnectionStatusRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>> PrepareAsyncSubscribeConnectionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>>(PrepareAsyncSubscribeConnectionStatusRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
       void SubscribeHeartbeat(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* reactor) override;
+      void SubscribeConnectionStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -92,7 +117,11 @@ class CustomService final {
     ::grpc::ClientReader< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* SubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest& request) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* AsyncSubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* PrepareAsyncSubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* SubscribeConnectionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* AsyncSubscribeConnectionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* PrepareAsyncSubscribeConnectionStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeHeartbeat_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubscribeConnectionStatus_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -102,6 +131,8 @@ class CustomService final {
     virtual ~Service();
     // Subscribe to Heartbeat
     virtual ::grpc::Status SubscribeHeartbeat(::grpc::ServerContext* context, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* writer);
+    // Subscribe to Connection Status
+    virtual ::grpc::Status SubscribeConnectionStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_SubscribeHeartbeat : public BaseClass {
@@ -123,7 +154,27 @@ class CustomService final {
       ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SubscribeHeartbeat<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SubscribeConnectionStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SubscribeConnectionStatus() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_SubscribeConnectionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeConnectionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeConnectionStatus(::grpc::ServerContext* context, ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* request, ::grpc::ServerAsyncWriter< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SubscribeHeartbeat<WithAsyncMethod_SubscribeConnectionStatus<Service > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SubscribeHeartbeat : public BaseClass {
    private:
@@ -146,7 +197,29 @@ class CustomService final {
     virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* SubscribeHeartbeat(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest* /*request*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SubscribeHeartbeat<Service > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SubscribeConnectionStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SubscribeConnectionStatus() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest, ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* request) { return this->SubscribeConnectionStatus(context, request); }));
+    }
+    ~WithCallbackMethod_SubscribeConnectionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeConnectionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* SubscribeConnectionStatus(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* /*request*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SubscribeHeartbeat<WithCallbackMethod_SubscribeConnectionStatus<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SubscribeHeartbeat : public BaseClass {
@@ -161,6 +234,23 @@ class CustomService final {
     }
     // disable synchronous version of this method
     ::grpc::Status SubscribeHeartbeat(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::custom::SubscribeHeartbeatRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubscribeConnectionStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SubscribeConnectionStatus() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_SubscribeConnectionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeConnectionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -186,6 +276,26 @@ class CustomService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SubscribeConnectionStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SubscribeConnectionStatus() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_SubscribeConnectionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeConnectionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeConnectionStatus(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SubscribeHeartbeat : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -205,6 +315,28 @@ class CustomService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeHeartbeat(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SubscribeConnectionStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SubscribeConnectionStatus() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->SubscribeConnectionStatus(context, request); }));
+    }
+    ~WithRawCallbackMethod_SubscribeConnectionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeConnectionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeConnectionStatus(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   typedef Service StreamedUnaryService;
@@ -235,8 +367,35 @@ class CustomService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSubscribeHeartbeat(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::custom::SubscribeHeartbeatRequest,::mavsdk::rpc::custom::SubscribeHeartbeatResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_SubscribeHeartbeat<Service > SplitStreamedService;
-  typedef WithSplitStreamingMethod_SubscribeHeartbeat<Service > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_SubscribeConnectionStatus : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_SubscribeConnectionStatus() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest, ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest, ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* streamer) {
+                       return this->StreamedSubscribeConnectionStatus(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_SubscribeConnectionStatus() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubscribeConnectionStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribeConnectionStatus(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::custom::SubscribeConnectionStatusRequest,::mavsdk::rpc::custom::SubscribeConnectionStatusResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeConnectionStatus<Service > > SplitStreamedService;
+  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeConnectionStatus<Service > > StreamedService;
 };
 
 }  // namespace custom
