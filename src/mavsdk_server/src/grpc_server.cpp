@@ -22,6 +22,7 @@ int GrpcServer::run()
 
     builder.RegisterService(&_core);
 
+
 #ifdef ACTION_ENABLED
     builder.RegisterService(&_action_service);
 #endif
@@ -52,6 +53,10 @@ int GrpcServer::run()
 
 #ifdef COMPONENT_METADATA_SERVER_ENABLED
     builder.RegisterService(&_component_metadata_server_service);
+#endif
+
+#ifdef CUSTOM_ENABLED
+    builder.RegisterService(&_custom_service);
 #endif
 
 #ifdef EVENTS_ENABLED
@@ -162,6 +167,7 @@ int GrpcServer::run()
     builder.RegisterService(&_winch_service);
 #endif
 
+
 #ifdef ENABLE_PROTO_REFLECTION
     grpc::reflection::InitProtoReflectionServerBuilderPlugin();
 #endif
@@ -193,6 +199,7 @@ void GrpcServer::stop()
     if (_server != nullptr) {
         _core.stop();
 
+
 #ifdef ACTION_ENABLED
         _action_service.stop();
 #endif
@@ -223,6 +230,10 @@ void GrpcServer::stop()
 
 #ifdef COMPONENT_METADATA_SERVER_ENABLED
         _component_metadata_server_service.stop();
+#endif
+
+#ifdef CUSTOM_ENABLED
+        _custom_service.stop();
 #endif
 
 #ifdef EVENTS_ENABLED
