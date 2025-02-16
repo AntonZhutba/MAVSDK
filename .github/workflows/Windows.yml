@@ -1,4 +1,4 @@
-name: Build and Test (Windows Only)
+name: Build and Test (Windows)
 
 on:
   workflow_dispatch:
