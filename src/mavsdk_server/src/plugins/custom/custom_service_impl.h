@@ -184,7 +184,7 @@ public:
 
             rpc::custom::ConnectionStatusResponse rpc_response;
         
-            rpc_response.set_allocated_status(translateToRpcConnectionStatus(connection_status).release());
+            rpc_response.set_allocated_connection_status(translateToRpcConnectionStatus(connection_status).release());
         
 
         

@@ -95,7 +95,7 @@ public:
 
 
     /**
-     * @brief 
+     * @brief Connection state type.
      */
     struct ConnectionStatus {
         

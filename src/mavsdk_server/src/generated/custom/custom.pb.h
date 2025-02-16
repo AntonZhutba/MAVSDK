@@ -150,7 +150,7 @@ class SubscribeHeartbeatRequest final
     return reinterpret_cast<const SubscribeHeartbeatRequest*>(
         &_SubscribeHeartbeatRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 2;
+  static constexpr int kIndexInFileMessages = 0;
   friend void swap(SubscribeHeartbeatRequest& a, SubscribeHeartbeatRequest& b) { a.Swap(&b); }
   inline void Swap(SubscribeHeartbeatRequest* other) {
     if (other == this) return;
@@ -296,7 +296,7 @@ class SubscribeConnectionStatusRequest final
     return reinterpret_cast<const SubscribeConnectionStatusRequest*>(
         &_SubscribeConnectionStatusRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 4;
+  static constexpr int kIndexInFileMessages = 3;
   friend void swap(SubscribeConnectionStatusRequest& a, SubscribeConnectionStatusRequest& b) { a.Swap(&b); }
   inline void Swap(SubscribeConnectionStatusRequest* other) {
     if (other == this) return;
@@ -443,7 +443,7 @@ class Heartbeat final
     return reinterpret_cast<const Heartbeat*>(
         &_Heartbeat_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 0;
+  static constexpr int kIndexInFileMessages = 2;
   friend void swap(Heartbeat& a, Heartbeat& b) { a.Swap(&b); }
   inline void Swap(Heartbeat* other) {
     if (other == this) return;
@@ -682,7 +682,7 @@ class ConnectionStatus final
     return reinterpret_cast<const ConnectionStatus*>(
         &_ConnectionStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 1;
+  static constexpr int kIndexInFileMessages = 5;
   friend void swap(ConnectionStatus& a, ConnectionStatus& b) { a.Swap(&b); }
   inline void Swap(ConnectionStatus* other) {
     if (other == this) return;
@@ -873,7 +873,7 @@ class SubscribeHeartbeatResponse final
     return reinterpret_cast<const SubscribeHeartbeatResponse*>(
         &_SubscribeHeartbeatResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 3;
+  static constexpr int kIndexInFileMessages = 1;
   friend void swap(SubscribeHeartbeatResponse& a, SubscribeHeartbeatResponse& b) { a.Swap(&b); }
   inline void Swap(SubscribeHeartbeatResponse* other) {
     if (other == this) return;
@@ -1070,7 +1070,7 @@ class SubscribeConnectionStatusResponse final
     return reinterpret_cast<const SubscribeConnectionStatusResponse*>(
         &_SubscribeConnectionStatusResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 5;
+  static constexpr int kIndexInFileMessages = 4;
   friend void swap(SubscribeConnectionStatusResponse& a, SubscribeConnectionStatusResponse& b) { a.Swap(&b); }
   inline void Swap(SubscribeConnectionStatusResponse* other) {
     if (other == this) return;
@@ -1157,21 +1157,21 @@ class SubscribeConnectionStatusResponse final
 
   // accessors -------------------------------------------------------
   enum : int {
-    kStatusFieldNumber = 1,
+    kConnectionStatusFieldNumber = 1,
   };
-  // .mavsdk.rpc.custom.ConnectionStatus status = 1;
-  bool has_status() const;
-  void clear_status() ;
-  const ::mavsdk::rpc::custom::ConnectionStatus& status() const;
-  PROTOBUF_NODISCARD ::mavsdk::rpc::custom::ConnectionStatus* release_status();
-  ::mavsdk::rpc::custom::ConnectionStatus* mutable_status();
-  void set_allocated_status(::mavsdk::rpc::custom::ConnectionStatus* value);
-  void unsafe_arena_set_allocated_status(::mavsdk::rpc::custom::ConnectionStatus* value);
-  ::mavsdk::rpc::custom::ConnectionStatus* unsafe_arena_release_status();
+  // .mavsdk.rpc.custom.ConnectionStatus connection_status = 1;
+  bool has_connection_status() const;
+  void clear_connection_status() ;
+  const ::mavsdk::rpc::custom::ConnectionStatus& connection_status() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::custom::ConnectionStatus* release_connection_status();
+  ::mavsdk::rpc::custom::ConnectionStatus* mutable_connection_status();
+  void set_allocated_connection_status(::mavsdk::rpc::custom::ConnectionStatus* value);
+  void unsafe_arena_set_allocated_connection_status(::mavsdk::rpc::custom::ConnectionStatus* value);
+  ::mavsdk::rpc::custom::ConnectionStatus* unsafe_arena_release_connection_status();
 
   private:
-  const ::mavsdk::rpc::custom::ConnectionStatus& _internal_status() const;
-  ::mavsdk::rpc::custom::ConnectionStatus* _internal_mutable_status();
+  const ::mavsdk::rpc::custom::ConnectionStatus& _internal_connection_status() const;
+  ::mavsdk::rpc::custom::ConnectionStatus* _internal_mutable_connection_status();
 
   public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.custom.SubscribeConnectionStatusResponse)
@@ -1199,7 +1199,7 @@ class SubscribeConnectionStatusResponse final
                           const SubscribeConnectionStatusResponse& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::mavsdk::rpc::custom::ConnectionStatus* status_;
+    ::mavsdk::rpc::custom::ConnectionStatus* connection_status_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1218,6 +1218,110 @@ class SubscribeConnectionStatusResponse final
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// SubscribeHeartbeatRequest
+
+// -------------------------------------------------------------------
+
+// SubscribeHeartbeatResponse
+
+// .mavsdk.rpc.custom.Heartbeat heartbeat = 1;
+inline bool SubscribeHeartbeatResponse::has_heartbeat() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.heartbeat_ != nullptr);
+  return value;
+}
+inline void SubscribeHeartbeatResponse::clear_heartbeat() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.heartbeat_ != nullptr) _impl_.heartbeat_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::custom::Heartbeat& SubscribeHeartbeatResponse::_internal_heartbeat() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::custom::Heartbeat* p = _impl_.heartbeat_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::custom::Heartbeat&>(::mavsdk::rpc::custom::_Heartbeat_default_instance_);
+}
+inline const ::mavsdk::rpc::custom::Heartbeat& SubscribeHeartbeatResponse::heartbeat() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
+  return _internal_heartbeat();
+}
+inline void SubscribeHeartbeatResponse::unsafe_arena_set_allocated_heartbeat(::mavsdk::rpc::custom::Heartbeat* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.heartbeat_);
+  }
+  _impl_.heartbeat_ = reinterpret_cast<::mavsdk::rpc::custom::Heartbeat*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
+}
+inline ::mavsdk::rpc::custom::Heartbeat* SubscribeHeartbeatResponse::release_heartbeat() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::custom::Heartbeat* released = _impl_.heartbeat_;
+  _impl_.heartbeat_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::custom::Heartbeat* SubscribeHeartbeatResponse::unsafe_arena_release_heartbeat() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::custom::Heartbeat* temp = _impl_.heartbeat_;
+  _impl_.heartbeat_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::custom::Heartbeat* SubscribeHeartbeatResponse::_internal_mutable_heartbeat() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.heartbeat_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::custom::Heartbeat>(GetArena());
+    _impl_.heartbeat_ = reinterpret_cast<::mavsdk::rpc::custom::Heartbeat*>(p);
+  }
+  return _impl_.heartbeat_;
+}
+inline ::mavsdk::rpc::custom::Heartbeat* SubscribeHeartbeatResponse::mutable_heartbeat() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::custom::Heartbeat* _msg = _internal_mutable_heartbeat();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
+  return _msg;
+}
+inline void SubscribeHeartbeatResponse::set_allocated_heartbeat(::mavsdk::rpc::custom::Heartbeat* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.heartbeat_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.heartbeat_ = reinterpret_cast<::mavsdk::rpc::custom::Heartbeat*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
+}
+
 // -------------------------------------------------------------------
 
 // Heartbeat
@@ -1334,6 +1438,110 @@ inline void Heartbeat::_internal_set_system_status(::uint32_t value) {
 
 // -------------------------------------------------------------------
 
+// SubscribeConnectionStatusRequest
+
+// -------------------------------------------------------------------
+
+// SubscribeConnectionStatusResponse
+
+// .mavsdk.rpc.custom.ConnectionStatus connection_status = 1;
+inline bool SubscribeConnectionStatusResponse::has_connection_status() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.connection_status_ != nullptr);
+  return value;
+}
+inline void SubscribeConnectionStatusResponse::clear_connection_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.connection_status_ != nullptr) _impl_.connection_status_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::custom::ConnectionStatus& SubscribeConnectionStatusResponse::_internal_connection_status() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::custom::ConnectionStatus* p = _impl_.connection_status_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::custom::ConnectionStatus&>(::mavsdk::rpc::custom::_ConnectionStatus_default_instance_);
+}
+inline const ::mavsdk::rpc::custom::ConnectionStatus& SubscribeConnectionStatusResponse::connection_status() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.connection_status)
+  return _internal_connection_status();
+}
+inline void SubscribeConnectionStatusResponse::unsafe_arena_set_allocated_connection_status(::mavsdk::rpc::custom::ConnectionStatus* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.connection_status_);
+  }
+  _impl_.connection_status_ = reinterpret_cast<::mavsdk::rpc::custom::ConnectionStatus*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.connection_status)
+}
+inline ::mavsdk::rpc::custom::ConnectionStatus* SubscribeConnectionStatusResponse::release_connection_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::custom::ConnectionStatus* released = _impl_.connection_status_;
+  _impl_.connection_status_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::custom::ConnectionStatus* SubscribeConnectionStatusResponse::unsafe_arena_release_connection_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.connection_status)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::custom::ConnectionStatus* temp = _impl_.connection_status_;
+  _impl_.connection_status_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::custom::ConnectionStatus* SubscribeConnectionStatusResponse::_internal_mutable_connection_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.connection_status_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::custom::ConnectionStatus>(GetArena());
+    _impl_.connection_status_ = reinterpret_cast<::mavsdk::rpc::custom::ConnectionStatus*>(p);
+  }
+  return _impl_.connection_status_;
+}
+inline ::mavsdk::rpc::custom::ConnectionStatus* SubscribeConnectionStatusResponse::mutable_connection_status() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::custom::ConnectionStatus* _msg = _internal_mutable_connection_status();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.connection_status)
+  return _msg;
+}
+inline void SubscribeConnectionStatusResponse::set_allocated_connection_status(::mavsdk::rpc::custom::ConnectionStatus* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.connection_status_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.connection_status_ = reinterpret_cast<::mavsdk::rpc::custom::ConnectionStatus*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.connection_status)
+}
+
+// -------------------------------------------------------------------
+
 // ConnectionStatus
 
 // bool is_connected = 2;
@@ -1356,214 +1564,6 @@ inline bool ConnectionStatus::_internal_is_connected() const {
 inline void ConnectionStatus::_internal_set_is_connected(bool value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.is_connected_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// SubscribeHeartbeatRequest
-
-// -------------------------------------------------------------------
-
-// SubscribeHeartbeatResponse
-
-// .mavsdk.rpc.custom.Heartbeat heartbeat = 1;
-inline bool SubscribeHeartbeatResponse::has_heartbeat() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.heartbeat_ != nullptr);
-  return value;
-}
-inline void SubscribeHeartbeatResponse::clear_heartbeat() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.heartbeat_ != nullptr) _impl_.heartbeat_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-inline const ::mavsdk::rpc::custom::Heartbeat& SubscribeHeartbeatResponse::_internal_heartbeat() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::mavsdk::rpc::custom::Heartbeat* p = _impl_.heartbeat_;
-  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::custom::Heartbeat&>(::mavsdk::rpc::custom::_Heartbeat_default_instance_);
-}
-inline const ::mavsdk::rpc::custom::Heartbeat& SubscribeHeartbeatResponse::heartbeat() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
-  return _internal_heartbeat();
-}
-inline void SubscribeHeartbeatResponse::unsafe_arena_set_allocated_heartbeat(::mavsdk::rpc::custom::Heartbeat* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (GetArena() == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.heartbeat_);
-  }
-  _impl_.heartbeat_ = reinterpret_cast<::mavsdk::rpc::custom::Heartbeat*>(value);
-  if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
-}
-inline ::mavsdk::rpc::custom::Heartbeat* SubscribeHeartbeatResponse::release_heartbeat() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::custom::Heartbeat* released = _impl_.heartbeat_;
-  _impl_.heartbeat_ = nullptr;
-  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
-    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
-    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
-    if (GetArena() == nullptr) {
-      delete old;
-    }
-  } else {
-    if (GetArena() != nullptr) {
-      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
-    }
-  }
-  return released;
-}
-inline ::mavsdk::rpc::custom::Heartbeat* SubscribeHeartbeatResponse::unsafe_arena_release_heartbeat() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
-
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::custom::Heartbeat* temp = _impl_.heartbeat_;
-  _impl_.heartbeat_ = nullptr;
-  return temp;
-}
-inline ::mavsdk::rpc::custom::Heartbeat* SubscribeHeartbeatResponse::_internal_mutable_heartbeat() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.heartbeat_ == nullptr) {
-    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::custom::Heartbeat>(GetArena());
-    _impl_.heartbeat_ = reinterpret_cast<::mavsdk::rpc::custom::Heartbeat*>(p);
-  }
-  return _impl_.heartbeat_;
-}
-inline ::mavsdk::rpc::custom::Heartbeat* SubscribeHeartbeatResponse::mutable_heartbeat() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  ::mavsdk::rpc::custom::Heartbeat* _msg = _internal_mutable_heartbeat();
-  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
-  return _msg;
-}
-inline void SubscribeHeartbeatResponse::set_allocated_heartbeat(::mavsdk::rpc::custom::Heartbeat* value) {
-  ::google::protobuf::Arena* message_arena = GetArena();
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (message_arena == nullptr) {
-    delete (_impl_.heartbeat_);
-  }
-
-  if (value != nullptr) {
-    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
-    if (message_arena != submessage_arena) {
-      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
-    }
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-
-  _impl_.heartbeat_ = reinterpret_cast<::mavsdk::rpc::custom::Heartbeat*>(value);
-  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.custom.SubscribeHeartbeatResponse.heartbeat)
-}
-
-// -------------------------------------------------------------------
-
-// SubscribeConnectionStatusRequest
-
-// -------------------------------------------------------------------
-
-// SubscribeConnectionStatusResponse
-
-// .mavsdk.rpc.custom.ConnectionStatus status = 1;
-inline bool SubscribeConnectionStatusResponse::has_status() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.status_ != nullptr);
-  return value;
-}
-inline void SubscribeConnectionStatusResponse::clear_status() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.status_ != nullptr) _impl_.status_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-inline const ::mavsdk::rpc::custom::ConnectionStatus& SubscribeConnectionStatusResponse::_internal_status() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::mavsdk::rpc::custom::ConnectionStatus* p = _impl_.status_;
-  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::custom::ConnectionStatus&>(::mavsdk::rpc::custom::_ConnectionStatus_default_instance_);
-}
-inline const ::mavsdk::rpc::custom::ConnectionStatus& SubscribeConnectionStatusResponse::status() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.status)
-  return _internal_status();
-}
-inline void SubscribeConnectionStatusResponse::unsafe_arena_set_allocated_status(::mavsdk::rpc::custom::ConnectionStatus* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (GetArena() == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.status_);
-  }
-  _impl_.status_ = reinterpret_cast<::mavsdk::rpc::custom::ConnectionStatus*>(value);
-  if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.status)
-}
-inline ::mavsdk::rpc::custom::ConnectionStatus* SubscribeConnectionStatusResponse::release_status() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::custom::ConnectionStatus* released = _impl_.status_;
-  _impl_.status_ = nullptr;
-  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
-    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
-    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
-    if (GetArena() == nullptr) {
-      delete old;
-    }
-  } else {
-    if (GetArena() != nullptr) {
-      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
-    }
-  }
-  return released;
-}
-inline ::mavsdk::rpc::custom::ConnectionStatus* SubscribeConnectionStatusResponse::unsafe_arena_release_status() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.status)
-
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::custom::ConnectionStatus* temp = _impl_.status_;
-  _impl_.status_ = nullptr;
-  return temp;
-}
-inline ::mavsdk::rpc::custom::ConnectionStatus* SubscribeConnectionStatusResponse::_internal_mutable_status() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.status_ == nullptr) {
-    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::custom::ConnectionStatus>(GetArena());
-    _impl_.status_ = reinterpret_cast<::mavsdk::rpc::custom::ConnectionStatus*>(p);
-  }
-  return _impl_.status_;
-}
-inline ::mavsdk::rpc::custom::ConnectionStatus* SubscribeConnectionStatusResponse::mutable_status() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  ::mavsdk::rpc::custom::ConnectionStatus* _msg = _internal_mutable_status();
-  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.status)
-  return _msg;
-}
-inline void SubscribeConnectionStatusResponse::set_allocated_status(::mavsdk::rpc::custom::ConnectionStatus* value) {
-  ::google::protobuf::Arena* message_arena = GetArena();
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (message_arena == nullptr) {
-    delete (_impl_.status_);
-  }
-
-  if (value != nullptr) {
-    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
-    if (message_arena != submessage_arena) {
-      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
-    }
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-
-  _impl_.status_ = reinterpret_cast<::mavsdk::rpc::custom::ConnectionStatus*>(value);
-  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.custom.SubscribeConnectionStatusResponse.status)
 }
 
 #ifdef __GNUC__
