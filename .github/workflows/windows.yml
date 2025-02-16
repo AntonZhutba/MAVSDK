@@ -1,4 +1,10 @@
-Windows:
+name: Build and Test (Windows Only)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Windows:
     name: Windows
     runs-on: windows-latest
     steps:
