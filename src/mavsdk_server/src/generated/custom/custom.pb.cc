@@ -257,39 +257,35 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_custom_2fcustom_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\023custom/custom.proto\022\021mavsdk.rpc.custom"
-    "\032\024mavsdk_options.proto\"\033\n\031SubscribeHeart"
-    "beatRequest\"M\n\032SubscribeHeartbeatRespons"
-    "e\022/\n\theartbeat\030\001 \001(\0132\034.mavsdk.rpc.custom"
-    ".Heartbeat\"k\n\tHeartbeat\022\014\n\004type\030\001 \001(\r\022\021\n"
-    "\tautopilot\030\002 \001(\r\022\021\n\tbase_mode\030\003 \001(\r\022\023\n\013c"
-    "ustom_mode\030\004 \001(\r\022\025\n\rsystem_status\030\005 \001(\r\""
-    "\"\n SubscribeConnectionStatusRequest\"c\n!S"
-    "ubscribeConnectionStatusResponse\022>\n\021conn"
-    "ection_status\030\001 \001(\0132#.mavsdk.rpc.custom."
-    "ConnectionStatus\"(\n\020ConnectionStatus\022\024\n\014"
-    "is_connected\030\002 \001(\0102\223\002\n\rCustomService\022u\n\022"
-    "SubscribeHeartbeat\022,.mavsdk.rpc.custom.S"
-    "ubscribeHeartbeatRequest\032-.mavsdk.rpc.cu"
-    "stom.SubscribeHeartbeatResponse\"\0000\001\022\212\001\n\031"
-    "SubscribeConnectionStatus\0223.mavsdk.rpc.c"
-    "ustom.SubscribeConnectionStatusRequest\0324"
-    ".mavsdk.rpc.custom.SubscribeConnectionSt"
-    "atusResponse\"\0000\001b\006proto3"
-};
-static const ::_pbi::DescriptorTable* const descriptor_table_custom_2fcustom_2eproto_deps[1] =
-    {
-        &::descriptor_table_mavsdk_5foptions_2eproto,
+    "\"\033\n\031SubscribeHeartbeatRequest\"M\n\032Subscri"
+    "beHeartbeatResponse\022/\n\theartbeat\030\001 \001(\0132\034"
+    ".mavsdk.rpc.custom.Heartbeat\"k\n\tHeartbea"
+    "t\022\014\n\004type\030\001 \001(\r\022\021\n\tautopilot\030\002 \001(\r\022\021\n\tba"
+    "se_mode\030\003 \001(\r\022\023\n\013custom_mode\030\004 \001(\r\022\025\n\rsy"
+    "stem_status\030\005 \001(\r\"\"\n SubscribeConnection"
+    "StatusRequest\"c\n!SubscribeConnectionStat"
+    "usResponse\022>\n\021connection_status\030\001 \001(\0132#."
+    "mavsdk.rpc.custom.ConnectionStatus\"(\n\020Co"
+    "nnectionStatus\022\024\n\014is_connected\030\002 \001(\0102\223\002\n"
+    "\rCustomService\022u\n\022SubscribeHeartbeat\022,.m"
+    "avsdk.rpc.custom.SubscribeHeartbeatReque"
+    "st\032-.mavsdk.rpc.custom.SubscribeHeartbea"
+    "tResponse\"\0000\001\022\212\001\n\031SubscribeConnectionSta"
+    "tus\0223.mavsdk.rpc.custom.SubscribeConnect"
+    "ionStatusRequest\0324.mavsdk.rpc.custom.Sub"
+    "scribeConnectionStatusResponse\"\0000\001b\006prot"
+    "o3"
 };
 static ::absl::once_flag descriptor_table_custom_2fcustom_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_custom_2fcustom_2eproto = {
     false,
     false,
-    744,
+    722,
     descriptor_table_protodef_custom_2fcustom_2eproto,
     "custom/custom.proto",
     &descriptor_table_custom_2fcustom_2eproto_once,
-    descriptor_table_custom_2fcustom_2eproto_deps,
-    1,
+    nullptr,
+    0,
     6,
     schemas,
     file_default_instances,
