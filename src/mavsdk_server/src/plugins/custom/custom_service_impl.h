@@ -123,7 +123,7 @@ public:
 
 
 
-    grpc::Status SubscribeHeartbeat(grpc::ServerContext* /* context */, const mavsdk::rpc::custom::SubscribeHeartbeatRequest* /* request */, grpc::ServerWriter<rpc::custom::HeartbeatResponse>* writer) override
+    grpc::Status SubscribeHeartbeat(grpc::ServerContext* /* context */, const mavsdk::rpc::custom::SubscribeHeartbeatRequest* /* request */, grpc::ServerWriter<rpc::custom::SubscribeHeartbeatResponse>* writer) override
     {
         if (_lazy_plugin.maybe_plugin() == nullptr) {
             
@@ -140,7 +140,7 @@ public:
         const mavsdk::Custom::HeartbeatHandle handle = _lazy_plugin.maybe_plugin()->subscribe_heartbeat(
             [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](const mavsdk::Custom::Heartbeat heartbeat) {
 
-            rpc::custom::HeartbeatResponse rpc_response;
+            rpc::custom::SubscribeHeartbeatResponse rpc_response;
         
             rpc_response.set_allocated_heartbeat(translateToRpcHeartbeat(heartbeat).release());
         
@@ -165,7 +165,7 @@ public:
         return grpc::Status::OK;
     }
 
-    grpc::Status SubscribeConnectionStatus(grpc::ServerContext* /* context */, const mavsdk::rpc::custom::SubscribeConnectionStatusRequest* /* request */, grpc::ServerWriter<rpc::custom::ConnectionStatusResponse>* writer) override
+    grpc::Status SubscribeConnectionStatus(grpc::ServerContext* /* context */, const mavsdk::rpc::custom::SubscribeConnectionStatusRequest* /* request */, grpc::ServerWriter<rpc::custom::SubscribeConnectionStatusResponse>* writer) override
     {
         if (_lazy_plugin.maybe_plugin() == nullptr) {
             
@@ -182,7 +182,7 @@ public:
         const mavsdk::Custom::ConnectionStatusHandle handle = _lazy_plugin.maybe_plugin()->subscribe_connection_status(
             [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](const mavsdk::Custom::ConnectionStatus connection_status) {
 
-            rpc::custom::ConnectionStatusResponse rpc_response;
+            rpc::custom::SubscribeConnectionStatusResponse rpc_response;
         
             rpc_response.set_allocated_connection_status(translateToRpcConnectionStatus(connection_status).release());
         

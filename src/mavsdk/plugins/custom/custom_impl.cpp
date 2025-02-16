@@ -1,8 +1,10 @@
 #include "custom_impl.h"
 #include "system.h"
-#include <mavsdk/system.h>
-#include <mavsdk/mavlink_include.h>
-#include <mavsdk/plugin_impl_base.h>
+#include "mavlink_include.h"
+#include "plugin_impl_base.h"
+#include "mavsdk_impl.h"
+#include "callback_list.tpp"
+
 
 namespace mavsdk {
 
@@ -18,6 +20,7 @@ CustomImpl::CustomImpl(std::shared_ptr<System> system) : PluginImplBase(std::mov
 {
     _system_impl->register_plugin(this);
 }
+
 
 CustomImpl::~CustomImpl()
 {
@@ -108,15 +111,16 @@ void CustomImpl::unsubscribe_connection_status(Custom::ConnectionStatusHandle ha
 
 Custom::ConnectionStatus CustomImpl::connection_status() const
 {
-    return _is_connected;
+    std::lock_guard<std::mutex> lock(_connection_mutex);
+    return _connected;
 }
 
 void CustomImpl::set_connected()
 {
     std::lock_guard<std::mutex> lock(_connection_mutex);
 
-    if (!_connected) {
-        _connected = true;
+    if (!_connected.is_connected) {
+        _connected.is_connected = true;
 
         if (_heartbeat_timeout_cookie) {
             unregister_timeout_handler(_heartbeat_timeout_cookie);
@@ -126,9 +130,9 @@ void CustomImpl::set_connected()
             register_timeout_handler([this] { heartbeats_timed_out(); }, HEARTBEAT_TIMEOUT_S);
 
         _is_connected_callbacks.queue(
-            true, [this](const auto& func) { _mavsdk_impl.call_user_callback(func); });
+            connection_status(), [this](const auto& func) { _system_impl->call_user_callback(func); });
 
-    } else if (_connected) {
+    } else if (_connected.is_connected) {
         refresh_timeout_handler(_heartbeat_timeout_cookie);
     }
 }
@@ -137,18 +141,18 @@ void CustomImpl::set_disconnected()
 {
     if (_heartbeat_timeout_cookie) {
         unregister_timeout_handler(_heartbeat_timeout_cookie);
-        _heartbeat_timeout_cookie = nullptr;
+       _heartbeat_timeout_cookie = 0;
     }
 
-    _connected = false;
+    _connected.is_connected = false;
     _is_connected_callbacks.queue(
-        false, [this](const auto& func) { _mavsdk_impl.call_user_callback(func); });
+        connection_status(), [this](const auto& func) { _system_impl->call_user_callback(func); });
 }
 
 void CustomImpl::refresh_timeout_handler(TimeoutHandler::Cookie cookie)
 {
     if (cookie) {
-        _timeout_handler.refresh(cookie);
+      _system_impl->refresh_timeout_handler(cookie);
     }
 }
 
@@ -160,13 +164,13 @@ void CustomImpl::heartbeats_timed_out()
 
 TimeoutHandler::Cookie CustomImpl::register_timeout_handler(const std::function<void()>& callback, double duration_s)
 {
-    return _timeout_handler.add(callback, duration_s);
+    return _system_impl->register_timeout_handler(callback, duration_s);
 }
 
 void CustomImpl::unregister_timeout_handler(TimeoutHandler::Cookie cookie)
 {
     if (cookie) {
-        _timeout_handler.remove(cookie);
+        _system_impl->unregister_timeout_handler(cookie);
     }
 }
 
