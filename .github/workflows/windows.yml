@@ -11,6 +11,8 @@ jobs:
   Windows:
     name: Windows
     runs-on: windows-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
