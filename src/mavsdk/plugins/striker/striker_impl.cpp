@@ -53,7 +53,7 @@ void StrikerImpl::disable() {}
 
 
 
-#pragma region Heartbeat
+
     
 Striker::HeartbeatHandle StrikerImpl::subscribe_heartbeat(const Striker::HeartbeatCallback& callback)
 {
@@ -107,9 +107,6 @@ void StrikerImpl::process_heartbeat(const mavlink_message_t& message)
 }
 
 
-#pragma endregion
-
-#pragma region Sys Status
 Striker::SysStatusHandle StrikerImpl::subscribe_sys_status(const Striker::SysStatusCallback& callback)
 {
     
@@ -168,8 +165,6 @@ void StrikerImpl::process_sys_status(const mavlink_message_t& message)
     _sys_status_subscriptions.queue(
         sys_status(), [this](const auto& func) { _system_impl->call_user_callback(func); });
 }
-
-#pragma endregion
 
 
 } // namespace mavsdk
