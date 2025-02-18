@@ -139,26 +139,26 @@ void StrikerImpl::set_sys_status(Striker::SysStatus sys_status)
 
 void StrikerImpl::process_sys_status(const mavlink_message_t& message)
 {
-    mavlink_sys_status_t sys_status;
-    mavlink_msg_sys_status_decode(&message, &sys_status);
+    mavlink_sys_status_t system_status;
+    mavlink_msg_sys_status_decode(&message, &system_status);
 
     Striker::SysStatus received_sys_status{};
-    received_sys_status.onboard_control_sensors_present = sys_status.onboard_control_sensors_present;
-    received_sys_status.onboard_control_sensors_enabled = sys_status.onboard_control_sensors_enabled;
-    received_sys_status.onboard_control_sensors_health = sys_status.onboard_control_sensors_health;
-    received_sys_status.load = sys_status.load;
-    received_sys_status.voltage_battery = sys_status.voltage_battery;
-    received_sys_status.current_battery = sys_status.current_battery;
-    received_sys_status.battery_remaining = sys_status.battery_remaining;
-    received_sys_status.drop_rate_comm = sys_status.drop_rate_comm;
-    received_sys_status.errors_comm = sys_status.errors_comm;
-    received_sys_status.errors_count1 = sys_status.errors_count1;
-    received_sys_status.errors_count2 = sys_status.errors_count2;
-    received_sys_status.errors_count3 = sys_status.errors_count3;
-    received_sys_status.errors_count4 = sys_status.errors_count4;
-    received_sys_status.onboard_control_sensors_present_extended = sys_status.onboard_control_sensors_present_extended;
-    received_sys_status.onboard_control_sensors_enabled_extended = sys_status.onboard_control_sensors_enabled_extended;
-    received_sys_status.onboard_control_sensors_health_extended = sys_status.onboard_control_sensors_health_extended;
+    received_sys_status.onboard_control_sensors_present = system_status.onboard_control_sensors_present;
+    received_sys_status.onboard_control_sensors_enabled = system_status.onboard_control_sensors_enabled;
+    received_sys_status.onboard_control_sensors_health = system_status.onboard_control_sensors_health;
+    received_sys_status.load = system_status.load;
+    received_sys_status.voltage_battery = system_status.voltage_battery;
+    received_sys_status.current_battery = system_status.current_battery;
+    received_sys_status.battery_remaining = system_status.battery_remaining;
+    received_sys_status.drop_rate_comm = system_status.drop_rate_comm;
+    received_sys_status.errors_comm = system_status.errors_comm;
+    received_sys_status.errors_count1 = system_status.errors_count1;
+    received_sys_status.errors_count2 = system_status.errors_count2;
+    received_sys_status.errors_count3 = system_status.errors_count3;
+    received_sys_status.errors_count4 = system_status.errors_count4;
+    received_sys_status.onboard_control_sensors_present_extended = system_status.onboard_control_sensors_present_extended;
+    received_sys_status.onboard_control_sensors_enabled_extended = system_status.onboard_control_sensors_enabled_extended;
+    received_sys_status.onboard_control_sensors_health_extended = system_status.onboard_control_sensors_health_extended;
     set_sys_status(received_sys_status);
 
     std::lock_guard<std::mutex> lock(_subscription_sys_status_mutex);
