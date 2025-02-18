@@ -2,8 +2,8 @@ name: Build and Test
 
 on:
   push:
-    branches:
-    - 'feature/striker-plugin'
+    # branches:
+    # - 'feature/striker-plugin'
     tags:
     - 'v*'
     paths-ignore:
