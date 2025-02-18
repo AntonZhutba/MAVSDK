@@ -1,3 +1,4 @@
 [submodule "mavsdk-proto"]
 	path = proto
 	url = https://github.com/AntonZhutba/MAVSDK-Proto.git
+	branch = feature/striker-plugin
