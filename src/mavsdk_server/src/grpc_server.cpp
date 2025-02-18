@@ -142,6 +142,10 @@ int GrpcServer::run()
     builder.RegisterService(&_shell_service);
 #endif
 
+#ifdef STRIKER_ENABLED
+    builder.RegisterService(&_striker_service);
+#endif
+
 #ifdef TELEMETRY_ENABLED
     builder.RegisterService(&_telemetry_service);
 #endif
@@ -311,6 +315,10 @@ void GrpcServer::stop()
 
 #ifdef SHELL_ENABLED
         _shell_service.stop();
+#endif
+
+#ifdef STRIKER_ENABLED
+        _striker_service.stop();
 #endif
 
 #ifdef TELEMETRY_ENABLED

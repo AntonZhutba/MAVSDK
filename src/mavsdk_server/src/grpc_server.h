@@ -164,6 +164,11 @@
 #include "shell/shell_service_impl.h"
 #endif
 
+#ifdef STRIKER_ENABLED
+#include "plugins/striker/striker.h"
+#include "striker/striker_service_impl.h"
+#endif
+
 #ifdef TELEMETRY_ENABLED
 #include "plugins/telemetry/telemetry.h"
 #include "telemetry/telemetry_service_impl.h"
@@ -345,6 +350,11 @@ public:
 #ifdef SHELL_ENABLED
         _shell_lazy_plugin(mavsdk),
         _shell_service(_shell_lazy_plugin),
+#endif
+
+#ifdef STRIKER_ENABLED
+        _striker_lazy_plugin(mavsdk),
+        _striker_service(_striker_lazy_plugin),
 #endif
 
 #ifdef TELEMETRY_ENABLED
@@ -592,6 +602,13 @@ private:
     LazyPlugin<Shell> _shell_lazy_plugin;
 
     ShellServiceImpl<> _shell_service;
+#endif
+
+#ifdef STRIKER_ENABLED
+
+    LazyPlugin<Striker> _striker_lazy_plugin;
+
+    StrikerServiceImpl<> _striker_service;
 #endif
 
 #ifdef TELEMETRY_ENABLED
