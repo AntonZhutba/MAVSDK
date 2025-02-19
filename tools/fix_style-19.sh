@@ -3,11 +3,11 @@
 # This script runs clang-format over all files ending in .h, .c, .cpp listed
 # by git in the given directory.
 
-version_required_major="18"
+version_required_major="19"
 
 # Try to find the latest version of clang
-if command -v clang-format-18 >/dev/null; then
-    clang_format=clang-format-18
+if command -v clang-format-19 >/dev/null; then
+    clang_format=clang-format-19
 elif command -v clang-format >/dev/null; then
     clang_format=clang-format
 else
