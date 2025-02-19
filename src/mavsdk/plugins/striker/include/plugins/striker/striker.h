@@ -13,22 +13,20 @@
 #include <utility>
 #include <vector>
 
-
 #include "plugin_base.h"
 
 #include "handle.h"
 
 namespace mavsdk {
 
-
-class System;class StrikerImpl;
+class System;
+class StrikerImpl;
 
 /**
  * @brief Allow users to get vehicle telemetry and state information
  */
 class Striker : public PluginBase {
 public:
-
     /**
      * @brief Constructor. Creates the plugin for a specific System.
      *
@@ -55,21 +53,15 @@ public:
      */
     explicit Striker(std::shared_ptr<System> system); // new
 
-
     /**
      * @brief Destructor (internal use only).
      */
     ~Striker() override;
 
-
-
-
-
     /**
      * @brief Heartbeat type.
      */
     struct Heartbeat {
-        
         uint32_t custom_mode{}; /**< @brief A bitfield for use for autopilot-specific flags */
         uint32_t type{}; /**< @brief Vehicle or component type. Use MAV_TYPE_* constants */
         uint32_t autopilot{}; /**< @brief Autopilot type/class. Use MAV_AUTOPILOT_* constants */
@@ -92,17 +84,16 @@ public:
      */
     friend std::ostream& operator<<(std::ostream& str, Striker::Heartbeat const& heartbeat);
 
-
-
-
     /**
      * @brief System status type.
      */
     struct SysStatus {
-        
-        uint32_t onboard_control_sensors_present{}; /**< @brief Bitmask of onboard controllers and sensors present */
-        uint32_t onboard_control_sensors_enabled{}; /**< @brief Bitmask of enabled controllers/sensors */
-        uint32_t onboard_control_sensors_health{}; /**< @brief Bitmask of sensors with errors (0 = error, 1 = healthy) */
+        uint32_t onboard_control_sensors_present{}; /**< @brief Bitmask of onboard controllers and
+                                                       sensors present */
+        uint32_t
+            onboard_control_sensors_enabled{}; /**< @brief Bitmask of enabled controllers/sensors */
+        uint32_t onboard_control_sensors_health{}; /**< @brief Bitmask of sensors with errors (0 =
+                                                      error, 1 = healthy) */
         uint32_t load{}; /**< @brief [0-1000] Maximum loop load percentage (1000 = 100%) */
         uint32_t voltage_battery{}; /**< @brief [mV] Battery voltage, UINT16_MAX if not sent */
         int32_t current_battery{}; /**< @brief [cA] Battery current, -1 if not sent */
@@ -113,9 +104,12 @@ public:
         uint32_t errors_count3{}; /**< @brief Autopilot-specific errors */
         uint32_t errors_count4{}; /**< @brief Autopilot-specific errors */
         int32_t battery_remaining{}; /**< @brief [%] Battery energy remaining, -1 if not sent */
-        uint32_t onboard_control_sensors_present_extended{}; /**< @brief Extended bitmask for present sensors */
-        uint32_t onboard_control_sensors_enabled_extended{}; /**< @brief Extended bitmask for enabled sensors */
-        uint32_t onboard_control_sensors_health_extended{}; /**< @brief Extended bitmask for sensor health */
+        uint32_t onboard_control_sensors_present_extended{}; /**< @brief Extended bitmask for
+                                                                present sensors */
+        uint32_t onboard_control_sensors_enabled_extended{}; /**< @brief Extended bitmask for
+                                                                enabled sensors */
+        uint32_t onboard_control_sensors_health_extended{}; /**< @brief Extended bitmask for sensor
+                                                               health */
     };
 
     /**
@@ -131,12 +125,6 @@ public:
      * @return A reference to the stream.
      */
     friend std::ostream& operator<<(std::ostream& str, Striker::SysStatus const& sys_status);
-
-
-
-
-
-        
 
     /**
      * @brief Callback type for subscribe_heartbeat.
@@ -158,21 +146,12 @@ public:
      */
     void unsubscribe_heartbeat(HeartbeatHandle handle);
 
-        
-
-
-
     /**
      * @brief Poll for 'Heartbeat' (blocking).
      *
      * @return One Heartbeat update.
      */
     Heartbeat heartbeat() const;
-
-
-
-
-        
 
     /**
      * @brief Callback type for subscribe_sys_status.
@@ -194,19 +173,12 @@ public:
      */
     void unsubscribe_sys_status(SysStatusHandle handle);
 
-        
-
-
-
     /**
      * @brief Poll for 'SysStatus' (blocking).
      *
      * @return One SysStatus update.
      */
     SysStatus sys_status() const;
-
-
-
 
     /**
      * @brief Copy constructor.

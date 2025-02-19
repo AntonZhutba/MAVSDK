@@ -22,239 +22,144 @@
 namespace mavsdk {
 namespace mavsdk_server {
 
-
 template<typename Striker = Striker, typename LazyPlugin = LazyPlugin<Striker>>
 
 class StrikerServiceImpl final : public rpc::striker::StrikerService::Service {
 public:
-
     StrikerServiceImpl(LazyPlugin& lazy_plugin) : _lazy_plugin(lazy_plugin) {}
 
-
-
-
-
-
-    static std::unique_ptr<rpc::striker::Heartbeat> translateToRpcHeartbeat(const mavsdk::Striker::Heartbeat &heartbeat)
+    static std::unique_ptr<rpc::striker::Heartbeat>
+    translateToRpcHeartbeat(const mavsdk::Striker::Heartbeat& heartbeat)
     {
         auto rpc_obj = std::make_unique<rpc::striker::Heartbeat>();
 
-
-            
         rpc_obj->set_custom_mode(heartbeat.custom_mode);
-            
-        
-            
+
         rpc_obj->set_type(heartbeat.type);
-            
-        
-            
+
         rpc_obj->set_autopilot(heartbeat.autopilot);
-            
-        
-            
+
         rpc_obj->set_base_mode(heartbeat.base_mode);
-            
-        
-            
+
         rpc_obj->set_system_status(heartbeat.system_status);
-            
-        
-            
+
         rpc_obj->set_mavlink_version(heartbeat.mavlink_version);
-            
-        
 
         return rpc_obj;
     }
 
-    static mavsdk::Striker::Heartbeat translateFromRpcHeartbeat(const rpc::striker::Heartbeat& heartbeat)
+    static mavsdk::Striker::Heartbeat
+    translateFromRpcHeartbeat(const rpc::striker::Heartbeat& heartbeat)
     {
         mavsdk::Striker::Heartbeat obj;
 
-
-            
         obj.custom_mode = heartbeat.custom_mode();
-            
-        
-            
+
         obj.type = heartbeat.type();
-            
-        
-            
+
         obj.autopilot = heartbeat.autopilot();
-            
-        
-            
+
         obj.base_mode = heartbeat.base_mode();
-            
-        
-            
+
         obj.system_status = heartbeat.system_status();
-            
-        
-            
+
         obj.mavlink_version = heartbeat.mavlink_version();
-            
-        
+
         return obj;
     }
 
-
-
-
-
-    static std::unique_ptr<rpc::striker::SysStatus> translateToRpcSysStatus(const mavsdk::Striker::SysStatus &sys_status)
+    static std::unique_ptr<rpc::striker::SysStatus>
+    translateToRpcSysStatus(const mavsdk::Striker::SysStatus& sys_status)
     {
         auto rpc_obj = std::make_unique<rpc::striker::SysStatus>();
 
-
-            
         rpc_obj->set_onboard_control_sensors_present(sys_status.onboard_control_sensors_present);
-            
-        
-            
+
         rpc_obj->set_onboard_control_sensors_enabled(sys_status.onboard_control_sensors_enabled);
-            
-        
-            
+
         rpc_obj->set_onboard_control_sensors_health(sys_status.onboard_control_sensors_health);
-            
-        
-            
+
         rpc_obj->set_load(sys_status.load);
-            
-        
-            
+
         rpc_obj->set_voltage_battery(sys_status.voltage_battery);
-            
-        
-            
+
         rpc_obj->set_current_battery(sys_status.current_battery);
-            
-        
-            
+
         rpc_obj->set_drop_rate_comm(sys_status.drop_rate_comm);
-            
-        
-            
+
         rpc_obj->set_errors_comm(sys_status.errors_comm);
-            
-        
-            
+
         rpc_obj->set_errors_count1(sys_status.errors_count1);
-            
-        
-            
+
         rpc_obj->set_errors_count2(sys_status.errors_count2);
-            
-        
-            
+
         rpc_obj->set_errors_count3(sys_status.errors_count3);
-            
-        
-            
+
         rpc_obj->set_errors_count4(sys_status.errors_count4);
-            
-        
-            
+
         rpc_obj->set_battery_remaining(sys_status.battery_remaining);
-            
-        
-            
-        rpc_obj->set_onboard_control_sensors_present_extended(sys_status.onboard_control_sensors_present_extended);
-            
-        
-            
-        rpc_obj->set_onboard_control_sensors_enabled_extended(sys_status.onboard_control_sensors_enabled_extended);
-            
-        
-            
-        rpc_obj->set_onboard_control_sensors_health_extended(sys_status.onboard_control_sensors_health_extended);
-            
-        
+
+        rpc_obj->set_onboard_control_sensors_present_extended(
+            sys_status.onboard_control_sensors_present_extended);
+
+        rpc_obj->set_onboard_control_sensors_enabled_extended(
+            sys_status.onboard_control_sensors_enabled_extended);
+
+        rpc_obj->set_onboard_control_sensors_health_extended(
+            sys_status.onboard_control_sensors_health_extended);
 
         return rpc_obj;
     }
 
-    static mavsdk::Striker::SysStatus translateFromRpcSysStatus(const rpc::striker::SysStatus& sys_status)
+    static mavsdk::Striker::SysStatus
+    translateFromRpcSysStatus(const rpc::striker::SysStatus& sys_status)
     {
         mavsdk::Striker::SysStatus obj;
 
-
-            
         obj.onboard_control_sensors_present = sys_status.onboard_control_sensors_present();
-            
-        
-            
+
         obj.onboard_control_sensors_enabled = sys_status.onboard_control_sensors_enabled();
-            
-        
-            
+
         obj.onboard_control_sensors_health = sys_status.onboard_control_sensors_health();
-            
-        
-            
+
         obj.load = sys_status.load();
-            
-        
-            
+
         obj.voltage_battery = sys_status.voltage_battery();
-            
-        
-            
+
         obj.current_battery = sys_status.current_battery();
-            
-        
-            
+
         obj.drop_rate_comm = sys_status.drop_rate_comm();
-            
-        
-            
+
         obj.errors_comm = sys_status.errors_comm();
-            
-        
-            
+
         obj.errors_count1 = sys_status.errors_count1();
-            
-        
-            
+
         obj.errors_count2 = sys_status.errors_count2();
-            
-        
-            
+
         obj.errors_count3 = sys_status.errors_count3();
-            
-        
-            
+
         obj.errors_count4 = sys_status.errors_count4();
-            
-        
-            
+
         obj.battery_remaining = sys_status.battery_remaining();
-            
-        
-            
-        obj.onboard_control_sensors_present_extended = sys_status.onboard_control_sensors_present_extended();
-            
-        
-            
-        obj.onboard_control_sensors_enabled_extended = sys_status.onboard_control_sensors_enabled_extended();
-            
-        
-            
-        obj.onboard_control_sensors_health_extended = sys_status.onboard_control_sensors_health_extended();
-            
-        
+
+        obj.onboard_control_sensors_present_extended =
+            sys_status.onboard_control_sensors_present_extended();
+
+        obj.onboard_control_sensors_enabled_extended =
+            sys_status.onboard_control_sensors_enabled_extended();
+
+        obj.onboard_control_sensors_health_extended =
+            sys_status.onboard_control_sensors_health_extended();
+
         return obj;
     }
 
-
-
-    grpc::Status SubscribeHeartbeat(grpc::ServerContext* /* context */, const mavsdk::rpc::striker::SubscribeHeartbeatRequest* /* request */, grpc::ServerWriter<rpc::striker::HeartbeatResponse>* writer) override
+    grpc::Status SubscribeHeartbeat(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeHeartbeatRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::HeartbeatResponse>* writer) override
     {
         if (_lazy_plugin.maybe_plugin() == nullptr) {
-            
             return grpc::Status::OK;
         }
 
@@ -265,26 +170,24 @@ public:
         auto is_finished = std::make_shared<bool>(false);
         auto subscribe_mutex = std::make_shared<std::mutex>();
 
-        const mavsdk::Striker::HeartbeatHandle handle = _lazy_plugin.maybe_plugin()->subscribe_heartbeat(
-            [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](const mavsdk::Striker::Heartbeat heartbeat) {
+        const mavsdk::Striker::HeartbeatHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_heartbeat(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const mavsdk::Striker::Heartbeat heartbeat) {
+                    rpc::striker::HeartbeatResponse rpc_response;
 
-            rpc::striker::HeartbeatResponse rpc_response;
-        
-            rpc_response.set_allocated_heartbeat(translateToRpcHeartbeat(heartbeat).release());
-        
+                    rpc_response.set_allocated_heartbeat(
+                        translateToRpcHeartbeat(heartbeat).release());
 
-        
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_heartbeat(handle);
 
-            std::unique_lock<std::mutex> lock(*subscribe_mutex);
-            if (!*is_finished && !writer->Write(rpc_response)) {
-                
-                _lazy_plugin.maybe_plugin()->unsubscribe_heartbeat(handle);
-                
-                *is_finished = true;
-                unregister_stream_stop_promise(stream_closed_promise);
-                stream_closed_promise->set_value();
-            }
-        });
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
 
         stream_closed_future.wait();
         std::unique_lock<std::mutex> lock(*subscribe_mutex);
@@ -293,10 +196,12 @@ public:
         return grpc::Status::OK;
     }
 
-    grpc::Status SubscribeSysStatus(grpc::ServerContext* /* context */, const mavsdk::rpc::striker::SubscribeSysStatusRequest* /* request */, grpc::ServerWriter<rpc::striker::SysStatusResponse>* writer) override
+    grpc::Status SubscribeSysStatus(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeSysStatusRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::SysStatusResponse>* writer) override
     {
         if (_lazy_plugin.maybe_plugin() == nullptr) {
-            
             return grpc::Status::OK;
         }
 
@@ -307,26 +212,24 @@ public:
         auto is_finished = std::make_shared<bool>(false);
         auto subscribe_mutex = std::make_shared<std::mutex>();
 
-        const mavsdk::Striker::SysStatusHandle handle = _lazy_plugin.maybe_plugin()->subscribe_sys_status(
-            [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](const mavsdk::Striker::SysStatus sys_status) {
+        const mavsdk::Striker::SysStatusHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_sys_status(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const mavsdk::Striker::SysStatus sys_status) {
+                    rpc::striker::SysStatusResponse rpc_response;
 
-            rpc::striker::SysStatusResponse rpc_response;
-        
-            rpc_response.set_allocated_sys_status(translateToRpcSysStatus(sys_status).release());
-        
+                    rpc_response.set_allocated_sys_status(
+                        translateToRpcSysStatus(sys_status).release());
 
-        
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_sys_status(handle);
 
-            std::unique_lock<std::mutex> lock(*subscribe_mutex);
-            if (!*is_finished && !writer->Write(rpc_response)) {
-                
-                _lazy_plugin.maybe_plugin()->unsubscribe_sys_status(handle);
-                
-                *is_finished = true;
-                unregister_stream_stop_promise(stream_closed_promise);
-                stream_closed_promise->set_value();
-            }
-        });
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
 
         stream_closed_future.wait();
         std::unique_lock<std::mutex> lock(*subscribe_mutex);
@@ -335,8 +238,8 @@ public:
         return grpc::Status::OK;
     }
 
-
-    void stop() {
+    void stop()
+    {
         _stopped.store(true);
         std::lock_guard<std::mutex> lock(_stream_stop_mutex);
         for (auto& prom : _stream_stop_promises) {
@@ -347,7 +250,8 @@ public:
     }
 
 private:
-    void register_stream_stop_promise(std::weak_ptr<std::promise<void>> prom) {
+    void register_stream_stop_promise(std::weak_ptr<std::promise<void>> prom)
+    {
         // If we have already stopped, set promise immediately and don't add it to list.
         if (_stopped.load()) {
             if (auto handle = prom.lock()) {
@@ -359,9 +263,11 @@ private:
         }
     }
 
-    void unregister_stream_stop_promise(std::shared_ptr<std::promise<void>> prom) {
+    void unregister_stream_stop_promise(std::shared_ptr<std::promise<void>> prom)
+    {
         std::lock_guard<std::mutex> lock(_stream_stop_mutex);
-        for (auto it = _stream_stop_promises.begin(); it != _stream_stop_promises.end(); /* ++it */) {
+        for (auto it = _stream_stop_promises.begin(); it != _stream_stop_promises.end();
+             /* ++it */) {
             if (it->lock() == prom) {
                 it = _stream_stop_promises.erase(it);
             } else {
@@ -370,12 +276,11 @@ private:
         }
     }
 
-
     LazyPlugin& _lazy_plugin;
 
     std::atomic<bool> _stopped{false};
     std::mutex _stream_stop_mutex{};
-    std::vector<std::weak_ptr<std::promise<void>>> _stream_stop_promises {};
+    std::vector<std::weak_ptr<std::promise<void>>> _stream_stop_promises{};
 };
 
 } // namespace mavsdk_server

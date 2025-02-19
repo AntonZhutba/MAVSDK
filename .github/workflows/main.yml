@@ -107,9 +107,9 @@ jobs:
             cxx: g++-14
             description: Ubuntu 24.04 (GCC 14)
           - ubuntu_image: ubuntu-24.04
-            cc: clang-18
-            cxx: clang++-18
-            description: Ubuntu 24.04 (clang 18)
+            cc: clang-19
+            cxx: clang++-19
+            description: Ubuntu 24.04 (clang 19)
     steps:
       - uses: actions/checkout@v4
         with:
@@ -211,7 +211,7 @@ jobs:
         with:
           submodules: recursive
       - name: install dependencies
-        run: sudo apt-get update && sudo apt-get install -y clang-format-18
+        run: sudo apt-get update && sudo apt-get install -y clang-format-19
       - uses: actions/cache@v4
         id: cache
         with:

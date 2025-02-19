@@ -12,18 +12,15 @@ namespace mavsdk {
 using Heartbeat = Striker::Heartbeat;
 using SysStatus = Striker::SysStatus;
 
-
-
 Striker::Striker(System& system) : PluginBase(), _impl{std::make_unique<StrikerImpl>(system)} {}
 
-Striker::Striker(std::shared_ptr<System> system) : PluginBase(), _impl{std::make_unique<StrikerImpl>(system)} {}
-
+Striker::Striker(std::shared_ptr<System> system) :
+    PluginBase(),
+    _impl{std::make_unique<StrikerImpl>(system)}
+{}
 
 Striker::~Striker() {}
 
-
-
-    
 Striker::HeartbeatHandle Striker::subscribe_heartbeat(const HeartbeatCallback& callback)
 {
     return _impl->subscribe_heartbeat(callback);
@@ -33,20 +30,12 @@ void Striker::unsubscribe_heartbeat(HeartbeatHandle handle)
 {
     _impl->unsubscribe_heartbeat(handle);
 }
-    
 
-
-
-
-Striker::Heartbeat
-Striker::heartbeat() const
+Striker::Heartbeat Striker::heartbeat() const
 {
     return _impl->heartbeat();
 }
 
-
-
-    
 Striker::SysStatusHandle Striker::subscribe_sys_status(const SysStatusCallback& callback)
 {
     return _impl->subscribe_sys_status(callback);
@@ -56,35 +45,23 @@ void Striker::unsubscribe_sys_status(SysStatusHandle handle)
 {
     _impl->unsubscribe_sys_status(handle);
 }
-    
 
-
-
-
-Striker::SysStatus
-Striker::sys_status() const
+Striker::SysStatus Striker::sys_status() const
 {
     return _impl->sys_status();
 }
 
-
-
 bool operator==(const Striker::Heartbeat& lhs, const Striker::Heartbeat& rhs)
 {
-    return
-        (rhs.custom_mode == lhs.custom_mode) &&
-        (rhs.type == lhs.type) &&
-        (rhs.autopilot == lhs.autopilot) &&
-        (rhs.base_mode == lhs.base_mode) &&
-        (rhs.system_status == lhs.system_status) &&
-        (rhs.mavlink_version == lhs.mavlink_version);
+    return (rhs.custom_mode == lhs.custom_mode) && (rhs.type == lhs.type) &&
+           (rhs.autopilot == lhs.autopilot) && (rhs.base_mode == lhs.base_mode) &&
+           (rhs.system_status == lhs.system_status) && (rhs.mavlink_version == lhs.mavlink_version);
 }
 
 std::ostream& operator<<(std::ostream& str, Striker::Heartbeat const& heartbeat)
 {
     str << std::setprecision(15);
-    str << "heartbeat:" << '\n'
-        << "{\n";
+    str << "heartbeat:" << '\n' << "{\n";
     str << "    custom_mode: " << heartbeat.custom_mode << '\n';
     str << "    type: " << heartbeat.type << '\n';
     str << "    autopilot: " << heartbeat.autopilot << '\n';
@@ -95,36 +72,35 @@ std::ostream& operator<<(std::ostream& str, Striker::Heartbeat const& heartbeat)
     return str;
 }
 
-
 bool operator==(const Striker::SysStatus& lhs, const Striker::SysStatus& rhs)
 {
-    return
-        (rhs.onboard_control_sensors_present == lhs.onboard_control_sensors_present) &&
-        (rhs.onboard_control_sensors_enabled == lhs.onboard_control_sensors_enabled) &&
-        (rhs.onboard_control_sensors_health == lhs.onboard_control_sensors_health) &&
-        (rhs.load == lhs.load) &&
-        (rhs.voltage_battery == lhs.voltage_battery) &&
-        (rhs.current_battery == lhs.current_battery) &&
-        (rhs.drop_rate_comm == lhs.drop_rate_comm) &&
-        (rhs.errors_comm == lhs.errors_comm) &&
-        (rhs.errors_count1 == lhs.errors_count1) &&
-        (rhs.errors_count2 == lhs.errors_count2) &&
-        (rhs.errors_count3 == lhs.errors_count3) &&
-        (rhs.errors_count4 == lhs.errors_count4) &&
-        (rhs.battery_remaining == lhs.battery_remaining) &&
-        (rhs.onboard_control_sensors_present_extended == lhs.onboard_control_sensors_present_extended) &&
-        (rhs.onboard_control_sensors_enabled_extended == lhs.onboard_control_sensors_enabled_extended) &&
-        (rhs.onboard_control_sensors_health_extended == lhs.onboard_control_sensors_health_extended);
+    return (rhs.onboard_control_sensors_present == lhs.onboard_control_sensors_present) &&
+           (rhs.onboard_control_sensors_enabled == lhs.onboard_control_sensors_enabled) &&
+           (rhs.onboard_control_sensors_health == lhs.onboard_control_sensors_health) &&
+           (rhs.load == lhs.load) && (rhs.voltage_battery == lhs.voltage_battery) &&
+           (rhs.current_battery == lhs.current_battery) &&
+           (rhs.drop_rate_comm == lhs.drop_rate_comm) && (rhs.errors_comm == lhs.errors_comm) &&
+           (rhs.errors_count1 == lhs.errors_count1) && (rhs.errors_count2 == lhs.errors_count2) &&
+           (rhs.errors_count3 == lhs.errors_count3) && (rhs.errors_count4 == lhs.errors_count4) &&
+           (rhs.battery_remaining == lhs.battery_remaining) &&
+           (rhs.onboard_control_sensors_present_extended ==
+            lhs.onboard_control_sensors_present_extended) &&
+           (rhs.onboard_control_sensors_enabled_extended ==
+            lhs.onboard_control_sensors_enabled_extended) &&
+           (rhs.onboard_control_sensors_health_extended ==
+            lhs.onboard_control_sensors_health_extended);
 }
 
 std::ostream& operator<<(std::ostream& str, Striker::SysStatus const& sys_status)
 {
     str << std::setprecision(15);
-    str << "sys_status:" << '\n'
-        << "{\n";
-    str << "    onboard_control_sensors_present: " << sys_status.onboard_control_sensors_present << '\n';
-    str << "    onboard_control_sensors_enabled: " << sys_status.onboard_control_sensors_enabled << '\n';
-    str << "    onboard_control_sensors_health: " << sys_status.onboard_control_sensors_health << '\n';
+    str << "sys_status:" << '\n' << "{\n";
+    str << "    onboard_control_sensors_present: " << sys_status.onboard_control_sensors_present
+        << '\n';
+    str << "    onboard_control_sensors_enabled: " << sys_status.onboard_control_sensors_enabled
+        << '\n';
+    str << "    onboard_control_sensors_health: " << sys_status.onboard_control_sensors_health
+        << '\n';
     str << "    load: " << sys_status.load << '\n';
     str << "    voltage_battery: " << sys_status.voltage_battery << '\n';
     str << "    current_battery: " << sys_status.current_battery << '\n';
@@ -135,14 +111,14 @@ std::ostream& operator<<(std::ostream& str, Striker::SysStatus const& sys_status
     str << "    errors_count3: " << sys_status.errors_count3 << '\n';
     str << "    errors_count4: " << sys_status.errors_count4 << '\n';
     str << "    battery_remaining: " << sys_status.battery_remaining << '\n';
-    str << "    onboard_control_sensors_present_extended: " << sys_status.onboard_control_sensors_present_extended << '\n';
-    str << "    onboard_control_sensors_enabled_extended: " << sys_status.onboard_control_sensors_enabled_extended << '\n';
-    str << "    onboard_control_sensors_health_extended: " << sys_status.onboard_control_sensors_health_extended << '\n';
+    str << "    onboard_control_sensors_present_extended: "
+        << sys_status.onboard_control_sensors_present_extended << '\n';
+    str << "    onboard_control_sensors_enabled_extended: "
+        << sys_status.onboard_control_sensors_enabled_extended << '\n';
+    str << "    onboard_control_sensors_health_extended: "
+        << sys_status.onboard_control_sensors_health_extended << '\n';
     str << '}';
     return str;
 }
-
-
-
 
 } // namespace mavsdk
