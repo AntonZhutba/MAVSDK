@@ -62,9 +62,18 @@ extern HeartbeatDefaultTypeInternal _Heartbeat_default_instance_;
 class HeartbeatResponse;
 struct HeartbeatResponseDefaultTypeInternal;
 extern HeartbeatResponseDefaultTypeInternal _HeartbeatResponse_default_instance_;
+class RcChannel;
+struct RcChannelDefaultTypeInternal;
+extern RcChannelDefaultTypeInternal _RcChannel_default_instance_;
+class RcChannelResponse;
+struct RcChannelResponseDefaultTypeInternal;
+extern RcChannelResponseDefaultTypeInternal _RcChannelResponse_default_instance_;
 class SubscribeHeartbeatRequest;
 struct SubscribeHeartbeatRequestDefaultTypeInternal;
 extern SubscribeHeartbeatRequestDefaultTypeInternal _SubscribeHeartbeatRequest_default_instance_;
+class SubscribeRcChannelRequest;
+struct SubscribeRcChannelRequestDefaultTypeInternal;
+extern SubscribeRcChannelRequestDefaultTypeInternal _SubscribeRcChannelRequest_default_instance_;
 class SubscribeSysStatusRequest;
 struct SubscribeSysStatusRequestDefaultTypeInternal;
 extern SubscribeSysStatusRequestDefaultTypeInternal _SubscribeSysStatusRequest_default_instance_;
@@ -150,7 +159,7 @@ class SysStatus final : public ::google::protobuf::Message
     return reinterpret_cast<const SysStatus*>(
         &_SysStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 5;
+  static constexpr int kIndexInFileMessages = 7;
   friend void swap(SysStatus& a, SysStatus& b) { a.Swap(&b); }
   inline void Swap(SysStatus* other) {
     if (other == this) return;
@@ -606,6 +615,151 @@ class SubscribeSysStatusRequest final : public ::google::protobuf::internal::Zer
 };
 // -------------------------------------------------------------------
 
+class SubscribeRcChannelRequest final : public ::google::protobuf::internal::ZeroFieldsBase
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.SubscribeRcChannelRequest) */ {
+ public:
+  inline SubscribeRcChannelRequest() : SubscribeRcChannelRequest(nullptr) {}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SubscribeRcChannelRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SubscribeRcChannelRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SubscribeRcChannelRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SubscribeRcChannelRequest(const SubscribeRcChannelRequest& from) : SubscribeRcChannelRequest(nullptr, from) {}
+  inline SubscribeRcChannelRequest(SubscribeRcChannelRequest&& from) noexcept
+      : SubscribeRcChannelRequest(nullptr, std::move(from)) {}
+  inline SubscribeRcChannelRequest& operator=(const SubscribeRcChannelRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubscribeRcChannelRequest& operator=(SubscribeRcChannelRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubscribeRcChannelRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubscribeRcChannelRequest* internal_default_instance() {
+    return reinterpret_cast<const SubscribeRcChannelRequest*>(
+        &_SubscribeRcChannelRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 4;
+  friend void swap(SubscribeRcChannelRequest& a, SubscribeRcChannelRequest& b) { a.Swap(&b); }
+  inline void Swap(SubscribeRcChannelRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubscribeRcChannelRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubscribeRcChannelRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<SubscribeRcChannelRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SubscribeRcChannelRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SubscribeRcChannelRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.SubscribeRcChannelRequest"; }
+
+ protected:
+  explicit SubscribeRcChannelRequest(::google::protobuf::Arena* arena);
+  SubscribeRcChannelRequest(::google::protobuf::Arena* arena, const SubscribeRcChannelRequest& from);
+  SubscribeRcChannelRequest(::google::protobuf::Arena* arena, SubscribeRcChannelRequest&& from) noexcept
+      : SubscribeRcChannelRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.SubscribeRcChannelRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 0, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SubscribeRcChannelRequest& from_msg);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
 class SubscribeHeartbeatRequest final : public ::google::protobuf::internal::ZeroFieldsBase
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.SubscribeHeartbeatRequest) */ {
  public:
@@ -751,6 +905,436 @@ class SubscribeHeartbeatRequest final : public ::google::protobuf::internal::Zer
 };
 // -------------------------------------------------------------------
 
+class RcChannel final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.RcChannel) */ {
+ public:
+  inline RcChannel() : RcChannel(nullptr) {}
+  ~RcChannel() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(RcChannel* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(RcChannel));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR RcChannel(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline RcChannel(const RcChannel& from) : RcChannel(nullptr, from) {}
+  inline RcChannel(RcChannel&& from) noexcept
+      : RcChannel(nullptr, std::move(from)) {}
+  inline RcChannel& operator=(const RcChannel& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RcChannel& operator=(RcChannel&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RcChannel& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RcChannel* internal_default_instance() {
+    return reinterpret_cast<const RcChannel*>(
+        &_RcChannel_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 8;
+  friend void swap(RcChannel& a, RcChannel& b) { a.Swap(&b); }
+  inline void Swap(RcChannel* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RcChannel* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RcChannel* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<RcChannel>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const RcChannel& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const RcChannel& from) { RcChannel::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(RcChannel* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.RcChannel"; }
+
+ protected:
+  explicit RcChannel(::google::protobuf::Arena* arena);
+  RcChannel(::google::protobuf::Arena* arena, const RcChannel& from);
+  RcChannel(::google::protobuf::Arena* arena, RcChannel&& from) noexcept
+      : RcChannel(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kTimeBootMsFieldNumber = 1,
+    kChan1RawFieldNumber = 2,
+    kChan2RawFieldNumber = 3,
+    kChan3RawFieldNumber = 4,
+    kChan4RawFieldNumber = 5,
+    kChan5RawFieldNumber = 6,
+    kChan6RawFieldNumber = 7,
+    kChan7RawFieldNumber = 8,
+    kChan8RawFieldNumber = 9,
+    kChan9RawFieldNumber = 10,
+    kChan10RawFieldNumber = 11,
+    kChan11RawFieldNumber = 12,
+    kChan12RawFieldNumber = 13,
+    kChan13RawFieldNumber = 14,
+    kChan14RawFieldNumber = 15,
+    kChan15RawFieldNumber = 16,
+    kChan16RawFieldNumber = 17,
+    kChan17RawFieldNumber = 18,
+    kChan18RawFieldNumber = 19,
+    kChancountFieldNumber = 20,
+    kRssiFieldNumber = 21,
+  };
+  // uint32 time_boot_ms = 1 [(.mavsdk.options.default_value) = "0"];
+  void clear_time_boot_ms() ;
+  ::uint32_t time_boot_ms() const;
+  void set_time_boot_ms(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_time_boot_ms() const;
+  void _internal_set_time_boot_ms(::uint32_t value);
+
+  public:
+  // uint32 chan1_raw = 2 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan1_raw() ;
+  ::uint32_t chan1_raw() const;
+  void set_chan1_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan1_raw() const;
+  void _internal_set_chan1_raw(::uint32_t value);
+
+  public:
+  // uint32 chan2_raw = 3 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan2_raw() ;
+  ::uint32_t chan2_raw() const;
+  void set_chan2_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan2_raw() const;
+  void _internal_set_chan2_raw(::uint32_t value);
+
+  public:
+  // uint32 chan3_raw = 4 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan3_raw() ;
+  ::uint32_t chan3_raw() const;
+  void set_chan3_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan3_raw() const;
+  void _internal_set_chan3_raw(::uint32_t value);
+
+  public:
+  // uint32 chan4_raw = 5 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan4_raw() ;
+  ::uint32_t chan4_raw() const;
+  void set_chan4_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan4_raw() const;
+  void _internal_set_chan4_raw(::uint32_t value);
+
+  public:
+  // uint32 chan5_raw = 6 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan5_raw() ;
+  ::uint32_t chan5_raw() const;
+  void set_chan5_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan5_raw() const;
+  void _internal_set_chan5_raw(::uint32_t value);
+
+  public:
+  // uint32 chan6_raw = 7 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan6_raw() ;
+  ::uint32_t chan6_raw() const;
+  void set_chan6_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan6_raw() const;
+  void _internal_set_chan6_raw(::uint32_t value);
+
+  public:
+  // uint32 chan7_raw = 8 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan7_raw() ;
+  ::uint32_t chan7_raw() const;
+  void set_chan7_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan7_raw() const;
+  void _internal_set_chan7_raw(::uint32_t value);
+
+  public:
+  // uint32 chan8_raw = 9 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan8_raw() ;
+  ::uint32_t chan8_raw() const;
+  void set_chan8_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan8_raw() const;
+  void _internal_set_chan8_raw(::uint32_t value);
+
+  public:
+  // uint32 chan9_raw = 10 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan9_raw() ;
+  ::uint32_t chan9_raw() const;
+  void set_chan9_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan9_raw() const;
+  void _internal_set_chan9_raw(::uint32_t value);
+
+  public:
+  // uint32 chan10_raw = 11 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan10_raw() ;
+  ::uint32_t chan10_raw() const;
+  void set_chan10_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan10_raw() const;
+  void _internal_set_chan10_raw(::uint32_t value);
+
+  public:
+  // uint32 chan11_raw = 12 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan11_raw() ;
+  ::uint32_t chan11_raw() const;
+  void set_chan11_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan11_raw() const;
+  void _internal_set_chan11_raw(::uint32_t value);
+
+  public:
+  // uint32 chan12_raw = 13 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan12_raw() ;
+  ::uint32_t chan12_raw() const;
+  void set_chan12_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan12_raw() const;
+  void _internal_set_chan12_raw(::uint32_t value);
+
+  public:
+  // uint32 chan13_raw = 14 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan13_raw() ;
+  ::uint32_t chan13_raw() const;
+  void set_chan13_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan13_raw() const;
+  void _internal_set_chan13_raw(::uint32_t value);
+
+  public:
+  // uint32 chan14_raw = 15 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan14_raw() ;
+  ::uint32_t chan14_raw() const;
+  void set_chan14_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan14_raw() const;
+  void _internal_set_chan14_raw(::uint32_t value);
+
+  public:
+  // uint32 chan15_raw = 16 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan15_raw() ;
+  ::uint32_t chan15_raw() const;
+  void set_chan15_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan15_raw() const;
+  void _internal_set_chan15_raw(::uint32_t value);
+
+  public:
+  // uint32 chan16_raw = 17 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan16_raw() ;
+  ::uint32_t chan16_raw() const;
+  void set_chan16_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan16_raw() const;
+  void _internal_set_chan16_raw(::uint32_t value);
+
+  public:
+  // uint32 chan17_raw = 18 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan17_raw() ;
+  ::uint32_t chan17_raw() const;
+  void set_chan17_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan17_raw() const;
+  void _internal_set_chan17_raw(::uint32_t value);
+
+  public:
+  // uint32 chan18_raw = 19 [(.mavsdk.options.default_value) = "0"];
+  void clear_chan18_raw() ;
+  ::uint32_t chan18_raw() const;
+  void set_chan18_raw(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chan18_raw() const;
+  void _internal_set_chan18_raw(::uint32_t value);
+
+  public:
+  // uint32 chancount = 20 [(.mavsdk.options.default_value) = "0"];
+  void clear_chancount() ;
+  ::uint32_t chancount() const;
+  void set_chancount(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chancount() const;
+  void _internal_set_chancount(::uint32_t value);
+
+  public:
+  // uint32 rssi = 21 [(.mavsdk.options.default_value) = "0"];
+  void clear_rssi() ;
+  ::uint32_t rssi() const;
+  void set_rssi(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_rssi() const;
+  void _internal_set_rssi(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.RcChannel)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      5, 21, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const RcChannel& from_msg);
+    ::uint32_t time_boot_ms_;
+    ::uint32_t chan1_raw_;
+    ::uint32_t chan2_raw_;
+    ::uint32_t chan3_raw_;
+    ::uint32_t chan4_raw_;
+    ::uint32_t chan5_raw_;
+    ::uint32_t chan6_raw_;
+    ::uint32_t chan7_raw_;
+    ::uint32_t chan8_raw_;
+    ::uint32_t chan9_raw_;
+    ::uint32_t chan10_raw_;
+    ::uint32_t chan11_raw_;
+    ::uint32_t chan12_raw_;
+    ::uint32_t chan13_raw_;
+    ::uint32_t chan14_raw_;
+    ::uint32_t chan15_raw_;
+    ::uint32_t chan16_raw_;
+    ::uint32_t chan17_raw_;
+    ::uint32_t chan18_raw_;
+    ::uint32_t chancount_;
+    ::uint32_t rssi_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Heartbeat final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.Heartbeat) */ {
  public:
@@ -810,7 +1394,7 @@ class Heartbeat final : public ::google::protobuf::Message
     return reinterpret_cast<const Heartbeat*>(
         &_Heartbeat_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 4;
+  static constexpr int kIndexInFileMessages = 6;
   friend void swap(Heartbeat& a, Heartbeat& b) { a.Swap(&b); }
   inline void Swap(Heartbeat* other) {
     if (other == this) return;
@@ -1190,6 +1774,202 @@ class SysStatusResponse final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::mavsdk::rpc::striker::SysStatus* sys_status_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RcChannelResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.RcChannelResponse) */ {
+ public:
+  inline RcChannelResponse() : RcChannelResponse(nullptr) {}
+  ~RcChannelResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(RcChannelResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(RcChannelResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR RcChannelResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline RcChannelResponse(const RcChannelResponse& from) : RcChannelResponse(nullptr, from) {}
+  inline RcChannelResponse(RcChannelResponse&& from) noexcept
+      : RcChannelResponse(nullptr, std::move(from)) {}
+  inline RcChannelResponse& operator=(const RcChannelResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RcChannelResponse& operator=(RcChannelResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RcChannelResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RcChannelResponse* internal_default_instance() {
+    return reinterpret_cast<const RcChannelResponse*>(
+        &_RcChannelResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 5;
+  friend void swap(RcChannelResponse& a, RcChannelResponse& b) { a.Swap(&b); }
+  inline void Swap(RcChannelResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RcChannelResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RcChannelResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<RcChannelResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const RcChannelResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const RcChannelResponse& from) { RcChannelResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(RcChannelResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.RcChannelResponse"; }
+
+ protected:
+  explicit RcChannelResponse(::google::protobuf::Arena* arena);
+  RcChannelResponse(::google::protobuf::Arena* arena, const RcChannelResponse& from);
+  RcChannelResponse(::google::protobuf::Arena* arena, RcChannelResponse&& from) noexcept
+      : RcChannelResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kRcChannelFieldNumber = 1,
+  };
+  // .mavsdk.rpc.striker.RcChannel rc_channel = 1;
+  bool has_rc_channel() const;
+  void clear_rc_channel() ;
+  const ::mavsdk::rpc::striker::RcChannel& rc_channel() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::RcChannel* release_rc_channel();
+  ::mavsdk::rpc::striker::RcChannel* mutable_rc_channel();
+  void set_allocated_rc_channel(::mavsdk::rpc::striker::RcChannel* value);
+  void unsafe_arena_set_allocated_rc_channel(::mavsdk::rpc::striker::RcChannel* value);
+  ::mavsdk::rpc::striker::RcChannel* unsafe_arena_release_rc_channel();
+
+  private:
+  const ::mavsdk::rpc::striker::RcChannel& _internal_rc_channel() const;
+  ::mavsdk::rpc::striker::RcChannel* _internal_mutable_rc_channel();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.RcChannelResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const RcChannelResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::striker::RcChannel* rc_channel_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1610,6 +2390,110 @@ inline void SysStatusResponse::set_allocated_sys_status(::mavsdk::rpc::striker::
 
   _impl_.sys_status_ = reinterpret_cast<::mavsdk::rpc::striker::SysStatus*>(value);
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.SysStatusResponse.sys_status)
+}
+
+// -------------------------------------------------------------------
+
+// SubscribeRcChannelRequest
+
+// -------------------------------------------------------------------
+
+// RcChannelResponse
+
+// .mavsdk.rpc.striker.RcChannel rc_channel = 1;
+inline bool RcChannelResponse::has_rc_channel() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.rc_channel_ != nullptr);
+  return value;
+}
+inline void RcChannelResponse::clear_rc_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.rc_channel_ != nullptr) _impl_.rc_channel_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::striker::RcChannel& RcChannelResponse::_internal_rc_channel() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::striker::RcChannel* p = _impl_.rc_channel_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::striker::RcChannel&>(::mavsdk::rpc::striker::_RcChannel_default_instance_);
+}
+inline const ::mavsdk::rpc::striker::RcChannel& RcChannelResponse::rc_channel() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannelResponse.rc_channel)
+  return _internal_rc_channel();
+}
+inline void RcChannelResponse::unsafe_arena_set_allocated_rc_channel(::mavsdk::rpc::striker::RcChannel* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.rc_channel_);
+  }
+  _impl_.rc_channel_ = reinterpret_cast<::mavsdk::rpc::striker::RcChannel*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.RcChannelResponse.rc_channel)
+}
+inline ::mavsdk::rpc::striker::RcChannel* RcChannelResponse::release_rc_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::RcChannel* released = _impl_.rc_channel_;
+  _impl_.rc_channel_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::striker::RcChannel* RcChannelResponse::unsafe_arena_release_rc_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.RcChannelResponse.rc_channel)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::RcChannel* temp = _impl_.rc_channel_;
+  _impl_.rc_channel_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::striker::RcChannel* RcChannelResponse::_internal_mutable_rc_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.rc_channel_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::striker::RcChannel>(GetArena());
+    _impl_.rc_channel_ = reinterpret_cast<::mavsdk::rpc::striker::RcChannel*>(p);
+  }
+  return _impl_.rc_channel_;
+}
+inline ::mavsdk::rpc::striker::RcChannel* RcChannelResponse::mutable_rc_channel() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::striker::RcChannel* _msg = _internal_mutable_rc_channel();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.RcChannelResponse.rc_channel)
+  return _msg;
+}
+inline void RcChannelResponse::set_allocated_rc_channel(::mavsdk::rpc::striker::RcChannel* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.rc_channel_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.rc_channel_ = reinterpret_cast<::mavsdk::rpc::striker::RcChannel*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.RcChannelResponse.rc_channel)
 }
 
 // -------------------------------------------------------------------
@@ -2102,6 +2986,472 @@ inline ::uint32_t SysStatus::_internal_onboard_control_sensors_health_extended()
 inline void SysStatus::_internal_set_onboard_control_sensors_health_extended(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.onboard_control_sensors_health_extended_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// RcChannel
+
+// uint32 time_boot_ms = 1 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_time_boot_ms() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.time_boot_ms_ = 0u;
+}
+inline ::uint32_t RcChannel::time_boot_ms() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.time_boot_ms)
+  return _internal_time_boot_ms();
+}
+inline void RcChannel::set_time_boot_ms(::uint32_t value) {
+  _internal_set_time_boot_ms(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.time_boot_ms)
+}
+inline ::uint32_t RcChannel::_internal_time_boot_ms() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.time_boot_ms_;
+}
+inline void RcChannel::_internal_set_time_boot_ms(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.time_boot_ms_ = value;
+}
+
+// uint32 chan1_raw = 2 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan1_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan1_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan1_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan1_raw)
+  return _internal_chan1_raw();
+}
+inline void RcChannel::set_chan1_raw(::uint32_t value) {
+  _internal_set_chan1_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan1_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan1_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan1_raw_;
+}
+inline void RcChannel::_internal_set_chan1_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan1_raw_ = value;
+}
+
+// uint32 chan2_raw = 3 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan2_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan2_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan2_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan2_raw)
+  return _internal_chan2_raw();
+}
+inline void RcChannel::set_chan2_raw(::uint32_t value) {
+  _internal_set_chan2_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan2_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan2_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan2_raw_;
+}
+inline void RcChannel::_internal_set_chan2_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan2_raw_ = value;
+}
+
+// uint32 chan3_raw = 4 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan3_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan3_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan3_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan3_raw)
+  return _internal_chan3_raw();
+}
+inline void RcChannel::set_chan3_raw(::uint32_t value) {
+  _internal_set_chan3_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan3_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan3_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan3_raw_;
+}
+inline void RcChannel::_internal_set_chan3_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan3_raw_ = value;
+}
+
+// uint32 chan4_raw = 5 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan4_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan4_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan4_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan4_raw)
+  return _internal_chan4_raw();
+}
+inline void RcChannel::set_chan4_raw(::uint32_t value) {
+  _internal_set_chan4_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan4_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan4_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan4_raw_;
+}
+inline void RcChannel::_internal_set_chan4_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan4_raw_ = value;
+}
+
+// uint32 chan5_raw = 6 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan5_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan5_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan5_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan5_raw)
+  return _internal_chan5_raw();
+}
+inline void RcChannel::set_chan5_raw(::uint32_t value) {
+  _internal_set_chan5_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan5_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan5_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan5_raw_;
+}
+inline void RcChannel::_internal_set_chan5_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan5_raw_ = value;
+}
+
+// uint32 chan6_raw = 7 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan6_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan6_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan6_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan6_raw)
+  return _internal_chan6_raw();
+}
+inline void RcChannel::set_chan6_raw(::uint32_t value) {
+  _internal_set_chan6_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan6_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan6_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan6_raw_;
+}
+inline void RcChannel::_internal_set_chan6_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan6_raw_ = value;
+}
+
+// uint32 chan7_raw = 8 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan7_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan7_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan7_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan7_raw)
+  return _internal_chan7_raw();
+}
+inline void RcChannel::set_chan7_raw(::uint32_t value) {
+  _internal_set_chan7_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan7_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan7_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan7_raw_;
+}
+inline void RcChannel::_internal_set_chan7_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan7_raw_ = value;
+}
+
+// uint32 chan8_raw = 9 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan8_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan8_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan8_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan8_raw)
+  return _internal_chan8_raw();
+}
+inline void RcChannel::set_chan8_raw(::uint32_t value) {
+  _internal_set_chan8_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan8_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan8_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan8_raw_;
+}
+inline void RcChannel::_internal_set_chan8_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan8_raw_ = value;
+}
+
+// uint32 chan9_raw = 10 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan9_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan9_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan9_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan9_raw)
+  return _internal_chan9_raw();
+}
+inline void RcChannel::set_chan9_raw(::uint32_t value) {
+  _internal_set_chan9_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan9_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan9_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan9_raw_;
+}
+inline void RcChannel::_internal_set_chan9_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan9_raw_ = value;
+}
+
+// uint32 chan10_raw = 11 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan10_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan10_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan10_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan10_raw)
+  return _internal_chan10_raw();
+}
+inline void RcChannel::set_chan10_raw(::uint32_t value) {
+  _internal_set_chan10_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan10_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan10_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan10_raw_;
+}
+inline void RcChannel::_internal_set_chan10_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan10_raw_ = value;
+}
+
+// uint32 chan11_raw = 12 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan11_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan11_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan11_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan11_raw)
+  return _internal_chan11_raw();
+}
+inline void RcChannel::set_chan11_raw(::uint32_t value) {
+  _internal_set_chan11_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan11_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan11_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan11_raw_;
+}
+inline void RcChannel::_internal_set_chan11_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan11_raw_ = value;
+}
+
+// uint32 chan12_raw = 13 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan12_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan12_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan12_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan12_raw)
+  return _internal_chan12_raw();
+}
+inline void RcChannel::set_chan12_raw(::uint32_t value) {
+  _internal_set_chan12_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan12_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan12_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan12_raw_;
+}
+inline void RcChannel::_internal_set_chan12_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan12_raw_ = value;
+}
+
+// uint32 chan13_raw = 14 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan13_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan13_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan13_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan13_raw)
+  return _internal_chan13_raw();
+}
+inline void RcChannel::set_chan13_raw(::uint32_t value) {
+  _internal_set_chan13_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan13_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan13_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan13_raw_;
+}
+inline void RcChannel::_internal_set_chan13_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan13_raw_ = value;
+}
+
+// uint32 chan14_raw = 15 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan14_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan14_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan14_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan14_raw)
+  return _internal_chan14_raw();
+}
+inline void RcChannel::set_chan14_raw(::uint32_t value) {
+  _internal_set_chan14_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan14_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan14_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan14_raw_;
+}
+inline void RcChannel::_internal_set_chan14_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan14_raw_ = value;
+}
+
+// uint32 chan15_raw = 16 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan15_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan15_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan15_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan15_raw)
+  return _internal_chan15_raw();
+}
+inline void RcChannel::set_chan15_raw(::uint32_t value) {
+  _internal_set_chan15_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan15_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan15_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan15_raw_;
+}
+inline void RcChannel::_internal_set_chan15_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan15_raw_ = value;
+}
+
+// uint32 chan16_raw = 17 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan16_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan16_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan16_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan16_raw)
+  return _internal_chan16_raw();
+}
+inline void RcChannel::set_chan16_raw(::uint32_t value) {
+  _internal_set_chan16_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan16_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan16_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan16_raw_;
+}
+inline void RcChannel::_internal_set_chan16_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan16_raw_ = value;
+}
+
+// uint32 chan17_raw = 18 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan17_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan17_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan17_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan17_raw)
+  return _internal_chan17_raw();
+}
+inline void RcChannel::set_chan17_raw(::uint32_t value) {
+  _internal_set_chan17_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan17_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan17_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan17_raw_;
+}
+inline void RcChannel::_internal_set_chan17_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan17_raw_ = value;
+}
+
+// uint32 chan18_raw = 19 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chan18_raw() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan18_raw_ = 0u;
+}
+inline ::uint32_t RcChannel::chan18_raw() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chan18_raw)
+  return _internal_chan18_raw();
+}
+inline void RcChannel::set_chan18_raw(::uint32_t value) {
+  _internal_set_chan18_raw(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chan18_raw)
+}
+inline ::uint32_t RcChannel::_internal_chan18_raw() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chan18_raw_;
+}
+inline void RcChannel::_internal_set_chan18_raw(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chan18_raw_ = value;
+}
+
+// uint32 chancount = 20 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_chancount() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chancount_ = 0u;
+}
+inline ::uint32_t RcChannel::chancount() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.chancount)
+  return _internal_chancount();
+}
+inline void RcChannel::set_chancount(::uint32_t value) {
+  _internal_set_chancount(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.chancount)
+}
+inline ::uint32_t RcChannel::_internal_chancount() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chancount_;
+}
+inline void RcChannel::_internal_set_chancount(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chancount_ = value;
+}
+
+// uint32 rssi = 21 [(.mavsdk.options.default_value) = "0"];
+inline void RcChannel::clear_rssi() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.rssi_ = 0u;
+}
+inline ::uint32_t RcChannel::rssi() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RcChannel.rssi)
+  return _internal_rssi();
+}
+inline void RcChannel::set_rssi(::uint32_t value) {
+  _internal_set_rssi(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.RcChannel.rssi)
+}
+inline ::uint32_t RcChannel::_internal_rssi() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.rssi_;
+}
+inline void RcChannel::_internal_set_rssi(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.rssi_ = value;
 }
 
 #ifdef __GNUC__

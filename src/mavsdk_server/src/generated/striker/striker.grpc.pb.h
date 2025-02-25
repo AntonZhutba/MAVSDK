@@ -59,6 +59,16 @@ class StrikerService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::SysStatusResponse>> PrepareAsyncSubscribeSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::SysStatusResponse>>(PrepareAsyncSubscribeSysStatusRaw(context, request, cq));
     }
+    // Subscribe to 'RC channel' updates.
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::RcChannelResponse>> SubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::RcChannelResponse>>(SubscribeRcChannelRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::RcChannelResponse>> AsyncSubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::RcChannelResponse>>(AsyncSubscribeRcChannelRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::RcChannelResponse>> PrepareAsyncSubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::RcChannelResponse>>(PrepareAsyncSubscribeRcChannelRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -66,6 +76,8 @@ class StrikerService final {
       virtual void SubscribeHeartbeat(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeHeartbeatRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::HeartbeatResponse>* reactor) = 0;
       // Subscribe to 'Sys Status' updates.
       virtual void SubscribeSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::SysStatusResponse>* reactor) = 0;
+      // Subscribe to 'RC channel' updates.
+      virtual void SubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::RcChannelResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -77,6 +89,9 @@ class StrikerService final {
     virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::SysStatusResponse>* SubscribeSysStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::SysStatusResponse>* AsyncSubscribeSysStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::SysStatusResponse>* PrepareAsyncSubscribeSysStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::RcChannelResponse>* SubscribeRcChannelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::RcChannelResponse>* AsyncSubscribeRcChannelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::RcChannelResponse>* PrepareAsyncSubscribeRcChannelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -99,11 +114,21 @@ class StrikerService final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::SysStatusResponse>> PrepareAsyncSubscribeSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::SysStatusResponse>>(PrepareAsyncSubscribeSysStatusRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::striker::RcChannelResponse>> SubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::striker::RcChannelResponse>>(SubscribeRcChannelRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::RcChannelResponse>> AsyncSubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::RcChannelResponse>>(AsyncSubscribeRcChannelRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::RcChannelResponse>> PrepareAsyncSubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::RcChannelResponse>>(PrepareAsyncSubscribeRcChannelRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
       void SubscribeHeartbeat(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeHeartbeatRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::HeartbeatResponse>* reactor) override;
       void SubscribeSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::SysStatusResponse>* reactor) override;
+      void SubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::RcChannelResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -121,8 +146,12 @@ class StrikerService final {
     ::grpc::ClientReader< ::mavsdk::rpc::striker::SysStatusResponse>* SubscribeSysStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest& request) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::SysStatusResponse>* AsyncSubscribeSysStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::SysStatusResponse>* PrepareAsyncSubscribeSysStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::mavsdk::rpc::striker::RcChannelResponse>* SubscribeRcChannelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::RcChannelResponse>* AsyncSubscribeRcChannelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::RcChannelResponse>* PrepareAsyncSubscribeRcChannelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeHeartbeat_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeSysStatus_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubscribeRcChannel_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -134,6 +163,8 @@ class StrikerService final {
     virtual ::grpc::Status SubscribeHeartbeat(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeHeartbeatRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::HeartbeatResponse>* writer);
     // Subscribe to 'Sys Status' updates.
     virtual ::grpc::Status SubscribeSysStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::SysStatusResponse>* writer);
+    // Subscribe to 'RC channel' updates.
+    virtual ::grpc::Status SubscribeRcChannel(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::RcChannelResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_SubscribeHeartbeat : public BaseClass {
@@ -175,7 +206,27 @@ class StrikerService final {
       ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SubscribeHeartbeat<WithAsyncMethod_SubscribeSysStatus<Service > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SubscribeRcChannel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SubscribeRcChannel() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_SubscribeRcChannel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeRcChannel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::RcChannelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeRcChannel(::grpc::ServerContext* context, ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request, ::grpc::ServerAsyncWriter< ::mavsdk::rpc::striker::RcChannelResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SubscribeHeartbeat<WithAsyncMethod_SubscribeSysStatus<WithAsyncMethod_SubscribeRcChannel<Service > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SubscribeHeartbeat : public BaseClass {
    private:
@@ -220,7 +271,29 @@ class StrikerService final {
     virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::striker::SysStatusResponse>* SubscribeSysStatus(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest* /*request*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SubscribeHeartbeat<WithCallbackMethod_SubscribeSysStatus<Service > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SubscribeRcChannel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SubscribeRcChannel() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::mavsdk::rpc::striker::SubscribeRcChannelRequest, ::mavsdk::rpc::striker::RcChannelResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request) { return this->SubscribeRcChannel(context, request); }));
+    }
+    ~WithCallbackMethod_SubscribeRcChannel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeRcChannel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::RcChannelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::striker::RcChannelResponse>* SubscribeRcChannel(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* /*request*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SubscribeHeartbeat<WithCallbackMethod_SubscribeSysStatus<WithCallbackMethod_SubscribeRcChannel<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SubscribeHeartbeat : public BaseClass {
@@ -252,6 +325,23 @@ class StrikerService final {
     }
     // disable synchronous version of this method
     ::grpc::Status SubscribeSysStatus(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::SysStatusResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubscribeRcChannel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SubscribeRcChannel() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_SubscribeRcChannel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeRcChannel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::RcChannelResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -297,6 +387,26 @@ class StrikerService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SubscribeRcChannel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SubscribeRcChannel() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_SubscribeRcChannel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeRcChannel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::RcChannelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeRcChannel(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(2, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SubscribeHeartbeat : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -338,6 +448,28 @@ class StrikerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeSysStatus(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SubscribeRcChannel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SubscribeRcChannel() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->SubscribeRcChannel(context, request); }));
+    }
+    ~WithRawCallbackMethod_SubscribeRcChannel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeRcChannel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::RcChannelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeRcChannel(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   typedef Service StreamedUnaryService;
@@ -395,8 +527,35 @@ class StrikerService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSubscribeSysStatus(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::striker::SubscribeSysStatusRequest,::mavsdk::rpc::striker::SysStatusResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<Service > > SplitStreamedService;
-  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<Service > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_SubscribeRcChannel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_SubscribeRcChannel() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::mavsdk::rpc::striker::SubscribeRcChannelRequest, ::mavsdk::rpc::striker::RcChannelResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::mavsdk::rpc::striker::SubscribeRcChannelRequest, ::mavsdk::rpc::striker::RcChannelResponse>* streamer) {
+                       return this->StreamedSubscribeRcChannel(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_SubscribeRcChannel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubscribeRcChannel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::RcChannelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribeRcChannel(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::striker::SubscribeRcChannelRequest,::mavsdk::rpc::striker::RcChannelResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<Service > > > SplitStreamedService;
+  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<Service > > > StreamedService;
 };
 
 }  // namespace striker

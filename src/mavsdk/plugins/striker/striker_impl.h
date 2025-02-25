@@ -31,24 +31,35 @@ public:
     void unsubscribe_sys_status(Striker::SysStatusHandle handle);
     Striker::SysStatus sys_status() const;
 
+    // RC_Channel subscription
+    Striker::RcChannelHandle subscribe_rc_channel(const Striker::RcChannelCallback& callback);
+    void unsubscribe_rc_channel(Striker::RcChannelHandle handle);
+    Striker::RcChannel rc_channel() const;
+    
 private:
     void process_heartbeat(const mavlink_message_t& message);
     void process_sys_status(const mavlink_message_t& message);
+    void process_rc_channel(const mavlink_message_t& message);
 
     void set_heartbeat(Striker::Heartbeat heartbeat);
     void set_sys_status(Striker::SysStatus sys_status);
+    void set_rc_channel(const mavlink_rc_channels_t& rc_channel);
 
     mutable std::mutex _heartbeat_mutex;
     mutable std::mutex _sys_status_mutex;
+    mutable std::mutex _rc_channel_mutex;
 
     Striker::Heartbeat _heartbeat{};
     Striker::SysStatus _sys_status{};
+    Striker::RcChannel _rc_channel{};
 
     CallbackList<Striker::Heartbeat> _heartbeat_subscriptions;
     CallbackList<Striker::SysStatus> _sys_status_subscriptions;
+    CallbackList<Striker::RcChannel> _rc_channel_subscriptions;
 
     std::mutex _subscription_heartbeat_mutex;
     std::mutex _subscription_sys_status_mutex;
+    std::mutex _subscription_rc_channel_mutex;
 };
 
 } // namespace mavsdk

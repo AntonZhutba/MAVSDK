@@ -154,6 +154,106 @@ public:
         return obj;
     }
 
+    static std::unique_ptr<rpc::striker::RcChannel>
+    translateToRpcRcChannel(const mavsdk::Striker::RcChannel& rc_channel)
+    {
+        auto rpc_obj = std::make_unique<rpc::striker::RcChannel>();
+
+        rpc_obj->set_time_boot_ms(rc_channel.time_boot_ms);
+
+        rpc_obj->set_chan1_raw(rc_channel.chan1_raw);
+
+        rpc_obj->set_chan2_raw(rc_channel.chan2_raw);
+
+        rpc_obj->set_chan3_raw(rc_channel.chan3_raw);
+
+        rpc_obj->set_chan4_raw(rc_channel.chan4_raw);
+
+        rpc_obj->set_chan5_raw(rc_channel.chan5_raw);
+
+        rpc_obj->set_chan6_raw(rc_channel.chan6_raw);
+
+        rpc_obj->set_chan7_raw(rc_channel.chan7_raw);
+
+        rpc_obj->set_chan8_raw(rc_channel.chan8_raw);
+
+        rpc_obj->set_chan9_raw(rc_channel.chan9_raw);
+
+        rpc_obj->set_chan10_raw(rc_channel.chan10_raw);
+
+        rpc_obj->set_chan11_raw(rc_channel.chan11_raw);
+
+        rpc_obj->set_chan12_raw(rc_channel.chan12_raw);
+
+        rpc_obj->set_chan13_raw(rc_channel.chan13_raw);
+
+        rpc_obj->set_chan14_raw(rc_channel.chan14_raw);
+
+        rpc_obj->set_chan15_raw(rc_channel.chan15_raw);
+
+        rpc_obj->set_chan16_raw(rc_channel.chan16_raw);
+
+        rpc_obj->set_chan17_raw(rc_channel.chan17_raw);
+
+        rpc_obj->set_chan18_raw(rc_channel.chan18_raw);
+
+        rpc_obj->set_chancount(rc_channel.chancount);
+
+        rpc_obj->set_rssi(rc_channel.rssi);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::Striker::RcChannel
+    translateFromRpcRcChannel(const rpc::striker::RcChannel& rc_channel)
+    {
+        mavsdk::Striker::RcChannel obj;
+
+        obj.time_boot_ms = rc_channel.time_boot_ms();
+
+        obj.chan1_raw = rc_channel.chan1_raw();
+
+        obj.chan2_raw = rc_channel.chan2_raw();
+
+        obj.chan3_raw = rc_channel.chan3_raw();
+
+        obj.chan4_raw = rc_channel.chan4_raw();
+
+        obj.chan5_raw = rc_channel.chan5_raw();
+
+        obj.chan6_raw = rc_channel.chan6_raw();
+
+        obj.chan7_raw = rc_channel.chan7_raw();
+
+        obj.chan8_raw = rc_channel.chan8_raw();
+
+        obj.chan9_raw = rc_channel.chan9_raw();
+
+        obj.chan10_raw = rc_channel.chan10_raw();
+
+        obj.chan11_raw = rc_channel.chan11_raw();
+
+        obj.chan12_raw = rc_channel.chan12_raw();
+
+        obj.chan13_raw = rc_channel.chan13_raw();
+
+        obj.chan14_raw = rc_channel.chan14_raw();
+
+        obj.chan15_raw = rc_channel.chan15_raw();
+
+        obj.chan16_raw = rc_channel.chan16_raw();
+
+        obj.chan17_raw = rc_channel.chan17_raw();
+
+        obj.chan18_raw = rc_channel.chan18_raw();
+
+        obj.chancount = rc_channel.chancount();
+
+        obj.rssi = rc_channel.rssi();
+
+        return obj;
+    }
+
     grpc::Status SubscribeHeartbeat(
         grpc::ServerContext* /* context */,
         const mavsdk::rpc::striker::SubscribeHeartbeatRequest* /* request */,
@@ -224,6 +324,48 @@ public:
                     std::unique_lock<std::mutex> lock(*subscribe_mutex);
                     if (!*is_finished && !writer->Write(rpc_response)) {
                         _lazy_plugin.maybe_plugin()->unsubscribe_sys_status(handle);
+
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeRcChannel(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeRcChannelRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::RcChannelResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        const mavsdk::Striker::RcChannelHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_rc_channel(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const mavsdk::Striker::RcChannel rc_channel) {
+                    rpc::striker::RcChannelResponse rpc_response;
+
+                    rpc_response.set_allocated_rc_channel(
+                        translateToRpcRcChannel(rc_channel).release());
+
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_rc_channel(handle);
 
                         *is_finished = true;
                         unregister_stream_stop_promise(stream_closed_promise);

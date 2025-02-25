@@ -36,6 +36,11 @@ void StrikerImpl::init()
         MAVLINK_MSG_ID_SYS_STATUS,
         [this](const mavlink_message_t& message) { process_sys_status(message); },
         this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_RC_CHANNELS,
+        [this](const mavlink_message_t& message) { process_rc_channel(message); },
+        this);
 }
 
 void StrikerImpl::deinit()
@@ -152,6 +157,65 @@ void StrikerImpl::process_sys_status(const mavlink_message_t& message)
     std::lock_guard<std::mutex> lock(_subscription_sys_status_mutex);
     _sys_status_subscriptions.queue(
         sys_status(), [this](const auto& func) { _system_impl->call_user_callback(func); });
+}
+
+Striker::RcChannelHandle StrikerImpl::subscribe_rc_channel(const Striker::RcChannelCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_rc_channel_mutex);
+    return _rc_channel_subscriptions.subscribe(callback);
+}
+
+void StrikerImpl::unsubscribe_rc_channel(Striker::RcChannelHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_rc_channel_mutex);
+    _rc_channel_subscriptions.unsubscribe(handle);
+}
+
+Striker::RcChannel StrikerImpl::rc_channel() const
+{
+    std::lock_guard<std::mutex> lock(_rc_channel_mutex);
+    return _rc_channel;
+}
+
+void StrikerImpl::process_rc_channel(const mavlink_message_t& message)
+{
+    mavlink_rc_channels_t rc_channels;
+    mavlink_msg_rc_channels_decode(&message, &rc_channels);
+
+    set_rc_channel(rc_channels);
+
+    std::lock_guard<std::mutex> lock(_subscription_rc_channel_mutex);
+    _rc_channel_subscriptions.queue(
+        rc_channel(), [this](const auto& func) { _system_impl->call_user_callback(func); });
+}
+
+void StrikerImpl::set_rc_channel(const mavlink_rc_channels_t& rc_channel)
+{
+    std::lock_guard<std::mutex> lock(_rc_channel_mutex);
+
+    _rc_channel.time_boot_ms = rc_channel.time_boot_ms;
+    _rc_channel.chancount = rc_channel.chancount;
+
+    _rc_channel.chan1_raw = rc_channel.chan1_raw;
+    _rc_channel.chan2_raw = rc_channel.chan2_raw;
+    _rc_channel.chan3_raw = rc_channel.chan3_raw;
+    _rc_channel.chan4_raw = rc_channel.chan4_raw;
+    _rc_channel.chan5_raw = rc_channel.chan5_raw;
+    _rc_channel.chan6_raw = rc_channel.chan6_raw;
+    _rc_channel.chan7_raw = rc_channel.chan7_raw;
+    _rc_channel.chan8_raw = rc_channel.chan8_raw;
+    _rc_channel.chan9_raw = rc_channel.chan9_raw;
+    _rc_channel.chan10_raw = rc_channel.chan10_raw;
+    _rc_channel.chan11_raw = rc_channel.chan11_raw;
+    _rc_channel.chan12_raw = rc_channel.chan12_raw;
+    _rc_channel.chan13_raw = rc_channel.chan13_raw;
+    _rc_channel.chan14_raw = rc_channel.chan14_raw;
+    _rc_channel.chan15_raw = rc_channel.chan15_raw;
+    _rc_channel.chan16_raw = rc_channel.chan16_raw;
+    _rc_channel.chan17_raw = rc_channel.chan17_raw;
+    _rc_channel.chan18_raw = rc_channel.chan18_raw;
+
+    _rc_channel.rssi = rc_channel.rssi;
 }
 
 } // namespace mavsdk

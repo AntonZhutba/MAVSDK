@@ -86,6 +86,24 @@ struct SubscribeSysStatusRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeSysStatusRequestDefaultTypeInternal _SubscribeSysStatusRequest_default_instance_;
               template <typename>
+PROTOBUF_CONSTEXPR SubscribeRcChannelRequest::SubscribeRcChannelRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct SubscribeRcChannelRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeRcChannelRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeRcChannelRequestDefaultTypeInternal() {}
+  union {
+    SubscribeRcChannelRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeRcChannelRequestDefaultTypeInternal _SubscribeRcChannelRequest_default_instance_;
+              template <typename>
 PROTOBUF_CONSTEXPR SubscribeHeartbeatRequest::SubscribeHeartbeatRequest(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
@@ -103,6 +121,51 @@ struct SubscribeHeartbeatRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeHeartbeatRequestDefaultTypeInternal _SubscribeHeartbeatRequest_default_instance_;
+
+inline constexpr RcChannel::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : time_boot_ms_{0u},
+        chan1_raw_{0u},
+        chan2_raw_{0u},
+        chan3_raw_{0u},
+        chan4_raw_{0u},
+        chan5_raw_{0u},
+        chan6_raw_{0u},
+        chan7_raw_{0u},
+        chan8_raw_{0u},
+        chan9_raw_{0u},
+        chan10_raw_{0u},
+        chan11_raw_{0u},
+        chan12_raw_{0u},
+        chan13_raw_{0u},
+        chan14_raw_{0u},
+        chan15_raw_{0u},
+        chan16_raw_{0u},
+        chan17_raw_{0u},
+        chan18_raw_{0u},
+        chancount_{0u},
+        rssi_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RcChannel::RcChannel(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RcChannelDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RcChannelDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RcChannelDefaultTypeInternal() {}
+  union {
+    RcChannel _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RcChannelDefaultTypeInternal _RcChannel_default_instance_;
 
 inline constexpr Heartbeat::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -158,6 +221,31 @@ struct SysStatusResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SysStatusResponseDefaultTypeInternal _SysStatusResponse_default_instance_;
+
+inline constexpr RcChannelResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        rc_channel_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RcChannelResponse::RcChannelResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RcChannelResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RcChannelResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RcChannelResponseDefaultTypeInternal() {}
+  union {
+    RcChannelResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RcChannelResponseDefaultTypeInternal _RcChannelResponse_default_instance_;
 
 inline constexpr HeartbeatResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -230,6 +318,24 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SysStatusResponse, _impl_.sys_status_),
         0,
         ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SubscribeRcChannelRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannelResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannelResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannelResponse, _impl_.rc_channel_),
+        0,
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Heartbeat, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -267,6 +373,35 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SysStatus, _impl_.onboard_control_sensors_present_extended_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SysStatus, _impl_.onboard_control_sensors_enabled_extended_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SysStatus, _impl_.onboard_control_sensors_health_extended_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.time_boot_ms_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan1_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan2_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan3_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan4_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan5_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan6_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan7_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan8_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan9_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan10_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan11_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan12_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan13_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan14_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan15_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan16_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan17_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan18_raw_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chancount_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.rssi_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -275,16 +410,22 @@ static const ::_pbi::MigrationSchema
         {8, 17, -1, sizeof(::mavsdk::rpc::striker::HeartbeatResponse)},
         {18, -1, -1, sizeof(::mavsdk::rpc::striker::SubscribeSysStatusRequest)},
         {26, 35, -1, sizeof(::mavsdk::rpc::striker::SysStatusResponse)},
-        {36, -1, -1, sizeof(::mavsdk::rpc::striker::Heartbeat)},
-        {50, -1, -1, sizeof(::mavsdk::rpc::striker::SysStatus)},
+        {36, -1, -1, sizeof(::mavsdk::rpc::striker::SubscribeRcChannelRequest)},
+        {44, 53, -1, sizeof(::mavsdk::rpc::striker::RcChannelResponse)},
+        {54, -1, -1, sizeof(::mavsdk::rpc::striker::Heartbeat)},
+        {68, -1, -1, sizeof(::mavsdk::rpc::striker::SysStatus)},
+        {92, -1, -1, sizeof(::mavsdk::rpc::striker::RcChannel)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::striker::_SubscribeHeartbeatRequest_default_instance_._instance,
     &::mavsdk::rpc::striker::_HeartbeatResponse_default_instance_._instance,
     &::mavsdk::rpc::striker::_SubscribeSysStatusRequest_default_instance_._instance,
     &::mavsdk::rpc::striker::_SysStatusResponse_default_instance_._instance,
+    &::mavsdk::rpc::striker::_SubscribeRcChannelRequest_default_instance_._instance,
+    &::mavsdk::rpc::striker::_RcChannelResponse_default_instance_._instance,
     &::mavsdk::rpc::striker::_Heartbeat_default_instance_._instance,
     &::mavsdk::rpc::striker::_SysStatus_default_instance_._instance,
+    &::mavsdk::rpc::striker::_RcChannel_default_instance_._instance,
 };
 const char descriptor_table_protodef_striker_2fstriker_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -294,30 +435,50 @@ const char descriptor_table_protodef_striker_2fstriker_2eproto[] ABSL_ATTRIBUTE_
     "eartbeat\030\001 \001(\0132\035.mavsdk.rpc.striker.Hear"
     "tbeat\"\033\n\031SubscribeSysStatusRequest\"F\n\021Sy"
     "sStatusResponse\0221\n\nsys_status\030\001 \001(\0132\035.ma"
-    "vsdk.rpc.striker.SysStatus\"\204\001\n\tHeartbeat"
-    "\022\023\n\013custom_mode\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022\021\n\ta"
-    "utopilot\030\003 \001(\r\022\021\n\tbase_mode\030\004 \001(\r\022\025\n\rsys"
-    "tem_status\030\005 \001(\r\022\027\n\017mavlink_version\030\006 \001("
-    "\r\"\376\003\n\tSysStatus\022\'\n\037onboard_control_senso"
-    "rs_present\030\001 \001(\r\022\'\n\037onboard_control_sens"
-    "ors_enabled\030\002 \001(\r\022&\n\036onboard_control_sen"
-    "sors_health\030\003 \001(\r\022\014\n\004load\030\004 \001(\r\022\027\n\017volta"
-    "ge_battery\030\005 \001(\r\022\027\n\017current_battery\030\006 \001("
-    "\005\022\026\n\016drop_rate_comm\030\007 \001(\r\022\023\n\013errors_comm"
-    "\030\010 \001(\r\022\025\n\rerrors_count1\030\t \001(\r\022\025\n\rerrors_"
-    "count2\030\n \001(\r\022\025\n\rerrors_count3\030\013 \001(\r\022\025\n\re"
-    "rrors_count4\030\014 \001(\r\022\031\n\021battery_remaining\030"
-    "\r \001(\005\0220\n(onboard_control_sensors_present"
-    "_extended\030\016 \001(\r\0220\n(onboard_control_senso"
-    "rs_enabled_extended\030\017 \001(\r\022/\n\'onboard_con"
-    "trol_sensors_health_extended\030\020 \001(\r2\360\001\n\016S"
-    "trikerService\022n\n\022SubscribeHeartbeat\022-.ma"
-    "vsdk.rpc.striker.SubscribeHeartbeatReque"
-    "st\032%.mavsdk.rpc.striker.HeartbeatRespons"
-    "e\"\0000\001\022n\n\022SubscribeSysStatus\022-.mavsdk.rpc"
-    ".striker.SubscribeSysStatusRequest\032%.mav"
-    "sdk.rpc.striker.SysStatusResponse\"\0000\001B!\n"
-    "\021io.mavsdk.strikerB\014StrikerProtob\006proto3"
+    "vsdk.rpc.striker.SysStatus\"\033\n\031SubscribeR"
+    "cChannelRequest\"F\n\021RcChannelResponse\0221\n\n"
+    "rc_channel\030\001 \001(\0132\035.mavsdk.rpc.striker.Rc"
+    "Channel\"\204\001\n\tHeartbeat\022\023\n\013custom_mode\030\001 \001"
+    "(\r\022\014\n\004type\030\002 \001(\r\022\021\n\tautopilot\030\003 \001(\r\022\021\n\tb"
+    "ase_mode\030\004 \001(\r\022\025\n\rsystem_status\030\005 \001(\r\022\027\n"
+    "\017mavlink_version\030\006 \001(\r\"\376\003\n\tSysStatus\022\'\n\037"
+    "onboard_control_sensors_present\030\001 \001(\r\022\'\n"
+    "\037onboard_control_sensors_enabled\030\002 \001(\r\022&"
+    "\n\036onboard_control_sensors_health\030\003 \001(\r\022\014"
+    "\n\004load\030\004 \001(\r\022\027\n\017voltage_battery\030\005 \001(\r\022\027\n"
+    "\017current_battery\030\006 \001(\005\022\026\n\016drop_rate_comm"
+    "\030\007 \001(\r\022\023\n\013errors_comm\030\010 \001(\r\022\025\n\rerrors_co"
+    "unt1\030\t \001(\r\022\025\n\rerrors_count2\030\n \001(\r\022\025\n\rerr"
+    "ors_count3\030\013 \001(\r\022\025\n\rerrors_count4\030\014 \001(\r\022"
+    "\031\n\021battery_remaining\030\r \001(\005\0220\n(onboard_co"
+    "ntrol_sensors_present_extended\030\016 \001(\r\0220\n("
+    "onboard_control_sensors_enabled_extended"
+    "\030\017 \001(\r\022/\n\'onboard_control_sensors_health"
+    "_extended\030\020 \001(\r\"\264\004\n\tRcChannel\022\033\n\014time_bo"
+    "ot_ms\030\001 \001(\rB\005\202\265\030\0010\022\030\n\tchan1_raw\030\002 \001(\rB\005\202"
+    "\265\030\0010\022\030\n\tchan2_raw\030\003 \001(\rB\005\202\265\030\0010\022\030\n\tchan3_"
+    "raw\030\004 \001(\rB\005\202\265\030\0010\022\030\n\tchan4_raw\030\005 \001(\rB\005\202\265\030"
+    "\0010\022\030\n\tchan5_raw\030\006 \001(\rB\005\202\265\030\0010\022\030\n\tchan6_ra"
+    "w\030\007 \001(\rB\005\202\265\030\0010\022\030\n\tchan7_raw\030\010 \001(\rB\005\202\265\030\0010"
+    "\022\030\n\tchan8_raw\030\t \001(\rB\005\202\265\030\0010\022\030\n\tchan9_raw\030"
+    "\n \001(\rB\005\202\265\030\0010\022\031\n\nchan10_raw\030\013 \001(\rB\005\202\265\030\0010\022"
+    "\031\n\nchan11_raw\030\014 \001(\rB\005\202\265\030\0010\022\031\n\nchan12_raw"
+    "\030\r \001(\rB\005\202\265\030\0010\022\031\n\nchan13_raw\030\016 \001(\rB\005\202\265\030\0010"
+    "\022\031\n\nchan14_raw\030\017 \001(\rB\005\202\265\030\0010\022\031\n\nchan15_ra"
+    "w\030\020 \001(\rB\005\202\265\030\0010\022\031\n\nchan16_raw\030\021 \001(\rB\005\202\265\030\001"
+    "0\022\031\n\nchan17_raw\030\022 \001(\rB\005\202\265\030\0010\022\031\n\nchan18_r"
+    "aw\030\023 \001(\rB\005\202\265\030\0010\022\030\n\tchancount\030\024 \001(\rB\005\202\265\030\001"
+    "0\022\023\n\004rssi\030\025 \001(\rB\005\202\265\030\00102\340\002\n\016StrikerServic"
+    "e\022n\n\022SubscribeHeartbeat\022-.mavsdk.rpc.str"
+    "iker.SubscribeHeartbeatRequest\032%.mavsdk."
+    "rpc.striker.HeartbeatResponse\"\0000\001\022n\n\022Sub"
+    "scribeSysStatus\022-.mavsdk.rpc.striker.Sub"
+    "scribeSysStatusRequest\032%.mavsdk.rpc.stri"
+    "ker.SysStatusResponse\"\0000\001\022n\n\022SubscribeRc"
+    "Channel\022-.mavsdk.rpc.striker.SubscribeRc"
+    "ChannelRequest\032%.mavsdk.rpc.striker.RcCh"
+    "annelResponse\"\0000\001B!\n\021io.mavsdk.strikerB\014"
+    "StrikerProtob\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_striker_2fstriker_2eproto_deps[1] =
     {
@@ -327,13 +488,13 @@ static ::absl::once_flag descriptor_table_striker_2fstriker_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_striker_2fstriker_2eproto = {
     false,
     false,
-    1200,
+    1980,
     descriptor_table_protodef_striker_2fstriker_2eproto,
     "striker/striker.proto",
     &descriptor_table_striker_2fstriker_2eproto_once,
     descriptor_table_striker_2fstriker_2eproto_deps,
     1,
-    6,
+    9,
     schemas,
     file_default_instances,
     TableStruct_striker_2fstriker_2eproto::offsets,
@@ -1047,6 +1208,359 @@ void SysStatusResponse::InternalSwap(SysStatusResponse* PROTOBUF_RESTRICT other)
 }
 
 ::google::protobuf::Metadata SysStatusResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SubscribeRcChannelRequest::_Internal {
+ public:
+};
+
+SubscribeRcChannelRequest::SubscribeRcChannelRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.SubscribeRcChannelRequest)
+}
+SubscribeRcChannelRequest::SubscribeRcChannelRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeRcChannelRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SubscribeRcChannelRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.SubscribeRcChannelRequest)
+}
+
+inline void* SubscribeRcChannelRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SubscribeRcChannelRequest(arena);
+}
+constexpr auto SubscribeRcChannelRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SubscribeRcChannelRequest),
+                                            alignof(SubscribeRcChannelRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SubscribeRcChannelRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SubscribeRcChannelRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SubscribeRcChannelRequest::MergeImpl,
+        ::google::protobuf::internal::ZeroFieldsBase::GetNewImpl<SubscribeRcChannelRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SubscribeRcChannelRequest::SharedDtor,
+        ::google::protobuf::internal::ZeroFieldsBase::GetClearImpl<SubscribeRcChannelRequest>(), &SubscribeRcChannelRequest::ByteSizeLong,
+            &SubscribeRcChannelRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SubscribeRcChannelRequest, _impl_._cached_size_),
+        false,
+    },
+    &SubscribeRcChannelRequest::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SubscribeRcChannelRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 0, 0, 0, 2> SubscribeRcChannelRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    0, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967295,  // skipmap
+    offsetof(decltype(_table_), field_names),  // no field_entries
+    0,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::SubscribeRcChannelRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }},
+  // no field_entries, or aux_entries
+  {{
+  }},
+};
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeRcChannelRequest::GetMetadata() const {
+  return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RcChannelResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<RcChannelResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(RcChannelResponse, _impl_._has_bits_);
+};
+
+RcChannelResponse::RcChannelResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.RcChannelResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE RcChannelResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::mavsdk::rpc::striker::RcChannelResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+RcChannelResponse::RcChannelResponse(
+    ::google::protobuf::Arena* arena,
+    const RcChannelResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RcChannelResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.rc_channel_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::RcChannel>(
+                              arena, *from._impl_.rc_channel_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.RcChannelResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE RcChannelResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void RcChannelResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.rc_channel_ = {};
+}
+RcChannelResponse::~RcChannelResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.RcChannelResponse)
+  SharedDtor(*this);
+}
+inline void RcChannelResponse::SharedDtor(MessageLite& self) {
+  RcChannelResponse& this_ = static_cast<RcChannelResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.rc_channel_;
+  this_._impl_.~Impl_();
+}
+
+inline void* RcChannelResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) RcChannelResponse(arena);
+}
+constexpr auto RcChannelResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(RcChannelResponse),
+                                            alignof(RcChannelResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull RcChannelResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_RcChannelResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &RcChannelResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<RcChannelResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &RcChannelResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<RcChannelResponse>(), &RcChannelResponse::ByteSizeLong,
+            &RcChannelResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(RcChannelResponse, _impl_._cached_size_),
+        false,
+    },
+    &RcChannelResponse::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* RcChannelResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> RcChannelResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RcChannelResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::RcChannelResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .mavsdk.rpc.striker.RcChannel rc_channel = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(RcChannelResponse, _impl_.rc_channel_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.striker.RcChannel rc_channel = 1;
+    {PROTOBUF_FIELD_OFFSET(RcChannelResponse, _impl_.rc_channel_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::RcChannel>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void RcChannelResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.striker.RcChannelResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.rc_channel_ != nullptr);
+    _impl_.rc_channel_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* RcChannelResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const RcChannelResponse& this_ = static_cast<const RcChannelResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* RcChannelResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const RcChannelResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.striker.RcChannelResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .mavsdk.rpc.striker.RcChannel rc_channel = 1;
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.rc_channel_, this_._impl_.rc_channel_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.striker.RcChannelResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t RcChannelResponse::ByteSizeLong(const MessageLite& base) {
+          const RcChannelResponse& this_ = static_cast<const RcChannelResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t RcChannelResponse::ByteSizeLong() const {
+          const RcChannelResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.striker.RcChannelResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .mavsdk.rpc.striker.RcChannel rc_channel = 1;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.rc_channel_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void RcChannelResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<RcChannelResponse*>(&to_msg);
+  auto& from = static_cast<const RcChannelResponse&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.striker.RcChannelResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.rc_channel_ != nullptr);
+    if (_this->_impl_.rc_channel_ == nullptr) {
+      _this->_impl_.rc_channel_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::RcChannel>(arena, *from._impl_.rc_channel_);
+    } else {
+      _this->_impl_.rc_channel_->MergeFrom(*from._impl_.rc_channel_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RcChannelResponse::CopyFrom(const RcChannelResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.striker.RcChannelResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RcChannelResponse::InternalSwap(RcChannelResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.rc_channel_, other->_impl_.rc_channel_);
+}
+
+::google::protobuf::Metadata RcChannelResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -1909,6 +2423,657 @@ void SysStatus::InternalSwap(SysStatus* PROTOBUF_RESTRICT other) {
 }
 
 ::google::protobuf::Metadata SysStatus::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RcChannel::_Internal {
+ public:
+};
+
+RcChannel::RcChannel(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.RcChannel)
+}
+RcChannel::RcChannel(
+    ::google::protobuf::Arena* arena, const RcChannel& from)
+    : RcChannel(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE RcChannel::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void RcChannel::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, time_boot_ms_),
+           0,
+           offsetof(Impl_, rssi_) -
+               offsetof(Impl_, time_boot_ms_) +
+               sizeof(Impl_::rssi_));
+}
+RcChannel::~RcChannel() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.RcChannel)
+  SharedDtor(*this);
+}
+inline void RcChannel::SharedDtor(MessageLite& self) {
+  RcChannel& this_ = static_cast<RcChannel&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* RcChannel::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) RcChannel(arena);
+}
+constexpr auto RcChannel::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(RcChannel),
+                                            alignof(RcChannel));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull RcChannel::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_RcChannel_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &RcChannel::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<RcChannel>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &RcChannel::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<RcChannel>(), &RcChannel::ByteSizeLong,
+            &RcChannel::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(RcChannel, _impl_._cached_size_),
+        false,
+    },
+    &RcChannel::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* RcChannel::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<5, 21, 0, 0, 2> RcChannel::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    21, 248,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4292870144,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    21,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::RcChannel>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint32 time_boot_ms = 1 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.time_boot_ms_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.time_boot_ms_)}},
+    // uint32 chan1_raw = 2 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan1_raw_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan1_raw_)}},
+    // uint32 chan2_raw = 3 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan2_raw_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan2_raw_)}},
+    // uint32 chan3_raw = 4 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan3_raw_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan3_raw_)}},
+    // uint32 chan4_raw = 5 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan4_raw_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan4_raw_)}},
+    // uint32 chan5_raw = 6 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan5_raw_), 63>(),
+     {48, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan5_raw_)}},
+    // uint32 chan6_raw = 7 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan6_raw_), 63>(),
+     {56, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan6_raw_)}},
+    // uint32 chan7_raw = 8 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan7_raw_), 63>(),
+     {64, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan7_raw_)}},
+    // uint32 chan8_raw = 9 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan8_raw_), 63>(),
+     {72, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan8_raw_)}},
+    // uint32 chan9_raw = 10 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan9_raw_), 63>(),
+     {80, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan9_raw_)}},
+    // uint32 chan10_raw = 11 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan10_raw_), 63>(),
+     {88, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan10_raw_)}},
+    // uint32 chan11_raw = 12 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan11_raw_), 63>(),
+     {96, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan11_raw_)}},
+    // uint32 chan12_raw = 13 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan12_raw_), 63>(),
+     {104, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan12_raw_)}},
+    // uint32 chan13_raw = 14 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan13_raw_), 63>(),
+     {112, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan13_raw_)}},
+    // uint32 chan14_raw = 15 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RcChannel, _impl_.chan14_raw_), 63>(),
+     {120, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan14_raw_)}},
+    // uint32 chan15_raw = 16 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::FastV32S2,
+     {384, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan15_raw_)}},
+    // uint32 chan16_raw = 17 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::FastV32S2,
+     {392, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan16_raw_)}},
+    // uint32 chan17_raw = 18 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::FastV32S2,
+     {400, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan17_raw_)}},
+    // uint32 chan18_raw = 19 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::FastV32S2,
+     {408, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan18_raw_)}},
+    // uint32 chancount = 20 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::FastV32S2,
+     {416, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chancount_)}},
+    // uint32 rssi = 21 [(.mavsdk.options.default_value) = "0"];
+    {::_pbi::TcParser::FastV32S2,
+     {424, 63, 0, PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.rssi_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 time_boot_ms = 1 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.time_boot_ms_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan1_raw = 2 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan1_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan2_raw = 3 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan2_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan3_raw = 4 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan3_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan4_raw = 5 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan4_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan5_raw = 6 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan5_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan6_raw = 7 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan6_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan7_raw = 8 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan7_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan8_raw = 9 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan8_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan9_raw = 10 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan9_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan10_raw = 11 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan10_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan11_raw = 12 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan11_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan12_raw = 13 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan12_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan13_raw = 14 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan13_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan14_raw = 15 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan14_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan15_raw = 16 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan15_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan16_raw = 17 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan16_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan17_raw = 18 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan17_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chan18_raw = 19 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chan18_raw_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chancount = 20 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.chancount_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 rssi = 21 [(.mavsdk.options.default_value) = "0"];
+    {PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.rssi_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void RcChannel::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.striker.RcChannel)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.time_boot_ms_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.rssi_) -
+      reinterpret_cast<char*>(&_impl_.time_boot_ms_)) + sizeof(_impl_.rssi_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* RcChannel::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const RcChannel& this_ = static_cast<const RcChannel&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* RcChannel::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const RcChannel& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.striker.RcChannel)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 time_boot_ms = 1 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_time_boot_ms() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_time_boot_ms(), target);
+          }
+
+          // uint32 chan1_raw = 2 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan1_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_chan1_raw(), target);
+          }
+
+          // uint32 chan2_raw = 3 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan2_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                3, this_._internal_chan2_raw(), target);
+          }
+
+          // uint32 chan3_raw = 4 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan3_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                4, this_._internal_chan3_raw(), target);
+          }
+
+          // uint32 chan4_raw = 5 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan4_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                5, this_._internal_chan4_raw(), target);
+          }
+
+          // uint32 chan5_raw = 6 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan5_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                6, this_._internal_chan5_raw(), target);
+          }
+
+          // uint32 chan6_raw = 7 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan6_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                7, this_._internal_chan6_raw(), target);
+          }
+
+          // uint32 chan7_raw = 8 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan7_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                8, this_._internal_chan7_raw(), target);
+          }
+
+          // uint32 chan8_raw = 9 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan8_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                9, this_._internal_chan8_raw(), target);
+          }
+
+          // uint32 chan9_raw = 10 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan9_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                10, this_._internal_chan9_raw(), target);
+          }
+
+          // uint32 chan10_raw = 11 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan10_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                11, this_._internal_chan10_raw(), target);
+          }
+
+          // uint32 chan11_raw = 12 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan11_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                12, this_._internal_chan11_raw(), target);
+          }
+
+          // uint32 chan12_raw = 13 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan12_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                13, this_._internal_chan12_raw(), target);
+          }
+
+          // uint32 chan13_raw = 14 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan13_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                14, this_._internal_chan13_raw(), target);
+          }
+
+          // uint32 chan14_raw = 15 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan14_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                15, this_._internal_chan14_raw(), target);
+          }
+
+          // uint32 chan15_raw = 16 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan15_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                16, this_._internal_chan15_raw(), target);
+          }
+
+          // uint32 chan16_raw = 17 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan16_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                17, this_._internal_chan16_raw(), target);
+          }
+
+          // uint32 chan17_raw = 18 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan17_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                18, this_._internal_chan17_raw(), target);
+          }
+
+          // uint32 chan18_raw = 19 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chan18_raw() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                19, this_._internal_chan18_raw(), target);
+          }
+
+          // uint32 chancount = 20 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_chancount() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                20, this_._internal_chancount(), target);
+          }
+
+          // uint32 rssi = 21 [(.mavsdk.options.default_value) = "0"];
+          if (this_._internal_rssi() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                21, this_._internal_rssi(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.striker.RcChannel)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t RcChannel::ByteSizeLong(const MessageLite& base) {
+          const RcChannel& this_ = static_cast<const RcChannel&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t RcChannel::ByteSizeLong() const {
+          const RcChannel& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.striker.RcChannel)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // uint32 time_boot_ms = 1 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_time_boot_ms() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_time_boot_ms());
+            }
+            // uint32 chan1_raw = 2 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan1_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan1_raw());
+            }
+            // uint32 chan2_raw = 3 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan2_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan2_raw());
+            }
+            // uint32 chan3_raw = 4 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan3_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan3_raw());
+            }
+            // uint32 chan4_raw = 5 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan4_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan4_raw());
+            }
+            // uint32 chan5_raw = 6 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan5_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan5_raw());
+            }
+            // uint32 chan6_raw = 7 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan6_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan6_raw());
+            }
+            // uint32 chan7_raw = 8 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan7_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan7_raw());
+            }
+            // uint32 chan8_raw = 9 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan8_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan8_raw());
+            }
+            // uint32 chan9_raw = 10 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan9_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan9_raw());
+            }
+            // uint32 chan10_raw = 11 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan10_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan10_raw());
+            }
+            // uint32 chan11_raw = 12 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan11_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan11_raw());
+            }
+            // uint32 chan12_raw = 13 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan12_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan12_raw());
+            }
+            // uint32 chan13_raw = 14 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan13_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan13_raw());
+            }
+            // uint32 chan14_raw = 15 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan14_raw() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chan14_raw());
+            }
+            // uint32 chan15_raw = 16 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan15_raw() != 0) {
+              total_size += 2 + ::_pbi::WireFormatLite::UInt32Size(
+                                              this_._internal_chan15_raw());
+            }
+            // uint32 chan16_raw = 17 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan16_raw() != 0) {
+              total_size += 2 + ::_pbi::WireFormatLite::UInt32Size(
+                                              this_._internal_chan16_raw());
+            }
+            // uint32 chan17_raw = 18 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan17_raw() != 0) {
+              total_size += 2 + ::_pbi::WireFormatLite::UInt32Size(
+                                              this_._internal_chan17_raw());
+            }
+            // uint32 chan18_raw = 19 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chan18_raw() != 0) {
+              total_size += 2 + ::_pbi::WireFormatLite::UInt32Size(
+                                              this_._internal_chan18_raw());
+            }
+            // uint32 chancount = 20 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_chancount() != 0) {
+              total_size += 2 + ::_pbi::WireFormatLite::UInt32Size(
+                                              this_._internal_chancount());
+            }
+            // uint32 rssi = 21 [(.mavsdk.options.default_value) = "0"];
+            if (this_._internal_rssi() != 0) {
+              total_size += 2 + ::_pbi::WireFormatLite::UInt32Size(
+                                              this_._internal_rssi());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void RcChannel::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<RcChannel*>(&to_msg);
+  auto& from = static_cast<const RcChannel&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.striker.RcChannel)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_time_boot_ms() != 0) {
+    _this->_impl_.time_boot_ms_ = from._impl_.time_boot_ms_;
+  }
+  if (from._internal_chan1_raw() != 0) {
+    _this->_impl_.chan1_raw_ = from._impl_.chan1_raw_;
+  }
+  if (from._internal_chan2_raw() != 0) {
+    _this->_impl_.chan2_raw_ = from._impl_.chan2_raw_;
+  }
+  if (from._internal_chan3_raw() != 0) {
+    _this->_impl_.chan3_raw_ = from._impl_.chan3_raw_;
+  }
+  if (from._internal_chan4_raw() != 0) {
+    _this->_impl_.chan4_raw_ = from._impl_.chan4_raw_;
+  }
+  if (from._internal_chan5_raw() != 0) {
+    _this->_impl_.chan5_raw_ = from._impl_.chan5_raw_;
+  }
+  if (from._internal_chan6_raw() != 0) {
+    _this->_impl_.chan6_raw_ = from._impl_.chan6_raw_;
+  }
+  if (from._internal_chan7_raw() != 0) {
+    _this->_impl_.chan7_raw_ = from._impl_.chan7_raw_;
+  }
+  if (from._internal_chan8_raw() != 0) {
+    _this->_impl_.chan8_raw_ = from._impl_.chan8_raw_;
+  }
+  if (from._internal_chan9_raw() != 0) {
+    _this->_impl_.chan9_raw_ = from._impl_.chan9_raw_;
+  }
+  if (from._internal_chan10_raw() != 0) {
+    _this->_impl_.chan10_raw_ = from._impl_.chan10_raw_;
+  }
+  if (from._internal_chan11_raw() != 0) {
+    _this->_impl_.chan11_raw_ = from._impl_.chan11_raw_;
+  }
+  if (from._internal_chan12_raw() != 0) {
+    _this->_impl_.chan12_raw_ = from._impl_.chan12_raw_;
+  }
+  if (from._internal_chan13_raw() != 0) {
+    _this->_impl_.chan13_raw_ = from._impl_.chan13_raw_;
+  }
+  if (from._internal_chan14_raw() != 0) {
+    _this->_impl_.chan14_raw_ = from._impl_.chan14_raw_;
+  }
+  if (from._internal_chan15_raw() != 0) {
+    _this->_impl_.chan15_raw_ = from._impl_.chan15_raw_;
+  }
+  if (from._internal_chan16_raw() != 0) {
+    _this->_impl_.chan16_raw_ = from._impl_.chan16_raw_;
+  }
+  if (from._internal_chan17_raw() != 0) {
+    _this->_impl_.chan17_raw_ = from._impl_.chan17_raw_;
+  }
+  if (from._internal_chan18_raw() != 0) {
+    _this->_impl_.chan18_raw_ = from._impl_.chan18_raw_;
+  }
+  if (from._internal_chancount() != 0) {
+    _this->_impl_.chancount_ = from._impl_.chancount_;
+  }
+  if (from._internal_rssi() != 0) {
+    _this->_impl_.rssi_ = from._impl_.rssi_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RcChannel::CopyFrom(const RcChannel& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.striker.RcChannel)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RcChannel::InternalSwap(RcChannel* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.rssi_)
+      + sizeof(RcChannel::_impl_.rssi_)
+      - PROTOBUF_FIELD_OFFSET(RcChannel, _impl_.time_boot_ms_)>(
+          reinterpret_cast<char*>(&_impl_.time_boot_ms_),
+          reinterpret_cast<char*>(&other->_impl_.time_boot_ms_));
+}
+
+::google::protobuf::Metadata RcChannel::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

@@ -127,6 +127,47 @@ public:
     friend std::ostream& operator<<(std::ostream& str, Striker::SysStatus const& sys_status);
 
     /**
+     * @brief RC_Channel type.
+     */
+    struct RcChannel {
+        uint32_t time_boot_ms{0}; /**< @brief */
+        uint32_t chan1_raw{0}; /**< @brief */
+        uint32_t chan2_raw{0}; /**< @brief */
+        uint32_t chan3_raw{0}; /**< @brief */
+        uint32_t chan4_raw{0}; /**< @brief */
+        uint32_t chan5_raw{0}; /**< @brief */
+        uint32_t chan6_raw{0}; /**< @brief */
+        uint32_t chan7_raw{0}; /**< @brief */
+        uint32_t chan8_raw{0}; /**< @brief */
+        uint32_t chan9_raw{0}; /**< @brief */
+        uint32_t chan10_raw{0}; /**< @brief */
+        uint32_t chan11_raw{0}; /**< @brief */
+        uint32_t chan12_raw{0}; /**< @brief */
+        uint32_t chan13_raw{0}; /**< @brief */
+        uint32_t chan14_raw{0}; /**< @brief */
+        uint32_t chan15_raw{0}; /**< @brief */
+        uint32_t chan16_raw{0}; /**< @brief */
+        uint32_t chan17_raw{0}; /**< @brief */
+        uint32_t chan18_raw{0}; /**< @brief */
+        uint32_t chancount{0}; /**< @brief */
+        uint32_t rssi{0}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `Striker::RcChannel` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const Striker::RcChannel& lhs, const Striker::RcChannel& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `Striker::RcChannel`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, Striker::RcChannel const& rc_channel);
+
+    /**
      * @brief Callback type for subscribe_heartbeat.
      */
     using HeartbeatCallback = std::function<void(Heartbeat)>;
@@ -179,6 +220,33 @@ public:
      * @return One SysStatus update.
      */
     SysStatus sys_status() const;
+
+    /**
+     * @brief Callback type for subscribe_rc_channel.
+     */
+    using RcChannelCallback = std::function<void(RcChannel)>;
+
+    /**
+     * @brief Handle type for subscribe_rc_channel.
+     */
+    using RcChannelHandle = Handle<RcChannel>;
+
+    /**
+     * @brief Subscribe to 'RC channel' updates.
+     */
+    RcChannelHandle subscribe_rc_channel(const RcChannelCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_rc_channel
+     */
+    void unsubscribe_rc_channel(RcChannelHandle handle);
+
+    /**
+     * @brief Poll for 'RcChannel' (blocking).
+     *
+     * @return One RcChannel update.
+     */
+    RcChannel rc_channel() const;
 
     /**
      * @brief Copy constructor.
