@@ -12,6 +12,7 @@ namespace mavsdk {
 using Heartbeat = Striker::Heartbeat;
 using SysStatus = Striker::SysStatus;
 using RcChannel = Striker::RcChannel;
+using Magnitometer = Striker::Magnitometer;
 
 Striker::Striker(System& system) : PluginBase(), _impl{std::make_unique<StrikerImpl>(system)} {}
 
@@ -65,6 +66,21 @@ void Striker::unsubscribe_rc_channel(RcChannelHandle handle)
 Striker::RcChannel Striker::rc_channel() const
 {
     return _impl->rc_channel();
+}
+
+Striker::MagnitometerHandle Striker::subscribe_magnitometer(const MagnitometerCallback& callback)
+{
+    return _impl->subscribe_magnitometer(callback);
+}
+
+void Striker::unsubscribe_magnitometer(MagnitometerHandle handle)
+{
+    _impl->unsubscribe_magnitometer(handle);
+}
+
+Striker::Magnitometer Striker::magnitometer() const
+{
+    return _impl->magnitometer();
 }
 
 bool operator==(const Striker::Heartbeat& lhs, const Striker::Heartbeat& rhs)
@@ -177,6 +193,24 @@ std::ostream& operator<<(std::ostream& str, Striker::RcChannel const& rc_channel
     str << "    chan18_raw: " << rc_channel.chan18_raw << '\n';
     str << "    chancount: " << rc_channel.chancount << '\n';
     str << "    rssi: " << rc_channel.rssi << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const Striker::Magnitometer& lhs, const Striker::Magnitometer& rhs)
+{
+    return ((std::isnan(rhs.x) && std::isnan(lhs.x)) || rhs.x == lhs.x) &&
+           ((std::isnan(rhs.y) && std::isnan(lhs.y)) || rhs.y == lhs.y) &&
+           ((std::isnan(rhs.z) && std::isnan(lhs.z)) || rhs.z == lhs.z);
+}
+
+std::ostream& operator<<(std::ostream& str, Striker::Magnitometer const& magnitometer)
+{
+    str << std::setprecision(15);
+    str << "magnitometer:" << '\n' << "{\n";
+    str << "    x: " << magnitometer.x << '\n';
+    str << "    y: " << magnitometer.y << '\n';
+    str << "    z: " << magnitometer.z << '\n';
     str << '}';
     return str;
 }

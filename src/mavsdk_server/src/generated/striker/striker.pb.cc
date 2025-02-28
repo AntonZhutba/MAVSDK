@@ -104,6 +104,24 @@ struct SubscribeRcChannelRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeRcChannelRequestDefaultTypeInternal _SubscribeRcChannelRequest_default_instance_;
               template <typename>
+PROTOBUF_CONSTEXPR SubscribeMagnitometerRequest::SubscribeMagnitometerRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct SubscribeMagnitometerRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeMagnitometerRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeMagnitometerRequestDefaultTypeInternal() {}
+  union {
+    SubscribeMagnitometerRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeMagnitometerRequestDefaultTypeInternal _SubscribeMagnitometerRequest_default_instance_;
+              template <typename>
 PROTOBUF_CONSTEXPR SubscribeHeartbeatRequest::SubscribeHeartbeatRequest(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
@@ -166,6 +184,33 @@ struct RcChannelDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RcChannelDefaultTypeInternal _RcChannel_default_instance_;
+
+inline constexpr Magnitometer::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : x_{0},
+        y_{0},
+        z_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Magnitometer::Magnitometer(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct MagnitometerDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MagnitometerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MagnitometerDefaultTypeInternal() {}
+  union {
+    Magnitometer _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MagnitometerDefaultTypeInternal _Magnitometer_default_instance_;
 
 inline constexpr Heartbeat::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -246,6 +291,31 @@ struct RcChannelResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RcChannelResponseDefaultTypeInternal _RcChannelResponse_default_instance_;
+
+inline constexpr MagnitometerResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        magnitometer_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR MagnitometerResponse::MagnitometerResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct MagnitometerResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MagnitometerResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MagnitometerResponseDefaultTypeInternal() {}
+  union {
+    MagnitometerResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MagnitometerResponseDefaultTypeInternal _MagnitometerResponse_default_instance_;
 
 inline constexpr HeartbeatResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -336,6 +406,24 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannelResponse, _impl_.rc_channel_),
         0,
         ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SubscribeMagnitometerRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::MagnitometerResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::MagnitometerResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::MagnitometerResponse, _impl_.magnitometer_),
+        0,
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Heartbeat, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -402,6 +490,17 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chan18_raw_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.chancount_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RcChannel, _impl_.rssi_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Magnitometer, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Magnitometer, _impl_.x_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Magnitometer, _impl_.y_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Magnitometer, _impl_.z_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -412,9 +511,12 @@ static const ::_pbi::MigrationSchema
         {26, 35, -1, sizeof(::mavsdk::rpc::striker::SysStatusResponse)},
         {36, -1, -1, sizeof(::mavsdk::rpc::striker::SubscribeRcChannelRequest)},
         {44, 53, -1, sizeof(::mavsdk::rpc::striker::RcChannelResponse)},
-        {54, -1, -1, sizeof(::mavsdk::rpc::striker::Heartbeat)},
-        {68, -1, -1, sizeof(::mavsdk::rpc::striker::SysStatus)},
-        {92, -1, -1, sizeof(::mavsdk::rpc::striker::RcChannel)},
+        {54, -1, -1, sizeof(::mavsdk::rpc::striker::SubscribeMagnitometerRequest)},
+        {62, 71, -1, sizeof(::mavsdk::rpc::striker::MagnitometerResponse)},
+        {72, -1, -1, sizeof(::mavsdk::rpc::striker::Heartbeat)},
+        {86, -1, -1, sizeof(::mavsdk::rpc::striker::SysStatus)},
+        {110, -1, -1, sizeof(::mavsdk::rpc::striker::RcChannel)},
+        {139, -1, -1, sizeof(::mavsdk::rpc::striker::Magnitometer)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::striker::_SubscribeHeartbeatRequest_default_instance_._instance,
@@ -423,9 +525,12 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::striker::_SysStatusResponse_default_instance_._instance,
     &::mavsdk::rpc::striker::_SubscribeRcChannelRequest_default_instance_._instance,
     &::mavsdk::rpc::striker::_RcChannelResponse_default_instance_._instance,
+    &::mavsdk::rpc::striker::_SubscribeMagnitometerRequest_default_instance_._instance,
+    &::mavsdk::rpc::striker::_MagnitometerResponse_default_instance_._instance,
     &::mavsdk::rpc::striker::_Heartbeat_default_instance_._instance,
     &::mavsdk::rpc::striker::_SysStatus_default_instance_._instance,
     &::mavsdk::rpc::striker::_RcChannel_default_instance_._instance,
+    &::mavsdk::rpc::striker::_Magnitometer_default_instance_._instance,
 };
 const char descriptor_table_protodef_striker_2fstriker_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -438,47 +543,54 @@ const char descriptor_table_protodef_striker_2fstriker_2eproto[] ABSL_ATTRIBUTE_
     "vsdk.rpc.striker.SysStatus\"\033\n\031SubscribeR"
     "cChannelRequest\"F\n\021RcChannelResponse\0221\n\n"
     "rc_channel\030\001 \001(\0132\035.mavsdk.rpc.striker.Rc"
-    "Channel\"\204\001\n\tHeartbeat\022\023\n\013custom_mode\030\001 \001"
-    "(\r\022\014\n\004type\030\002 \001(\r\022\021\n\tautopilot\030\003 \001(\r\022\021\n\tb"
-    "ase_mode\030\004 \001(\r\022\025\n\rsystem_status\030\005 \001(\r\022\027\n"
-    "\017mavlink_version\030\006 \001(\r\"\376\003\n\tSysStatus\022\'\n\037"
-    "onboard_control_sensors_present\030\001 \001(\r\022\'\n"
-    "\037onboard_control_sensors_enabled\030\002 \001(\r\022&"
-    "\n\036onboard_control_sensors_health\030\003 \001(\r\022\014"
-    "\n\004load\030\004 \001(\r\022\027\n\017voltage_battery\030\005 \001(\r\022\027\n"
-    "\017current_battery\030\006 \001(\005\022\026\n\016drop_rate_comm"
-    "\030\007 \001(\r\022\023\n\013errors_comm\030\010 \001(\r\022\025\n\rerrors_co"
-    "unt1\030\t \001(\r\022\025\n\rerrors_count2\030\n \001(\r\022\025\n\rerr"
-    "ors_count3\030\013 \001(\r\022\025\n\rerrors_count4\030\014 \001(\r\022"
-    "\031\n\021battery_remaining\030\r \001(\005\0220\n(onboard_co"
-    "ntrol_sensors_present_extended\030\016 \001(\r\0220\n("
-    "onboard_control_sensors_enabled_extended"
-    "\030\017 \001(\r\022/\n\'onboard_control_sensors_health"
-    "_extended\030\020 \001(\r\"\264\004\n\tRcChannel\022\033\n\014time_bo"
-    "ot_ms\030\001 \001(\rB\005\202\265\030\0010\022\030\n\tchan1_raw\030\002 \001(\rB\005\202"
-    "\265\030\0010\022\030\n\tchan2_raw\030\003 \001(\rB\005\202\265\030\0010\022\030\n\tchan3_"
-    "raw\030\004 \001(\rB\005\202\265\030\0010\022\030\n\tchan4_raw\030\005 \001(\rB\005\202\265\030"
-    "\0010\022\030\n\tchan5_raw\030\006 \001(\rB\005\202\265\030\0010\022\030\n\tchan6_ra"
-    "w\030\007 \001(\rB\005\202\265\030\0010\022\030\n\tchan7_raw\030\010 \001(\rB\005\202\265\030\0010"
-    "\022\030\n\tchan8_raw\030\t \001(\rB\005\202\265\030\0010\022\030\n\tchan9_raw\030"
-    "\n \001(\rB\005\202\265\030\0010\022\031\n\nchan10_raw\030\013 \001(\rB\005\202\265\030\0010\022"
-    "\031\n\nchan11_raw\030\014 \001(\rB\005\202\265\030\0010\022\031\n\nchan12_raw"
-    "\030\r \001(\rB\005\202\265\030\0010\022\031\n\nchan13_raw\030\016 \001(\rB\005\202\265\030\0010"
-    "\022\031\n\nchan14_raw\030\017 \001(\rB\005\202\265\030\0010\022\031\n\nchan15_ra"
-    "w\030\020 \001(\rB\005\202\265\030\0010\022\031\n\nchan16_raw\030\021 \001(\rB\005\202\265\030\001"
-    "0\022\031\n\nchan17_raw\030\022 \001(\rB\005\202\265\030\0010\022\031\n\nchan18_r"
-    "aw\030\023 \001(\rB\005\202\265\030\0010\022\030\n\tchancount\030\024 \001(\rB\005\202\265\030\001"
-    "0\022\023\n\004rssi\030\025 \001(\rB\005\202\265\030\00102\340\002\n\016StrikerServic"
-    "e\022n\n\022SubscribeHeartbeat\022-.mavsdk.rpc.str"
-    "iker.SubscribeHeartbeatRequest\032%.mavsdk."
-    "rpc.striker.HeartbeatResponse\"\0000\001\022n\n\022Sub"
-    "scribeSysStatus\022-.mavsdk.rpc.striker.Sub"
-    "scribeSysStatusRequest\032%.mavsdk.rpc.stri"
-    "ker.SysStatusResponse\"\0000\001\022n\n\022SubscribeRc"
-    "Channel\022-.mavsdk.rpc.striker.SubscribeRc"
-    "ChannelRequest\032%.mavsdk.rpc.striker.RcCh"
-    "annelResponse\"\0000\001B!\n\021io.mavsdk.strikerB\014"
-    "StrikerProtob\006proto3"
+    "Channel\"\036\n\034SubscribeMagnitometerRequest\""
+    "N\n\024MagnitometerResponse\0226\n\014magnitometer\030"
+    "\001 \001(\0132 .mavsdk.rpc.striker.Magnitometer\""
+    "\204\001\n\tHeartbeat\022\023\n\013custom_mode\030\001 \001(\r\022\014\n\004ty"
+    "pe\030\002 \001(\r\022\021\n\tautopilot\030\003 \001(\r\022\021\n\tbase_mode"
+    "\030\004 \001(\r\022\025\n\rsystem_status\030\005 \001(\r\022\027\n\017mavlink"
+    "_version\030\006 \001(\r\"\376\003\n\tSysStatus\022\'\n\037onboard_"
+    "control_sensors_present\030\001 \001(\r\022\'\n\037onboard"
+    "_control_sensors_enabled\030\002 \001(\r\022&\n\036onboar"
+    "d_control_sensors_health\030\003 \001(\r\022\014\n\004load\030\004"
+    " \001(\r\022\027\n\017voltage_battery\030\005 \001(\r\022\027\n\017current"
+    "_battery\030\006 \001(\005\022\026\n\016drop_rate_comm\030\007 \001(\r\022\023"
+    "\n\013errors_comm\030\010 \001(\r\022\025\n\rerrors_count1\030\t \001"
+    "(\r\022\025\n\rerrors_count2\030\n \001(\r\022\025\n\rerrors_coun"
+    "t3\030\013 \001(\r\022\025\n\rerrors_count4\030\014 \001(\r\022\031\n\021batte"
+    "ry_remaining\030\r \001(\005\0220\n(onboard_control_se"
+    "nsors_present_extended\030\016 \001(\r\0220\n(onboard_"
+    "control_sensors_enabled_extended\030\017 \001(\r\022/"
+    "\n\'onboard_control_sensors_health_extende"
+    "d\030\020 \001(\r\"\264\004\n\tRcChannel\022\033\n\014time_boot_ms\030\001 "
+    "\001(\rB\005\202\265\030\0010\022\030\n\tchan1_raw\030\002 \001(\rB\005\202\265\030\0010\022\030\n\t"
+    "chan2_raw\030\003 \001(\rB\005\202\265\030\0010\022\030\n\tchan3_raw\030\004 \001("
+    "\rB\005\202\265\030\0010\022\030\n\tchan4_raw\030\005 \001(\rB\005\202\265\030\0010\022\030\n\tch"
+    "an5_raw\030\006 \001(\rB\005\202\265\030\0010\022\030\n\tchan6_raw\030\007 \001(\rB"
+    "\005\202\265\030\0010\022\030\n\tchan7_raw\030\010 \001(\rB\005\202\265\030\0010\022\030\n\tchan"
+    "8_raw\030\t \001(\rB\005\202\265\030\0010\022\030\n\tchan9_raw\030\n \001(\rB\005\202"
+    "\265\030\0010\022\031\n\nchan10_raw\030\013 \001(\rB\005\202\265\030\0010\022\031\n\nchan1"
+    "1_raw\030\014 \001(\rB\005\202\265\030\0010\022\031\n\nchan12_raw\030\r \001(\rB\005"
+    "\202\265\030\0010\022\031\n\nchan13_raw\030\016 \001(\rB\005\202\265\030\0010\022\031\n\nchan"
+    "14_raw\030\017 \001(\rB\005\202\265\030\0010\022\031\n\nchan15_raw\030\020 \001(\rB"
+    "\005\202\265\030\0010\022\031\n\nchan16_raw\030\021 \001(\rB\005\202\265\030\0010\022\031\n\ncha"
+    "n17_raw\030\022 \001(\rB\005\202\265\030\0010\022\031\n\nchan18_raw\030\023 \001(\r"
+    "B\005\202\265\030\0010\022\030\n\tchancount\030\024 \001(\rB\005\202\265\030\0010\022\023\n\004rss"
+    "i\030\025 \001(\rB\005\202\265\030\0010\"/\n\014Magnitometer\022\t\n\001x\030\001 \001("
+    "\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\0012\331\003\n\016StrikerServi"
+    "ce\022n\n\022SubscribeHeartbeat\022-.mavsdk.rpc.st"
+    "riker.SubscribeHeartbeatRequest\032%.mavsdk"
+    ".rpc.striker.HeartbeatResponse\"\0000\001\022n\n\022Su"
+    "bscribeSysStatus\022-.mavsdk.rpc.striker.Su"
+    "bscribeSysStatusRequest\032%.mavsdk.rpc.str"
+    "iker.SysStatusResponse\"\0000\001\022n\n\022SubscribeR"
+    "cChannel\022-.mavsdk.rpc.striker.SubscribeR"
+    "cChannelRequest\032%.mavsdk.rpc.striker.RcC"
+    "hannelResponse\"\0000\001\022w\n\025SubscribeMagnitome"
+    "ter\0220.mavsdk.rpc.striker.SubscribeMagnit"
+    "ometerRequest\032(.mavsdk.rpc.striker.Magni"
+    "tometerResponse\"\0000\001B!\n\021io.mavsdk.striker"
+    "B\014StrikerProtob\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_striker_2fstriker_2eproto_deps[1] =
     {
@@ -488,13 +600,13 @@ static ::absl::once_flag descriptor_table_striker_2fstriker_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_striker_2fstriker_2eproto = {
     false,
     false,
-    1980,
+    2262,
     descriptor_table_protodef_striker_2fstriker_2eproto,
     "striker/striker.proto",
     &descriptor_table_striker_2fstriker_2eproto_once,
     descriptor_table_striker_2fstriker_2eproto_deps,
     1,
-    9,
+    12,
     schemas,
     file_default_instances,
     TableStruct_striker_2fstriker_2eproto::offsets,
@@ -1561,6 +1673,359 @@ void RcChannelResponse::InternalSwap(RcChannelResponse* PROTOBUF_RESTRICT other)
 }
 
 ::google::protobuf::Metadata RcChannelResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SubscribeMagnitometerRequest::_Internal {
+ public:
+};
+
+SubscribeMagnitometerRequest::SubscribeMagnitometerRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.SubscribeMagnitometerRequest)
+}
+SubscribeMagnitometerRequest::SubscribeMagnitometerRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeMagnitometerRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SubscribeMagnitometerRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.SubscribeMagnitometerRequest)
+}
+
+inline void* SubscribeMagnitometerRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SubscribeMagnitometerRequest(arena);
+}
+constexpr auto SubscribeMagnitometerRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SubscribeMagnitometerRequest),
+                                            alignof(SubscribeMagnitometerRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SubscribeMagnitometerRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SubscribeMagnitometerRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SubscribeMagnitometerRequest::MergeImpl,
+        ::google::protobuf::internal::ZeroFieldsBase::GetNewImpl<SubscribeMagnitometerRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SubscribeMagnitometerRequest::SharedDtor,
+        ::google::protobuf::internal::ZeroFieldsBase::GetClearImpl<SubscribeMagnitometerRequest>(), &SubscribeMagnitometerRequest::ByteSizeLong,
+            &SubscribeMagnitometerRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SubscribeMagnitometerRequest, _impl_._cached_size_),
+        false,
+    },
+    &SubscribeMagnitometerRequest::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SubscribeMagnitometerRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 0, 0, 0, 2> SubscribeMagnitometerRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    0, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967295,  // skipmap
+    offsetof(decltype(_table_), field_names),  // no field_entries
+    0,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::SubscribeMagnitometerRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }},
+  // no field_entries, or aux_entries
+  {{
+  }},
+};
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeMagnitometerRequest::GetMetadata() const {
+  return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class MagnitometerResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<MagnitometerResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(MagnitometerResponse, _impl_._has_bits_);
+};
+
+MagnitometerResponse::MagnitometerResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.MagnitometerResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE MagnitometerResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::mavsdk::rpc::striker::MagnitometerResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+MagnitometerResponse::MagnitometerResponse(
+    ::google::protobuf::Arena* arena,
+    const MagnitometerResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  MagnitometerResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.magnitometer_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::Magnitometer>(
+                              arena, *from._impl_.magnitometer_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.MagnitometerResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE MagnitometerResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void MagnitometerResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.magnitometer_ = {};
+}
+MagnitometerResponse::~MagnitometerResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.MagnitometerResponse)
+  SharedDtor(*this);
+}
+inline void MagnitometerResponse::SharedDtor(MessageLite& self) {
+  MagnitometerResponse& this_ = static_cast<MagnitometerResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.magnitometer_;
+  this_._impl_.~Impl_();
+}
+
+inline void* MagnitometerResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) MagnitometerResponse(arena);
+}
+constexpr auto MagnitometerResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(MagnitometerResponse),
+                                            alignof(MagnitometerResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull MagnitometerResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_MagnitometerResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &MagnitometerResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<MagnitometerResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &MagnitometerResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<MagnitometerResponse>(), &MagnitometerResponse::ByteSizeLong,
+            &MagnitometerResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(MagnitometerResponse, _impl_._cached_size_),
+        false,
+    },
+    &MagnitometerResponse::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* MagnitometerResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> MagnitometerResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(MagnitometerResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::MagnitometerResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .mavsdk.rpc.striker.Magnitometer magnitometer = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(MagnitometerResponse, _impl_.magnitometer_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.striker.Magnitometer magnitometer = 1;
+    {PROTOBUF_FIELD_OFFSET(MagnitometerResponse, _impl_.magnitometer_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::Magnitometer>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void MagnitometerResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.striker.MagnitometerResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.magnitometer_ != nullptr);
+    _impl_.magnitometer_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* MagnitometerResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const MagnitometerResponse& this_ = static_cast<const MagnitometerResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* MagnitometerResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const MagnitometerResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.striker.MagnitometerResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .mavsdk.rpc.striker.Magnitometer magnitometer = 1;
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.magnitometer_, this_._impl_.magnitometer_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.striker.MagnitometerResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t MagnitometerResponse::ByteSizeLong(const MessageLite& base) {
+          const MagnitometerResponse& this_ = static_cast<const MagnitometerResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t MagnitometerResponse::ByteSizeLong() const {
+          const MagnitometerResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.striker.MagnitometerResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .mavsdk.rpc.striker.Magnitometer magnitometer = 1;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.magnitometer_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void MagnitometerResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<MagnitometerResponse*>(&to_msg);
+  auto& from = static_cast<const MagnitometerResponse&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.striker.MagnitometerResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.magnitometer_ != nullptr);
+    if (_this->_impl_.magnitometer_ == nullptr) {
+      _this->_impl_.magnitometer_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::Magnitometer>(arena, *from._impl_.magnitometer_);
+    } else {
+      _this->_impl_.magnitometer_->MergeFrom(*from._impl_.magnitometer_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MagnitometerResponse::CopyFrom(const MagnitometerResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.striker.MagnitometerResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void MagnitometerResponse::InternalSwap(MagnitometerResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.magnitometer_, other->_impl_.magnitometer_);
+}
+
+::google::protobuf::Metadata MagnitometerResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -3074,6 +3539,266 @@ void RcChannel::InternalSwap(RcChannel* PROTOBUF_RESTRICT other) {
 }
 
 ::google::protobuf::Metadata RcChannel::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class Magnitometer::_Internal {
+ public:
+};
+
+Magnitometer::Magnitometer(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.Magnitometer)
+}
+Magnitometer::Magnitometer(
+    ::google::protobuf::Arena* arena, const Magnitometer& from)
+    : Magnitometer(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE Magnitometer::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void Magnitometer::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, x_),
+           0,
+           offsetof(Impl_, z_) -
+               offsetof(Impl_, x_) +
+               sizeof(Impl_::z_));
+}
+Magnitometer::~Magnitometer() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.Magnitometer)
+  SharedDtor(*this);
+}
+inline void Magnitometer::SharedDtor(MessageLite& self) {
+  Magnitometer& this_ = static_cast<Magnitometer&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* Magnitometer::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) Magnitometer(arena);
+}
+constexpr auto Magnitometer::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(Magnitometer),
+                                            alignof(Magnitometer));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull Magnitometer::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_Magnitometer_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &Magnitometer::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<Magnitometer>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &Magnitometer::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<Magnitometer>(), &Magnitometer::ByteSizeLong,
+            &Magnitometer::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_._cached_size_),
+        false,
+    },
+    &Magnitometer::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* Magnitometer::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Magnitometer::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::Magnitometer>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // double x = 1;
+    {::_pbi::TcParser::FastF64S1,
+     {9, 63, 0, PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.x_)}},
+    // double y = 2;
+    {::_pbi::TcParser::FastF64S1,
+     {17, 63, 0, PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.y_)}},
+    // double z = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 63, 0, PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.z_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // double x = 1;
+    {PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.x_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double y = 2;
+    {PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.y_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double z = 3;
+    {PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.z_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void Magnitometer::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.striker.Magnitometer)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.x_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.z_) -
+      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.z_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* Magnitometer::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const Magnitometer& this_ = static_cast<const Magnitometer&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* Magnitometer::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const Magnitometer& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.striker.Magnitometer)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // double x = 1;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_x()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                1, this_._internal_x(), target);
+          }
+
+          // double y = 2;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_y()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                2, this_._internal_y(), target);
+          }
+
+          // double z = 3;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_z()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                3, this_._internal_z(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.striker.Magnitometer)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t Magnitometer::ByteSizeLong(const MessageLite& base) {
+          const Magnitometer& this_ = static_cast<const Magnitometer&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t Magnitometer::ByteSizeLong() const {
+          const Magnitometer& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.striker.Magnitometer)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // double x = 1;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_x()) != 0) {
+              total_size += 9;
+            }
+            // double y = 2;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_y()) != 0) {
+              total_size += 9;
+            }
+            // double z = 3;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_z()) != 0) {
+              total_size += 9;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void Magnitometer::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<Magnitometer*>(&to_msg);
+  auto& from = static_cast<const Magnitometer&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.striker.Magnitometer)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (::absl::bit_cast<::uint64_t>(from._internal_x()) != 0) {
+    _this->_impl_.x_ = from._impl_.x_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_y()) != 0) {
+    _this->_impl_.y_ = from._impl_.y_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_z()) != 0) {
+    _this->_impl_.z_ = from._impl_.z_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Magnitometer::CopyFrom(const Magnitometer& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.striker.Magnitometer)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void Magnitometer::InternalSwap(Magnitometer* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.z_)
+      + sizeof(Magnitometer::_impl_.z_)
+      - PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.x_)>(
+          reinterpret_cast<char*>(&_impl_.x_),
+          reinterpret_cast<char*>(&other->_impl_.x_));
+}
+
+::google::protobuf::Metadata Magnitometer::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

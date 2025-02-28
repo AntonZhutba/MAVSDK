@@ -41,6 +41,11 @@ void StrikerImpl::init()
         MAVLINK_MSG_ID_RC_CHANNELS,
         [this](const mavlink_message_t& message) { process_rc_channel(message); },
         this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_HIGHRES_IMU,
+        [this](const mavlink_message_t& message) { process_magnitometer(message); },
+        this);
 }
 
 void StrikerImpl::deinit()
@@ -159,7 +164,9 @@ void StrikerImpl::process_sys_status(const mavlink_message_t& message)
         sys_status(), [this](const auto& func) { _system_impl->call_user_callback(func); });
 }
 
-Striker::RcChannelHandle StrikerImpl::subscribe_rc_channel(const Striker::RcChannelCallback& callback)
+// -- Rc channels --
+Striker::RcChannelHandle
+StrikerImpl::subscribe_rc_channel(const Striker::RcChannelCallback& callback)
 {
     std::lock_guard<std::mutex> lock(_subscription_rc_channel_mutex);
     return _rc_channel_subscriptions.subscribe(callback);
@@ -216,6 +223,48 @@ void StrikerImpl::set_rc_channel(const mavlink_rc_channels_t& rc_channel)
     _rc_channel.chan18_raw = rc_channel.chan18_raw;
 
     _rc_channel.rssi = rc_channel.rssi;
+}
+
+// -- Magnitometer --
+
+Striker::MagnitometerHandle
+StrikerImpl::subscribe_magnitometer(const Striker::MagnitometerCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_magnitometer_mutex);
+    return _magnitometer_subscriptions.subscribe(callback);
+}
+
+void StrikerImpl::unsubscribe_magnitometer(Striker::MagnitometerHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_magnitometer_mutex);
+    _magnitometer_subscriptions.unsubscribe(handle);
+}
+
+Striker::Magnitometer StrikerImpl::magnitometer() const
+{
+    std::lock_guard<std::mutex> lock(_magnitometer_mutex);
+    return _magnitometer;
+}
+
+void StrikerImpl::process_magnitometer(const mavlink_message_t& message)
+{
+    mavlink_highres_imu_t imu;
+    mavlink_msg_highres_imu_decode(&message, &imu);
+
+    set_magnitometer(imu);
+
+    std::lock_guard<std::mutex> lock(_subscription_magnitometer_mutex);
+    _magnitometer_subscriptions.queue(
+        magnitometer(), [this](const auto& func) { _system_impl->call_user_callback(func); });
+}
+
+void StrikerImpl::set_magnitometer(const mavlink_highres_imu_t& mav_magnitometer)
+{
+    std::lock_guard<std::mutex> lock(_magnitometer_mutex);
+
+    _magnitometer.x = mav_magnitometer.xmag;
+    _magnitometer.y = mav_magnitometer.ymag;
+    _magnitometer.z = mav_magnitometer.zmag;
 }
 
 } // namespace mavsdk

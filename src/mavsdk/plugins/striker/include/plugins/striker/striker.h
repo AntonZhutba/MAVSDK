@@ -168,6 +168,29 @@ public:
     friend std::ostream& operator<<(std::ostream& str, Striker::RcChannel const& rc_channel);
 
     /**
+     * @brief
+     */
+    struct Magnitometer {
+        double x{}; /**< @brief */
+        double y{}; /**< @brief */
+        double z{}; /**< @brief */
+    };
+
+    /**
+     * @brief Equal operator to compare two `Striker::Magnitometer` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const Striker::Magnitometer& lhs, const Striker::Magnitometer& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `Striker::Magnitometer`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, Striker::Magnitometer const& magnitometer);
+
+    /**
      * @brief Callback type for subscribe_heartbeat.
      */
     using HeartbeatCallback = std::function<void(Heartbeat)>;
@@ -247,6 +270,33 @@ public:
      * @return One RcChannel update.
      */
     RcChannel rc_channel() const;
+
+    /**
+     * @brief Callback type for subscribe_magnitometer.
+     */
+    using MagnitometerCallback = std::function<void(Magnitometer)>;
+
+    /**
+     * @brief Handle type for subscribe_magnitometer.
+     */
+    using MagnitometerHandle = Handle<Magnitometer>;
+
+    /**
+     * @brief Subscribe to 'Magnitometer' updates.
+     */
+    MagnitometerHandle subscribe_magnitometer(const MagnitometerCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_magnitometer
+     */
+    void unsubscribe_magnitometer(MagnitometerHandle handle);
+
+    /**
+     * @brief Poll for 'Magnitometer' (blocking).
+     *
+     * @return One Magnitometer update.
+     */
+    Magnitometer magnitometer() const;
 
     /**
      * @brief Copy constructor.

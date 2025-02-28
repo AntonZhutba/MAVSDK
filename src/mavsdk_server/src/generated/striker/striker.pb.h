@@ -62,6 +62,12 @@ extern HeartbeatDefaultTypeInternal _Heartbeat_default_instance_;
 class HeartbeatResponse;
 struct HeartbeatResponseDefaultTypeInternal;
 extern HeartbeatResponseDefaultTypeInternal _HeartbeatResponse_default_instance_;
+class Magnitometer;
+struct MagnitometerDefaultTypeInternal;
+extern MagnitometerDefaultTypeInternal _Magnitometer_default_instance_;
+class MagnitometerResponse;
+struct MagnitometerResponseDefaultTypeInternal;
+extern MagnitometerResponseDefaultTypeInternal _MagnitometerResponse_default_instance_;
 class RcChannel;
 struct RcChannelDefaultTypeInternal;
 extern RcChannelDefaultTypeInternal _RcChannel_default_instance_;
@@ -71,6 +77,9 @@ extern RcChannelResponseDefaultTypeInternal _RcChannelResponse_default_instance_
 class SubscribeHeartbeatRequest;
 struct SubscribeHeartbeatRequestDefaultTypeInternal;
 extern SubscribeHeartbeatRequestDefaultTypeInternal _SubscribeHeartbeatRequest_default_instance_;
+class SubscribeMagnitometerRequest;
+struct SubscribeMagnitometerRequestDefaultTypeInternal;
+extern SubscribeMagnitometerRequestDefaultTypeInternal _SubscribeMagnitometerRequest_default_instance_;
 class SubscribeRcChannelRequest;
 struct SubscribeRcChannelRequestDefaultTypeInternal;
 extern SubscribeRcChannelRequestDefaultTypeInternal _SubscribeRcChannelRequest_default_instance_;
@@ -159,7 +168,7 @@ class SysStatus final : public ::google::protobuf::Message
     return reinterpret_cast<const SysStatus*>(
         &_SysStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(SysStatus& a, SysStatus& b) { a.Swap(&b); }
   inline void Swap(SysStatus* other) {
     if (other == this) return;
@@ -760,6 +769,151 @@ class SubscribeRcChannelRequest final : public ::google::protobuf::internal::Zer
 };
 // -------------------------------------------------------------------
 
+class SubscribeMagnitometerRequest final : public ::google::protobuf::internal::ZeroFieldsBase
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.SubscribeMagnitometerRequest) */ {
+ public:
+  inline SubscribeMagnitometerRequest() : SubscribeMagnitometerRequest(nullptr) {}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SubscribeMagnitometerRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SubscribeMagnitometerRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SubscribeMagnitometerRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SubscribeMagnitometerRequest(const SubscribeMagnitometerRequest& from) : SubscribeMagnitometerRequest(nullptr, from) {}
+  inline SubscribeMagnitometerRequest(SubscribeMagnitometerRequest&& from) noexcept
+      : SubscribeMagnitometerRequest(nullptr, std::move(from)) {}
+  inline SubscribeMagnitometerRequest& operator=(const SubscribeMagnitometerRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubscribeMagnitometerRequest& operator=(SubscribeMagnitometerRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubscribeMagnitometerRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubscribeMagnitometerRequest* internal_default_instance() {
+    return reinterpret_cast<const SubscribeMagnitometerRequest*>(
+        &_SubscribeMagnitometerRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 6;
+  friend void swap(SubscribeMagnitometerRequest& a, SubscribeMagnitometerRequest& b) { a.Swap(&b); }
+  inline void Swap(SubscribeMagnitometerRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubscribeMagnitometerRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubscribeMagnitometerRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<SubscribeMagnitometerRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SubscribeMagnitometerRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SubscribeMagnitometerRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.SubscribeMagnitometerRequest"; }
+
+ protected:
+  explicit SubscribeMagnitometerRequest(::google::protobuf::Arena* arena);
+  SubscribeMagnitometerRequest(::google::protobuf::Arena* arena, const SubscribeMagnitometerRequest& from);
+  SubscribeMagnitometerRequest(::google::protobuf::Arena* arena, SubscribeMagnitometerRequest&& from) noexcept
+      : SubscribeMagnitometerRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.SubscribeMagnitometerRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 0, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SubscribeMagnitometerRequest& from_msg);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
 class SubscribeHeartbeatRequest final : public ::google::protobuf::internal::ZeroFieldsBase
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.SubscribeHeartbeatRequest) */ {
  public:
@@ -964,7 +1118,7 @@ class RcChannel final : public ::google::protobuf::Message
     return reinterpret_cast<const RcChannel*>(
         &_RcChannel_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(RcChannel& a, RcChannel& b) { a.Swap(&b); }
   inline void Swap(RcChannel* other) {
     if (other == this) return;
@@ -1335,6 +1489,220 @@ class RcChannel final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class Magnitometer final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.Magnitometer) */ {
+ public:
+  inline Magnitometer() : Magnitometer(nullptr) {}
+  ~Magnitometer() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(Magnitometer* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(Magnitometer));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Magnitometer(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline Magnitometer(const Magnitometer& from) : Magnitometer(nullptr, from) {}
+  inline Magnitometer(Magnitometer&& from) noexcept
+      : Magnitometer(nullptr, std::move(from)) {}
+  inline Magnitometer& operator=(const Magnitometer& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Magnitometer& operator=(Magnitometer&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Magnitometer& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Magnitometer* internal_default_instance() {
+    return reinterpret_cast<const Magnitometer*>(
+        &_Magnitometer_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 11;
+  friend void swap(Magnitometer& a, Magnitometer& b) { a.Swap(&b); }
+  inline void Swap(Magnitometer* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Magnitometer* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Magnitometer* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<Magnitometer>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Magnitometer& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const Magnitometer& from) { Magnitometer::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(Magnitometer* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.Magnitometer"; }
+
+ protected:
+  explicit Magnitometer(::google::protobuf::Arena* arena);
+  Magnitometer(::google::protobuf::Arena* arena, const Magnitometer& from);
+  Magnitometer(::google::protobuf::Arena* arena, Magnitometer&& from) noexcept
+      : Magnitometer(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+    kZFieldNumber = 3,
+  };
+  // double x = 1;
+  void clear_x() ;
+  double x() const;
+  void set_x(double value);
+
+  private:
+  double _internal_x() const;
+  void _internal_set_x(double value);
+
+  public:
+  // double y = 2;
+  void clear_y() ;
+  double y() const;
+  void set_y(double value);
+
+  private:
+  double _internal_y() const;
+  void _internal_set_y(double value);
+
+  public:
+  // double z = 3;
+  void clear_z() ;
+  double z() const;
+  void set_z(double value);
+
+  private:
+  double _internal_z() const;
+  void _internal_set_z(double value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.Magnitometer)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const Magnitometer& from_msg);
+    double x_;
+    double y_;
+    double z_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Heartbeat final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.Heartbeat) */ {
  public:
@@ -1394,7 +1762,7 @@ class Heartbeat final : public ::google::protobuf::Message
     return reinterpret_cast<const Heartbeat*>(
         &_Heartbeat_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 8;
   friend void swap(Heartbeat& a, Heartbeat& b) { a.Swap(&b); }
   inline void Swap(Heartbeat* other) {
     if (other == this) return;
@@ -1977,6 +2345,202 @@ class RcChannelResponse final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class MagnitometerResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.MagnitometerResponse) */ {
+ public:
+  inline MagnitometerResponse() : MagnitometerResponse(nullptr) {}
+  ~MagnitometerResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(MagnitometerResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(MagnitometerResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR MagnitometerResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline MagnitometerResponse(const MagnitometerResponse& from) : MagnitometerResponse(nullptr, from) {}
+  inline MagnitometerResponse(MagnitometerResponse&& from) noexcept
+      : MagnitometerResponse(nullptr, std::move(from)) {}
+  inline MagnitometerResponse& operator=(const MagnitometerResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MagnitometerResponse& operator=(MagnitometerResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MagnitometerResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MagnitometerResponse* internal_default_instance() {
+    return reinterpret_cast<const MagnitometerResponse*>(
+        &_MagnitometerResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 7;
+  friend void swap(MagnitometerResponse& a, MagnitometerResponse& b) { a.Swap(&b); }
+  inline void Swap(MagnitometerResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MagnitometerResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MagnitometerResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<MagnitometerResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const MagnitometerResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const MagnitometerResponse& from) { MagnitometerResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(MagnitometerResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.MagnitometerResponse"; }
+
+ protected:
+  explicit MagnitometerResponse(::google::protobuf::Arena* arena);
+  MagnitometerResponse(::google::protobuf::Arena* arena, const MagnitometerResponse& from);
+  MagnitometerResponse(::google::protobuf::Arena* arena, MagnitometerResponse&& from) noexcept
+      : MagnitometerResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kMagnitometerFieldNumber = 1,
+  };
+  // .mavsdk.rpc.striker.Magnitometer magnitometer = 1;
+  bool has_magnitometer() const;
+  void clear_magnitometer() ;
+  const ::mavsdk::rpc::striker::Magnitometer& magnitometer() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::Magnitometer* release_magnitometer();
+  ::mavsdk::rpc::striker::Magnitometer* mutable_magnitometer();
+  void set_allocated_magnitometer(::mavsdk::rpc::striker::Magnitometer* value);
+  void unsafe_arena_set_allocated_magnitometer(::mavsdk::rpc::striker::Magnitometer* value);
+  ::mavsdk::rpc::striker::Magnitometer* unsafe_arena_release_magnitometer();
+
+  private:
+  const ::mavsdk::rpc::striker::Magnitometer& _internal_magnitometer() const;
+  ::mavsdk::rpc::striker::Magnitometer* _internal_mutable_magnitometer();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.MagnitometerResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const MagnitometerResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::striker::Magnitometer* magnitometer_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
 class HeartbeatResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.HeartbeatResponse) */ {
  public:
@@ -2494,6 +3058,110 @@ inline void RcChannelResponse::set_allocated_rc_channel(::mavsdk::rpc::striker::
 
   _impl_.rc_channel_ = reinterpret_cast<::mavsdk::rpc::striker::RcChannel*>(value);
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.RcChannelResponse.rc_channel)
+}
+
+// -------------------------------------------------------------------
+
+// SubscribeMagnitometerRequest
+
+// -------------------------------------------------------------------
+
+// MagnitometerResponse
+
+// .mavsdk.rpc.striker.Magnitometer magnitometer = 1;
+inline bool MagnitometerResponse::has_magnitometer() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.magnitometer_ != nullptr);
+  return value;
+}
+inline void MagnitometerResponse::clear_magnitometer() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.magnitometer_ != nullptr) _impl_.magnitometer_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::striker::Magnitometer& MagnitometerResponse::_internal_magnitometer() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::striker::Magnitometer* p = _impl_.magnitometer_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::striker::Magnitometer&>(::mavsdk::rpc::striker::_Magnitometer_default_instance_);
+}
+inline const ::mavsdk::rpc::striker::Magnitometer& MagnitometerResponse::magnitometer() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.MagnitometerResponse.magnitometer)
+  return _internal_magnitometer();
+}
+inline void MagnitometerResponse::unsafe_arena_set_allocated_magnitometer(::mavsdk::rpc::striker::Magnitometer* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.magnitometer_);
+  }
+  _impl_.magnitometer_ = reinterpret_cast<::mavsdk::rpc::striker::Magnitometer*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.MagnitometerResponse.magnitometer)
+}
+inline ::mavsdk::rpc::striker::Magnitometer* MagnitometerResponse::release_magnitometer() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::Magnitometer* released = _impl_.magnitometer_;
+  _impl_.magnitometer_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::striker::Magnitometer* MagnitometerResponse::unsafe_arena_release_magnitometer() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.MagnitometerResponse.magnitometer)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::Magnitometer* temp = _impl_.magnitometer_;
+  _impl_.magnitometer_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::striker::Magnitometer* MagnitometerResponse::_internal_mutable_magnitometer() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.magnitometer_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::striker::Magnitometer>(GetArena());
+    _impl_.magnitometer_ = reinterpret_cast<::mavsdk::rpc::striker::Magnitometer*>(p);
+  }
+  return _impl_.magnitometer_;
+}
+inline ::mavsdk::rpc::striker::Magnitometer* MagnitometerResponse::mutable_magnitometer() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::striker::Magnitometer* _msg = _internal_mutable_magnitometer();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.MagnitometerResponse.magnitometer)
+  return _msg;
+}
+inline void MagnitometerResponse::set_allocated_magnitometer(::mavsdk::rpc::striker::Magnitometer* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.magnitometer_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.magnitometer_ = reinterpret_cast<::mavsdk::rpc::striker::Magnitometer*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.MagnitometerResponse.magnitometer)
 }
 
 // -------------------------------------------------------------------
@@ -3452,6 +4120,76 @@ inline ::uint32_t RcChannel::_internal_rssi() const {
 inline void RcChannel::_internal_set_rssi(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.rssi_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// Magnitometer
+
+// double x = 1;
+inline void Magnitometer::clear_x() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.x_ = 0;
+}
+inline double Magnitometer::x() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.Magnitometer.x)
+  return _internal_x();
+}
+inline void Magnitometer::set_x(double value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.Magnitometer.x)
+}
+inline double Magnitometer::_internal_x() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.x_;
+}
+inline void Magnitometer::_internal_set_x(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.x_ = value;
+}
+
+// double y = 2;
+inline void Magnitometer::clear_y() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.y_ = 0;
+}
+inline double Magnitometer::y() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.Magnitometer.y)
+  return _internal_y();
+}
+inline void Magnitometer::set_y(double value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.Magnitometer.y)
+}
+inline double Magnitometer::_internal_y() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.y_;
+}
+inline void Magnitometer::_internal_set_y(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.y_ = value;
+}
+
+// double z = 3;
+inline void Magnitometer::clear_z() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.z_ = 0;
+}
+inline double Magnitometer::z() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.Magnitometer.z)
+  return _internal_z();
+}
+inline void Magnitometer::set_z(double value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.Magnitometer.z)
+}
+inline double Magnitometer::_internal_z() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.z_;
+}
+inline void Magnitometer::_internal_set_z(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.z_ = value;
 }
 
 #ifdef __GNUC__
