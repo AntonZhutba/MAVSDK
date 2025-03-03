@@ -286,6 +286,38 @@ public:
         return obj;
     }
 
+    static std::unique_ptr<rpc::striker::BatteryVoltages>
+    translateToRpcBatteryVoltages(const mavsdk::Striker::BatteryVoltages& battery_voltages)
+    {
+        auto rpc_obj = std::make_unique<rpc::striker::BatteryVoltages>();
+
+        for (const auto& elem : battery_voltages.voltages) {
+            rpc_obj->add_voltages(elem);
+        }
+
+        for (const auto& elem : battery_voltages.ext_voltages) {
+            rpc_obj->add_ext_voltages(elem);
+        }
+
+        return rpc_obj;
+    }
+
+    static mavsdk::Striker::BatteryVoltages
+    translateFromRpcBatteryVoltages(const rpc::striker::BatteryVoltages& battery_voltages)
+    {
+        mavsdk::Striker::BatteryVoltages obj;
+
+        for (const auto& elem : battery_voltages.voltages()) {
+            obj.voltages.push_back(elem);
+        }
+
+        for (const auto& elem : battery_voltages.ext_voltages()) {
+            obj.ext_voltages.push_back(elem);
+        }
+
+        return obj;
+    }
+
     grpc::Status SubscribeHeartbeat(
         grpc::ServerContext* /* context */,
         const mavsdk::rpc::striker::SubscribeHeartbeatRequest* /* request */,
@@ -440,6 +472,48 @@ public:
                     std::unique_lock<std::mutex> lock(*subscribe_mutex);
                     if (!*is_finished && !writer->Write(rpc_response)) {
                         _lazy_plugin.maybe_plugin()->unsubscribe_magnitometer(handle);
+
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeBatteryVoltages(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::BatteryVoltagesResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        const mavsdk::Striker::BatteryVoltagesHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_battery_voltages(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const mavsdk::Striker::BatteryVoltages battery_voltages) {
+                    rpc::striker::BatteryVoltagesResponse rpc_response;
+
+                    rpc_response.set_allocated_battery_voltages(
+                        translateToRpcBatteryVoltages(battery_voltages).release());
+
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_battery_voltages(handle);
 
                         *is_finished = true;
                         unregister_stream_stop_promise(stream_closed_promise);

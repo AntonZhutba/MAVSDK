@@ -56,6 +56,12 @@ extern const ::google::protobuf::internal::DescriptorTable
 namespace mavsdk {
 namespace rpc {
 namespace striker {
+class BatteryVoltages;
+struct BatteryVoltagesDefaultTypeInternal;
+extern BatteryVoltagesDefaultTypeInternal _BatteryVoltages_default_instance_;
+class BatteryVoltagesResponse;
+struct BatteryVoltagesResponseDefaultTypeInternal;
+extern BatteryVoltagesResponseDefaultTypeInternal _BatteryVoltagesResponse_default_instance_;
 class Heartbeat;
 struct HeartbeatDefaultTypeInternal;
 extern HeartbeatDefaultTypeInternal _Heartbeat_default_instance_;
@@ -74,6 +80,9 @@ extern RcChannelDefaultTypeInternal _RcChannel_default_instance_;
 class RcChannelResponse;
 struct RcChannelResponseDefaultTypeInternal;
 extern RcChannelResponseDefaultTypeInternal _RcChannelResponse_default_instance_;
+class SubscribeBatteryVoltagesRequest;
+struct SubscribeBatteryVoltagesRequestDefaultTypeInternal;
+extern SubscribeBatteryVoltagesRequestDefaultTypeInternal _SubscribeBatteryVoltagesRequest_default_instance_;
 class SubscribeHeartbeatRequest;
 struct SubscribeHeartbeatRequestDefaultTypeInternal;
 extern SubscribeHeartbeatRequestDefaultTypeInternal _SubscribeHeartbeatRequest_default_instance_;
@@ -168,7 +177,7 @@ class SysStatus final : public ::google::protobuf::Message
     return reinterpret_cast<const SysStatus*>(
         &_SysStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(SysStatus& a, SysStatus& b) { a.Swap(&b); }
   inline void Swap(SysStatus* other) {
     if (other == this) return;
@@ -1059,6 +1068,151 @@ class SubscribeHeartbeatRequest final : public ::google::protobuf::internal::Zer
 };
 // -------------------------------------------------------------------
 
+class SubscribeBatteryVoltagesRequest final : public ::google::protobuf::internal::ZeroFieldsBase
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.SubscribeBatteryVoltagesRequest) */ {
+ public:
+  inline SubscribeBatteryVoltagesRequest() : SubscribeBatteryVoltagesRequest(nullptr) {}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SubscribeBatteryVoltagesRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SubscribeBatteryVoltagesRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SubscribeBatteryVoltagesRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SubscribeBatteryVoltagesRequest(const SubscribeBatteryVoltagesRequest& from) : SubscribeBatteryVoltagesRequest(nullptr, from) {}
+  inline SubscribeBatteryVoltagesRequest(SubscribeBatteryVoltagesRequest&& from) noexcept
+      : SubscribeBatteryVoltagesRequest(nullptr, std::move(from)) {}
+  inline SubscribeBatteryVoltagesRequest& operator=(const SubscribeBatteryVoltagesRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubscribeBatteryVoltagesRequest& operator=(SubscribeBatteryVoltagesRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubscribeBatteryVoltagesRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubscribeBatteryVoltagesRequest* internal_default_instance() {
+    return reinterpret_cast<const SubscribeBatteryVoltagesRequest*>(
+        &_SubscribeBatteryVoltagesRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 8;
+  friend void swap(SubscribeBatteryVoltagesRequest& a, SubscribeBatteryVoltagesRequest& b) { a.Swap(&b); }
+  inline void Swap(SubscribeBatteryVoltagesRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubscribeBatteryVoltagesRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubscribeBatteryVoltagesRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<SubscribeBatteryVoltagesRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SubscribeBatteryVoltagesRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SubscribeBatteryVoltagesRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.SubscribeBatteryVoltagesRequest"; }
+
+ protected:
+  explicit SubscribeBatteryVoltagesRequest(::google::protobuf::Arena* arena);
+  SubscribeBatteryVoltagesRequest(::google::protobuf::Arena* arena, const SubscribeBatteryVoltagesRequest& from);
+  SubscribeBatteryVoltagesRequest(::google::protobuf::Arena* arena, SubscribeBatteryVoltagesRequest&& from) noexcept
+      : SubscribeBatteryVoltagesRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.SubscribeBatteryVoltagesRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 0, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SubscribeBatteryVoltagesRequest& from_msg);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
 class RcChannel final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.RcChannel) */ {
  public:
@@ -1118,7 +1272,7 @@ class RcChannel final : public ::google::protobuf::Message
     return reinterpret_cast<const RcChannel*>(
         &_RcChannel_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 12;
   friend void swap(RcChannel& a, RcChannel& b) { a.Swap(&b); }
   inline void Swap(RcChannel* other) {
     if (other == this) return;
@@ -1548,7 +1702,7 @@ class Magnitometer final : public ::google::protobuf::Message
     return reinterpret_cast<const Magnitometer*>(
         &_Magnitometer_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(Magnitometer& a, Magnitometer& b) { a.Swap(&b); }
   inline void Swap(Magnitometer* other) {
     if (other == this) return;
@@ -1774,7 +1928,7 @@ class Heartbeat final : public ::google::protobuf::Message
     return reinterpret_cast<const Heartbeat*>(
         &_Heartbeat_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(Heartbeat& a, Heartbeat& b) { a.Swap(&b); }
   inline void Swap(Heartbeat* other) {
     if (other == this) return;
@@ -1957,6 +2111,226 @@ class Heartbeat final : public ::google::protobuf::Message
     ::uint32_t base_mode_;
     ::uint32_t system_status_;
     ::uint32_t mavlink_version_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BatteryVoltages final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.BatteryVoltages) */ {
+ public:
+  inline BatteryVoltages() : BatteryVoltages(nullptr) {}
+  ~BatteryVoltages() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(BatteryVoltages* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(BatteryVoltages));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR BatteryVoltages(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline BatteryVoltages(const BatteryVoltages& from) : BatteryVoltages(nullptr, from) {}
+  inline BatteryVoltages(BatteryVoltages&& from) noexcept
+      : BatteryVoltages(nullptr, std::move(from)) {}
+  inline BatteryVoltages& operator=(const BatteryVoltages& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BatteryVoltages& operator=(BatteryVoltages&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BatteryVoltages& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BatteryVoltages* internal_default_instance() {
+    return reinterpret_cast<const BatteryVoltages*>(
+        &_BatteryVoltages_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 14;
+  friend void swap(BatteryVoltages& a, BatteryVoltages& b) { a.Swap(&b); }
+  inline void Swap(BatteryVoltages* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BatteryVoltages* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BatteryVoltages* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<BatteryVoltages>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const BatteryVoltages& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const BatteryVoltages& from) { BatteryVoltages::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(BatteryVoltages* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.BatteryVoltages"; }
+
+ protected:
+  explicit BatteryVoltages(::google::protobuf::Arena* arena);
+  BatteryVoltages(::google::protobuf::Arena* arena, const BatteryVoltages& from);
+  BatteryVoltages(::google::protobuf::Arena* arena, BatteryVoltages&& from) noexcept
+      : BatteryVoltages(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kVoltagesFieldNumber = 1,
+    kExtVoltagesFieldNumber = 2,
+  };
+  // repeated uint32 voltages = 1;
+  int voltages_size() const;
+  private:
+  int _internal_voltages_size() const;
+
+  public:
+  void clear_voltages() ;
+  ::uint32_t voltages(int index) const;
+  void set_voltages(int index, ::uint32_t value);
+  void add_voltages(::uint32_t value);
+  const ::google::protobuf::RepeatedField<::uint32_t>& voltages() const;
+  ::google::protobuf::RepeatedField<::uint32_t>* mutable_voltages();
+
+  private:
+  const ::google::protobuf::RepeatedField<::uint32_t>& _internal_voltages() const;
+  ::google::protobuf::RepeatedField<::uint32_t>* _internal_mutable_voltages();
+
+  public:
+  // repeated uint32 ext_voltages = 2;
+  int ext_voltages_size() const;
+  private:
+  int _internal_ext_voltages_size() const;
+
+  public:
+  void clear_ext_voltages() ;
+  ::uint32_t ext_voltages(int index) const;
+  void set_ext_voltages(int index, ::uint32_t value);
+  void add_ext_voltages(::uint32_t value);
+  const ::google::protobuf::RepeatedField<::uint32_t>& ext_voltages() const;
+  ::google::protobuf::RepeatedField<::uint32_t>* mutable_ext_voltages();
+
+  private:
+  const ::google::protobuf::RepeatedField<::uint32_t>& _internal_ext_voltages() const;
+  ::google::protobuf::RepeatedField<::uint32_t>* _internal_mutable_ext_voltages();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.BatteryVoltages)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const BatteryVoltages& from_msg);
+    ::google::protobuf::RepeatedField<::uint32_t> voltages_;
+    ::google::protobuf::internal::CachedSize _voltages_cached_byte_size_;
+    ::google::protobuf::RepeatedField<::uint32_t> ext_voltages_;
+    ::google::protobuf::internal::CachedSize _ext_voltages_cached_byte_size_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2747,6 +3121,202 @@ class HeartbeatResponse final : public ::google::protobuf::Message
   union { Impl_ _impl_; };
   friend struct ::TableStruct_striker_2fstriker_2eproto;
 };
+// -------------------------------------------------------------------
+
+class BatteryVoltagesResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.BatteryVoltagesResponse) */ {
+ public:
+  inline BatteryVoltagesResponse() : BatteryVoltagesResponse(nullptr) {}
+  ~BatteryVoltagesResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(BatteryVoltagesResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(BatteryVoltagesResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR BatteryVoltagesResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline BatteryVoltagesResponse(const BatteryVoltagesResponse& from) : BatteryVoltagesResponse(nullptr, from) {}
+  inline BatteryVoltagesResponse(BatteryVoltagesResponse&& from) noexcept
+      : BatteryVoltagesResponse(nullptr, std::move(from)) {}
+  inline BatteryVoltagesResponse& operator=(const BatteryVoltagesResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BatteryVoltagesResponse& operator=(BatteryVoltagesResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BatteryVoltagesResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BatteryVoltagesResponse* internal_default_instance() {
+    return reinterpret_cast<const BatteryVoltagesResponse*>(
+        &_BatteryVoltagesResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 9;
+  friend void swap(BatteryVoltagesResponse& a, BatteryVoltagesResponse& b) { a.Swap(&b); }
+  inline void Swap(BatteryVoltagesResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BatteryVoltagesResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BatteryVoltagesResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<BatteryVoltagesResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const BatteryVoltagesResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const BatteryVoltagesResponse& from) { BatteryVoltagesResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(BatteryVoltagesResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.BatteryVoltagesResponse"; }
+
+ protected:
+  explicit BatteryVoltagesResponse(::google::protobuf::Arena* arena);
+  BatteryVoltagesResponse(::google::protobuf::Arena* arena, const BatteryVoltagesResponse& from);
+  BatteryVoltagesResponse(::google::protobuf::Arena* arena, BatteryVoltagesResponse&& from) noexcept
+      : BatteryVoltagesResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kBatteryVoltagesFieldNumber = 1,
+  };
+  // .mavsdk.rpc.striker.BatteryVoltages battery_voltages = 1;
+  bool has_battery_voltages() const;
+  void clear_battery_voltages() ;
+  const ::mavsdk::rpc::striker::BatteryVoltages& battery_voltages() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::BatteryVoltages* release_battery_voltages();
+  ::mavsdk::rpc::striker::BatteryVoltages* mutable_battery_voltages();
+  void set_allocated_battery_voltages(::mavsdk::rpc::striker::BatteryVoltages* value);
+  void unsafe_arena_set_allocated_battery_voltages(::mavsdk::rpc::striker::BatteryVoltages* value);
+  ::mavsdk::rpc::striker::BatteryVoltages* unsafe_arena_release_battery_voltages();
+
+  private:
+  const ::mavsdk::rpc::striker::BatteryVoltages& _internal_battery_voltages() const;
+  ::mavsdk::rpc::striker::BatteryVoltages* _internal_mutable_battery_voltages();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.BatteryVoltagesResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const BatteryVoltagesResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::striker::BatteryVoltages* battery_voltages_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
 
 // ===================================================================
 
@@ -3174,6 +3744,110 @@ inline void MagnitometerResponse::set_allocated_magnitometer(::mavsdk::rpc::stri
 
   _impl_.magnitometer_ = reinterpret_cast<::mavsdk::rpc::striker::Magnitometer*>(value);
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.MagnitometerResponse.magnitometer)
+}
+
+// -------------------------------------------------------------------
+
+// SubscribeBatteryVoltagesRequest
+
+// -------------------------------------------------------------------
+
+// BatteryVoltagesResponse
+
+// .mavsdk.rpc.striker.BatteryVoltages battery_voltages = 1;
+inline bool BatteryVoltagesResponse::has_battery_voltages() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.battery_voltages_ != nullptr);
+  return value;
+}
+inline void BatteryVoltagesResponse::clear_battery_voltages() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.battery_voltages_ != nullptr) _impl_.battery_voltages_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::striker::BatteryVoltages& BatteryVoltagesResponse::_internal_battery_voltages() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::striker::BatteryVoltages* p = _impl_.battery_voltages_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::striker::BatteryVoltages&>(::mavsdk::rpc::striker::_BatteryVoltages_default_instance_);
+}
+inline const ::mavsdk::rpc::striker::BatteryVoltages& BatteryVoltagesResponse::battery_voltages() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.BatteryVoltagesResponse.battery_voltages)
+  return _internal_battery_voltages();
+}
+inline void BatteryVoltagesResponse::unsafe_arena_set_allocated_battery_voltages(::mavsdk::rpc::striker::BatteryVoltages* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.battery_voltages_);
+  }
+  _impl_.battery_voltages_ = reinterpret_cast<::mavsdk::rpc::striker::BatteryVoltages*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.BatteryVoltagesResponse.battery_voltages)
+}
+inline ::mavsdk::rpc::striker::BatteryVoltages* BatteryVoltagesResponse::release_battery_voltages() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::BatteryVoltages* released = _impl_.battery_voltages_;
+  _impl_.battery_voltages_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::striker::BatteryVoltages* BatteryVoltagesResponse::unsafe_arena_release_battery_voltages() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.BatteryVoltagesResponse.battery_voltages)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::BatteryVoltages* temp = _impl_.battery_voltages_;
+  _impl_.battery_voltages_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::striker::BatteryVoltages* BatteryVoltagesResponse::_internal_mutable_battery_voltages() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.battery_voltages_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::striker::BatteryVoltages>(GetArena());
+    _impl_.battery_voltages_ = reinterpret_cast<::mavsdk::rpc::striker::BatteryVoltages*>(p);
+  }
+  return _impl_.battery_voltages_;
+}
+inline ::mavsdk::rpc::striker::BatteryVoltages* BatteryVoltagesResponse::mutable_battery_voltages() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::striker::BatteryVoltages* _msg = _internal_mutable_battery_voltages();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.BatteryVoltagesResponse.battery_voltages)
+  return _msg;
+}
+inline void BatteryVoltagesResponse::set_allocated_battery_voltages(::mavsdk::rpc::striker::BatteryVoltages* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.battery_voltages_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.battery_voltages_ = reinterpret_cast<::mavsdk::rpc::striker::BatteryVoltages*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.BatteryVoltagesResponse.battery_voltages)
 }
 
 // -------------------------------------------------------------------
@@ -4224,6 +4898,100 @@ inline double Magnitometer::_internal_magnetic_heading() const {
 inline void Magnitometer::_internal_set_magnetic_heading(double value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.magnetic_heading_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// BatteryVoltages
+
+// repeated uint32 voltages = 1;
+inline int BatteryVoltages::_internal_voltages_size() const {
+  return _internal_voltages().size();
+}
+inline int BatteryVoltages::voltages_size() const {
+  return _internal_voltages_size();
+}
+inline void BatteryVoltages::clear_voltages() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.voltages_.Clear();
+}
+inline ::uint32_t BatteryVoltages::voltages(int index) const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.BatteryVoltages.voltages)
+  return _internal_voltages().Get(index);
+}
+inline void BatteryVoltages::set_voltages(int index, ::uint32_t value) {
+  _internal_mutable_voltages()->Set(index, value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.BatteryVoltages.voltages)
+}
+inline void BatteryVoltages::add_voltages(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_voltages()->Add(value);
+  // @@protoc_insertion_point(field_add:mavsdk.rpc.striker.BatteryVoltages.voltages)
+}
+inline const ::google::protobuf::RepeatedField<::uint32_t>& BatteryVoltages::voltages() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:mavsdk.rpc.striker.BatteryVoltages.voltages)
+  return _internal_voltages();
+}
+inline ::google::protobuf::RepeatedField<::uint32_t>* BatteryVoltages::mutable_voltages()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:mavsdk.rpc.striker.BatteryVoltages.voltages)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_voltages();
+}
+inline const ::google::protobuf::RepeatedField<::uint32_t>&
+BatteryVoltages::_internal_voltages() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.voltages_;
+}
+inline ::google::protobuf::RepeatedField<::uint32_t>* BatteryVoltages::_internal_mutable_voltages() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.voltages_;
+}
+
+// repeated uint32 ext_voltages = 2;
+inline int BatteryVoltages::_internal_ext_voltages_size() const {
+  return _internal_ext_voltages().size();
+}
+inline int BatteryVoltages::ext_voltages_size() const {
+  return _internal_ext_voltages_size();
+}
+inline void BatteryVoltages::clear_ext_voltages() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ext_voltages_.Clear();
+}
+inline ::uint32_t BatteryVoltages::ext_voltages(int index) const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.BatteryVoltages.ext_voltages)
+  return _internal_ext_voltages().Get(index);
+}
+inline void BatteryVoltages::set_ext_voltages(int index, ::uint32_t value) {
+  _internal_mutable_ext_voltages()->Set(index, value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.BatteryVoltages.ext_voltages)
+}
+inline void BatteryVoltages::add_ext_voltages(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_ext_voltages()->Add(value);
+  // @@protoc_insertion_point(field_add:mavsdk.rpc.striker.BatteryVoltages.ext_voltages)
+}
+inline const ::google::protobuf::RepeatedField<::uint32_t>& BatteryVoltages::ext_voltages() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:mavsdk.rpc.striker.BatteryVoltages.ext_voltages)
+  return _internal_ext_voltages();
+}
+inline ::google::protobuf::RepeatedField<::uint32_t>* BatteryVoltages::mutable_ext_voltages()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:mavsdk.rpc.striker.BatteryVoltages.ext_voltages)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_ext_voltages();
+}
+inline const ::google::protobuf::RepeatedField<::uint32_t>&
+BatteryVoltages::_internal_ext_voltages() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ext_voltages_;
+}
+inline ::google::protobuf::RepeatedField<::uint32_t>* BatteryVoltages::_internal_mutable_ext_voltages() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.ext_voltages_;
 }
 
 #ifdef __GNUC__

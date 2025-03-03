@@ -13,6 +13,7 @@ using Heartbeat = Striker::Heartbeat;
 using SysStatus = Striker::SysStatus;
 using RcChannel = Striker::RcChannel;
 using Magnitometer = Striker::Magnitometer;
+using BatteryVoltages = Striker::BatteryVoltages;
 
 Striker::Striker(System& system) : PluginBase(), _impl{std::make_unique<StrikerImpl>(system)} {}
 
@@ -81,6 +82,22 @@ void Striker::unsubscribe_magnitometer(MagnitometerHandle handle)
 Striker::Magnitometer Striker::magnitometer() const
 {
     return _impl->magnitometer();
+}
+
+Striker::BatteryVoltagesHandle
+Striker::subscribe_battery_voltages(const BatteryVoltagesCallback& callback)
+{
+    return _impl->subscribe_battery_voltages(callback);
+}
+
+void Striker::unsubscribe_battery_voltages(BatteryVoltagesHandle handle)
+{
+    _impl->unsubscribe_battery_voltages(handle);
+}
+
+Striker::BatteryVoltages Striker::battery_voltages() const
+{
+    return _impl->battery_voltages();
 }
 
 bool operator==(const Striker::Heartbeat& lhs, const Striker::Heartbeat& rhs)
@@ -214,6 +231,30 @@ std::ostream& operator<<(std::ostream& str, Striker::Magnitometer const& magnito
     str << "    y: " << magnitometer.y << '\n';
     str << "    z: " << magnitometer.z << '\n';
     str << "    magnetic_heading: " << magnitometer.magnetic_heading << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const Striker::BatteryVoltages& lhs, const Striker::BatteryVoltages& rhs)
+{
+    return (rhs.voltages == lhs.voltages) && (rhs.ext_voltages == lhs.ext_voltages);
+}
+
+std::ostream& operator<<(std::ostream& str, Striker::BatteryVoltages const& battery_voltages)
+{
+    str << std::setprecision(15);
+    str << "battery_voltages:" << '\n' << "{\n";
+    str << "    voltages: [";
+    for (auto it = battery_voltages.voltages.begin(); it != battery_voltages.voltages.end(); ++it) {
+        str << *it;
+        str << (it + 1 != battery_voltages.voltages.end() ? ", " : "]\n");
+    }
+    str << "    ext_voltages: [";
+    for (auto it = battery_voltages.ext_voltages.begin(); it != battery_voltages.ext_voltages.end();
+         ++it) {
+        str << *it;
+        str << (it + 1 != battery_voltages.ext_voltages.end() ? ", " : "]\n");
+    }
     str << '}';
     return str;
 }

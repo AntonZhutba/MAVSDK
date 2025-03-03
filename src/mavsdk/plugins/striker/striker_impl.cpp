@@ -46,6 +46,11 @@ void StrikerImpl::init()
         MAVLINK_MSG_ID_HIGHRES_IMU,
         [this](const mavlink_message_t& message) { process_magnitometer(message); },
         this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_BATTERY_STATUS,
+        [this](const mavlink_message_t& message) { process_battery_voltages(message); },
+        this);
 }
 
 void StrikerImpl::deinit()
@@ -266,6 +271,47 @@ void StrikerImpl::set_magnitometer(const mavlink_highres_imu_t& mav_magnitometer
     _magnitometer.y = mav_magnitometer.ymag;
     _magnitometer.z = mav_magnitometer.zmag;
     _magnitometer.magnetic_heading = atan2(_magnitometer.y, _magnitometer.x) * 180 / M_PI;
+}
+
+// -- Battery voltages --
+
+Striker::BatteryVoltagesHandle
+StrikerImpl::subscribe_battery_voltages(const Striker::BatteryVoltagesCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_battery_voltages_mutex);
+    return _battery_voltages_subscriptions.subscribe(callback);
+}
+
+void StrikerImpl::unsubscribe_battery_voltages(Striker::BatteryVoltagesHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_battery_voltages_mutex);
+    _battery_voltages_subscriptions.unsubscribe(handle);
+}
+
+Striker::BatteryVoltages StrikerImpl::battery_voltages() const
+{
+    std::lock_guard<std::mutex> lock(_battery_voltages_mutex);
+    return _battery_voltages;
+}
+
+void StrikerImpl::process_battery_voltages(const mavlink_message_t& message)
+{
+    mavlink_battery_status_t battery_status;
+    mavlink_msg_battery_status_decode(&message, &battery_status);
+
+    set_battery_voltages(battery_status);
+
+    std::lock_guard<std::mutex> lock(_subscription_battery_voltages_mutex);
+    _battery_voltages_subscriptions.queue(
+        battery_voltages(), [this](const auto& func) { _system_impl->call_user_callback(func); });
+}
+
+void StrikerImpl::set_battery_voltages(const mavlink_battery_status_t& battery_status)
+{
+    std::lock_guard<std::mutex> lock(_battery_voltages_mutex);
+
+    _battery_voltages.voltages.assign(battery_status.voltages, battery_status.voltages + MAVLINK_MSG_BATTERY_STATUS_FIELD_VOLTAGES_LEN);
+    _battery_voltages.ext_voltages.assign(battery_status.voltages_ext, battery_status.voltages_ext + MAVLINK_MSG_BATTERY_STATUS_FIELD_VOLTAGES_EXT_LEN);
 }
 
 } // namespace mavsdk

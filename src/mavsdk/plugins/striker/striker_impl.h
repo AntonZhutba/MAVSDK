@@ -42,36 +42,48 @@ public:
     void unsubscribe_magnitometer(Striker::MagnitometerHandle handle);
     Striker::Magnitometer magnitometer() const;
 
+    // Battery voltages subscription
+    Striker::BatteryVoltagesHandle
+    subscribe_battery_voltages(const Striker::BatteryVoltagesCallback& callback);
+    void unsubscribe_battery_voltages(Striker::BatteryVoltagesHandle handle);
+    Striker::BatteryVoltages battery_voltages() const;
+
 private:
     void process_heartbeat(const mavlink_message_t& message);
     void process_sys_status(const mavlink_message_t& message);
     void process_rc_channel(const mavlink_message_t& message);
     void process_magnitometer(const mavlink_message_t& message);
+    void process_battery_voltages(const mavlink_message_t& message);
 
     void set_heartbeat(Striker::Heartbeat heartbeat);
     void set_sys_status(Striker::SysStatus sys_status);
     void set_rc_channel(const mavlink_rc_channels_t& rc_channel);
     void set_magnitometer(const mavlink_highres_imu_t& mav_magnitometer);
+    void set_battery_voltages(const mavlink_battery_status_t& battery_status);
 
     mutable std::mutex _heartbeat_mutex;
     mutable std::mutex _sys_status_mutex;
     mutable std::mutex _rc_channel_mutex;
     mutable std::mutex _magnitometer_mutex;
+    mutable std::mutex _battery_voltages_mutex;
 
     Striker::Heartbeat _heartbeat{};
     Striker::SysStatus _sys_status{};
     Striker::RcChannel _rc_channel{};
     Striker::Magnitometer _magnitometer{};
+    Striker::BatteryVoltages _battery_voltages{};
 
     CallbackList<Striker::Heartbeat> _heartbeat_subscriptions;
     CallbackList<Striker::SysStatus> _sys_status_subscriptions;
     CallbackList<Striker::RcChannel> _rc_channel_subscriptions;
     CallbackList<Striker::Magnitometer> _magnitometer_subscriptions;
+    CallbackList<Striker::BatteryVoltages> _battery_voltages_subscriptions;
 
     std::mutex _subscription_heartbeat_mutex;
     std::mutex _subscription_sys_status_mutex;
     std::mutex _subscription_rc_channel_mutex;
     std::mutex _subscription_magnitometer_mutex;
+    std::mutex _subscription_battery_voltages_mutex;
 };
 
 } // namespace mavsdk

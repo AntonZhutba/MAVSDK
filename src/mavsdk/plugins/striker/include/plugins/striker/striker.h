@@ -192,6 +192,44 @@ public:
     friend std::ostream& operator<<(std::ostream& str, Striker::Magnitometer const& magnitometer);
 
     /**
+     * @brief
+     */
+    struct BatteryVoltages {
+        std::vector<uint32_t>
+            voltages{}; /**< @brief< [mV] Battery voltage of cells 1 to 10 (see voltages_ext for
+                           cells 11-14). Cells in this field above the valid cell count for this
+                           battery should have the UINT16_MAX value. If individual cell voltages are
+                           unknown or not measured for this battery, then the overall battery
+                           voltage should be filled in cell 0, with all others set to UINT16_MAX. If
+                           the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0
+                           should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage.
+                           This can be extended to multiple cells if the total voltage is greater
+                           than 2 * (UINT16_MAX - 1). */
+        std::vector<uint32_t>
+            ext_voltages{}; /**< @brief< [mV] Battery voltages for cells 11 to 14. Cells above the
+                               valid cell count for this battery should have a value of 0, where
+                               zero indicates not supported (note, this is different than for the
+                               voltages field and allows empty byte truncation). If the measured
+                               value is 0 then 1 should be sent instead. */
+    };
+
+    /**
+     * @brief Equal operator to compare two `Striker::BatteryVoltages` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool
+    operator==(const Striker::BatteryVoltages& lhs, const Striker::BatteryVoltages& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `Striker::BatteryVoltages`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, Striker::BatteryVoltages const& battery_voltages);
+
+    /**
      * @brief Callback type for subscribe_heartbeat.
      */
     using HeartbeatCallback = std::function<void(Heartbeat)>;
@@ -298,6 +336,33 @@ public:
      * @return One Magnitometer update.
      */
     Magnitometer magnitometer() const;
+
+    /**
+     * @brief Callback type for subscribe_battery_voltages.
+     */
+    using BatteryVoltagesCallback = std::function<void(BatteryVoltages)>;
+
+    /**
+     * @brief Handle type for subscribe_battery_voltages.
+     */
+    using BatteryVoltagesHandle = Handle<BatteryVoltages>;
+
+    /**
+     * @brief Subscribe to 'Battery voltage' updates.
+     */
+    BatteryVoltagesHandle subscribe_battery_voltages(const BatteryVoltagesCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_battery_voltages
+     */
+    void unsubscribe_battery_voltages(BatteryVoltagesHandle handle);
+
+    /**
+     * @brief Poll for 'BatteryVoltages' (blocking).
+     *
+     * @return One BatteryVoltages update.
+     */
+    BatteryVoltages battery_voltages() const;
 
     /**
      * @brief Copy constructor.

@@ -79,6 +79,16 @@ class StrikerService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::MagnitometerResponse>> PrepareAsyncSubscribeMagnitometer(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::MagnitometerResponse>>(PrepareAsyncSubscribeMagnitometerRaw(context, request, cq));
     }
+    // Subscribe to 'Battery voltage' updates.
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::BatteryVoltagesResponse>> SubscribeBatteryVoltages(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::BatteryVoltagesResponse>>(SubscribeBatteryVoltagesRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::BatteryVoltagesResponse>> AsyncSubscribeBatteryVoltages(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::BatteryVoltagesResponse>>(AsyncSubscribeBatteryVoltagesRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::BatteryVoltagesResponse>> PrepareAsyncSubscribeBatteryVoltages(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::BatteryVoltagesResponse>>(PrepareAsyncSubscribeBatteryVoltagesRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -90,6 +100,8 @@ class StrikerService final {
       virtual void SubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::RcChannelResponse>* reactor) = 0;
       // Subscribe to 'Magnitometer' updates.
       virtual void SubscribeMagnitometer(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::MagnitometerResponse>* reactor) = 0;
+      // Subscribe to 'Battery voltage' updates.
+      virtual void SubscribeBatteryVoltages(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -107,6 +119,9 @@ class StrikerService final {
     virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::MagnitometerResponse>* SubscribeMagnitometerRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::MagnitometerResponse>* AsyncSubscribeMagnitometerRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::MagnitometerResponse>* PrepareAsyncSubscribeMagnitometerRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* SubscribeBatteryVoltagesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* AsyncSubscribeBatteryVoltagesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* PrepareAsyncSubscribeBatteryVoltagesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -147,6 +162,15 @@ class StrikerService final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::MagnitometerResponse>> PrepareAsyncSubscribeMagnitometer(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::MagnitometerResponse>>(PrepareAsyncSubscribeMagnitometerRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>> SubscribeBatteryVoltages(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>>(SubscribeBatteryVoltagesRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>> AsyncSubscribeBatteryVoltages(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>>(AsyncSubscribeBatteryVoltagesRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>> PrepareAsyncSubscribeBatteryVoltages(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>>(PrepareAsyncSubscribeBatteryVoltagesRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -154,6 +178,7 @@ class StrikerService final {
       void SubscribeSysStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::SysStatusResponse>* reactor) override;
       void SubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::RcChannelResponse>* reactor) override;
       void SubscribeMagnitometer(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::MagnitometerResponse>* reactor) override;
+      void SubscribeBatteryVoltages(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -177,10 +202,14 @@ class StrikerService final {
     ::grpc::ClientReader< ::mavsdk::rpc::striker::MagnitometerResponse>* SubscribeMagnitometerRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::MagnitometerResponse>* AsyncSubscribeMagnitometerRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::MagnitometerResponse>* PrepareAsyncSubscribeMagnitometerRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* SubscribeBatteryVoltagesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* AsyncSubscribeBatteryVoltagesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* PrepareAsyncSubscribeBatteryVoltagesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeHeartbeat_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeSysStatus_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeRcChannel_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeMagnitometer_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubscribeBatteryVoltages_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -196,6 +225,8 @@ class StrikerService final {
     virtual ::grpc::Status SubscribeRcChannel(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::RcChannelResponse>* writer);
     // Subscribe to 'Magnitometer' updates.
     virtual ::grpc::Status SubscribeMagnitometer(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::MagnitometerResponse>* writer);
+    // Subscribe to 'Battery voltage' updates.
+    virtual ::grpc::Status SubscribeBatteryVoltages(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_SubscribeHeartbeat : public BaseClass {
@@ -277,7 +308,27 @@ class StrikerService final {
       ::grpc::Service::RequestAsyncServerStreaming(3, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SubscribeHeartbeat<WithAsyncMethod_SubscribeSysStatus<WithAsyncMethod_SubscribeRcChannel<WithAsyncMethod_SubscribeMagnitometer<Service > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SubscribeBatteryVoltages : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SubscribeBatteryVoltages() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_SubscribeBatteryVoltages() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeBatteryVoltages(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeBatteryVoltages(::grpc::ServerContext* context, ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* request, ::grpc::ServerAsyncWriter< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(4, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SubscribeHeartbeat<WithAsyncMethod_SubscribeSysStatus<WithAsyncMethod_SubscribeRcChannel<WithAsyncMethod_SubscribeMagnitometer<WithAsyncMethod_SubscribeBatteryVoltages<Service > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SubscribeHeartbeat : public BaseClass {
    private:
@@ -366,7 +417,29 @@ class StrikerService final {
     virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::striker::MagnitometerResponse>* SubscribeMagnitometer(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest* /*request*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SubscribeHeartbeat<WithCallbackMethod_SubscribeSysStatus<WithCallbackMethod_SubscribeRcChannel<WithCallbackMethod_SubscribeMagnitometer<Service > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SubscribeBatteryVoltages : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SubscribeBatteryVoltages() {
+      ::grpc::Service::MarkMethodCallback(4,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest, ::mavsdk::rpc::striker::BatteryVoltagesResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* request) { return this->SubscribeBatteryVoltages(context, request); }));
+    }
+    ~WithCallbackMethod_SubscribeBatteryVoltages() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeBatteryVoltages(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* SubscribeBatteryVoltages(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* /*request*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SubscribeHeartbeat<WithCallbackMethod_SubscribeSysStatus<WithCallbackMethod_SubscribeRcChannel<WithCallbackMethod_SubscribeMagnitometer<WithCallbackMethod_SubscribeBatteryVoltages<Service > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SubscribeHeartbeat : public BaseClass {
@@ -432,6 +505,23 @@ class StrikerService final {
     }
     // disable synchronous version of this method
     ::grpc::Status SubscribeMagnitometer(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::MagnitometerResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubscribeBatteryVoltages : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SubscribeBatteryVoltages() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_SubscribeBatteryVoltages() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeBatteryVoltages(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -514,6 +604,26 @@ class StrikerService final {
     }
     void RequestSubscribeMagnitometer(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(3, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubscribeBatteryVoltages : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SubscribeBatteryVoltages() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_SubscribeBatteryVoltages() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeBatteryVoltages(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeBatteryVoltages(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(4, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -602,6 +712,28 @@ class StrikerService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeMagnitometer(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SubscribeBatteryVoltages : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SubscribeBatteryVoltages() {
+      ::grpc::Service::MarkMethodRawCallback(4,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->SubscribeBatteryVoltages(context, request); }));
+    }
+    ~WithRawCallbackMethod_SubscribeBatteryVoltages() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeBatteryVoltages(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeBatteryVoltages(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   typedef Service StreamedUnaryService;
@@ -713,8 +845,35 @@ class StrikerService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSubscribeMagnitometer(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::striker::SubscribeMagnitometerRequest,::mavsdk::rpc::striker::MagnitometerResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<WithSplitStreamingMethod_SubscribeMagnitometer<Service > > > > SplitStreamedService;
-  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<WithSplitStreamingMethod_SubscribeMagnitometer<Service > > > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_SubscribeBatteryVoltages : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_SubscribeBatteryVoltages() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest, ::mavsdk::rpc::striker::BatteryVoltagesResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest, ::mavsdk::rpc::striker::BatteryVoltagesResponse>* streamer) {
+                       return this->StreamedSubscribeBatteryVoltages(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_SubscribeBatteryVoltages() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubscribeBatteryVoltages(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribeBatteryVoltages(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest,::mavsdk::rpc::striker::BatteryVoltagesResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<WithSplitStreamingMethod_SubscribeMagnitometer<WithSplitStreamingMethod_SubscribeBatteryVoltages<Service > > > > > SplitStreamedService;
+  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<WithSplitStreamingMethod_SubscribeMagnitometer<WithSplitStreamingMethod_SubscribeBatteryVoltages<Service > > > > > StreamedService;
 };
 
 }  // namespace striker
