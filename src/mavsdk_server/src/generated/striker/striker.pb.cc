@@ -190,6 +190,7 @@ inline constexpr Magnitometer::Impl_::Impl_(
       : x_{0},
         y_{0},
         z_{0},
+        magnetic_heading_{0},
         _cached_size_{0} {}
 
 template <typename>
@@ -501,6 +502,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Magnitometer, _impl_.x_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Magnitometer, _impl_.y_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Magnitometer, _impl_.z_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Magnitometer, _impl_.magnetic_heading_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -576,21 +578,22 @@ const char descriptor_table_protodef_striker_2fstriker_2eproto[] ABSL_ATTRIBUTE_
     "\005\202\265\030\0010\022\031\n\nchan16_raw\030\021 \001(\rB\005\202\265\030\0010\022\031\n\ncha"
     "n17_raw\030\022 \001(\rB\005\202\265\030\0010\022\031\n\nchan18_raw\030\023 \001(\r"
     "B\005\202\265\030\0010\022\030\n\tchancount\030\024 \001(\rB\005\202\265\030\0010\022\023\n\004rss"
-    "i\030\025 \001(\rB\005\202\265\030\0010\"/\n\014Magnitometer\022\t\n\001x\030\001 \001("
-    "\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\0012\331\003\n\016StrikerServi"
-    "ce\022n\n\022SubscribeHeartbeat\022-.mavsdk.rpc.st"
-    "riker.SubscribeHeartbeatRequest\032%.mavsdk"
-    ".rpc.striker.HeartbeatResponse\"\0000\001\022n\n\022Su"
-    "bscribeSysStatus\022-.mavsdk.rpc.striker.Su"
-    "bscribeSysStatusRequest\032%.mavsdk.rpc.str"
-    "iker.SysStatusResponse\"\0000\001\022n\n\022SubscribeR"
-    "cChannel\022-.mavsdk.rpc.striker.SubscribeR"
-    "cChannelRequest\032%.mavsdk.rpc.striker.RcC"
-    "hannelResponse\"\0000\001\022w\n\025SubscribeMagnitome"
-    "ter\0220.mavsdk.rpc.striker.SubscribeMagnit"
-    "ometerRequest\032(.mavsdk.rpc.striker.Magni"
-    "tometerResponse\"\0000\001B!\n\021io.mavsdk.striker"
-    "B\014StrikerProtob\006proto3"
+    "i\030\025 \001(\rB\005\202\265\030\0010\"I\n\014Magnitometer\022\t\n\001x\030\001 \001("
+    "\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\022\030\n\020magnetic_head"
+    "ing\030\004 \001(\0012\331\003\n\016StrikerService\022n\n\022Subscrib"
+    "eHeartbeat\022-.mavsdk.rpc.striker.Subscrib"
+    "eHeartbeatRequest\032%.mavsdk.rpc.striker.H"
+    "eartbeatResponse\"\0000\001\022n\n\022SubscribeSysStat"
+    "us\022-.mavsdk.rpc.striker.SubscribeSysStat"
+    "usRequest\032%.mavsdk.rpc.striker.SysStatus"
+    "Response\"\0000\001\022n\n\022SubscribeRcChannel\022-.mav"
+    "sdk.rpc.striker.SubscribeRcChannelReques"
+    "t\032%.mavsdk.rpc.striker.RcChannelResponse"
+    "\"\0000\001\022w\n\025SubscribeMagnitometer\0220.mavsdk.r"
+    "pc.striker.SubscribeMagnitometerRequest\032"
+    "(.mavsdk.rpc.striker.MagnitometerRespons"
+    "e\"\0000\001B!\n\021io.mavsdk.strikerB\014StrikerProto"
+    "b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_striker_2fstriker_2eproto_deps[1] =
     {
@@ -600,7 +603,7 @@ static ::absl::once_flag descriptor_table_striker_2fstriker_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_striker_2fstriker_2eproto = {
     false,
     false,
-    2262,
+    2288,
     descriptor_table_protodef_striker_2fstriker_2eproto,
     "striker/striker.proto",
     &descriptor_table_striker_2fstriker_2eproto_once,
@@ -3571,9 +3574,9 @@ inline void Magnitometer::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, x_),
            0,
-           offsetof(Impl_, z_) -
+           offsetof(Impl_, magnetic_heading_) -
                offsetof(Impl_, x_) +
-               sizeof(Impl_::z_));
+               sizeof(Impl_::magnetic_heading_));
 }
 Magnitometer::~Magnitometer() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.Magnitometer)
@@ -3622,15 +3625,15 @@ const ::google::protobuf::internal::ClassData* Magnitometer::GetClassData() cons
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Magnitometer::_table_ = {
+const ::_pbi::TcParseTable<2, 4, 0, 0, 2> Magnitometer::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    4, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967280,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
+    4,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -3640,7 +3643,9 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Magnitometer::_table_ = {
     ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::Magnitometer>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // double magnetic_heading = 4;
+    {::_pbi::TcParser::FastF64S1,
+     {33, 63, 0, PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.magnetic_heading_)}},
     // double x = 1;
     {::_pbi::TcParser::FastF64S1,
      {9, 63, 0, PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.x_)}},
@@ -3662,6 +3667,9 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Magnitometer::_table_ = {
     // double z = 3;
     {PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.z_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double magnetic_heading = 4;
+    {PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.magnetic_heading_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
   }},
   // no aux_entries
   {{
@@ -3676,8 +3684,8 @@ PROTOBUF_NOINLINE void Magnitometer::Clear() {
   (void) cached_has_bits;
 
   ::memset(&_impl_.x_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.z_) -
-      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.z_));
+      reinterpret_cast<char*>(&_impl_.magnetic_heading_) -
+      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.magnetic_heading_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -3717,6 +3725,13 @@ PROTOBUF_NOINLINE void Magnitometer::Clear() {
                 3, this_._internal_z(), target);
           }
 
+          // double magnetic_heading = 4;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_magnetic_heading()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                4, this_._internal_magnetic_heading(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -3754,6 +3769,10 @@ PROTOBUF_NOINLINE void Magnitometer::Clear() {
             if (::absl::bit_cast<::uint64_t>(this_._internal_z()) != 0) {
               total_size += 9;
             }
+            // double magnetic_heading = 4;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_magnetic_heading()) != 0) {
+              total_size += 9;
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -3776,6 +3795,9 @@ void Magnitometer::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::go
   if (::absl::bit_cast<::uint64_t>(from._internal_z()) != 0) {
     _this->_impl_.z_ = from._impl_.z_;
   }
+  if (::absl::bit_cast<::uint64_t>(from._internal_magnetic_heading()) != 0) {
+    _this->_impl_.magnetic_heading_ = from._impl_.magnetic_heading_;
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -3791,8 +3813,8 @@ void Magnitometer::InternalSwap(Magnitometer* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.z_)
-      + sizeof(Magnitometer::_impl_.z_)
+      PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.magnetic_heading_)
+      + sizeof(Magnitometer::_impl_.magnetic_heading_)
       - PROTOBUF_FIELD_OFFSET(Magnitometer, _impl_.x_)>(
           reinterpret_cast<char*>(&_impl_.x_),
           reinterpret_cast<char*>(&other->_impl_.x_));

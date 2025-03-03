@@ -1638,6 +1638,7 @@ class Magnitometer final : public ::google::protobuf::Message
     kXFieldNumber = 1,
     kYFieldNumber = 2,
     kZFieldNumber = 3,
+    kMagneticHeadingFieldNumber = 4,
   };
   // double x = 1;
   void clear_x() ;
@@ -1669,12 +1670,22 @@ class Magnitometer final : public ::google::protobuf::Message
   void _internal_set_z(double value);
 
   public:
+  // double magnetic_heading = 4;
+  void clear_magnetic_heading() ;
+  double magnetic_heading() const;
+  void set_magnetic_heading(double value);
+
+  private:
+  double _internal_magnetic_heading() const;
+  void _internal_set_magnetic_heading(double value);
+
+  public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.Magnitometer)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 0,
+      2, 4, 0,
       0, 2>
       _table_;
 
@@ -1695,6 +1706,7 @@ class Magnitometer final : public ::google::protobuf::Message
     double x_;
     double y_;
     double z_;
+    double magnetic_heading_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -4190,6 +4202,28 @@ inline double Magnitometer::_internal_z() const {
 inline void Magnitometer::_internal_set_z(double value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.z_ = value;
+}
+
+// double magnetic_heading = 4;
+inline void Magnitometer::clear_magnetic_heading() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.magnetic_heading_ = 0;
+}
+inline double Magnitometer::magnetic_heading() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.Magnitometer.magnetic_heading)
+  return _internal_magnetic_heading();
+}
+inline void Magnitometer::set_magnetic_heading(double value) {
+  _internal_set_magnetic_heading(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.Magnitometer.magnetic_heading)
+}
+inline double Magnitometer::_internal_magnetic_heading() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.magnetic_heading_;
+}
+inline void Magnitometer::_internal_set_magnetic_heading(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.magnetic_heading_ = value;
 }
 
 #ifdef __GNUC__

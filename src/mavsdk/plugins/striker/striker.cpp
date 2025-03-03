@@ -201,7 +201,9 @@ bool operator==(const Striker::Magnitometer& lhs, const Striker::Magnitometer& r
 {
     return ((std::isnan(rhs.x) && std::isnan(lhs.x)) || rhs.x == lhs.x) &&
            ((std::isnan(rhs.y) && std::isnan(lhs.y)) || rhs.y == lhs.y) &&
-           ((std::isnan(rhs.z) && std::isnan(lhs.z)) || rhs.z == lhs.z);
+           ((std::isnan(rhs.z) && std::isnan(lhs.z)) || rhs.z == lhs.z) &&
+           ((std::isnan(rhs.magnetic_heading) && std::isnan(lhs.magnetic_heading)) ||
+            rhs.magnetic_heading == lhs.magnetic_heading);
 }
 
 std::ostream& operator<<(std::ostream& str, Striker::Magnitometer const& magnitometer)
@@ -211,6 +213,7 @@ std::ostream& operator<<(std::ostream& str, Striker::Magnitometer const& magnito
     str << "    x: " << magnitometer.x << '\n';
     str << "    y: " << magnitometer.y << '\n';
     str << "    z: " << magnitometer.z << '\n';
+    str << "    magnetic_heading: " << magnitometer.magnetic_heading << '\n';
     str << '}';
     return str;
 }

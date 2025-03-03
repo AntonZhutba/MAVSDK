@@ -265,6 +265,7 @@ void StrikerImpl::set_magnitometer(const mavlink_highres_imu_t& mav_magnitometer
     _magnitometer.x = mav_magnitometer.xmag;
     _magnitometer.y = mav_magnitometer.ymag;
     _magnitometer.z = mav_magnitometer.zmag;
+    _magnitometer.magnetic_heading = atan2(_magnitometer.y, _magnitometer.x) * 180 / M_PI;
 }
 
 } // namespace mavsdk

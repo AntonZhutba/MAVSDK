@@ -265,6 +265,8 @@ public:
 
         rpc_obj->set_z(magnitometer.z);
 
+        rpc_obj->set_magnetic_heading(magnitometer.magnetic_heading);
+
         return rpc_obj;
     }
 
@@ -278,6 +280,8 @@ public:
         obj.y = magnitometer.y();
 
         obj.z = magnitometer.z();
+
+        obj.magnetic_heading = magnitometer.magnetic_heading();
 
         return obj;
     }

@@ -37,7 +37,8 @@ public:
     Striker::RcChannel rc_channel() const;
 
     // Magnitometer subscription
-    Striker::MagnitometerHandle subscribe_magnitometer(const Striker::MagnitometerCallback& callback);
+    Striker::MagnitometerHandle
+    subscribe_magnitometer(const Striker::MagnitometerCallback& callback);
     void unsubscribe_magnitometer(Striker::MagnitometerHandle handle);
     Striker::Magnitometer magnitometer() const;
 

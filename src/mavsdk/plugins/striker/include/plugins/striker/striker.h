@@ -174,6 +174,7 @@ public:
         double x{}; /**< @brief */
         double y{}; /**< @brief */
         double z{}; /**< @brief */
+        double magnetic_heading{}; /**< @brief */
     };
 
     /**
