@@ -273,7 +273,7 @@ jobs:
         run: sudo cmake --build build/release --target install
       - name: Package
         if: startsWith(github.ref, 'refs/tags/v')
-        run: tools/create_packages.sh ./install . amd64 libmavsdk-dev
+        run: tools/create_packages.sh /usr/ . amd64 libmavsdk-dev
       - name: Publish artefacts
         if: startsWith(github.ref, 'refs/tags/v')
         uses: svenstaro/upload-release-action@v1-release
@@ -395,7 +395,7 @@ jobs:
         with:
           submodules: recursive
       - name: setup dockcross
-        run: docker run --rm dockcross/${{ matrix.arch_name }} > ./dockcross-${{ matrix.arch_name }}; chmod +x ./dockcross-${{ matrix.arch_name }}
+        run: docker run --rm dockcross/${{ matrix.arch_name }}:20250311-4bd0eec > ./dockcross-${{ matrix.arch_name }}; chmod +x ./dockcross-${{ matrix.arch_name }}
       - uses: actions/cache@v4
         id: cache
         with:
@@ -438,7 +438,7 @@ jobs:
         with:
           submodules: recursive
       - name: setup dockcross
-        run: docker run --rm dockcross/${{ matrix.name }} > ./dockcross-${{ matrix.name }}; chmod +x ./dockcross-${{ matrix.name }}
+        run: docker run --rm dockcross/${{ matrix.name }}:20250311-4bd0eec > ./dockcross-${{ matrix.name }}; chmod +x ./dockcross-${{ matrix.name }}
       - uses: actions/cache@v4
         id: cache
         with:
