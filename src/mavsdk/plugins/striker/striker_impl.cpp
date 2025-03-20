@@ -36,6 +36,21 @@ void StrikerImpl::init()
         MAVLINK_MSG_ID_SYS_STATUS,
         [this](const mavlink_message_t& message) { process_sys_status(message); },
         this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_RC_CHANNELS,
+        [this](const mavlink_message_t& message) { process_rc_channel(message); },
+        this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_HIGHRES_IMU,
+        [this](const mavlink_message_t& message) { process_magnitometer(message); },
+        this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_BATTERY_STATUS,
+        [this](const mavlink_message_t& message) { process_battery_voltages(message); },
+        this);
 }
 
 void StrikerImpl::deinit()
@@ -152,6 +167,151 @@ void StrikerImpl::process_sys_status(const mavlink_message_t& message)
     std::lock_guard<std::mutex> lock(_subscription_sys_status_mutex);
     _sys_status_subscriptions.queue(
         sys_status(), [this](const auto& func) { _system_impl->call_user_callback(func); });
+}
+
+// -- Rc channels --
+Striker::RcChannelHandle
+StrikerImpl::subscribe_rc_channel(const Striker::RcChannelCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_rc_channel_mutex);
+    return _rc_channel_subscriptions.subscribe(callback);
+}
+
+void StrikerImpl::unsubscribe_rc_channel(Striker::RcChannelHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_rc_channel_mutex);
+    _rc_channel_subscriptions.unsubscribe(handle);
+}
+
+Striker::RcChannel StrikerImpl::rc_channel() const
+{
+    std::lock_guard<std::mutex> lock(_rc_channel_mutex);
+    return _rc_channel;
+}
+
+void StrikerImpl::process_rc_channel(const mavlink_message_t& message)
+{
+    mavlink_rc_channels_t rc_channels;
+    mavlink_msg_rc_channels_decode(&message, &rc_channels);
+
+    set_rc_channel(rc_channels);
+
+    std::lock_guard<std::mutex> lock(_subscription_rc_channel_mutex);
+    _rc_channel_subscriptions.queue(
+        rc_channel(), [this](const auto& func) { _system_impl->call_user_callback(func); });
+}
+
+void StrikerImpl::set_rc_channel(const mavlink_rc_channels_t& rc_channel)
+{
+    std::lock_guard<std::mutex> lock(_rc_channel_mutex);
+
+    _rc_channel.time_boot_ms = rc_channel.time_boot_ms;
+    _rc_channel.chancount = rc_channel.chancount;
+
+    _rc_channel.chan1_raw = rc_channel.chan1_raw;
+    _rc_channel.chan2_raw = rc_channel.chan2_raw;
+    _rc_channel.chan3_raw = rc_channel.chan3_raw;
+    _rc_channel.chan4_raw = rc_channel.chan4_raw;
+    _rc_channel.chan5_raw = rc_channel.chan5_raw;
+    _rc_channel.chan6_raw = rc_channel.chan6_raw;
+    _rc_channel.chan7_raw = rc_channel.chan7_raw;
+    _rc_channel.chan8_raw = rc_channel.chan8_raw;
+    _rc_channel.chan9_raw = rc_channel.chan9_raw;
+    _rc_channel.chan10_raw = rc_channel.chan10_raw;
+    _rc_channel.chan11_raw = rc_channel.chan11_raw;
+    _rc_channel.chan12_raw = rc_channel.chan12_raw;
+    _rc_channel.chan13_raw = rc_channel.chan13_raw;
+    _rc_channel.chan14_raw = rc_channel.chan14_raw;
+    _rc_channel.chan15_raw = rc_channel.chan15_raw;
+    _rc_channel.chan16_raw = rc_channel.chan16_raw;
+    _rc_channel.chan17_raw = rc_channel.chan17_raw;
+    _rc_channel.chan18_raw = rc_channel.chan18_raw;
+
+    _rc_channel.rssi = rc_channel.rssi;
+}
+
+// -- Magnitometer --
+
+Striker::MagnitometerHandle
+StrikerImpl::subscribe_magnitometer(const Striker::MagnitometerCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_magnitometer_mutex);
+    return _magnitometer_subscriptions.subscribe(callback);
+}
+
+void StrikerImpl::unsubscribe_magnitometer(Striker::MagnitometerHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_magnitometer_mutex);
+    _magnitometer_subscriptions.unsubscribe(handle);
+}
+
+Striker::Magnitometer StrikerImpl::magnitometer() const
+{
+    std::lock_guard<std::mutex> lock(_magnitometer_mutex);
+    return _magnitometer;
+}
+
+void StrikerImpl::process_magnitometer(const mavlink_message_t& message)
+{
+    mavlink_highres_imu_t imu;
+    mavlink_msg_highres_imu_decode(&message, &imu);
+
+    set_magnitometer(imu);
+
+    std::lock_guard<std::mutex> lock(_subscription_magnitometer_mutex);
+    _magnitometer_subscriptions.queue(
+        magnitometer(), [this](const auto& func) { _system_impl->call_user_callback(func); });
+}
+
+void StrikerImpl::set_magnitometer(const mavlink_highres_imu_t& mav_magnitometer)
+{
+    std::lock_guard<std::mutex> lock(_magnitometer_mutex);
+
+    _magnitometer.x = mav_magnitometer.xmag;
+    _magnitometer.y = mav_magnitometer.ymag;
+    _magnitometer.z = mav_magnitometer.zmag;
+    _magnitometer.magnetic_heading = atan2(_magnitometer.y, _magnitometer.x) * 180 / M_PI;
+}
+
+// -- Battery voltages --
+
+Striker::BatteryVoltagesHandle
+StrikerImpl::subscribe_battery_voltages(const Striker::BatteryVoltagesCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_battery_voltages_mutex);
+    return _battery_voltages_subscriptions.subscribe(callback);
+}
+
+void StrikerImpl::unsubscribe_battery_voltages(Striker::BatteryVoltagesHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_battery_voltages_mutex);
+    _battery_voltages_subscriptions.unsubscribe(handle);
+}
+
+Striker::BatteryVoltages StrikerImpl::battery_voltages() const
+{
+    std::lock_guard<std::mutex> lock(_battery_voltages_mutex);
+    return _battery_voltages;
+}
+
+void StrikerImpl::process_battery_voltages(const mavlink_message_t& message)
+{
+    mavlink_battery_status_t battery_status;
+    mavlink_msg_battery_status_decode(&message, &battery_status);
+
+    set_battery_voltages(battery_status);
+
+    std::lock_guard<std::mutex> lock(_subscription_battery_voltages_mutex);
+    _battery_voltages_subscriptions.queue(
+        battery_voltages(), [this](const auto& func) { _system_impl->call_user_callback(func); });
+}
+
+void StrikerImpl::set_battery_voltages(const mavlink_battery_status_t& battery_status)
+{
+    std::lock_guard<std::mutex> lock(_battery_voltages_mutex);
+
+    _battery_voltages.voltages.assign(battery_status.voltages, battery_status.voltages + MAVLINK_MSG_BATTERY_STATUS_FIELD_VOLTAGES_LEN);
+    _battery_voltages.ext_voltages.assign(battery_status.voltages_ext, battery_status.voltages_ext + MAVLINK_MSG_BATTERY_STATUS_FIELD_VOLTAGES_EXT_LEN);
 }
 
 } // namespace mavsdk

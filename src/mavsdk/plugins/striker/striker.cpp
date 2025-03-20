@@ -11,6 +11,9 @@ namespace mavsdk {
 
 using Heartbeat = Striker::Heartbeat;
 using SysStatus = Striker::SysStatus;
+using RcChannel = Striker::RcChannel;
+using Magnitometer = Striker::Magnitometer;
+using BatteryVoltages = Striker::BatteryVoltages;
 
 Striker::Striker(System& system) : PluginBase(), _impl{std::make_unique<StrikerImpl>(system)} {}
 
@@ -49,6 +52,52 @@ void Striker::unsubscribe_sys_status(SysStatusHandle handle)
 Striker::SysStatus Striker::sys_status() const
 {
     return _impl->sys_status();
+}
+
+Striker::RcChannelHandle Striker::subscribe_rc_channel(const RcChannelCallback& callback)
+{
+    return _impl->subscribe_rc_channel(callback);
+}
+
+void Striker::unsubscribe_rc_channel(RcChannelHandle handle)
+{
+    _impl->unsubscribe_rc_channel(handle);
+}
+
+Striker::RcChannel Striker::rc_channel() const
+{
+    return _impl->rc_channel();
+}
+
+Striker::MagnitometerHandle Striker::subscribe_magnitometer(const MagnitometerCallback& callback)
+{
+    return _impl->subscribe_magnitometer(callback);
+}
+
+void Striker::unsubscribe_magnitometer(MagnitometerHandle handle)
+{
+    _impl->unsubscribe_magnitometer(handle);
+}
+
+Striker::Magnitometer Striker::magnitometer() const
+{
+    return _impl->magnitometer();
+}
+
+Striker::BatteryVoltagesHandle
+Striker::subscribe_battery_voltages(const BatteryVoltagesCallback& callback)
+{
+    return _impl->subscribe_battery_voltages(callback);
+}
+
+void Striker::unsubscribe_battery_voltages(BatteryVoltagesHandle handle)
+{
+    _impl->unsubscribe_battery_voltages(handle);
+}
+
+Striker::BatteryVoltages Striker::battery_voltages() const
+{
+    return _impl->battery_voltages();
 }
 
 bool operator==(const Striker::Heartbeat& lhs, const Striker::Heartbeat& rhs)
@@ -117,6 +166,95 @@ std::ostream& operator<<(std::ostream& str, Striker::SysStatus const& sys_status
         << sys_status.onboard_control_sensors_enabled_extended << '\n';
     str << "    onboard_control_sensors_health_extended: "
         << sys_status.onboard_control_sensors_health_extended << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const Striker::RcChannel& lhs, const Striker::RcChannel& rhs)
+{
+    return (rhs.time_boot_ms == lhs.time_boot_ms) && (rhs.chan1_raw == lhs.chan1_raw) &&
+           (rhs.chan2_raw == lhs.chan2_raw) && (rhs.chan3_raw == lhs.chan3_raw) &&
+           (rhs.chan4_raw == lhs.chan4_raw) && (rhs.chan5_raw == lhs.chan5_raw) &&
+           (rhs.chan6_raw == lhs.chan6_raw) && (rhs.chan7_raw == lhs.chan7_raw) &&
+           (rhs.chan8_raw == lhs.chan8_raw) && (rhs.chan9_raw == lhs.chan9_raw) &&
+           (rhs.chan10_raw == lhs.chan10_raw) && (rhs.chan11_raw == lhs.chan11_raw) &&
+           (rhs.chan12_raw == lhs.chan12_raw) && (rhs.chan13_raw == lhs.chan13_raw) &&
+           (rhs.chan14_raw == lhs.chan14_raw) && (rhs.chan15_raw == lhs.chan15_raw) &&
+           (rhs.chan16_raw == lhs.chan16_raw) && (rhs.chan17_raw == lhs.chan17_raw) &&
+           (rhs.chan18_raw == lhs.chan18_raw) && (rhs.chancount == lhs.chancount) &&
+           (rhs.rssi == lhs.rssi);
+}
+
+std::ostream& operator<<(std::ostream& str, Striker::RcChannel const& rc_channel)
+{
+    str << std::setprecision(15);
+    str << "rc_channel:" << '\n' << "{\n";
+    str << "    time_boot_ms: " << rc_channel.time_boot_ms << '\n';
+    str << "    chan1_raw: " << rc_channel.chan1_raw << '\n';
+    str << "    chan2_raw: " << rc_channel.chan2_raw << '\n';
+    str << "    chan3_raw: " << rc_channel.chan3_raw << '\n';
+    str << "    chan4_raw: " << rc_channel.chan4_raw << '\n';
+    str << "    chan5_raw: " << rc_channel.chan5_raw << '\n';
+    str << "    chan6_raw: " << rc_channel.chan6_raw << '\n';
+    str << "    chan7_raw: " << rc_channel.chan7_raw << '\n';
+    str << "    chan8_raw: " << rc_channel.chan8_raw << '\n';
+    str << "    chan9_raw: " << rc_channel.chan9_raw << '\n';
+    str << "    chan10_raw: " << rc_channel.chan10_raw << '\n';
+    str << "    chan11_raw: " << rc_channel.chan11_raw << '\n';
+    str << "    chan12_raw: " << rc_channel.chan12_raw << '\n';
+    str << "    chan13_raw: " << rc_channel.chan13_raw << '\n';
+    str << "    chan14_raw: " << rc_channel.chan14_raw << '\n';
+    str << "    chan15_raw: " << rc_channel.chan15_raw << '\n';
+    str << "    chan16_raw: " << rc_channel.chan16_raw << '\n';
+    str << "    chan17_raw: " << rc_channel.chan17_raw << '\n';
+    str << "    chan18_raw: " << rc_channel.chan18_raw << '\n';
+    str << "    chancount: " << rc_channel.chancount << '\n';
+    str << "    rssi: " << rc_channel.rssi << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const Striker::Magnitometer& lhs, const Striker::Magnitometer& rhs)
+{
+    return ((std::isnan(rhs.x) && std::isnan(lhs.x)) || rhs.x == lhs.x) &&
+           ((std::isnan(rhs.y) && std::isnan(lhs.y)) || rhs.y == lhs.y) &&
+           ((std::isnan(rhs.z) && std::isnan(lhs.z)) || rhs.z == lhs.z) &&
+           ((std::isnan(rhs.magnetic_heading) && std::isnan(lhs.magnetic_heading)) ||
+            rhs.magnetic_heading == lhs.magnetic_heading);
+}
+
+std::ostream& operator<<(std::ostream& str, Striker::Magnitometer const& magnitometer)
+{
+    str << std::setprecision(15);
+    str << "magnitometer:" << '\n' << "{\n";
+    str << "    x: " << magnitometer.x << '\n';
+    str << "    y: " << magnitometer.y << '\n';
+    str << "    z: " << magnitometer.z << '\n';
+    str << "    magnetic_heading: " << magnitometer.magnetic_heading << '\n';
+    str << '}';
+    return str;
+}
+
+bool operator==(const Striker::BatteryVoltages& lhs, const Striker::BatteryVoltages& rhs)
+{
+    return (rhs.voltages == lhs.voltages) && (rhs.ext_voltages == lhs.ext_voltages);
+}
+
+std::ostream& operator<<(std::ostream& str, Striker::BatteryVoltages const& battery_voltages)
+{
+    str << std::setprecision(15);
+    str << "battery_voltages:" << '\n' << "{\n";
+    str << "    voltages: [";
+    for (auto it = battery_voltages.voltages.begin(); it != battery_voltages.voltages.end(); ++it) {
+        str << *it;
+        str << (it + 1 != battery_voltages.voltages.end() ? ", " : "]\n");
+    }
+    str << "    ext_voltages: [";
+    for (auto it = battery_voltages.ext_voltages.begin(); it != battery_voltages.ext_voltages.end();
+         ++it) {
+        str << *it;
+        str << (it + 1 != battery_voltages.ext_voltages.end() ? ", " : "]\n");
+    }
     str << '}';
     return str;
 }

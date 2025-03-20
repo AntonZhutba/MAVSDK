@@ -26,6 +26,9 @@ namespace striker {
 static const char* StrikerService_method_names[] = {
   "/mavsdk.rpc.striker.StrikerService/SubscribeHeartbeat",
   "/mavsdk.rpc.striker.StrikerService/SubscribeSysStatus",
+  "/mavsdk.rpc.striker.StrikerService/SubscribeRcChannel",
+  "/mavsdk.rpc.striker.StrikerService/SubscribeMagnitometer",
+  "/mavsdk.rpc.striker.StrikerService/SubscribeBatteryVoltages",
 };
 
 std::unique_ptr< StrikerService::Stub> StrikerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +40,9 @@ std::unique_ptr< StrikerService::Stub> StrikerService::NewStub(const std::shared
 StrikerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_SubscribeHeartbeat_(StrikerService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeSysStatus_(StrikerService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeRcChannel_(StrikerService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeMagnitometer_(StrikerService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeBatteryVoltages_(StrikerService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::ClientReader< ::mavsdk::rpc::striker::HeartbeatResponse>* StrikerService::Stub::SubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeHeartbeatRequest& request) {
@@ -71,6 +77,54 @@ void StrikerService::Stub::async::SubscribeSysStatus(::grpc::ClientContext* cont
   return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::SysStatusResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeSysStatus_, context, request, false, nullptr);
 }
 
+::grpc::ClientReader< ::mavsdk::rpc::striker::RcChannelResponse>* StrikerService::Stub::SubscribeRcChannelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::striker::RcChannelResponse>::Create(channel_.get(), rpcmethod_SubscribeRcChannel_, context, request);
+}
+
+void StrikerService::Stub::async::SubscribeRcChannel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::RcChannelResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::striker::RcChannelResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeRcChannel_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::RcChannelResponse>* StrikerService::Stub::AsyncSubscribeRcChannelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::RcChannelResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeRcChannel_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::RcChannelResponse>* StrikerService::Stub::PrepareAsyncSubscribeRcChannelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::RcChannelResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeRcChannel_, context, request, false, nullptr);
+}
+
+::grpc::ClientReader< ::mavsdk::rpc::striker::MagnitometerResponse>* StrikerService::Stub::SubscribeMagnitometerRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::striker::MagnitometerResponse>::Create(channel_.get(), rpcmethod_SubscribeMagnitometer_, context, request);
+}
+
+void StrikerService::Stub::async::SubscribeMagnitometer(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::MagnitometerResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::striker::MagnitometerResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeMagnitometer_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::MagnitometerResponse>* StrikerService::Stub::AsyncSubscribeMagnitometerRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::MagnitometerResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeMagnitometer_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::MagnitometerResponse>* StrikerService::Stub::PrepareAsyncSubscribeMagnitometerRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::MagnitometerResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeMagnitometer_, context, request, false, nullptr);
+}
+
+::grpc::ClientReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* StrikerService::Stub::SubscribeBatteryVoltagesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::striker::BatteryVoltagesResponse>::Create(channel_.get(), rpcmethod_SubscribeBatteryVoltages_, context, request);
+}
+
+void StrikerService::Stub::async::SubscribeBatteryVoltages(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::striker::BatteryVoltagesResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeBatteryVoltages_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* StrikerService::Stub::AsyncSubscribeBatteryVoltagesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::BatteryVoltagesResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeBatteryVoltages_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* StrikerService::Stub::PrepareAsyncSubscribeBatteryVoltagesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::BatteryVoltagesResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeBatteryVoltages_, context, request, false, nullptr);
+}
+
 StrikerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       StrikerService_method_names[0],
@@ -92,6 +146,36 @@ StrikerService::Service::Service() {
              ::grpc::ServerWriter<::mavsdk::rpc::striker::SysStatusResponse>* writer) {
                return service->SubscribeSysStatus(ctx, req, writer);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StrikerService_method_names[2],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< StrikerService::Service, ::mavsdk::rpc::striker::SubscribeRcChannelRequest, ::mavsdk::rpc::striker::RcChannelResponse>(
+          [](StrikerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::striker::RcChannelResponse>* writer) {
+               return service->SubscribeRcChannel(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StrikerService_method_names[3],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< StrikerService::Service, ::mavsdk::rpc::striker::SubscribeMagnitometerRequest, ::mavsdk::rpc::striker::MagnitometerResponse>(
+          [](StrikerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::striker::MagnitometerResponse>* writer) {
+               return service->SubscribeMagnitometer(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StrikerService_method_names[4],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< StrikerService::Service, ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest, ::mavsdk::rpc::striker::BatteryVoltagesResponse>(
+          [](StrikerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::striker::BatteryVoltagesResponse>* writer) {
+               return service->SubscribeBatteryVoltages(ctx, req, writer);
+             }, this)));
 }
 
 StrikerService::Service::~Service() {
@@ -105,6 +189,27 @@ StrikerService::Service::~Service() {
 }
 
 ::grpc::Status StrikerService::Service::SubscribeSysStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeSysStatusRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::SysStatusResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StrikerService::Service::SubscribeRcChannel(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeRcChannelRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::RcChannelResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StrikerService::Service::SubscribeMagnitometer(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeMagnitometerRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::MagnitometerResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StrikerService::Service::SubscribeBatteryVoltages(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::BatteryVoltagesResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

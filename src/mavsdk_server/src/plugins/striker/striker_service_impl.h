@@ -154,6 +154,170 @@ public:
         return obj;
     }
 
+    static std::unique_ptr<rpc::striker::RcChannel>
+    translateToRpcRcChannel(const mavsdk::Striker::RcChannel& rc_channel)
+    {
+        auto rpc_obj = std::make_unique<rpc::striker::RcChannel>();
+
+        rpc_obj->set_time_boot_ms(rc_channel.time_boot_ms);
+
+        rpc_obj->set_chan1_raw(rc_channel.chan1_raw);
+
+        rpc_obj->set_chan2_raw(rc_channel.chan2_raw);
+
+        rpc_obj->set_chan3_raw(rc_channel.chan3_raw);
+
+        rpc_obj->set_chan4_raw(rc_channel.chan4_raw);
+
+        rpc_obj->set_chan5_raw(rc_channel.chan5_raw);
+
+        rpc_obj->set_chan6_raw(rc_channel.chan6_raw);
+
+        rpc_obj->set_chan7_raw(rc_channel.chan7_raw);
+
+        rpc_obj->set_chan8_raw(rc_channel.chan8_raw);
+
+        rpc_obj->set_chan9_raw(rc_channel.chan9_raw);
+
+        rpc_obj->set_chan10_raw(rc_channel.chan10_raw);
+
+        rpc_obj->set_chan11_raw(rc_channel.chan11_raw);
+
+        rpc_obj->set_chan12_raw(rc_channel.chan12_raw);
+
+        rpc_obj->set_chan13_raw(rc_channel.chan13_raw);
+
+        rpc_obj->set_chan14_raw(rc_channel.chan14_raw);
+
+        rpc_obj->set_chan15_raw(rc_channel.chan15_raw);
+
+        rpc_obj->set_chan16_raw(rc_channel.chan16_raw);
+
+        rpc_obj->set_chan17_raw(rc_channel.chan17_raw);
+
+        rpc_obj->set_chan18_raw(rc_channel.chan18_raw);
+
+        rpc_obj->set_chancount(rc_channel.chancount);
+
+        rpc_obj->set_rssi(rc_channel.rssi);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::Striker::RcChannel
+    translateFromRpcRcChannel(const rpc::striker::RcChannel& rc_channel)
+    {
+        mavsdk::Striker::RcChannel obj;
+
+        obj.time_boot_ms = rc_channel.time_boot_ms();
+
+        obj.chan1_raw = rc_channel.chan1_raw();
+
+        obj.chan2_raw = rc_channel.chan2_raw();
+
+        obj.chan3_raw = rc_channel.chan3_raw();
+
+        obj.chan4_raw = rc_channel.chan4_raw();
+
+        obj.chan5_raw = rc_channel.chan5_raw();
+
+        obj.chan6_raw = rc_channel.chan6_raw();
+
+        obj.chan7_raw = rc_channel.chan7_raw();
+
+        obj.chan8_raw = rc_channel.chan8_raw();
+
+        obj.chan9_raw = rc_channel.chan9_raw();
+
+        obj.chan10_raw = rc_channel.chan10_raw();
+
+        obj.chan11_raw = rc_channel.chan11_raw();
+
+        obj.chan12_raw = rc_channel.chan12_raw();
+
+        obj.chan13_raw = rc_channel.chan13_raw();
+
+        obj.chan14_raw = rc_channel.chan14_raw();
+
+        obj.chan15_raw = rc_channel.chan15_raw();
+
+        obj.chan16_raw = rc_channel.chan16_raw();
+
+        obj.chan17_raw = rc_channel.chan17_raw();
+
+        obj.chan18_raw = rc_channel.chan18_raw();
+
+        obj.chancount = rc_channel.chancount();
+
+        obj.rssi = rc_channel.rssi();
+
+        return obj;
+    }
+
+    static std::unique_ptr<rpc::striker::Magnitometer>
+    translateToRpcMagnitometer(const mavsdk::Striker::Magnitometer& magnitometer)
+    {
+        auto rpc_obj = std::make_unique<rpc::striker::Magnitometer>();
+
+        rpc_obj->set_x(magnitometer.x);
+
+        rpc_obj->set_y(magnitometer.y);
+
+        rpc_obj->set_z(magnitometer.z);
+
+        rpc_obj->set_magnetic_heading(magnitometer.magnetic_heading);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::Striker::Magnitometer
+    translateFromRpcMagnitometer(const rpc::striker::Magnitometer& magnitometer)
+    {
+        mavsdk::Striker::Magnitometer obj;
+
+        obj.x = magnitometer.x();
+
+        obj.y = magnitometer.y();
+
+        obj.z = magnitometer.z();
+
+        obj.magnetic_heading = magnitometer.magnetic_heading();
+
+        return obj;
+    }
+
+    static std::unique_ptr<rpc::striker::BatteryVoltages>
+    translateToRpcBatteryVoltages(const mavsdk::Striker::BatteryVoltages& battery_voltages)
+    {
+        auto rpc_obj = std::make_unique<rpc::striker::BatteryVoltages>();
+
+        for (const auto& elem : battery_voltages.voltages) {
+            rpc_obj->add_voltages(elem);
+        }
+
+        for (const auto& elem : battery_voltages.ext_voltages) {
+            rpc_obj->add_ext_voltages(elem);
+        }
+
+        return rpc_obj;
+    }
+
+    static mavsdk::Striker::BatteryVoltages
+    translateFromRpcBatteryVoltages(const rpc::striker::BatteryVoltages& battery_voltages)
+    {
+        mavsdk::Striker::BatteryVoltages obj;
+
+        for (const auto& elem : battery_voltages.voltages()) {
+            obj.voltages.push_back(elem);
+        }
+
+        for (const auto& elem : battery_voltages.ext_voltages()) {
+            obj.ext_voltages.push_back(elem);
+        }
+
+        return obj;
+    }
+
     grpc::Status SubscribeHeartbeat(
         grpc::ServerContext* /* context */,
         const mavsdk::rpc::striker::SubscribeHeartbeatRequest* /* request */,
@@ -224,6 +388,132 @@ public:
                     std::unique_lock<std::mutex> lock(*subscribe_mutex);
                     if (!*is_finished && !writer->Write(rpc_response)) {
                         _lazy_plugin.maybe_plugin()->unsubscribe_sys_status(handle);
+
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeRcChannel(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeRcChannelRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::RcChannelResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        const mavsdk::Striker::RcChannelHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_rc_channel(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const mavsdk::Striker::RcChannel rc_channel) {
+                    rpc::striker::RcChannelResponse rpc_response;
+
+                    rpc_response.set_allocated_rc_channel(
+                        translateToRpcRcChannel(rc_channel).release());
+
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_rc_channel(handle);
+
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeMagnitometer(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeMagnitometerRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::MagnitometerResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        const mavsdk::Striker::MagnitometerHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_magnitometer(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const mavsdk::Striker::Magnitometer magnitometer) {
+                    rpc::striker::MagnitometerResponse rpc_response;
+
+                    rpc_response.set_allocated_magnitometer(
+                        translateToRpcMagnitometer(magnitometer).release());
+
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_magnitometer(handle);
+
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeBatteryVoltages(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeBatteryVoltagesRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::BatteryVoltagesResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        const mavsdk::Striker::BatteryVoltagesHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_battery_voltages(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const mavsdk::Striker::BatteryVoltages battery_voltages) {
+                    rpc::striker::BatteryVoltagesResponse rpc_response;
+
+                    rpc_response.set_allocated_battery_voltages(
+                        translateToRpcBatteryVoltages(battery_voltages).release());
+
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_battery_voltages(handle);
 
                         *is_finished = true;
                         unregister_stream_stop_promise(stream_closed_promise);
