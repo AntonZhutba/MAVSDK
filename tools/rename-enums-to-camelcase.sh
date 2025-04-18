@@ -270,8 +270,9 @@ sed -i 's/FlightMode::MANUAL/FlightMode::Manual/g' $files
 sed -i 's/FlightMode::ALTCTL/FlightMode::Altctl/g' $files
 sed -i 's/FlightMode::POSCTL/FlightMode::Posctl/g' $files
 sed -i 's/FlightMode::ACRO/FlightMode::Acro/g' $files
-sed -i 's/FlightMode::RATTITUDE/FlightMode::Rattitude/g' $files
+sed -i 's/FlightMode::RATTITUDE_LEGACY/FlightMode::RattitudeLegacy/g' $files
 sed -i 's/FlightMode::STABILIZED/FlightMode::Stabilized/g' $files
+sed -i 's/FlightMode::CHASE/FlightMode::Chase/g' $files
 
 
 sed -i 's/CalibrationImpl::State::NONE/CalibrationImpl::None/g' $files

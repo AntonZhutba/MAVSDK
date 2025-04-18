@@ -383,10 +383,12 @@ std::string EventsImpl::mode_name_from_custom_mode(uint32_t custom_mode) const
             return "Position";
         case FlightMode::Acro:
             return "Acro";
-        case FlightMode::Rattitude:
+        case FlightMode::RattitudeLegacy:
             return "Rattitude";
         case FlightMode::Stabilized:
             return "Stabilized";
+        case FlightMode::Chase:
+            return "Chase";
         case FlightMode::Unknown:
             break;
     }

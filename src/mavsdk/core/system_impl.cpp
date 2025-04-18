@@ -874,7 +874,7 @@ ardupilot::RoverMode SystemImpl::flight_mode_to_ardupilot_rover_mode(FlightMode 
         case FlightMode::Land:
         case FlightMode::Altctl:
         case FlightMode::Posctl:
-        case FlightMode::Rattitude:
+        case FlightMode::RattitudeLegacy:
         case FlightMode::Stabilized:
         default:
             return ardupilot::RoverMode::Unknown;
@@ -983,14 +983,17 @@ SystemImpl::make_command_px4_mode(FlightMode flight_mode, uint8_t component_id)
         case FlightMode::Altctl:
             custom_mode = px4::PX4_CUSTOM_MAIN_MODE_ALTCTL;
             break;
-        case FlightMode::Rattitude:
-            custom_mode = px4::PX4_CUSTOM_MAIN_MODE_RATTITUDE;
+        case FlightMode::RattitudeLegacy:
+            custom_mode = px4::PX4_CUSTOM_MAIN_MODE_RATTITUDE_LEGACY;
             break;
         case FlightMode::Acro:
             custom_mode = px4::PX4_CUSTOM_MAIN_MODE_ACRO;
             break;
         case FlightMode::Stabilized:
             custom_mode = px4::PX4_CUSTOM_MAIN_MODE_STABILIZED;
+            break;
+        case FlightMode::Chase:
+            custom_mode = px4::PX4_CUSTOM_MAIN_MODE_CHASE;
             break;
         default:
             LogErr() << "Unknown Flight mode.";

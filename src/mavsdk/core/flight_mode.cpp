@@ -120,12 +120,14 @@ FlightMode to_flight_mode_from_px4_mode(uint32_t custom_mode)
             return FlightMode::Posctl;
         case px4::PX4_CUSTOM_MAIN_MODE_ALTCTL:
             return FlightMode::Altctl;
-        case px4::PX4_CUSTOM_MAIN_MODE_RATTITUDE:
-            return FlightMode::Rattitude;
+        case px4::PX4_CUSTOM_MAIN_MODE_RATTITUDE_LEGACY:
+            return FlightMode::RattitudeLegacy;
         case px4::PX4_CUSTOM_MAIN_MODE_ACRO:
             return FlightMode::Acro;
         case px4::PX4_CUSTOM_MAIN_MODE_STABILIZED:
             return FlightMode::Stabilized;
+        case px4::PX4_CUSTOM_MAIN_MODE_CHASE:
+            return FlightMode::Chase;
         case px4::PX4_CUSTOM_MAIN_MODE_AUTO:
             switch (px4_custom_mode.sub_mode) {
                 case px4::PX4_CUSTOM_SUB_MODE_AUTO_READY:
