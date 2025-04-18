@@ -758,7 +758,7 @@ enum FlightMode : int {
   FLIGHT_MODE_POSCTL = 11,
   FLIGHT_MODE_ACRO = 12,
   FLIGHT_MODE_STABILIZED = 13,
-  FLIGHT_MODE_RATTITUDE_LEGACY = 14,
+  FLIGHT_MODE_RATTITUDE = 14,
   FLIGHT_MODE_CHASE = 15,
   FlightMode_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   FlightMode_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()

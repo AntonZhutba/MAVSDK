@@ -23,7 +23,7 @@ enum class FlightMode {
     Altctl,
     Posctl,
     Acro,
-    RattitudeLegacy,
+    Rattitude,
     Stabilized,
     Chase
 };

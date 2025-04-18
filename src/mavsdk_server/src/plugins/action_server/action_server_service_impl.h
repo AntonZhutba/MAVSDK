@@ -80,8 +80,8 @@ public:
                 return rpc::action_server::FLIGHT_MODE_ACRO;
             case mavsdk::ActionServer::FlightMode::Stabilized:
                 return rpc::action_server::FLIGHT_MODE_STABILIZED;
-            case mavsdk::ActionServer::FlightMode::RattitudeLegacy:
-                return rpc::action_server::FLIGHT_MODE_RATTITUDE_LEGACY;
+            case mavsdk::ActionServer::FlightMode::Rattitude:
+                return rpc::action_server::FLIGHT_MODE_RATTITUDE;
             case mavsdk::ActionServer::FlightMode::Chase:
                 return rpc::action_server::FLIGHT_MODE_CHASE;
         }
@@ -122,8 +122,8 @@ public:
                 return mavsdk::ActionServer::FlightMode::Acro;
             case rpc::action_server::FLIGHT_MODE_STABILIZED:
                 return mavsdk::ActionServer::FlightMode::Stabilized;
-            case rpc::action_server::FLIGHT_MODE_RATTITUDE_LEGACY:
-                return mavsdk::ActionServer::FlightMode::RattitudeLegacy;
+            case rpc::action_server::FLIGHT_MODE_RATTITUDE:
+                return mavsdk::ActionServer::FlightMode::Rattitude;
             case rpc::action_server::FLIGHT_MODE_CHASE:
                 return mavsdk::ActionServer::FlightMode::Chase;
         }

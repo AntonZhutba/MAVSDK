@@ -124,8 +124,8 @@ public:
                 return rpc::telemetry::FLIGHT_MODE_ACRO;
             case mavsdk::Telemetry::FlightMode::Stabilized:
                 return rpc::telemetry::FLIGHT_MODE_STABILIZED;
-            case mavsdk::Telemetry::FlightMode::RattitudeLegacy:
-                return rpc::telemetry::FLIGHT_MODE_RATTITUDE_LEGACY;
+            case mavsdk::Telemetry::FlightMode::Rattitude:
+                return rpc::telemetry::FLIGHT_MODE_RATTITUDE;
             case mavsdk::Telemetry::FlightMode::Chase:
                 return rpc::telemetry::FLIGHT_MODE_CHASE;
         }
@@ -166,8 +166,8 @@ public:
                 return mavsdk::Telemetry::FlightMode::Acro;
             case rpc::telemetry::FLIGHT_MODE_STABILIZED:
                 return mavsdk::Telemetry::FlightMode::Stabilized;
-            case rpc::telemetry::FLIGHT_MODE_RATTITUDE_LEGACY:
-                return mavsdk::Telemetry::FlightMode::RattitudeLegacy;
+            case rpc::telemetry::FLIGHT_MODE_RATTITUDE:
+                return mavsdk::Telemetry::FlightMode::Rattitude;
             case rpc::telemetry::FLIGHT_MODE_CHASE:
                 return mavsdk::Telemetry::FlightMode::Chase;
         }

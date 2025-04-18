@@ -1664,8 +1664,8 @@ Telemetry::FlightMode TelemetryImpl::telemetry_flight_mode_from_flight_mode(Flig
             return Telemetry::FlightMode::Posctl;
         case FlightMode::Altctl:
             return Telemetry::FlightMode::Altctl;
-        case FlightMode::RattitudeLegacy:
-            return Telemetry::FlightMode::RattitudeLegacy;
+        case FlightMode::Rattitude:
+            return Telemetry::FlightMode::Rattitude;
         case FlightMode::Acro:
             return Telemetry::FlightMode::Acro;
         case FlightMode::Stabilized:
