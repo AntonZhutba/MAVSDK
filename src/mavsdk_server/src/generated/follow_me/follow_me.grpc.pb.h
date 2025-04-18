@@ -24,6 +24,7 @@
 #include <grpcpp/support/status.h>
 #include <grpcpp/support/stub_options.h>
 #include <grpcpp/support/sync_stream.h>
+#include <grpcpp/ports_def.inc>
 
 namespace mavsdk {
 namespace rpc {
@@ -1207,4 +1208,5 @@ class FollowMeService final {
 }  // namespace mavsdk
 
 
+#include <grpcpp/ports_undef.inc>
 #endif  // GRPC_follow_5fme_2ffollow_5fme_2eproto__INCLUDED

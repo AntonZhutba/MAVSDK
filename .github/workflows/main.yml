@@ -211,7 +211,7 @@ jobs:
   #       with:
   #         submodules: recursive
   #     - name: install dependencies
-  #       run: sudo apt-get update && sudo apt-get install -y clang-format-19
+  #       run: sudo apt-get update && sudo apt-get install -y clang-format-18
   #     - uses: actions/cache@v4
   #       id: cache
   #       with:

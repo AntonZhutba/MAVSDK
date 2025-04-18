@@ -24,6 +24,7 @@
 #include <grpcpp/support/status.h>
 #include <grpcpp/support/stub_options.h>
 #include <grpcpp/support/sync_stream.h>
+#include <grpcpp/ports_def.inc>
 
 namespace mavsdk {
 namespace rpc {
@@ -245,4 +246,5 @@ class FailureService final {
 }  // namespace mavsdk
 
 
+#include <grpcpp/ports_undef.inc>
 #endif  // GRPC_failure_2ffailure_2eproto__INCLUDED

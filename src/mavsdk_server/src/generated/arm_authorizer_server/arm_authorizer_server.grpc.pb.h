@@ -24,6 +24,7 @@
 #include <grpcpp/support/status.h>
 #include <grpcpp/support/stub_options.h>
 #include <grpcpp/support/sync_stream.h>
+#include <grpcpp/ports_def.inc>
 
 namespace mavsdk {
 namespace rpc {
@@ -564,4 +565,5 @@ class ArmAuthorizerServerService final {
 }  // namespace mavsdk
 
 
+#include <grpcpp/ports_undef.inc>
 #endif  // GRPC_arm_5fauthorizer_5fserver_2farm_5fauthorizer_5fserver_2eproto__INCLUDED

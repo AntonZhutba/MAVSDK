@@ -66,6 +66,8 @@ public:
         Posctl, /**< @brief In 'Position Control' mode. */
         Acro, /**< @brief In 'Acro' mode. */
         Stabilized, /**< @brief In 'Stabilize' mode. */
+        RattitudeLegacy, /**< @brief In 'Rattitude' mode. */
+        Chase, /**< @brief In 'CHASE' mode. */
     };
 
     /**

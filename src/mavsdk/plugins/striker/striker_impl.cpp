@@ -310,8 +310,12 @@ void StrikerImpl::set_battery_voltages(const mavlink_battery_status_t& battery_s
 {
     std::lock_guard<std::mutex> lock(_battery_voltages_mutex);
 
-    _battery_voltages.voltages.assign(battery_status.voltages, battery_status.voltages + MAVLINK_MSG_BATTERY_STATUS_FIELD_VOLTAGES_LEN);
-    _battery_voltages.ext_voltages.assign(battery_status.voltages_ext, battery_status.voltages_ext + MAVLINK_MSG_BATTERY_STATUS_FIELD_VOLTAGES_EXT_LEN);
+    _battery_voltages.voltages.assign(
+        battery_status.voltages,
+        battery_status.voltages + MAVLINK_MSG_BATTERY_STATUS_FIELD_VOLTAGES_LEN);
+    _battery_voltages.ext_voltages.assign(
+        battery_status.voltages_ext,
+        battery_status.voltages_ext + MAVLINK_MSG_BATTERY_STATUS_FIELD_VOLTAGES_EXT_LEN);
 }
 
 } // namespace mavsdk
