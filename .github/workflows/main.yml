@@ -2,15 +2,11 @@ name: Build and Test
 
 on:
   push:
-    branches:
-    - 'main'
     tags:
     - 'v*'
     paths-ignore:
     - 'docs/**'
   pull_request:
-    branches:
-    - '*'
     paths-ignore:
     - 'docs/**'
     - '.github/workflows/docs_deploy.yml'
