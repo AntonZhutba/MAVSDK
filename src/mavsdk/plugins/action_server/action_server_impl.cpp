@@ -40,8 +40,6 @@ ActionServerImpl::telemetry_flight_mode_from_flight_mode(FlightMode flight_mode)
             return ActionServer::FlightMode::Acro;
         case FlightMode::Stabilized:
             return ActionServer::FlightMode::Stabilized;
-        case FlightMode::Chase:
-            return ActionServer::FlightMode::Chase;
         default:
             return ActionServer::FlightMode::Unknown;
     }
@@ -101,10 +99,6 @@ uint32_t ActionServerImpl::to_px4_mode_from_flight_mode(ActionServer::FlightMode
             break;
         case ActionServer::FlightMode::Stabilized:
             px4_mode.main_mode = px4::PX4_CUSTOM_MAIN_MODE_STABILIZED;
-            px4_mode.sub_mode = 0;
-            break;
-        case ActionServer::FlightMode::Chase:
-            px4_mode.main_mode = px4::PX4_CUSTOM_MAIN_MODE_CHASE;
             px4_mode.sub_mode = 0;
             break;
         default:

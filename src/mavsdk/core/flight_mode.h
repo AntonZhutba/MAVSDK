@@ -25,7 +25,6 @@ enum class FlightMode {
     Acro,
     Rattitude,
     Stabilized,
-    Chase
 };
 
 FlightMode

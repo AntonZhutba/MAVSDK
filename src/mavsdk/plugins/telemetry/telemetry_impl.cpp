@@ -1670,8 +1670,6 @@ Telemetry::FlightMode TelemetryImpl::telemetry_flight_mode_from_flight_mode(Flig
             return Telemetry::FlightMode::Acro;
         case FlightMode::Stabilized:
             return Telemetry::FlightMode::Stabilized;
-        case FlightMode::Chase:
-            return Telemetry::FlightMode::Chase;
         default:
             return Telemetry::FlightMode::Unknown;
     }
