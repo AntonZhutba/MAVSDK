@@ -1621,8 +1621,6 @@ std::ostream& operator<<(std::ostream& str, Telemetry::FlightMode const& flight_
             return str << "Stabilized";
         case Telemetry::FlightMode::Rattitude:
             return str << "Rattitude";
-        case Telemetry::FlightMode::Chase:
-            return str << "Chase";
         default:
             return str << "Unknown";
     }

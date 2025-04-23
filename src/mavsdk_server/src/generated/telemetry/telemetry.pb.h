@@ -637,7 +637,6 @@ enum FlightMode : int {
   FLIGHT_MODE_ACRO = 12,
   FLIGHT_MODE_STABILIZED = 13,
   FLIGHT_MODE_RATTITUDE = 14,
-  FLIGHT_MODE_CHASE = 15,
   FlightMode_INT_MIN_SENTINEL_DO_NOT_USE_ =
       std::numeric_limits<::int32_t>::min(),
   FlightMode_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -647,8 +646,8 @@ enum FlightMode : int {
 bool FlightMode_IsValid(int value);
 extern const uint32_t FlightMode_internal_data_[];
 constexpr FlightMode FlightMode_MIN = static_cast<FlightMode>(0);
-constexpr FlightMode FlightMode_MAX = static_cast<FlightMode>(15);
-constexpr int FlightMode_ARRAYSIZE = 15 + 1;
+constexpr FlightMode FlightMode_MAX = static_cast<FlightMode>(14);
+constexpr int FlightMode_ARRAYSIZE = 14 + 1;
 const ::google::protobuf::EnumDescriptor*
 FlightMode_descriptor();
 template <typename T>
@@ -661,7 +660,7 @@ const std::string& FlightMode_Name(T value) {
 template <>
 inline const std::string& FlightMode_Name(FlightMode value) {
   return ::google::protobuf::internal::NameOfDenseEnum<FlightMode_descriptor,
-                                                 0, 15>(
+                                                 0, 14>(
       static_cast<int>(value));
 }
 inline bool FlightMode_Parse(absl::string_view name, FlightMode* value) {

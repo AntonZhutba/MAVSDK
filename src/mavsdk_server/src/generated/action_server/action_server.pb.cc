@@ -1220,7 +1220,7 @@ const char descriptor_table_protodef_action_5fserver_2faction_5fserver_2eproto[]
     "\022\022\n\016RESULT_TIMEOUT\020\010\022*\n&RESULT_VTOL_TRAN"
     "SITION_SUPPORT_UNKNOWN\020\t\022%\n!RESULT_NO_VT"
     "OL_TRANSITION_SUPPORT\020\n\022\032\n\026RESULT_PARAME"
-    "TER_ERROR\020\013\022\017\n\013RESULT_NEXT\020\014*\235\003\n\nFlightM"
+    "TER_ERROR\020\013\022\017\n\013RESULT_NEXT\020\014*\206\003\n\nFlightM"
     "ode\022\027\n\023FLIGHT_MODE_UNKNOWN\020\000\022\025\n\021FLIGHT_M"
     "ODE_READY\020\001\022\027\n\023FLIGHT_MODE_TAKEOFF\020\002\022\024\n\020"
     "FLIGHT_MODE_HOLD\020\003\022\027\n\023FLIGHT_MODE_MISSIO"
@@ -1230,54 +1230,54 @@ const char descriptor_table_protodef_action_5fserver_2faction_5fserver_2eproto[]
     "HT_MODE_MANUAL\020\t\022\026\n\022FLIGHT_MODE_ALTCTL\020\n"
     "\022\026\n\022FLIGHT_MODE_POSCTL\020\013\022\024\n\020FLIGHT_MODE_"
     "ACRO\020\014\022\032\n\026FLIGHT_MODE_STABILIZED\020\r\022\031\n\025FL"
-    "IGHT_MODE_RATTITUDE\020\016\022\025\n\021FLIGHT_MODE_CHA"
-    "SE\020\0172\215\016\n\023ActionServerService\022~\n\022Subscrib"
-    "eArmDisarm\0223.mavsdk.rpc.action_server.Su"
-    "bscribeArmDisarmRequest\032+.mavsdk.rpc.act"
-    "ion_server.ArmDisarmResponse\"\004\200\265\030\0000\001\022\223\001\n"
-    "\031SubscribeFlightModeChange\022:.mavsdk.rpc."
-    "action_server.SubscribeFlightModeChangeR"
-    "equest\0322.mavsdk.rpc.action_server.Flight"
-    "ModeChangeResponse\"\004\200\265\030\0000\001\022x\n\020SubscribeT"
-    "akeoff\0221.mavsdk.rpc.action_server.Subscr"
-    "ibeTakeoffRequest\032).mavsdk.rpc.action_se"
-    "rver.TakeoffResponse\"\004\200\265\030\0000\001\022o\n\rSubscrib"
-    "eLand\022..mavsdk.rpc.action_server.Subscri"
-    "beLandRequest\032&.mavsdk.rpc.action_server"
-    ".LandResponse\"\004\200\265\030\0000\001\022u\n\017SubscribeReboot"
-    "\0220.mavsdk.rpc.action_server.SubscribeReb"
-    "ootRequest\032(.mavsdk.rpc.action_server.Re"
-    "bootResponse\"\004\200\265\030\0000\001\022{\n\021SubscribeShutdow"
-    "n\0222.mavsdk.rpc.action_server.SubscribeSh"
-    "utdownRequest\032*.mavsdk.rpc.action_server"
-    ".ShutdownResponse\"\004\200\265\030\0000\001\022~\n\022SubscribeTe"
-    "rminate\0223.mavsdk.rpc.action_server.Subsc"
-    "ribeTerminateRequest\032+.mavsdk.rpc.action"
-    "_server.TerminateResponse\"\004\200\265\030\0000\001\022|\n\017Set"
-    "AllowTakeoff\0220.mavsdk.rpc.action_server."
-    "SetAllowTakeoffRequest\0321.mavsdk.rpc.acti"
-    "on_server.SetAllowTakeoffResponse\"\004\200\265\030\001\022"
-    "m\n\nSetArmable\022+.mavsdk.rpc.action_server"
-    ".SetArmableRequest\032,.mavsdk.rpc.action_s"
-    "erver.SetArmableResponse\"\004\200\265\030\001\022v\n\rSetDis"
-    "armable\022..mavsdk.rpc.action_server.SetDi"
-    "sarmableRequest\032/.mavsdk.rpc.action_serv"
-    "er.SetDisarmableResponse\"\004\200\265\030\001\022\224\001\n\027SetAl"
-    "lowableFlightModes\0228.mavsdk.rpc.action_s"
-    "erver.SetAllowableFlightModesRequest\0329.m"
-    "avsdk.rpc.action_server.SetAllowableFlig"
-    "htModesResponse\"\004\200\265\030\001\022\224\001\n\027GetAllowableFl"
-    "ightModes\0228.mavsdk.rpc.action_server.Get"
-    "AllowableFlightModesRequest\0329.mavsdk.rpc"
-    ".action_server.GetAllowableFlightModesRe"
-    "sponse\"\004\200\265\030\001\022v\n\rSetArmedState\022..mavsdk.r"
-    "pc.action_server.SetArmedStateRequest\032/."
-    "mavsdk.rpc.action_server.SetArmedStateRe"
-    "sponse\"\004\200\265\030\001\022v\n\rSetFlightMode\022..mavsdk.r"
-    "pc.action_server.SetFlightModeRequest\032/."
-    "mavsdk.rpc.action_server.SetFlightModeRe"
-    "sponse\"\004\200\265\030\001B,\n\027io.mavsdk.action_serverB"
-    "\021ActionServerProtob\006proto3"
+    "IGHT_MODE_RATTITUDE\020\0162\215\016\n\023ActionServerSe"
+    "rvice\022~\n\022SubscribeArmDisarm\0223.mavsdk.rpc"
+    ".action_server.SubscribeArmDisarmRequest"
+    "\032+.mavsdk.rpc.action_server.ArmDisarmRes"
+    "ponse\"\004\200\265\030\0000\001\022\223\001\n\031SubscribeFlightModeCha"
+    "nge\022:.mavsdk.rpc.action_server.Subscribe"
+    "FlightModeChangeRequest\0322.mavsdk.rpc.act"
+    "ion_server.FlightModeChangeResponse\"\004\200\265\030"
+    "\0000\001\022x\n\020SubscribeTakeoff\0221.mavsdk.rpc.act"
+    "ion_server.SubscribeTakeoffRequest\032).mav"
+    "sdk.rpc.action_server.TakeoffResponse\"\004\200"
+    "\265\030\0000\001\022o\n\rSubscribeLand\022..mavsdk.rpc.acti"
+    "on_server.SubscribeLandRequest\032&.mavsdk."
+    "rpc.action_server.LandResponse\"\004\200\265\030\0000\001\022u"
+    "\n\017SubscribeReboot\0220.mavsdk.rpc.action_se"
+    "rver.SubscribeRebootRequest\032(.mavsdk.rpc"
+    ".action_server.RebootResponse\"\004\200\265\030\0000\001\022{\n"
+    "\021SubscribeShutdown\0222.mavsdk.rpc.action_s"
+    "erver.SubscribeShutdownRequest\032*.mavsdk."
+    "rpc.action_server.ShutdownResponse\"\004\200\265\030\000"
+    "0\001\022~\n\022SubscribeTerminate\0223.mavsdk.rpc.ac"
+    "tion_server.SubscribeTerminateRequest\032+."
+    "mavsdk.rpc.action_server.TerminateRespon"
+    "se\"\004\200\265\030\0000\001\022|\n\017SetAllowTakeoff\0220.mavsdk.r"
+    "pc.action_server.SetAllowTakeoffRequest\032"
+    "1.mavsdk.rpc.action_server.SetAllowTakeo"
+    "ffResponse\"\004\200\265\030\001\022m\n\nSetArmable\022+.mavsdk."
+    "rpc.action_server.SetArmableRequest\032,.ma"
+    "vsdk.rpc.action_server.SetArmableRespons"
+    "e\"\004\200\265\030\001\022v\n\rSetDisarmable\022..mavsdk.rpc.ac"
+    "tion_server.SetDisarmableRequest\032/.mavsd"
+    "k.rpc.action_server.SetDisarmableRespons"
+    "e\"\004\200\265\030\001\022\224\001\n\027SetAllowableFlightModes\0228.ma"
+    "vsdk.rpc.action_server.SetAllowableFligh"
+    "tModesRequest\0329.mavsdk.rpc.action_server"
+    ".SetAllowableFlightModesResponse\"\004\200\265\030\001\022\224"
+    "\001\n\027GetAllowableFlightModes\0228.mavsdk.rpc."
+    "action_server.GetAllowableFlightModesReq"
+    "uest\0329.mavsdk.rpc.action_server.GetAllow"
+    "ableFlightModesResponse\"\004\200\265\030\001\022v\n\rSetArme"
+    "dState\022..mavsdk.rpc.action_server.SetArm"
+    "edStateRequest\032/.mavsdk.rpc.action_serve"
+    "r.SetArmedStateResponse\"\004\200\265\030\001\022v\n\rSetFlig"
+    "htMode\022..mavsdk.rpc.action_server.SetFli"
+    "ghtModeRequest\032/.mavsdk.rpc.action_serve"
+    "r.SetFlightModeResponse\"\004\200\265\030\001B,\n\027io.mavs"
+    "dk.action_serverB\021ActionServerProtob\006pro"
+    "to3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_action_5fserver_2faction_5fserver_2eproto_deps[1] =
     {
@@ -1287,7 +1287,7 @@ static ::absl::once_flag descriptor_table_action_5fserver_2faction_5fserver_2epr
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_action_5fserver_2faction_5fserver_2eproto = {
     false,
     false,
-    5226,
+    5203,
     descriptor_table_protodef_action_5fserver_2faction_5fserver_2eproto,
     "action_server/action_server.proto",
     &descriptor_table_action_5fserver_2faction_5fserver_2eproto_once,
@@ -1339,9 +1339,9 @@ const ::google::protobuf::EnumDescriptor* FlightMode_descriptor() {
   return file_level_enum_descriptors_action_5fserver_2faction_5fserver_2eproto[1];
 }
 PROTOBUF_CONSTINIT const uint32_t FlightMode_internal_data_[] = {
-    1048576u, 0u, };
+    983040u, 0u, };
 bool FlightMode_IsValid(int value) {
-  return 0 <= value && value <= 15;
+  return 0 <= value && value <= 14;
 }
 // ===================================================================
 

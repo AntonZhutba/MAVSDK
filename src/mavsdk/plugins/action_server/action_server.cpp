@@ -229,8 +229,6 @@ std::ostream& operator<<(std::ostream& str, ActionServer::FlightMode const& flig
             return str << "Stabilized";
         case ActionServer::FlightMode::Rattitude:
             return str << "Rattitude";
-        case ActionServer::FlightMode::Chase:
-            return str << "Chase";
         default:
             return str << "Unknown";
     }

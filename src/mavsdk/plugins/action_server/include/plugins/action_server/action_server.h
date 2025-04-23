@@ -67,7 +67,6 @@ public:
         Acro, /**< @brief In 'Acro' mode. */
         Stabilized, /**< @brief In 'Stabilize' mode. */
         Rattitude, /**< @brief In 'Rattitude' mode. */
-        Chase, /**< @brief In 'CHASE' mode. */
     };
 
     /**
