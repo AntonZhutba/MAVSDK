@@ -377,7 +377,7 @@ void StrikerImpl::try_request_available_modes()
     StrikerImpl::request_available_modes(1);
 }
 
-void StrikerImpl::request_available_modes(u_int32_t modeIndex)
+void StrikerImpl::request_available_modes(uint32_t modeIndex)
 {
     _requestActive = true;
 
@@ -462,8 +462,6 @@ void StrikerImpl::process_available_modes(const mavlink_message_t& message)
         LogDebug() << "Completed, num modes:" << _next_modes.size();
         _modes = _next_modes;
         ensureUniqueModeNames();
-
-        // Convert QMap<uint32_t, Mode> to std::vector<Striker::AvailableMode>
         std::vector<Striker::AvailableMode> list_available_modes;
         for (const auto& mode : _modes) {
             list_available_modes.push_back(Striker::AvailableMode{
