@@ -48,42 +48,86 @@ public:
     void unsubscribe_battery_voltages(Striker::BatteryVoltagesHandle handle);
     Striker::BatteryVoltages battery_voltages() const;
 
+    // Available modes subscription
+    Striker::AvailableModesHandle
+    subscribe_available_modes(const Striker::AvailableModesCallback& callback);
+    void unsubscribe_available_modes(Striker::AvailableModesHandle handle);
+    std::vector<Striker::AvailableMode> available_modes() const;
+
+    // Set mode request
+    void set_manual_flight_mode_async(
+        uint32_t mode,
+        uint32_t custom_mode,
+        uint32_t custom_sub_mode,
+        const Striker::ResultCallback callback);
+
+    Striker::Result
+    set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode);
+
 private:
     void process_heartbeat(const mavlink_message_t& message);
     void process_sys_status(const mavlink_message_t& message);
     void process_rc_channel(const mavlink_message_t& message);
     void process_magnitometer(const mavlink_message_t& message);
     void process_battery_voltages(const mavlink_message_t& message);
+    void process_available_modes_monitor(const mavlink_message_t& message);
+    void process_available_modes(const mavlink_message_t& message);
 
     void set_heartbeat(Striker::Heartbeat heartbeat);
     void set_sys_status(Striker::SysStatus sys_status);
     void set_rc_channel(const mavlink_rc_channels_t& rc_channel);
     void set_magnitometer(const mavlink_highres_imu_t& mav_magnitometer);
     void set_battery_voltages(const mavlink_battery_status_t& battery_status);
+    void set_available_modes(std::vector<Striker::AvailableMode> available_modes);
+
+    void try_request_available_modes();
+    void request_available_modes(uint32_t mode_index);
+    void ensureUniqueModeNames();
+    void command_result_callback(
+        MavlinkCommandSender::Result result, const Striker::ResultCallback& callback) const;
+    static Striker::Result action_result_from_command_result(MavlinkCommandSender::Result result);
 
     mutable std::mutex _heartbeat_mutex;
     mutable std::mutex _sys_status_mutex;
     mutable std::mutex _rc_channel_mutex;
     mutable std::mutex _magnitometer_mutex;
     mutable std::mutex _battery_voltages_mutex;
+    mutable std::mutex _available_modes_mutex;
 
     Striker::Heartbeat _heartbeat{};
     Striker::SysStatus _sys_status{};
     Striker::RcChannel _rc_channel{};
     Striker::Magnitometer _magnitometer{};
     Striker::BatteryVoltages _battery_voltages{};
+    std::vector<Striker::AvailableMode> _available_modes{};
+    struct Mode {
+        std::string nameMode;
+        uint8_t standardMode;
+        uint32_t numberModes{};
+        uint32_t modeIndex{};
+        uint32_t customMode{};
+        uint32_t properties{};
+        bool advanced;
+        bool cannotBeSet;
+    };
+    int _lastSeq{-1};
+    bool _requestActive{false};
+    bool _wantReset{false};
+    std::map<uint32_t, Mode> _next_modes; ///< Modes added by current request
+    std::map<uint32_t, Mode> _modes;
 
     CallbackList<Striker::Heartbeat> _heartbeat_subscriptions;
     CallbackList<Striker::SysStatus> _sys_status_subscriptions;
     CallbackList<Striker::RcChannel> _rc_channel_subscriptions;
     CallbackList<Striker::Magnitometer> _magnitometer_subscriptions;
     CallbackList<Striker::BatteryVoltages> _battery_voltages_subscriptions;
+    CallbackList<std::vector<Striker::AvailableMode>> _available_modes_subscriptions;
 
     std::mutex _subscription_heartbeat_mutex;
     std::mutex _subscription_sys_status_mutex;
     std::mutex _subscription_rc_channel_mutex;
     std::mutex _subscription_magnitometer_mutex;
     std::mutex _subscription_battery_voltages_mutex;
+    std::mutex _subscription_available_modes_mutex;
 };
-
 } // namespace mavsdk

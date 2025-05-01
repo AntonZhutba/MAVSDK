@@ -991,7 +991,7 @@ SystemImpl::make_command_px4_mode(FlightMode flight_mode, uint8_t component_id)
             break;
         case FlightMode::Stabilized:
             custom_mode = px4::PX4_CUSTOM_MAIN_MODE_STABILIZED;
-            break;       
+            break;
         default:
             LogErr() << "Unknown Flight mode.";
             MavlinkCommandSender::CommandLong empty_command{};

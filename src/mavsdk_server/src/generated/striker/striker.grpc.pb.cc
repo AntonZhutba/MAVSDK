@@ -29,6 +29,8 @@ static const char* StrikerService_method_names[] = {
   "/mavsdk.rpc.striker.StrikerService/SubscribeRcChannel",
   "/mavsdk.rpc.striker.StrikerService/SubscribeMagnitometer",
   "/mavsdk.rpc.striker.StrikerService/SubscribeBatteryVoltages",
+  "/mavsdk.rpc.striker.StrikerService/SubscribeAvailableModes",
+  "/mavsdk.rpc.striker.StrikerService/SetManualFlightMode",
 };
 
 std::unique_ptr< StrikerService::Stub> StrikerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -43,6 +45,8 @@ StrikerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& cha
   , rpcmethod_SubscribeRcChannel_(StrikerService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeMagnitometer_(StrikerService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeBatteryVoltages_(StrikerService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeAvailableModes_(StrikerService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SetManualFlightMode_(StrikerService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::ClientReader< ::mavsdk::rpc::striker::HeartbeatResponse>* StrikerService::Stub::SubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeHeartbeatRequest& request) {
@@ -125,6 +129,45 @@ void StrikerService::Stub::async::SubscribeBatteryVoltages(::grpc::ClientContext
   return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::BatteryVoltagesResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeBatteryVoltages_, context, request, false, nullptr);
 }
 
+::grpc::ClientReader< ::mavsdk::rpc::striker::AvailableModesResponse>* StrikerService::Stub::SubscribeAvailableModesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeAvailableModesRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::striker::AvailableModesResponse>::Create(channel_.get(), rpcmethod_SubscribeAvailableModes_, context, request);
+}
+
+void StrikerService::Stub::async::SubscribeAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeAvailableModesRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::AvailableModesResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::striker::AvailableModesResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeAvailableModes_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::AvailableModesResponse>* StrikerService::Stub::AsyncSubscribeAvailableModesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeAvailableModesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::AvailableModesResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeAvailableModes_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::AvailableModesResponse>* StrikerService::Stub::PrepareAsyncSubscribeAvailableModesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeAvailableModesRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::AvailableModesResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeAvailableModes_, context, request, false, nullptr);
+}
+
+::grpc::Status StrikerService::Stub::SetManualFlightMode(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetManualFlightModeRequest& request, ::mavsdk::rpc::striker::SetManualFlightModeResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::striker::SetManualFlightModeRequest, ::mavsdk::rpc::striker::SetManualFlightModeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetManualFlightMode_, context, request, response);
+}
+
+void StrikerService::Stub::async::SetManualFlightMode(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetManualFlightModeRequest* request, ::mavsdk::rpc::striker::SetManualFlightModeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::striker::SetManualFlightModeRequest, ::mavsdk::rpc::striker::SetManualFlightModeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetManualFlightMode_, context, request, response, std::move(f));
+}
+
+void StrikerService::Stub::async::SetManualFlightMode(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetManualFlightModeRequest* request, ::mavsdk::rpc::striker::SetManualFlightModeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetManualFlightMode_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetManualFlightModeResponse>* StrikerService::Stub::PrepareAsyncSetManualFlightModeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetManualFlightModeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::striker::SetManualFlightModeResponse, ::mavsdk::rpc::striker::SetManualFlightModeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetManualFlightMode_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetManualFlightModeResponse>* StrikerService::Stub::AsyncSetManualFlightModeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetManualFlightModeRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetManualFlightModeRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 StrikerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       StrikerService_method_names[0],
@@ -176,6 +219,26 @@ StrikerService::Service::Service() {
              ::grpc::ServerWriter<::mavsdk::rpc::striker::BatteryVoltagesResponse>* writer) {
                return service->SubscribeBatteryVoltages(ctx, req, writer);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StrikerService_method_names[5],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< StrikerService::Service, ::mavsdk::rpc::striker::SubscribeAvailableModesRequest, ::mavsdk::rpc::striker::AvailableModesResponse>(
+          [](StrikerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::striker::SubscribeAvailableModesRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::striker::AvailableModesResponse>* writer) {
+               return service->SubscribeAvailableModes(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StrikerService_method_names[6],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< StrikerService::Service, ::mavsdk::rpc::striker::SetManualFlightModeRequest, ::mavsdk::rpc::striker::SetManualFlightModeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](StrikerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::striker::SetManualFlightModeRequest* req,
+             ::mavsdk::rpc::striker::SetManualFlightModeResponse* resp) {
+               return service->SetManualFlightMode(ctx, req, resp);
+             }, this)));
 }
 
 StrikerService::Service::~Service() {
@@ -213,6 +276,20 @@ StrikerService::Service::~Service() {
   (void) context;
   (void) request;
   (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StrikerService::Service::SubscribeAvailableModes(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeAvailableModesRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::AvailableModesResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StrikerService::Service::SetManualFlightMode(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SetManualFlightModeRequest* request, ::mavsdk::rpc::striker::SetManualFlightModeResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

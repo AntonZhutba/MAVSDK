@@ -230,6 +230,67 @@ public:
     operator<<(std::ostream& str, Striker::BatteryVoltages const& battery_voltages);
 
     /**
+     * @brief
+     */
+    struct AvailableMode {
+        uint32_t number_modes{}; /**< @brief Total number of available modes */
+        uint32_t mode_index{}; /**< @brief Index of this mode (1-based) */
+        uint32_t standard_mode{}; /**< @brief Standard MAV_STANDARD_MODE enum */
+        uint32_t custom_mode{}; /**< @brief Custom mode (autopilot-specific) */
+        uint32_t properties{}; /**< @brief Bitmask of mode properties */
+        std::string mode_name{}; /**< @brief Human-readable mode name */
+    };
+
+    /**
+     * @brief Equal operator to compare two `Striker::AvailableMode` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool operator==(const Striker::AvailableMode& lhs, const Striker::AvailableMode& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `Striker::AvailableMode`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, Striker::AvailableMode const& available_mode);
+
+    /**
+     * @brief Possible results returned for action requests.
+     */
+    enum class Result {
+        Unknown, /**< @brief Unknown result. */
+        Success, /**< @brief Request was successful. */
+        NoSystem, /**< @brief No system is connected. */
+        ConnectionError, /**< @brief Connection error. */
+        Busy, /**< @brief Vehicle is busy. */
+        CommandDenied, /**< @brief Command refused by vehicle. */
+        CommandDeniedLandedStateUnknown, /**< @brief Command refused because landed state is
+                                            unknown. */
+        CommandDeniedNotLanded, /**< @brief Command refused because vehicle not landed. */
+        Timeout, /**< @brief Request timed out. */
+        VtolTransitionSupportUnknown, /**< @brief Hybrid/VTOL transition support is unknown. */
+        NoVtolTransitionSupport, /**< @brief Vehicle does not support hybrid/VTOL transitions. */
+        ParameterError, /**< @brief Error getting or setting parameter. */
+        Unsupported, /**< @brief Action not supported. */
+        Failed, /**< @brief Action failed. */
+        InvalidArgument, /**< @brief Invalid argument. */
+    };
+
+    /**
+     * @brief Stream operator to print information about a `Striker::Result`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream& operator<<(std::ostream& str, Striker::Result const& result);
+
+    /**
+     * @brief Callback type for asynchronous Striker calls.
+     */
+    using ResultCallback = std::function<void(Result)>;
+
+    /**
      * @brief Callback type for subscribe_heartbeat.
      */
     using HeartbeatCallback = std::function<void(Heartbeat)>;
@@ -363,6 +424,57 @@ public:
      * @return One BatteryVoltages update.
      */
     BatteryVoltages battery_voltages() const;
+
+    /**
+     * @brief Callback type for subscribe_available_modes.
+     */
+    using AvailableModesCallback = std::function<void(std::vector<AvailableMode>)>;
+
+    /**
+     * @brief Handle type for subscribe_available_modes.
+     */
+    using AvailableModesHandle = Handle<std::vector<AvailableMode>>;
+
+    /**
+     * @brief Subscribe to 'Available Modes' updates.
+     */
+    AvailableModesHandle subscribe_available_modes(const AvailableModesCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_available_modes
+     */
+    void unsubscribe_available_modes(AvailableModesHandle handle);
+
+    /**
+     * @brief Poll for 'std::vector<AvailableMode>' (blocking).
+     *
+     * @return One std::vector<AvailableMode> update.
+     */
+    std::vector<AvailableMode> available_modes() const;
+
+    /**
+     * @brief Set the vehicle mode.
+     *
+     * This function is non-blocking. See 'set_manual_flight_mode' for the blocking counterpart.
+     */
+    void set_manual_flight_mode_async(
+        uint32_t mode,
+        uint32_t custom_mode,
+        uint32_t custom_sub_mode,
+        const ResultCallback callback);
+
+    /**
+     * @brief Set the vehicle mode.
+     *
+     * This function is blocking. See 'set_manual_flight_mode_async' for the non-blocking
+     counterpart.
+     *
+
+     * @return Result of request.
+
+     */
+    Result
+    set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode) const;
 
     /**
      * @brief Copy constructor.

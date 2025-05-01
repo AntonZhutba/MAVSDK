@@ -29,6 +29,7 @@
 #include "google/protobuf/message_lite.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 #include "mavsdk_options.pb.h"
 // @@protoc_insertion_point(includes)
@@ -56,6 +57,12 @@ extern const ::google::protobuf::internal::DescriptorTable
 namespace mavsdk {
 namespace rpc {
 namespace striker {
+class AvailableMode;
+struct AvailableModeDefaultTypeInternal;
+extern AvailableModeDefaultTypeInternal _AvailableMode_default_instance_;
+class AvailableModesResponse;
+struct AvailableModesResponseDefaultTypeInternal;
+extern AvailableModesResponseDefaultTypeInternal _AvailableModesResponse_default_instance_;
 class BatteryVoltages;
 struct BatteryVoltagesDefaultTypeInternal;
 extern BatteryVoltagesDefaultTypeInternal _BatteryVoltages_default_instance_;
@@ -80,6 +87,18 @@ extern RcChannelDefaultTypeInternal _RcChannel_default_instance_;
 class RcChannelResponse;
 struct RcChannelResponseDefaultTypeInternal;
 extern RcChannelResponseDefaultTypeInternal _RcChannelResponse_default_instance_;
+class SetManualFlightModeRequest;
+struct SetManualFlightModeRequestDefaultTypeInternal;
+extern SetManualFlightModeRequestDefaultTypeInternal _SetManualFlightModeRequest_default_instance_;
+class SetManualFlightModeResponse;
+struct SetManualFlightModeResponseDefaultTypeInternal;
+extern SetManualFlightModeResponseDefaultTypeInternal _SetManualFlightModeResponse_default_instance_;
+class StrikerModeResult;
+struct StrikerModeResultDefaultTypeInternal;
+extern StrikerModeResultDefaultTypeInternal _StrikerModeResult_default_instance_;
+class SubscribeAvailableModesRequest;
+struct SubscribeAvailableModesRequestDefaultTypeInternal;
+extern SubscribeAvailableModesRequestDefaultTypeInternal _SubscribeAvailableModesRequest_default_instance_;
 class SubscribeBatteryVoltagesRequest;
 struct SubscribeBatteryVoltagesRequestDefaultTypeInternal;
 extern SubscribeBatteryVoltagesRequestDefaultTypeInternal _SubscribeBatteryVoltagesRequest_default_instance_;
@@ -112,6 +131,52 @@ namespace protobuf {
 namespace mavsdk {
 namespace rpc {
 namespace striker {
+enum StrikerModeResult_Result : int {
+  StrikerModeResult_Result_RESULT_UNKNOWN = 0,
+  StrikerModeResult_Result_RESULT_SUCCESS = 1,
+  StrikerModeResult_Result_RESULT_NO_SYSTEM = 2,
+  StrikerModeResult_Result_RESULT_CONNECTION_ERROR = 3,
+  StrikerModeResult_Result_RESULT_BUSY = 4,
+  StrikerModeResult_Result_RESULT_COMMAND_DENIED = 5,
+  StrikerModeResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN = 6,
+  StrikerModeResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED = 7,
+  StrikerModeResult_Result_RESULT_TIMEOUT = 8,
+  StrikerModeResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN = 9,
+  StrikerModeResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT = 10,
+  StrikerModeResult_Result_RESULT_PARAMETER_ERROR = 11,
+  StrikerModeResult_Result_RESULT_UNSUPPORTED = 12,
+  StrikerModeResult_Result_RESULT_FAILED = 13,
+  StrikerModeResult_Result_RESULT_INVALID_ARGUMENT = 14,
+  StrikerModeResult_Result_StrikerModeResult_Result_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  StrikerModeResult_Result_StrikerModeResult_Result_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool StrikerModeResult_Result_IsValid(int value);
+extern const uint32_t StrikerModeResult_Result_internal_data_[];
+constexpr StrikerModeResult_Result StrikerModeResult_Result_Result_MIN = static_cast<StrikerModeResult_Result>(0);
+constexpr StrikerModeResult_Result StrikerModeResult_Result_Result_MAX = static_cast<StrikerModeResult_Result>(14);
+constexpr int StrikerModeResult_Result_Result_ARRAYSIZE = 14 + 1;
+const ::google::protobuf::EnumDescriptor*
+StrikerModeResult_Result_descriptor();
+template <typename T>
+const std::string& StrikerModeResult_Result_Name(T value) {
+  static_assert(std::is_same<T, StrikerModeResult_Result>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to Result_Name().");
+  return StrikerModeResult_Result_Name(static_cast<StrikerModeResult_Result>(value));
+}
+template <>
+inline const std::string& StrikerModeResult_Result_Name(StrikerModeResult_Result value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<StrikerModeResult_Result_descriptor,
+                                                 0, 14>(
+      static_cast<int>(value));
+}
+inline bool StrikerModeResult_Result_Parse(absl::string_view name, StrikerModeResult_Result* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<StrikerModeResult_Result>(
+      StrikerModeResult_Result_descriptor(), name, value);
+}
 
 // ===================================================================
 
@@ -177,7 +242,7 @@ class SysStatus final : public ::google::protobuf::Message
     return reinterpret_cast<const SysStatus*>(
         &_SysStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(SysStatus& a, SysStatus& b) { a.Swap(&b); }
   inline void Swap(SysStatus* other) {
     if (other == this) return;
@@ -1213,6 +1278,605 @@ class SubscribeBatteryVoltagesRequest final : public ::google::protobuf::interna
 };
 // -------------------------------------------------------------------
 
+class SubscribeAvailableModesRequest final : public ::google::protobuf::internal::ZeroFieldsBase
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.SubscribeAvailableModesRequest) */ {
+ public:
+  inline SubscribeAvailableModesRequest() : SubscribeAvailableModesRequest(nullptr) {}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SubscribeAvailableModesRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SubscribeAvailableModesRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SubscribeAvailableModesRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SubscribeAvailableModesRequest(const SubscribeAvailableModesRequest& from) : SubscribeAvailableModesRequest(nullptr, from) {}
+  inline SubscribeAvailableModesRequest(SubscribeAvailableModesRequest&& from) noexcept
+      : SubscribeAvailableModesRequest(nullptr, std::move(from)) {}
+  inline SubscribeAvailableModesRequest& operator=(const SubscribeAvailableModesRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubscribeAvailableModesRequest& operator=(SubscribeAvailableModesRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubscribeAvailableModesRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubscribeAvailableModesRequest* internal_default_instance() {
+    return reinterpret_cast<const SubscribeAvailableModesRequest*>(
+        &_SubscribeAvailableModesRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 10;
+  friend void swap(SubscribeAvailableModesRequest& a, SubscribeAvailableModesRequest& b) { a.Swap(&b); }
+  inline void Swap(SubscribeAvailableModesRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubscribeAvailableModesRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubscribeAvailableModesRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<SubscribeAvailableModesRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SubscribeAvailableModesRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SubscribeAvailableModesRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.SubscribeAvailableModesRequest"; }
+
+ protected:
+  explicit SubscribeAvailableModesRequest(::google::protobuf::Arena* arena);
+  SubscribeAvailableModesRequest(::google::protobuf::Arena* arena, const SubscribeAvailableModesRequest& from);
+  SubscribeAvailableModesRequest(::google::protobuf::Arena* arena, SubscribeAvailableModesRequest&& from) noexcept
+      : SubscribeAvailableModesRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.SubscribeAvailableModesRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 0, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SubscribeAvailableModesRequest& from_msg);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
+class StrikerModeResult final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.StrikerModeResult) */ {
+ public:
+  inline StrikerModeResult() : StrikerModeResult(nullptr) {}
+  ~StrikerModeResult() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(StrikerModeResult* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(StrikerModeResult));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR StrikerModeResult(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline StrikerModeResult(const StrikerModeResult& from) : StrikerModeResult(nullptr, from) {}
+  inline StrikerModeResult(StrikerModeResult&& from) noexcept
+      : StrikerModeResult(nullptr, std::move(from)) {}
+  inline StrikerModeResult& operator=(const StrikerModeResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StrikerModeResult& operator=(StrikerModeResult&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StrikerModeResult& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const StrikerModeResult* internal_default_instance() {
+    return reinterpret_cast<const StrikerModeResult*>(
+        &_StrikerModeResult_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 20;
+  friend void swap(StrikerModeResult& a, StrikerModeResult& b) { a.Swap(&b); }
+  inline void Swap(StrikerModeResult* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StrikerModeResult* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StrikerModeResult* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<StrikerModeResult>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const StrikerModeResult& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const StrikerModeResult& from) { StrikerModeResult::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(StrikerModeResult* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.StrikerModeResult"; }
+
+ protected:
+  explicit StrikerModeResult(::google::protobuf::Arena* arena);
+  StrikerModeResult(::google::protobuf::Arena* arena, const StrikerModeResult& from);
+  StrikerModeResult(::google::protobuf::Arena* arena, StrikerModeResult&& from) noexcept
+      : StrikerModeResult(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+  using Result = StrikerModeResult_Result;
+  static constexpr Result RESULT_UNKNOWN = StrikerModeResult_Result_RESULT_UNKNOWN;
+  static constexpr Result RESULT_SUCCESS = StrikerModeResult_Result_RESULT_SUCCESS;
+  static constexpr Result RESULT_NO_SYSTEM = StrikerModeResult_Result_RESULT_NO_SYSTEM;
+  static constexpr Result RESULT_CONNECTION_ERROR = StrikerModeResult_Result_RESULT_CONNECTION_ERROR;
+  static constexpr Result RESULT_BUSY = StrikerModeResult_Result_RESULT_BUSY;
+  static constexpr Result RESULT_COMMAND_DENIED = StrikerModeResult_Result_RESULT_COMMAND_DENIED;
+  static constexpr Result RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN = StrikerModeResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN;
+  static constexpr Result RESULT_COMMAND_DENIED_NOT_LANDED = StrikerModeResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED;
+  static constexpr Result RESULT_TIMEOUT = StrikerModeResult_Result_RESULT_TIMEOUT;
+  static constexpr Result RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN = StrikerModeResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN;
+  static constexpr Result RESULT_NO_VTOL_TRANSITION_SUPPORT = StrikerModeResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT;
+  static constexpr Result RESULT_PARAMETER_ERROR = StrikerModeResult_Result_RESULT_PARAMETER_ERROR;
+  static constexpr Result RESULT_UNSUPPORTED = StrikerModeResult_Result_RESULT_UNSUPPORTED;
+  static constexpr Result RESULT_FAILED = StrikerModeResult_Result_RESULT_FAILED;
+  static constexpr Result RESULT_INVALID_ARGUMENT = StrikerModeResult_Result_RESULT_INVALID_ARGUMENT;
+  static inline bool Result_IsValid(int value) {
+    return StrikerModeResult_Result_IsValid(value);
+  }
+  static constexpr Result Result_MIN = StrikerModeResult_Result_Result_MIN;
+  static constexpr Result Result_MAX = StrikerModeResult_Result_Result_MAX;
+  static constexpr int Result_ARRAYSIZE = StrikerModeResult_Result_Result_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor* Result_descriptor() {
+    return StrikerModeResult_Result_descriptor();
+  }
+  template <typename T>
+  static inline const std::string& Result_Name(T value) {
+    return StrikerModeResult_Result_Name(value);
+  }
+  static inline bool Result_Parse(absl::string_view name, Result* value) {
+    return StrikerModeResult_Result_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kResultStrFieldNumber = 2,
+    kResultFieldNumber = 1,
+  };
+  // string result_str = 2;
+  void clear_result_str() ;
+  const std::string& result_str() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_result_str(Arg_&& arg, Args_... args);
+  std::string* mutable_result_str();
+  PROTOBUF_NODISCARD std::string* release_result_str();
+  void set_allocated_result_str(std::string* value);
+
+  private:
+  const std::string& _internal_result_str() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_result_str(
+      const std::string& value);
+  std::string* _internal_mutable_result_str();
+
+  public:
+  // .mavsdk.rpc.striker.StrikerModeResult.Result result = 1;
+  void clear_result() ;
+  ::mavsdk::rpc::striker::StrikerModeResult_Result result() const;
+  void set_result(::mavsdk::rpc::striker::StrikerModeResult_Result value);
+
+  private:
+  ::mavsdk::rpc::striker::StrikerModeResult_Result _internal_result() const;
+  void _internal_set_result(::mavsdk::rpc::striker::StrikerModeResult_Result value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.StrikerModeResult)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      55, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const StrikerModeResult& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr result_str_;
+    int result_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetManualFlightModeRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.SetManualFlightModeRequest) */ {
+ public:
+  inline SetManualFlightModeRequest() : SetManualFlightModeRequest(nullptr) {}
+  ~SetManualFlightModeRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetManualFlightModeRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetManualFlightModeRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetManualFlightModeRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetManualFlightModeRequest(const SetManualFlightModeRequest& from) : SetManualFlightModeRequest(nullptr, from) {}
+  inline SetManualFlightModeRequest(SetManualFlightModeRequest&& from) noexcept
+      : SetManualFlightModeRequest(nullptr, std::move(from)) {}
+  inline SetManualFlightModeRequest& operator=(const SetManualFlightModeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetManualFlightModeRequest& operator=(SetManualFlightModeRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetManualFlightModeRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetManualFlightModeRequest* internal_default_instance() {
+    return reinterpret_cast<const SetManualFlightModeRequest*>(
+        &_SetManualFlightModeRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 19;
+  friend void swap(SetManualFlightModeRequest& a, SetManualFlightModeRequest& b) { a.Swap(&b); }
+  inline void Swap(SetManualFlightModeRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetManualFlightModeRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetManualFlightModeRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetManualFlightModeRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetManualFlightModeRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetManualFlightModeRequest& from) { SetManualFlightModeRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetManualFlightModeRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.SetManualFlightModeRequest"; }
+
+ protected:
+  explicit SetManualFlightModeRequest(::google::protobuf::Arena* arena);
+  SetManualFlightModeRequest(::google::protobuf::Arena* arena, const SetManualFlightModeRequest& from);
+  SetManualFlightModeRequest(::google::protobuf::Arena* arena, SetManualFlightModeRequest&& from) noexcept
+      : SetManualFlightModeRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kModeFieldNumber = 1,
+    kCustomModeFieldNumber = 2,
+    kCustomSubModeFieldNumber = 3,
+  };
+  // uint32 mode = 1;
+  void clear_mode() ;
+  ::uint32_t mode() const;
+  void set_mode(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_mode() const;
+  void _internal_set_mode(::uint32_t value);
+
+  public:
+  // uint32 custom_mode = 2;
+  void clear_custom_mode() ;
+  ::uint32_t custom_mode() const;
+  void set_custom_mode(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_custom_mode() const;
+  void _internal_set_custom_mode(::uint32_t value);
+
+  public:
+  // uint32 custom_sub_mode = 3;
+  void clear_custom_sub_mode() ;
+  ::uint32_t custom_sub_mode() const;
+  void set_custom_sub_mode(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_custom_sub_mode() const;
+  void _internal_set_custom_sub_mode(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.SetManualFlightModeRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetManualFlightModeRequest& from_msg);
+    ::uint32_t mode_;
+    ::uint32_t custom_mode_;
+    ::uint32_t custom_sub_mode_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
 class RcChannel final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.RcChannel) */ {
  public:
@@ -1272,7 +1936,7 @@ class RcChannel final : public ::google::protobuf::Message
     return reinterpret_cast<const RcChannel*>(
         &_RcChannel_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 15;
   friend void swap(RcChannel& a, RcChannel& b) { a.Swap(&b); }
   inline void Swap(RcChannel* other) {
     if (other == this) return;
@@ -1702,7 +2366,7 @@ class Magnitometer final : public ::google::protobuf::Message
     return reinterpret_cast<const Magnitometer*>(
         &_Magnitometer_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 13;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(Magnitometer& a, Magnitometer& b) { a.Swap(&b); }
   inline void Swap(Magnitometer* other) {
     if (other == this) return;
@@ -1928,7 +2592,7 @@ class Heartbeat final : public ::google::protobuf::Message
     return reinterpret_cast<const Heartbeat*>(
         &_Heartbeat_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(Heartbeat& a, Heartbeat& b) { a.Swap(&b); }
   inline void Swap(Heartbeat* other) {
     if (other == this) return;
@@ -2178,7 +2842,7 @@ class BatteryVoltages final : public ::google::protobuf::Message
     return reinterpret_cast<const BatteryVoltages*>(
         &_BatteryVoltages_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 17;
   friend void swap(BatteryVoltages& a, BatteryVoltages& b) { a.Swap(&b); }
   inline void Swap(BatteryVoltages* other) {
     if (other == this) return;
@@ -2331,6 +2995,262 @@ class BatteryVoltages final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _voltages_cached_byte_size_;
     ::google::protobuf::RepeatedField<::uint32_t> ext_voltages_;
     ::google::protobuf::internal::CachedSize _ext_voltages_cached_byte_size_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AvailableMode final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.AvailableMode) */ {
+ public:
+  inline AvailableMode() : AvailableMode(nullptr) {}
+  ~AvailableMode() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AvailableMode* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AvailableMode));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AvailableMode(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AvailableMode(const AvailableMode& from) : AvailableMode(nullptr, from) {}
+  inline AvailableMode(AvailableMode&& from) noexcept
+      : AvailableMode(nullptr, std::move(from)) {}
+  inline AvailableMode& operator=(const AvailableMode& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AvailableMode& operator=(AvailableMode&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AvailableMode& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AvailableMode* internal_default_instance() {
+    return reinterpret_cast<const AvailableMode*>(
+        &_AvailableMode_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 18;
+  friend void swap(AvailableMode& a, AvailableMode& b) { a.Swap(&b); }
+  inline void Swap(AvailableMode* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AvailableMode* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AvailableMode* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AvailableMode>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AvailableMode& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AvailableMode& from) { AvailableMode::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AvailableMode* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.AvailableMode"; }
+
+ protected:
+  explicit AvailableMode(::google::protobuf::Arena* arena);
+  AvailableMode(::google::protobuf::Arena* arena, const AvailableMode& from);
+  AvailableMode(::google::protobuf::Arena* arena, AvailableMode&& from) noexcept
+      : AvailableMode(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kModeNameFieldNumber = 6,
+    kNumberModesFieldNumber = 1,
+    kModeIndexFieldNumber = 2,
+    kStandardModeFieldNumber = 3,
+    kCustomModeFieldNumber = 4,
+    kPropertiesFieldNumber = 5,
+  };
+  // string mode_name = 6;
+  void clear_mode_name() ;
+  const std::string& mode_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_mode_name(Arg_&& arg, Args_... args);
+  std::string* mutable_mode_name();
+  PROTOBUF_NODISCARD std::string* release_mode_name();
+  void set_allocated_mode_name(std::string* value);
+
+  private:
+  const std::string& _internal_mode_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_mode_name(
+      const std::string& value);
+  std::string* _internal_mutable_mode_name();
+
+  public:
+  // uint32 number_modes = 1;
+  void clear_number_modes() ;
+  ::uint32_t number_modes() const;
+  void set_number_modes(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_number_modes() const;
+  void _internal_set_number_modes(::uint32_t value);
+
+  public:
+  // uint32 mode_index = 2;
+  void clear_mode_index() ;
+  ::uint32_t mode_index() const;
+  void set_mode_index(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_mode_index() const;
+  void _internal_set_mode_index(::uint32_t value);
+
+  public:
+  // uint32 standard_mode = 3;
+  void clear_standard_mode() ;
+  ::uint32_t standard_mode() const;
+  void set_standard_mode(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_standard_mode() const;
+  void _internal_set_standard_mode(::uint32_t value);
+
+  public:
+  // uint32 custom_mode = 4;
+  void clear_custom_mode() ;
+  ::uint32_t custom_mode() const;
+  void set_custom_mode(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_custom_mode() const;
+  void _internal_set_custom_mode(::uint32_t value);
+
+  public:
+  // uint32 properties = 5;
+  void clear_properties() ;
+  ::uint32_t properties() const;
+  void set_properties(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_properties() const;
+  void _internal_set_properties(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.AvailableMode)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 6, 0,
+      50, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AvailableMode& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr mode_name_;
+    ::uint32_t number_modes_;
+    ::uint32_t mode_index_;
+    ::uint32_t standard_mode_;
+    ::uint32_t custom_mode_;
+    ::uint32_t properties_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2528,6 +3448,202 @@ class SysStatusResponse final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::mavsdk::rpc::striker::SysStatus* sys_status_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetManualFlightModeResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.SetManualFlightModeResponse) */ {
+ public:
+  inline SetManualFlightModeResponse() : SetManualFlightModeResponse(nullptr) {}
+  ~SetManualFlightModeResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetManualFlightModeResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetManualFlightModeResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetManualFlightModeResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetManualFlightModeResponse(const SetManualFlightModeResponse& from) : SetManualFlightModeResponse(nullptr, from) {}
+  inline SetManualFlightModeResponse(SetManualFlightModeResponse&& from) noexcept
+      : SetManualFlightModeResponse(nullptr, std::move(from)) {}
+  inline SetManualFlightModeResponse& operator=(const SetManualFlightModeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetManualFlightModeResponse& operator=(SetManualFlightModeResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetManualFlightModeResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetManualFlightModeResponse* internal_default_instance() {
+    return reinterpret_cast<const SetManualFlightModeResponse*>(
+        &_SetManualFlightModeResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 12;
+  friend void swap(SetManualFlightModeResponse& a, SetManualFlightModeResponse& b) { a.Swap(&b); }
+  inline void Swap(SetManualFlightModeResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetManualFlightModeResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetManualFlightModeResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetManualFlightModeResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetManualFlightModeResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetManualFlightModeResponse& from) { SetManualFlightModeResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetManualFlightModeResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.SetManualFlightModeResponse"; }
+
+ protected:
+  explicit SetManualFlightModeResponse(::google::protobuf::Arena* arena);
+  SetManualFlightModeResponse(::google::protobuf::Arena* arena, const SetManualFlightModeResponse& from);
+  SetManualFlightModeResponse(::google::protobuf::Arena* arena, SetManualFlightModeResponse&& from) noexcept
+      : SetManualFlightModeResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kResultFieldNumber = 1,
+  };
+  // .mavsdk.rpc.striker.StrikerModeResult result = 1;
+  bool has_result() const;
+  void clear_result() ;
+  const ::mavsdk::rpc::striker::StrikerModeResult& result() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::StrikerModeResult* release_result();
+  ::mavsdk::rpc::striker::StrikerModeResult* mutable_result();
+  void set_allocated_result(::mavsdk::rpc::striker::StrikerModeResult* value);
+  void unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerModeResult* value);
+  ::mavsdk::rpc::striker::StrikerModeResult* unsafe_arena_release_result();
+
+  private:
+  const ::mavsdk::rpc::striker::StrikerModeResult& _internal_result() const;
+  ::mavsdk::rpc::striker::StrikerModeResult* _internal_mutable_result();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.SetManualFlightModeResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetManualFlightModeResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::striker::StrikerModeResult* result_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -3317,6 +4433,203 @@ class BatteryVoltagesResponse final : public ::google::protobuf::Message
   union { Impl_ _impl_; };
   friend struct ::TableStruct_striker_2fstriker_2eproto;
 };
+// -------------------------------------------------------------------
+
+class AvailableModesResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.AvailableModesResponse) */ {
+ public:
+  inline AvailableModesResponse() : AvailableModesResponse(nullptr) {}
+  ~AvailableModesResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AvailableModesResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AvailableModesResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AvailableModesResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AvailableModesResponse(const AvailableModesResponse& from) : AvailableModesResponse(nullptr, from) {}
+  inline AvailableModesResponse(AvailableModesResponse&& from) noexcept
+      : AvailableModesResponse(nullptr, std::move(from)) {}
+  inline AvailableModesResponse& operator=(const AvailableModesResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AvailableModesResponse& operator=(AvailableModesResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AvailableModesResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AvailableModesResponse* internal_default_instance() {
+    return reinterpret_cast<const AvailableModesResponse*>(
+        &_AvailableModesResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 11;
+  friend void swap(AvailableModesResponse& a, AvailableModesResponse& b) { a.Swap(&b); }
+  inline void Swap(AvailableModesResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AvailableModesResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AvailableModesResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AvailableModesResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AvailableModesResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AvailableModesResponse& from) { AvailableModesResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AvailableModesResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.AvailableModesResponse"; }
+
+ protected:
+  explicit AvailableModesResponse(::google::protobuf::Arena* arena);
+  AvailableModesResponse(::google::protobuf::Arena* arena, const AvailableModesResponse& from);
+  AvailableModesResponse(::google::protobuf::Arena* arena, AvailableModesResponse&& from) noexcept
+      : AvailableModesResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kAvailableModesFieldNumber = 1,
+  };
+  // repeated .mavsdk.rpc.striker.AvailableMode available_modes = 1;
+  int available_modes_size() const;
+  private:
+  int _internal_available_modes_size() const;
+
+  public:
+  void clear_available_modes() ;
+  ::mavsdk::rpc::striker::AvailableMode* mutable_available_modes(int index);
+  ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::striker::AvailableMode>* mutable_available_modes();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::striker::AvailableMode>& _internal_available_modes() const;
+  ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::striker::AvailableMode>* _internal_mutable_available_modes();
+  public:
+  const ::mavsdk::rpc::striker::AvailableMode& available_modes(int index) const;
+  ::mavsdk::rpc::striker::AvailableMode* add_available_modes();
+  const ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::striker::AvailableMode>& available_modes() const;
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.AvailableModesResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AvailableModesResponse& from_msg);
+    ::google::protobuf::RepeatedPtrField< ::mavsdk::rpc::striker::AvailableMode > available_modes_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
 
 // ===================================================================
 
@@ -3848,6 +5161,163 @@ inline void BatteryVoltagesResponse::set_allocated_battery_voltages(::mavsdk::rp
 
   _impl_.battery_voltages_ = reinterpret_cast<::mavsdk::rpc::striker::BatteryVoltages*>(value);
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.BatteryVoltagesResponse.battery_voltages)
+}
+
+// -------------------------------------------------------------------
+
+// SubscribeAvailableModesRequest
+
+// -------------------------------------------------------------------
+
+// AvailableModesResponse
+
+// repeated .mavsdk.rpc.striker.AvailableMode available_modes = 1;
+inline int AvailableModesResponse::_internal_available_modes_size() const {
+  return _internal_available_modes().size();
+}
+inline int AvailableModesResponse::available_modes_size() const {
+  return _internal_available_modes_size();
+}
+inline void AvailableModesResponse::clear_available_modes() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.available_modes_.Clear();
+}
+inline ::mavsdk::rpc::striker::AvailableMode* AvailableModesResponse::mutable_available_modes(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.AvailableModesResponse.available_modes)
+  return _internal_mutable_available_modes()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::striker::AvailableMode>* AvailableModesResponse::mutable_available_modes()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:mavsdk.rpc.striker.AvailableModesResponse.available_modes)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_available_modes();
+}
+inline const ::mavsdk::rpc::striker::AvailableMode& AvailableModesResponse::available_modes(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.AvailableModesResponse.available_modes)
+  return _internal_available_modes().Get(index);
+}
+inline ::mavsdk::rpc::striker::AvailableMode* AvailableModesResponse::add_available_modes() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::mavsdk::rpc::striker::AvailableMode* _add = _internal_mutable_available_modes()->Add();
+  // @@protoc_insertion_point(field_add:mavsdk.rpc.striker.AvailableModesResponse.available_modes)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::striker::AvailableMode>& AvailableModesResponse::available_modes() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:mavsdk.rpc.striker.AvailableModesResponse.available_modes)
+  return _internal_available_modes();
+}
+inline const ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::striker::AvailableMode>&
+AvailableModesResponse::_internal_available_modes() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.available_modes_;
+}
+inline ::google::protobuf::RepeatedPtrField<::mavsdk::rpc::striker::AvailableMode>*
+AvailableModesResponse::_internal_mutable_available_modes() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.available_modes_;
+}
+
+// -------------------------------------------------------------------
+
+// SetManualFlightModeResponse
+
+// .mavsdk.rpc.striker.StrikerModeResult result = 1;
+inline bool SetManualFlightModeResponse::has_result() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.result_ != nullptr);
+  return value;
+}
+inline void SetManualFlightModeResponse::clear_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.result_ != nullptr) _impl_.result_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::striker::StrikerModeResult& SetManualFlightModeResponse::_internal_result() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::striker::StrikerModeResult* p = _impl_.result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::striker::StrikerModeResult&>(::mavsdk::rpc::striker::_StrikerModeResult_default_instance_);
+}
+inline const ::mavsdk::rpc::striker::StrikerModeResult& SetManualFlightModeResponse::result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
+  return _internal_result();
+}
+inline void SetManualFlightModeResponse::unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerModeResult* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.result_);
+  }
+  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerModeResult*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
+}
+inline ::mavsdk::rpc::striker::StrikerModeResult* SetManualFlightModeResponse::release_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::StrikerModeResult* released = _impl_.result_;
+  _impl_.result_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::striker::StrikerModeResult* SetManualFlightModeResponse::unsafe_arena_release_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::StrikerModeResult* temp = _impl_.result_;
+  _impl_.result_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::striker::StrikerModeResult* SetManualFlightModeResponse::_internal_mutable_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.result_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::striker::StrikerModeResult>(GetArena());
+    _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerModeResult*>(p);
+  }
+  return _impl_.result_;
+}
+inline ::mavsdk::rpc::striker::StrikerModeResult* SetManualFlightModeResponse::mutable_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::striker::StrikerModeResult* _msg = _internal_mutable_result();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
+  return _msg;
+}
+inline void SetManualFlightModeResponse::set_allocated_result(::mavsdk::rpc::striker::StrikerModeResult* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.result_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerModeResult*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
 }
 
 // -------------------------------------------------------------------
@@ -4994,6 +6464,312 @@ inline ::google::protobuf::RepeatedField<::uint32_t>* BatteryVoltages::_internal
   return &_impl_.ext_voltages_;
 }
 
+// -------------------------------------------------------------------
+
+// AvailableMode
+
+// uint32 number_modes = 1;
+inline void AvailableMode::clear_number_modes() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.number_modes_ = 0u;
+}
+inline ::uint32_t AvailableMode::number_modes() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.AvailableMode.number_modes)
+  return _internal_number_modes();
+}
+inline void AvailableMode::set_number_modes(::uint32_t value) {
+  _internal_set_number_modes(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.AvailableMode.number_modes)
+}
+inline ::uint32_t AvailableMode::_internal_number_modes() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.number_modes_;
+}
+inline void AvailableMode::_internal_set_number_modes(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.number_modes_ = value;
+}
+
+// uint32 mode_index = 2;
+inline void AvailableMode::clear_mode_index() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mode_index_ = 0u;
+}
+inline ::uint32_t AvailableMode::mode_index() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.AvailableMode.mode_index)
+  return _internal_mode_index();
+}
+inline void AvailableMode::set_mode_index(::uint32_t value) {
+  _internal_set_mode_index(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.AvailableMode.mode_index)
+}
+inline ::uint32_t AvailableMode::_internal_mode_index() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.mode_index_;
+}
+inline void AvailableMode::_internal_set_mode_index(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mode_index_ = value;
+}
+
+// uint32 standard_mode = 3;
+inline void AvailableMode::clear_standard_mode() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.standard_mode_ = 0u;
+}
+inline ::uint32_t AvailableMode::standard_mode() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.AvailableMode.standard_mode)
+  return _internal_standard_mode();
+}
+inline void AvailableMode::set_standard_mode(::uint32_t value) {
+  _internal_set_standard_mode(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.AvailableMode.standard_mode)
+}
+inline ::uint32_t AvailableMode::_internal_standard_mode() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.standard_mode_;
+}
+inline void AvailableMode::_internal_set_standard_mode(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.standard_mode_ = value;
+}
+
+// uint32 custom_mode = 4;
+inline void AvailableMode::clear_custom_mode() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_mode_ = 0u;
+}
+inline ::uint32_t AvailableMode::custom_mode() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.AvailableMode.custom_mode)
+  return _internal_custom_mode();
+}
+inline void AvailableMode::set_custom_mode(::uint32_t value) {
+  _internal_set_custom_mode(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.AvailableMode.custom_mode)
+}
+inline ::uint32_t AvailableMode::_internal_custom_mode() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.custom_mode_;
+}
+inline void AvailableMode::_internal_set_custom_mode(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_mode_ = value;
+}
+
+// uint32 properties = 5;
+inline void AvailableMode::clear_properties() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.properties_ = 0u;
+}
+inline ::uint32_t AvailableMode::properties() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.AvailableMode.properties)
+  return _internal_properties();
+}
+inline void AvailableMode::set_properties(::uint32_t value) {
+  _internal_set_properties(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.AvailableMode.properties)
+}
+inline ::uint32_t AvailableMode::_internal_properties() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.properties_;
+}
+inline void AvailableMode::_internal_set_properties(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.properties_ = value;
+}
+
+// string mode_name = 6;
+inline void AvailableMode::clear_mode_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mode_name_.ClearToEmpty();
+}
+inline const std::string& AvailableMode::mode_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.AvailableMode.mode_name)
+  return _internal_mode_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AvailableMode::set_mode_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mode_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.AvailableMode.mode_name)
+}
+inline std::string* AvailableMode::mutable_mode_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_mode_name();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.AvailableMode.mode_name)
+  return _s;
+}
+inline const std::string& AvailableMode::_internal_mode_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.mode_name_.Get();
+}
+inline void AvailableMode::_internal_set_mode_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mode_name_.Set(value, GetArena());
+}
+inline std::string* AvailableMode::_internal_mutable_mode_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.mode_name_.Mutable( GetArena());
+}
+inline std::string* AvailableMode::release_mode_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.AvailableMode.mode_name)
+  return _impl_.mode_name_.Release();
+}
+inline void AvailableMode::set_allocated_mode_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mode_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.mode_name_.IsDefault()) {
+    _impl_.mode_name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.AvailableMode.mode_name)
+}
+
+// -------------------------------------------------------------------
+
+// SetManualFlightModeRequest
+
+// uint32 mode = 1;
+inline void SetManualFlightModeRequest::clear_mode() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mode_ = 0u;
+}
+inline ::uint32_t SetManualFlightModeRequest::mode() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.SetManualFlightModeRequest.mode)
+  return _internal_mode();
+}
+inline void SetManualFlightModeRequest::set_mode(::uint32_t value) {
+  _internal_set_mode(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.SetManualFlightModeRequest.mode)
+}
+inline ::uint32_t SetManualFlightModeRequest::_internal_mode() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.mode_;
+}
+inline void SetManualFlightModeRequest::_internal_set_mode(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mode_ = value;
+}
+
+// uint32 custom_mode = 2;
+inline void SetManualFlightModeRequest::clear_custom_mode() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_mode_ = 0u;
+}
+inline ::uint32_t SetManualFlightModeRequest::custom_mode() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.SetManualFlightModeRequest.custom_mode)
+  return _internal_custom_mode();
+}
+inline void SetManualFlightModeRequest::set_custom_mode(::uint32_t value) {
+  _internal_set_custom_mode(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.SetManualFlightModeRequest.custom_mode)
+}
+inline ::uint32_t SetManualFlightModeRequest::_internal_custom_mode() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.custom_mode_;
+}
+inline void SetManualFlightModeRequest::_internal_set_custom_mode(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_mode_ = value;
+}
+
+// uint32 custom_sub_mode = 3;
+inline void SetManualFlightModeRequest::clear_custom_sub_mode() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_sub_mode_ = 0u;
+}
+inline ::uint32_t SetManualFlightModeRequest::custom_sub_mode() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.SetManualFlightModeRequest.custom_sub_mode)
+  return _internal_custom_sub_mode();
+}
+inline void SetManualFlightModeRequest::set_custom_sub_mode(::uint32_t value) {
+  _internal_set_custom_sub_mode(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.SetManualFlightModeRequest.custom_sub_mode)
+}
+inline ::uint32_t SetManualFlightModeRequest::_internal_custom_sub_mode() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.custom_sub_mode_;
+}
+inline void SetManualFlightModeRequest::_internal_set_custom_sub_mode(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_sub_mode_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// StrikerModeResult
+
+// .mavsdk.rpc.striker.StrikerModeResult.Result result = 1;
+inline void StrikerModeResult::clear_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.result_ = 0;
+}
+inline ::mavsdk::rpc::striker::StrikerModeResult_Result StrikerModeResult::result() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.StrikerModeResult.result)
+  return _internal_result();
+}
+inline void StrikerModeResult::set_result(::mavsdk::rpc::striker::StrikerModeResult_Result value) {
+  _internal_set_result(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.StrikerModeResult.result)
+}
+inline ::mavsdk::rpc::striker::StrikerModeResult_Result StrikerModeResult::_internal_result() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::mavsdk::rpc::striker::StrikerModeResult_Result>(_impl_.result_);
+}
+inline void StrikerModeResult::_internal_set_result(::mavsdk::rpc::striker::StrikerModeResult_Result value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.result_ = value;
+}
+
+// string result_str = 2;
+inline void StrikerModeResult::clear_result_str() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.result_str_.ClearToEmpty();
+}
+inline const std::string& StrikerModeResult::result_str() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.StrikerModeResult.result_str)
+  return _internal_result_str();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void StrikerModeResult::set_result_str(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.result_str_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.striker.StrikerModeResult.result_str)
+}
+inline std::string* StrikerModeResult::mutable_result_str() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_result_str();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.StrikerModeResult.result_str)
+  return _s;
+}
+inline const std::string& StrikerModeResult::_internal_result_str() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.result_str_.Get();
+}
+inline void StrikerModeResult::_internal_set_result_str(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.result_str_.Set(value, GetArena());
+}
+inline std::string* StrikerModeResult::_internal_mutable_result_str() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.result_str_.Mutable( GetArena());
+}
+inline std::string* StrikerModeResult::release_result_str() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.StrikerModeResult.result_str)
+  return _impl_.result_str_.Release();
+}
+inline void StrikerModeResult::set_allocated_result_str(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.result_str_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.result_str_.IsDefault()) {
+    _impl_.result_str_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.StrikerModeResult.result_str)
+}
+
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -5003,6 +6779,19 @@ inline ::google::protobuf::RepeatedField<::uint32_t>* BatteryVoltages::_internal
 }  // namespace rpc
 }  // namespace mavsdk
 
+
+namespace google {
+namespace protobuf {
+
+template <>
+struct is_proto_enum<::mavsdk::rpc::striker::StrikerModeResult_Result> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::mavsdk::rpc::striker::StrikerModeResult_Result>() {
+  return ::mavsdk::rpc::striker::StrikerModeResult_Result_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

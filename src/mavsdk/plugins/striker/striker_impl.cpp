@@ -51,6 +51,16 @@ void StrikerImpl::init()
         MAVLINK_MSG_ID_BATTERY_STATUS,
         [this](const mavlink_message_t& message) { process_battery_voltages(message); },
         this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_AVAILABLE_MODES_MONITOR,
+        [this](const mavlink_message_t& message) { process_available_modes_monitor(message); },
+        this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_AVAILABLE_MODES,
+        [this](const mavlink_message_t& message) { process_available_modes(message); },
+        this);
 }
 
 void StrikerImpl::deinit()
@@ -61,6 +71,8 @@ void StrikerImpl::deinit()
 void StrikerImpl::enable() {}
 
 void StrikerImpl::disable() {}
+
+// -- Heartbeat --
 
 Striker::HeartbeatHandle
 StrikerImpl::subscribe_heartbeat(const Striker::HeartbeatCallback& callback)
@@ -108,6 +120,8 @@ void StrikerImpl::process_heartbeat(const mavlink_message_t& message)
     _heartbeat_subscriptions.queue(
         heartbeat(), [this](const auto& func) { _system_impl->call_user_callback(func); });
 }
+
+// -- SysStatus --
 
 Striker::SysStatusHandle
 StrikerImpl::subscribe_sys_status(const Striker::SysStatusCallback& callback)
@@ -316,6 +330,267 @@ void StrikerImpl::set_battery_voltages(const mavlink_battery_status_t& battery_s
     _battery_voltages.ext_voltages.assign(
         battery_status.voltages_ext,
         battery_status.voltages_ext + MAVLINK_MSG_BATTERY_STATUS_FIELD_VOLTAGES_EXT_LEN);
+}
+
+// -- Available modes monitor --
+
+Striker::AvailableModesHandle
+StrikerImpl::subscribe_available_modes(const Striker::AvailableModesCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_available_modes_mutex);
+    return _available_modes_subscriptions.subscribe(callback);
+}
+
+void StrikerImpl::unsubscribe_available_modes(Striker::AvailableModesHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_available_modes_mutex);
+    _available_modes_subscriptions.unsubscribe(handle);
+}
+
+std::vector<Striker::AvailableMode> StrikerImpl::available_modes() const
+{
+    std::lock_guard<std::mutex> lock(_available_modes_mutex);
+    return _available_modes;
+}
+
+void StrikerImpl::process_available_modes_monitor(const mavlink_message_t& message)
+{
+    mavlink_available_modes_monitor_t availableModesMonitor;
+    mavlink_msg_available_modes_monitor_decode(&message, &availableModesMonitor);
+
+    if (_lastSeq != availableModesMonitor.seq) {
+        _lastSeq = availableModesMonitor.seq;
+        try_request_available_modes();
+    }
+}
+
+void StrikerImpl::try_request_available_modes()
+{
+    if (_requestActive) {
+        // If we are in the middle of waiting for a request, wait for the response first
+        _wantReset = true;
+        return;
+    }
+    _next_modes.clear();
+
+    // Request one at a time. This could be improved by requesting all, but we can't use
+    StrikerImpl::request_available_modes(1);
+}
+
+void StrikerImpl::request_available_modes(u_int32_t modeIndex)
+{
+    _requestActive = true;
+
+    MavlinkCommandSender::CommandLong command{};
+    command.target_component_id = _system_impl->get_autopilot_id();
+
+    command.command = MAV_CMD_REQUEST_MESSAGE;
+    command.params.maybe_param1 = MAVLINK_MSG_ID_AVAILABLE_MODES;
+    command.params.maybe_param2 = static_cast<float>(modeIndex);
+
+    _system_impl->send_command_async(command, [this](MavlinkCommandSender::Result result, float) {
+        if (result == MavlinkCommandSender::Result::Success) {
+            LogDebug() << "Requesting available modes succeeded";
+        } else {
+            LogErr() << "Requesting available modes failed: "
+                     << static_cast<int>(StrikerImpl::action_result_from_command_result(result));
+        }
+    });
+}
+
+void StrikerImpl::process_available_modes(const mavlink_message_t& message)
+{
+    _requestActive = false;
+    if (_wantReset) {
+        _wantReset = false;
+        try_request_available_modes();
+        return;
+    }
+
+    mavlink_available_modes_t availableModes;
+    mavlink_msg_available_modes_decode(&message, &availableModes);
+    bool cannotBeSet = availableModes.properties & MAV_MODE_PROPERTY_NOT_USER_SELECTABLE;
+    bool advanced = availableModes.properties & MAV_MODE_PROPERTY_ADVANCED;
+    availableModes.mode_name[sizeof(availableModes.mode_name) - 1] = '\0';
+    std::string name = availableModes.mode_name;
+    switch (availableModes.standard_mode) {
+        case MAV_STANDARD_MODE_POSITION_HOLD:
+            name = "Position";
+            break;
+        case MAV_STANDARD_MODE_ORBIT:
+            name = "Orbit";
+            break;
+        case MAV_STANDARD_MODE_CRUISE:
+            name = "Cruise";
+            break;
+        case MAV_STANDARD_MODE_ALTITUDE_HOLD:
+            name = "Altitude";
+            break;
+        case MAV_STANDARD_MODE_RETURN_HOME:
+            name = "Return";
+            break;
+        case MAV_STANDARD_MODE_SAFE_RECOVERY:
+            name = "Safe Recovery";
+            break;
+        case MAV_STANDARD_MODE_MISSION:
+            name = "Mission";
+            break;
+        case MAV_STANDARD_MODE_LAND:
+            name = "Land";
+            break;
+        case MAV_STANDARD_MODE_TAKEOFF:
+            name = "Takeoff";
+            break;
+    }
+    if (name == "Takeoff" || name == "VTOL Takeoff" || name == "Orbit" || name == "Land" ||
+        name == "Return") { // These are exposed in the UI as separate buttons
+        cannotBeSet = true;
+    }
+    LogDebug() << "Got mode:" << name << ", idx:" << availableModes.mode_index << ", custom_mode"
+               << availableModes.custom_mode;
+    _next_modes[availableModes.custom_mode] = Mode{
+        name,
+        availableModes.standard_mode,
+        availableModes.number_modes,
+        availableModes.mode_index,
+        availableModes.custom_mode,
+        availableModes.properties,
+        advanced,
+        cannotBeSet};
+
+    if (availableModes.mode_index >= availableModes.number_modes) { // We are done
+        LogDebug() << "Completed, num modes:" << _next_modes.size();
+        _modes = _next_modes;
+        ensureUniqueModeNames();
+
+        // Convert QMap<uint32_t, Mode> to std::vector<Striker::AvailableMode>
+        std::vector<Striker::AvailableMode> list_available_modes;
+        for (const auto& mode : _modes) {
+            list_available_modes.push_back(Striker::AvailableMode{
+                mode.second.numberModes,
+                mode.second.modeIndex,
+                mode.second.standardMode,
+                mode.second.customMode,
+                mode.second.properties,
+                mode.second.nameMode,
+            });
+        }
+
+        // Pass the vector to set_available_modes
+        set_available_modes(std::move(list_available_modes));
+
+        std::lock_guard<std::mutex> lock(_subscription_available_modes_mutex);
+        _available_modes_subscriptions.queue(available_modes(), [this](const auto& func) {
+            _system_impl->call_user_callback(func);
+        });
+
+    } else {
+        request_available_modes(availableModes.mode_index + 1);
+    }
+}
+
+void StrikerImpl::set_available_modes(std::vector<Striker::AvailableMode> available_modes)
+{
+    std::lock_guard<std::mutex> lock(_available_modes_mutex);
+    _available_modes = std::move(available_modes);
+}
+
+void StrikerImpl::ensureUniqueModeNames()
+{
+    // Ensure mode names are unique. This should generally already be the case, but e.g. during
+    // development when restarting dynamic modes, it might not be.
+    for (auto iter = _modes.begin(); iter != _modes.end(); ++iter) {
+        int duplicateIdx = 0;
+        for (auto iter2 = std::next(iter); iter2 != _modes.end(); ++iter2) {
+            if (iter->second.nameMode == iter2->second.nameMode) {
+                ++duplicateIdx;
+                iter2->second.nameMode += " (" + std::to_string(duplicateIdx) + ")";
+            }
+        }
+    }
+}
+
+// -- Set mode --
+
+void StrikerImpl::set_manual_flight_mode_async(
+    uint32_t mode,
+    uint32_t custom_mode,
+    uint32_t custom_sub_mode,
+    const Striker::ResultCallback callback)
+{
+    MavlinkCommandSender::CommandLong command{};
+    command.target_component_id = _system_impl->get_autopilot_id();
+
+    command.command = MAV_CMD_DO_SET_MODE;
+    command.params.maybe_param1 = static_cast<float>(mode);
+    command.params.maybe_param2 = static_cast<float>(custom_mode);
+    command.params.maybe_param3 = static_cast<float>(custom_sub_mode);
+
+    _system_impl->send_command_async(
+        command, [this, callback](MavlinkCommandSender::Result result, float) {
+            command_result_callback(result, callback);
+        });
+}
+
+void StrikerImpl::command_result_callback(
+    MavlinkCommandSender::Result command_result, const Striker::ResultCallback& callback) const
+{
+    if (command_result == MavlinkCommandSender::Result::InProgress) {
+        // We only want to return once, so we can't call the callback on progress updates.
+        return;
+    }
+
+    Striker::Result action_result = action_result_from_command_result(command_result);
+
+    if (callback) {
+        auto temp_callback = callback;
+        _system_impl->call_user_callback(
+            [temp_callback, action_result]() { temp_callback(action_result); });
+    }
+}
+
+Striker::Result StrikerImpl::action_result_from_command_result(MavlinkCommandSender::Result result)
+{
+    switch (result) {
+        case MavlinkCommandSender::Result::Success:
+            return Striker::Result::Success;
+        case MavlinkCommandSender::Result::NoSystem:
+            return Striker::Result::NoSystem;
+        case MavlinkCommandSender::Result::ConnectionError:
+            return Striker::Result::ConnectionError;
+        case MavlinkCommandSender::Result::Busy:
+            return Striker::Result::Busy;
+        case MavlinkCommandSender::Result::Denied:
+            // Fallthrough
+        case MavlinkCommandSender::Result::TemporarilyRejected:
+            return Striker::Result::CommandDenied;
+        case MavlinkCommandSender::Result::Failed:
+            return Striker::Result::Failed;
+        case MavlinkCommandSender::Result::Timeout:
+            return Striker::Result::Timeout;
+        case MavlinkCommandSender::Result::Unsupported:
+            return Striker::Result::Unsupported;
+        default:
+            return Striker::Result::Unknown;
+    }
+}
+
+Striker::Result
+StrikerImpl::set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode)
+{
+    if (_system_impl->autopilot() == Autopilot::Px4) {
+        auto prom = std::promise<Striker::Result>();
+        auto fut = prom.get_future();
+
+        set_manual_flight_mode_async(
+            mode, custom_mode, custom_sub_mode, [&prom](Striker::Result result) {
+                prom.set_value(result);
+            });
+
+        return fut.get();
+    }
+
+    return Striker::Result::Unsupported;
 }
 
 } // namespace mavsdk

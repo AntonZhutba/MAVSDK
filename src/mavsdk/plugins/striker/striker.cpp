@@ -14,6 +14,7 @@ using SysStatus = Striker::SysStatus;
 using RcChannel = Striker::RcChannel;
 using Magnitometer = Striker::Magnitometer;
 using BatteryVoltages = Striker::BatteryVoltages;
+using AvailableMode = Striker::AvailableMode;
 
 Striker::Striker(System& system) : PluginBase(), _impl{std::make_unique<StrikerImpl>(system)} {}
 
@@ -98,6 +99,34 @@ void Striker::unsubscribe_battery_voltages(BatteryVoltagesHandle handle)
 Striker::BatteryVoltages Striker::battery_voltages() const
 {
     return _impl->battery_voltages();
+}
+
+Striker::AvailableModesHandle
+Striker::subscribe_available_modes(const AvailableModesCallback& callback)
+{
+    return _impl->subscribe_available_modes(callback);
+}
+
+void Striker::unsubscribe_available_modes(AvailableModesHandle handle)
+{
+    _impl->unsubscribe_available_modes(handle);
+}
+
+std::vector<Striker::AvailableMode> Striker::available_modes() const
+{
+    return _impl->available_modes();
+}
+
+void Striker::set_manual_flight_mode_async(
+    uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode, const ResultCallback callback)
+{
+    _impl->set_manual_flight_mode_async(mode, custom_mode, custom_sub_mode, callback);
+}
+
+Striker::Result
+Striker::set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode) const
+{
+    return _impl->set_manual_flight_mode(mode, custom_mode, custom_sub_mode);
 }
 
 bool operator==(const Striker::Heartbeat& lhs, const Striker::Heartbeat& rhs)
@@ -257,6 +286,65 @@ std::ostream& operator<<(std::ostream& str, Striker::BatteryVoltages const& batt
     }
     str << '}';
     return str;
+}
+
+bool operator==(const Striker::AvailableMode& lhs, const Striker::AvailableMode& rhs)
+{
+    return (rhs.number_modes == lhs.number_modes) && (rhs.mode_index == lhs.mode_index) &&
+           (rhs.standard_mode == lhs.standard_mode) && (rhs.custom_mode == lhs.custom_mode) &&
+           (rhs.properties == lhs.properties) && (rhs.mode_name == lhs.mode_name);
+}
+
+std::ostream& operator<<(std::ostream& str, Striker::AvailableMode const& available_mode)
+{
+    str << std::setprecision(15);
+    str << "available_mode:" << '\n' << "{\n";
+    str << "    number_modes: " << available_mode.number_modes << '\n';
+    str << "    mode_index: " << available_mode.mode_index << '\n';
+    str << "    standard_mode: " << available_mode.standard_mode << '\n';
+    str << "    custom_mode: " << available_mode.custom_mode << '\n';
+    str << "    properties: " << available_mode.properties << '\n';
+    str << "    mode_name: " << available_mode.mode_name << '\n';
+    str << '}';
+    return str;
+}
+
+std::ostream& operator<<(std::ostream& str, Striker::Result const& result)
+{
+    switch (result) {
+        case Striker::Result::Unknown:
+            return str << "Unknown";
+        case Striker::Result::Success:
+            return str << "Success";
+        case Striker::Result::NoSystem:
+            return str << "No System";
+        case Striker::Result::ConnectionError:
+            return str << "Connection Error";
+        case Striker::Result::Busy:
+            return str << "Busy";
+        case Striker::Result::CommandDenied:
+            return str << "Command Denied";
+        case Striker::Result::CommandDeniedLandedStateUnknown:
+            return str << "Command Denied Landed State Unknown";
+        case Striker::Result::CommandDeniedNotLanded:
+            return str << "Command Denied Not Landed";
+        case Striker::Result::Timeout:
+            return str << "Timeout";
+        case Striker::Result::VtolTransitionSupportUnknown:
+            return str << "Vtol Transition Support Unknown";
+        case Striker::Result::NoVtolTransitionSupport:
+            return str << "No Vtol Transition Support";
+        case Striker::Result::ParameterError:
+            return str << "Parameter Error";
+        case Striker::Result::Unsupported:
+            return str << "Unsupported";
+        case Striker::Result::Failed:
+            return str << "Failed";
+        case Striker::Result::InvalidArgument:
+            return str << "Invalid Argument";
+        default:
+            return str << "Unknown";
+    }
 }
 
 } // namespace mavsdk

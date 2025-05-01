@@ -28,6 +28,20 @@ class StrikerServiceImpl final : public rpc::striker::StrikerService::Service {
 public:
     StrikerServiceImpl(LazyPlugin& lazy_plugin) : _lazy_plugin(lazy_plugin) {}
 
+    template<typename ResponseType>
+    void fillResponseWithResult(ResponseType* response, mavsdk::Striker::Result& result) const
+    {
+        auto rpc_result = translateToRpcResult(result);
+
+        auto* rpc_striker_result = new rpc::striker::StrikerModeResult();
+        rpc_striker_result->set_result(rpc_result);
+        std::stringstream ss;
+        ss << result;
+        rpc_striker_result->set_result_str(ss.str());
+
+        response->set_allocated_result(rpc_striker_result);
+    }
+
     static std::unique_ptr<rpc::striker::Heartbeat>
     translateToRpcHeartbeat(const mavsdk::Striker::Heartbeat& heartbeat)
     {
@@ -318,6 +332,128 @@ public:
         return obj;
     }
 
+    static std::unique_ptr<rpc::striker::AvailableMode>
+    translateToRpcAvailableMode(const mavsdk::Striker::AvailableMode& available_mode)
+    {
+        auto rpc_obj = std::make_unique<rpc::striker::AvailableMode>();
+
+        rpc_obj->set_number_modes(available_mode.number_modes);
+
+        rpc_obj->set_mode_index(available_mode.mode_index);
+
+        rpc_obj->set_standard_mode(available_mode.standard_mode);
+
+        rpc_obj->set_custom_mode(available_mode.custom_mode);
+
+        rpc_obj->set_properties(available_mode.properties);
+
+        rpc_obj->set_mode_name(available_mode.mode_name);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::Striker::AvailableMode
+    translateFromRpcAvailableMode(const rpc::striker::AvailableMode& available_mode)
+    {
+        mavsdk::Striker::AvailableMode obj;
+
+        obj.number_modes = available_mode.number_modes();
+
+        obj.mode_index = available_mode.mode_index();
+
+        obj.standard_mode = available_mode.standard_mode();
+
+        obj.custom_mode = available_mode.custom_mode();
+
+        obj.properties = available_mode.properties();
+
+        obj.mode_name = available_mode.mode_name();
+
+        return obj;
+    }
+
+    static rpc::striker::StrikerModeResult::Result
+    translateToRpcResult(const mavsdk::Striker::Result& result)
+    {
+        switch (result) {
+            default:
+                LogErr() << "Unknown result enum value: " << static_cast<int>(result);
+            // FALLTHROUGH
+            case mavsdk::Striker::Result::Unknown:
+                return rpc::striker::StrikerModeResult_Result_RESULT_UNKNOWN;
+            case mavsdk::Striker::Result::Success:
+                return rpc::striker::StrikerModeResult_Result_RESULT_SUCCESS;
+            case mavsdk::Striker::Result::NoSystem:
+                return rpc::striker::StrikerModeResult_Result_RESULT_NO_SYSTEM;
+            case mavsdk::Striker::Result::ConnectionError:
+                return rpc::striker::StrikerModeResult_Result_RESULT_CONNECTION_ERROR;
+            case mavsdk::Striker::Result::Busy:
+                return rpc::striker::StrikerModeResult_Result_RESULT_BUSY;
+            case mavsdk::Striker::Result::CommandDenied:
+                return rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED;
+            case mavsdk::Striker::Result::CommandDeniedLandedStateUnknown:
+                return rpc::striker::
+                    StrikerModeResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN;
+            case mavsdk::Striker::Result::CommandDeniedNotLanded:
+                return rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED;
+            case mavsdk::Striker::Result::Timeout:
+                return rpc::striker::StrikerModeResult_Result_RESULT_TIMEOUT;
+            case mavsdk::Striker::Result::VtolTransitionSupportUnknown:
+                return rpc::striker::
+                    StrikerModeResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN;
+            case mavsdk::Striker::Result::NoVtolTransitionSupport:
+                return rpc::striker::StrikerModeResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT;
+            case mavsdk::Striker::Result::ParameterError:
+                return rpc::striker::StrikerModeResult_Result_RESULT_PARAMETER_ERROR;
+            case mavsdk::Striker::Result::Unsupported:
+                return rpc::striker::StrikerModeResult_Result_RESULT_UNSUPPORTED;
+            case mavsdk::Striker::Result::Failed:
+                return rpc::striker::StrikerModeResult_Result_RESULT_FAILED;
+            case mavsdk::Striker::Result::InvalidArgument:
+                return rpc::striker::StrikerModeResult_Result_RESULT_INVALID_ARGUMENT;
+        }
+    }
+
+    static mavsdk::Striker::Result
+    translateFromRpcResult(const rpc::striker::StrikerModeResult::Result result)
+    {
+        switch (result) {
+            default:
+                LogErr() << "Unknown result enum value: " << static_cast<int>(result);
+            // FALLTHROUGH
+            case rpc::striker::StrikerModeResult_Result_RESULT_UNKNOWN:
+                return mavsdk::Striker::Result::Unknown;
+            case rpc::striker::StrikerModeResult_Result_RESULT_SUCCESS:
+                return mavsdk::Striker::Result::Success;
+            case rpc::striker::StrikerModeResult_Result_RESULT_NO_SYSTEM:
+                return mavsdk::Striker::Result::NoSystem;
+            case rpc::striker::StrikerModeResult_Result_RESULT_CONNECTION_ERROR:
+                return mavsdk::Striker::Result::ConnectionError;
+            case rpc::striker::StrikerModeResult_Result_RESULT_BUSY:
+                return mavsdk::Striker::Result::Busy;
+            case rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED:
+                return mavsdk::Striker::Result::CommandDenied;
+            case rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN:
+                return mavsdk::Striker::Result::CommandDeniedLandedStateUnknown;
+            case rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED:
+                return mavsdk::Striker::Result::CommandDeniedNotLanded;
+            case rpc::striker::StrikerModeResult_Result_RESULT_TIMEOUT:
+                return mavsdk::Striker::Result::Timeout;
+            case rpc::striker::StrikerModeResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN:
+                return mavsdk::Striker::Result::VtolTransitionSupportUnknown;
+            case rpc::striker::StrikerModeResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT:
+                return mavsdk::Striker::Result::NoVtolTransitionSupport;
+            case rpc::striker::StrikerModeResult_Result_RESULT_PARAMETER_ERROR:
+                return mavsdk::Striker::Result::ParameterError;
+            case rpc::striker::StrikerModeResult_Result_RESULT_UNSUPPORTED:
+                return mavsdk::Striker::Result::Unsupported;
+            case rpc::striker::StrikerModeResult_Result_RESULT_FAILED:
+                return mavsdk::Striker::Result::Failed;
+            case rpc::striker::StrikerModeResult_Result_RESULT_INVALID_ARGUMENT:
+                return mavsdk::Striker::Result::InvalidArgument;
+        }
+    }
+
     grpc::Status SubscribeHeartbeat(
         grpc::ServerContext* /* context */,
         const mavsdk::rpc::striker::SubscribeHeartbeatRequest* /* request */,
@@ -524,6 +660,79 @@ public:
         stream_closed_future.wait();
         std::unique_lock<std::mutex> lock(*subscribe_mutex);
         *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeAvailableModes(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeAvailableModesRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::AvailableModesResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        const mavsdk::Striker::AvailableModesHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_available_modes(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const std::vector<mavsdk::Striker::AvailableMode> available_modes) {
+                    rpc::striker::AvailableModesResponse rpc_response;
+
+                    for (const auto& elem : available_modes) {
+                        auto* ptr = rpc_response.add_available_modes();
+                        ptr->CopyFrom(*translateToRpcAvailableMode(elem).release());
+                    }
+
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_available_modes(handle);
+
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SetManualFlightMode(
+        grpc::ServerContext* /* context */,
+        const rpc::striker::SetManualFlightModeRequest* request,
+        rpc::striker::SetManualFlightModeResponse* response) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            if (response != nullptr) {
+                auto result = mavsdk::Striker::Result::NoSystem;
+                fillResponseWithResult(response, result);
+            }
+
+            return grpc::Status::OK;
+        }
+
+        if (request == nullptr) {
+            LogWarn() << "SetManualFlightMode sent with a null request! Ignoring...";
+            return grpc::Status::OK;
+        }
+
+        auto result = _lazy_plugin.maybe_plugin()->set_manual_flight_mode(
+            request->mode(), request->custom_mode(), request->custom_sub_mode());
+
+        if (response != nullptr) {
+            fillResponseWithResult(response, result);
+        }
 
         return grpc::Status::OK;
     }
