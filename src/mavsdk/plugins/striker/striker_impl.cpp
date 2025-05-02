@@ -385,8 +385,8 @@ void StrikerImpl::request_available_modes(uint32_t modeIndex)
     command.target_component_id = _system_impl->get_autopilot_id();
 
     command.command = MAV_CMD_REQUEST_MESSAGE;
-    command.params.maybe_param1 = MAVLINK_MSG_ID_AVAILABLE_MODES;
-    command.params.maybe_param2 = modeIndex;
+    command.params.maybe_param1 = static_cast<float>(MAVLINK_MSG_ID_AVAILABLE_MODES);
+    command.params.maybe_param2 = static_cast<float>(modeIndex);
 
     _system_impl->send_command_async(command, [this](MavlinkCommandSender::Result result, float) {
         if (result == MavlinkCommandSender::Result::Success) {
