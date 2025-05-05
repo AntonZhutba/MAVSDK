@@ -31,6 +31,8 @@ static const char* StrikerService_method_names[] = {
   "/mavsdk.rpc.striker.StrikerService/SubscribeBatteryVoltages",
   "/mavsdk.rpc.striker.StrikerService/SubscribeAvailableModes",
   "/mavsdk.rpc.striker.StrikerService/SetManualFlightMode",
+  "/mavsdk.rpc.striker.StrikerService/SubscribeActuatorServosStatus",
+  "/mavsdk.rpc.striker.StrikerService/SetRateActuatorServosStatus",
 };
 
 std::unique_ptr< StrikerService::Stub> StrikerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -47,6 +49,8 @@ StrikerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& cha
   , rpcmethod_SubscribeBatteryVoltages_(StrikerService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SubscribeAvailableModes_(StrikerService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SetManualFlightMode_(StrikerService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubscribeActuatorServosStatus_(StrikerService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SetRateActuatorServosStatus_(StrikerService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::ClientReader< ::mavsdk::rpc::striker::HeartbeatResponse>* StrikerService::Stub::SubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeHeartbeatRequest& request) {
@@ -168,6 +172,45 @@ void StrikerService::Stub::async::SetManualFlightMode(::grpc::ClientContext* con
   return result;
 }
 
+::grpc::ClientReader< ::mavsdk::rpc::striker::ActuatorServosStatusResponse>* StrikerService::Stub::SubscribeActuatorServosStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::mavsdk::rpc::striker::ActuatorServosStatusResponse>::Create(channel_.get(), rpcmethod_SubscribeActuatorServosStatus_, context, request);
+}
+
+void StrikerService::Stub::async::SubscribeActuatorServosStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::ActuatorServosStatusResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::mavsdk::rpc::striker::ActuatorServosStatusResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SubscribeActuatorServosStatus_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::ActuatorServosStatusResponse>* StrikerService::Stub::AsyncSubscribeActuatorServosStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::ActuatorServosStatusResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeActuatorServosStatus_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::ActuatorServosStatusResponse>* StrikerService::Stub::PrepareAsyncSubscribeActuatorServosStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::mavsdk::rpc::striker::ActuatorServosStatusResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeActuatorServosStatus_, context, request, false, nullptr);
+}
+
+::grpc::Status StrikerService::Stub::SetRateActuatorServosStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest& request, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetRateActuatorServosStatus_, context, request, response);
+}
+
+void StrikerService::Stub::async::SetRateActuatorServosStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest* request, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetRateActuatorServosStatus_, context, request, response, std::move(f));
+}
+
+void StrikerService::Stub::async::SetRateActuatorServosStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest* request, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetRateActuatorServosStatus_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse>* StrikerService::Stub::PrepareAsyncSetRateActuatorServosStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse, ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetRateActuatorServosStatus_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse>* StrikerService::Stub::AsyncSetRateActuatorServosStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetRateActuatorServosStatusRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 StrikerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       StrikerService_method_names[0],
@@ -239,6 +282,26 @@ StrikerService::Service::Service() {
              ::mavsdk::rpc::striker::SetManualFlightModeResponse* resp) {
                return service->SetManualFlightMode(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StrikerService_method_names[7],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< StrikerService::Service, ::mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest, ::mavsdk::rpc::striker::ActuatorServosStatusResponse>(
+          [](StrikerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest* req,
+             ::grpc::ServerWriter<::mavsdk::rpc::striker::ActuatorServosStatusResponse>* writer) {
+               return service->SubscribeActuatorServosStatus(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StrikerService_method_names[8],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< StrikerService::Service, ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](StrikerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest* req,
+             ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse* resp) {
+               return service->SetRateActuatorServosStatus(ctx, req, resp);
+             }, this)));
 }
 
 StrikerService::Service::~Service() {
@@ -287,6 +350,20 @@ StrikerService::Service::~Service() {
 }
 
 ::grpc::Status StrikerService::Service::SetManualFlightMode(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SetManualFlightModeRequest* request, ::mavsdk::rpc::striker::SetManualFlightModeResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StrikerService::Service::SubscribeActuatorServosStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::ActuatorServosStatusResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StrikerService::Service::SetRateActuatorServosStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest* request, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse* response) {
   (void) context;
   (void) request;
   (void) response;

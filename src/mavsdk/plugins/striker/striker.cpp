@@ -9,6 +9,7 @@
 
 namespace mavsdk {
 
+using ActuatorServosStatus = Striker::ActuatorServosStatus;
 using Heartbeat = Striker::Heartbeat;
 using SysStatus = Striker::SysStatus;
 using RcChannel = Striker::RcChannel;
@@ -127,6 +128,54 @@ Striker::Result
 Striker::set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode) const
 {
     return _impl->set_manual_flight_mode(mode, custom_mode, custom_sub_mode);
+}
+
+Striker::ActuatorServosStatusHandle
+Striker::subscribe_actuator_servos_status(const ActuatorServosStatusCallback& callback)
+{
+    return _impl->subscribe_actuator_servos_status(callback);
+}
+
+void Striker::unsubscribe_actuator_servos_status(ActuatorServosStatusHandle handle)
+{
+    _impl->unsubscribe_actuator_servos_status(handle);
+}
+
+Striker::ActuatorServosStatus Striker::actuator_servos_status() const
+{
+    return _impl->actuator_servos_status();
+}
+
+void Striker::set_rate_actuator_servos_status_async(double rate_hz, const ResultCallback callback)
+{
+    _impl->set_rate_actuator_servos_status_async(rate_hz, callback);
+}
+
+Striker::Result Striker::set_rate_actuator_servos_status(double rate_hz) const
+{
+    return _impl->set_rate_actuator_servos_status(rate_hz);
+}
+
+bool operator==(const Striker::ActuatorServosStatus& lhs, const Striker::ActuatorServosStatus& rhs)
+{
+    return (rhs.time_usec == lhs.time_usec) && (rhs.control == lhs.control);
+}
+
+std::ostream&
+operator<<(std::ostream& str, Striker::ActuatorServosStatus const& actuator_servos_status)
+{
+    str << std::setprecision(15);
+    str << "actuator_servos_status:" << '\n' << "{\n";
+    str << "    time_usec: " << actuator_servos_status.time_usec << '\n';
+    str << "    control: [";
+    for (auto it = actuator_servos_status.control.begin();
+         it != actuator_servos_status.control.end();
+         ++it) {
+        str << *it;
+        str << (it + 1 != actuator_servos_status.control.end() ? ", " : "]\n");
+    }
+    str << '}';
+    return str;
 }
 
 bool operator==(const Striker::Heartbeat& lhs, const Striker::Heartbeat& rhs)

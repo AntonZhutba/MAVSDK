@@ -9,6 +9,11 @@ namespace mavsdk {
 
 template class CallbackList<Striker::Heartbeat>;
 template class CallbackList<Striker::SysStatus>;
+template class CallbackList<Striker::RcChannel>;
+template class CallbackList<Striker::Magnitometer>;
+template class CallbackList<Striker::BatteryVoltages>;
+template class CallbackList<std::vector<Striker::AvailableMode>>;
+template class CallbackList<Striker::ActuatorServosStatus>;
 
 StrikerImpl::StrikerImpl(System& system) : PluginImplBase(system)
 {
@@ -60,6 +65,11 @@ void StrikerImpl::init()
     _system_impl->register_mavlink_message_handler(
         MAVLINK_MSG_ID_AVAILABLE_MODES,
         [this](const mavlink_message_t& message) { process_available_modes(message); },
+        this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_ACTUATOR_SERVOS_STATUS,
+        [this](const mavlink_message_t& message) { process_actuator_servos_status(message); },
         this);
 }
 
@@ -393,7 +403,7 @@ void StrikerImpl::request_available_modes(uint32_t modeIndex)
             LogDebug() << "Requesting available modes succeeded";
         } else {
             LogErr() << "Requesting available modes failed: "
-                     << static_cast<int>(StrikerImpl::action_result_from_command_result(result));
+                     << static_cast<int>(StrikerImpl::mode_result_from_command_result(result));
         }
     });
 }
@@ -538,7 +548,7 @@ void StrikerImpl::command_result_callback(
         return;
     }
 
-    Striker::Result action_result = action_result_from_command_result(command_result);
+    Striker::Result action_result = mode_result_from_command_result(command_result);
 
     if (callback) {
         auto temp_callback = callback;
@@ -547,7 +557,15 @@ void StrikerImpl::command_result_callback(
     }
 }
 
-Striker::Result StrikerImpl::action_result_from_command_result(MavlinkCommandSender::Result result)
+void StrikerImpl::command_rate_result_callback(
+    MavlinkCommandSender::Result command_result, const Striker::ResultCallback& callback)
+{
+    Striker::Result action_result = rate_result_from_command_result(command_result);
+
+    callback(action_result);
+}
+
+Striker::Result StrikerImpl::mode_result_from_command_result(MavlinkCommandSender::Result result)
 {
     switch (result) {
         case MavlinkCommandSender::Result::Success:
@@ -573,6 +591,28 @@ Striker::Result StrikerImpl::action_result_from_command_result(MavlinkCommandSen
     }
 }
 
+Striker::Result StrikerImpl::rate_result_from_command_result(MavlinkCommandSender::Result result)
+{
+    switch (result) {
+        case MavlinkCommandSender::Result::Success:
+            return Striker::Result::Success;
+        case MavlinkCommandSender::Result::NoSystem:
+            return Striker::Result::NoSystem;
+        case MavlinkCommandSender::Result::ConnectionError:
+            return Striker::Result::ConnectionError;
+        case MavlinkCommandSender::Result::Busy:
+            return Striker::Result::Busy;
+        case MavlinkCommandSender::Result::Denied:
+            // Fallthrough
+        case MavlinkCommandSender::Result::Timeout:
+            return Striker::Result::Timeout;
+        case MavlinkCommandSender::Result::Unsupported:
+            return Striker::Result::Unsupported;
+        default:
+            return Striker::Result::Unknown;
+    }
+}
+
 Striker::Result
 StrikerImpl::set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode)
 {
@@ -588,7 +628,69 @@ StrikerImpl::set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_
         return fut.get();
     }
 
-    return Striker::Result::Unsupported;
+    return Striker::Result::Unknown;
 }
 
+// -- Actuator servos status --
+Striker::ActuatorServosStatusHandle
+StrikerImpl::subscribe_actuator_servos_status(const Striker::ActuatorServosStatusCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_actuator_servos_status_mutex);
+    return _actuator_servos_status_subscriptions.subscribe(callback);
+}
+
+void StrikerImpl::unsubscribe_actuator_servos_status(Striker::ActuatorServosStatusHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_actuator_servos_status_mutex);
+    _actuator_servos_status_subscriptions.unsubscribe(handle);
+}
+
+Striker::ActuatorServosStatus StrikerImpl::actuator_servos_status() const
+{
+    std::lock_guard<std::mutex> lock(_actuator_servos_status_mutex);
+    return _actuator_servos_status;
+}
+
+void StrikerImpl::set_actuator_servos_status(Striker::ActuatorServosStatus actuator_servos_status)
+{
+    std::lock_guard<std::mutex> lock(_actuator_servos_status_mutex);
+    _actuator_servos_status = actuator_servos_status;
+}
+
+void StrikerImpl::process_actuator_servos_status(const mavlink_message_t& message)
+{
+    mavlink_actuator_servos_status_t actuator_servos_status_msg;
+    mavlink_msg_actuator_servos_status_decode(&message, &actuator_servos_status_msg);
+
+    Striker::ActuatorServosStatus received_actuator_servos_status{};
+    received_actuator_servos_status.time_usec = actuator_servos_status_msg.time_usec;
+    received_actuator_servos_status.control.assign(
+        std::begin(actuator_servos_status_msg.control),
+        std::end(actuator_servos_status_msg.control));
+    set_actuator_servos_status(received_actuator_servos_status);
+
+    std::lock_guard<std::mutex> lock(_subscription_actuator_servos_status_mutex);
+    _actuator_servos_status_subscriptions.queue(actuator_servos_status(), [this](const auto& func) {
+        _system_impl->call_user_callback(func);
+    });
+}
+
+Striker::Result StrikerImpl::set_rate_actuator_servos_status(double rate_hz)
+{
+    return rate_result_from_command_result(
+        _system_impl->set_msg_rate(MAVLINK_MSG_ID_ACTUATOR_SERVOS_STATUS, rate_hz));
+}
+
+void StrikerImpl::set_rate_actuator_servos_status_async(
+    double rate_hz, const Striker::ResultCallback callback)
+{
+    {
+        _system_impl->set_msg_rate_async(
+            MAVLINK_MSG_ID_ACTUATOR_SERVOS_STATUS,
+            rate_hz,
+            [callback](MavlinkCommandSender::Result command_result, float) {
+                command_rate_result_callback(command_result, callback);
+            });
+    }
+}
 } // namespace mavsdk

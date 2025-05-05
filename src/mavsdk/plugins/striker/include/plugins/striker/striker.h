@@ -59,6 +59,30 @@ public:
     ~Striker() override;
 
     /**
+     * @brief Actuator Servos Status type.
+     */
+    struct ActuatorServosStatus {
+        uint64_t time_usec{}; /**< @brief */
+        std::vector<float> control{}; /**< @brief Need size 8 [-1..1] */
+    };
+
+    /**
+     * @brief Equal operator to compare two `Striker::ActuatorServosStatus` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool
+    operator==(const Striker::ActuatorServosStatus& lhs, const Striker::ActuatorServosStatus& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `Striker::ActuatorServosStatus`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, Striker::ActuatorServosStatus const& actuator_servos_status);
+
+    /**
      * @brief Heartbeat type.
      */
     struct Heartbeat {
@@ -475,6 +499,54 @@ public:
      */
     Result
     set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode) const;
+
+    /**
+     * @brief Callback type for subscribe_actuator_servos_status.
+     */
+    using ActuatorServosStatusCallback = std::function<void(ActuatorServosStatus)>;
+
+    /**
+     * @brief Handle type for subscribe_actuator_servos_status.
+     */
+    using ActuatorServosStatusHandle = Handle<ActuatorServosStatus>;
+
+    /**
+     * @brief Subscribe to 'Actuator Servos Status' updates.
+     */
+    ActuatorServosStatusHandle
+    subscribe_actuator_servos_status(const ActuatorServosStatusCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_actuator_servos_status
+     */
+    void unsubscribe_actuator_servos_status(ActuatorServosStatusHandle handle);
+
+    /**
+     * @brief Poll for 'ActuatorServosStatus' (blocking).
+     *
+     * @return One ActuatorServosStatus update.
+     */
+    ActuatorServosStatus actuator_servos_status() const;
+
+    /**
+     * @brief Set the actuator control target.
+     *
+     * This function is non-blocking. See 'set_rate_actuator_servos_status' for the blocking
+     * counterpart.
+     */
+    void set_rate_actuator_servos_status_async(double rate_hz, const ResultCallback callback);
+
+    /**
+     * @brief Set the actuator control target.
+     *
+     * This function is blocking. See 'set_rate_actuator_servos_status_async' for the non-blocking
+     counterpart.
+     *
+
+     * @return Result of request.
+
+     */
+    Result set_rate_actuator_servos_status(double rate_hz) const;
 
     /**
      * @brief Copy constructor.

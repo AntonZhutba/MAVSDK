@@ -33,13 +33,41 @@ public:
     {
         auto rpc_result = translateToRpcResult(result);
 
-        auto* rpc_striker_result = new rpc::striker::StrikerModeResult();
+        auto* rpc_striker_result = new rpc::striker::StrikerResult();
         rpc_striker_result->set_result(rpc_result);
         std::stringstream ss;
         ss << result;
         rpc_striker_result->set_result_str(ss.str());
 
         response->set_allocated_result(rpc_striker_result);
+    }
+
+    static std::unique_ptr<rpc::striker::ActuatorServosStatus> translateToRpcActuatorServosStatus(
+        const mavsdk::Striker::ActuatorServosStatus& actuator_servos_status)
+    {
+        auto rpc_obj = std::make_unique<rpc::striker::ActuatorServosStatus>();
+
+        rpc_obj->set_time_usec(actuator_servos_status.time_usec);
+
+        for (const auto& elem : actuator_servos_status.control) {
+            rpc_obj->add_control(elem);
+        }
+
+        return rpc_obj;
+    }
+
+    static mavsdk::Striker::ActuatorServosStatus translateFromRpcActuatorServosStatus(
+        const rpc::striker::ActuatorServosStatus& actuator_servos_status)
+    {
+        mavsdk::Striker::ActuatorServosStatus obj;
+
+        obj.time_usec = actuator_servos_status.time_usec();
+
+        for (const auto& elem : actuator_servos_status.control()) {
+            obj.control.push_back(elem);
+        }
+
+        return obj;
     }
 
     static std::unique_ptr<rpc::striker::Heartbeat>
@@ -372,7 +400,7 @@ public:
         return obj;
     }
 
-    static rpc::striker::StrikerModeResult::Result
+    static rpc::striker::StrikerResult::Result
     translateToRpcResult(const mavsdk::Striker::Result& result)
     {
         switch (result) {
@@ -380,76 +408,75 @@ public:
                 LogErr() << "Unknown result enum value: " << static_cast<int>(result);
             // FALLTHROUGH
             case mavsdk::Striker::Result::Unknown:
-                return rpc::striker::StrikerModeResult_Result_RESULT_UNKNOWN;
+                return rpc::striker::StrikerResult_Result_UNKNOWN;
             case mavsdk::Striker::Result::Success:
-                return rpc::striker::StrikerModeResult_Result_RESULT_SUCCESS;
+                return rpc::striker::StrikerResult_Result_SUCCESS;
             case mavsdk::Striker::Result::NoSystem:
-                return rpc::striker::StrikerModeResult_Result_RESULT_NO_SYSTEM;
+                return rpc::striker::StrikerResult_Result_NO_SYSTEM;
             case mavsdk::Striker::Result::ConnectionError:
-                return rpc::striker::StrikerModeResult_Result_RESULT_CONNECTION_ERROR;
+                return rpc::striker::StrikerResult_Result_CONNECTION_ERROR;
             case mavsdk::Striker::Result::Busy:
-                return rpc::striker::StrikerModeResult_Result_RESULT_BUSY;
+                return rpc::striker::StrikerResult_Result_BUSY;
             case mavsdk::Striker::Result::CommandDenied:
-                return rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED;
+                return rpc::striker::StrikerResult_Result_COMMAND_DENIED;
             case mavsdk::Striker::Result::CommandDeniedLandedStateUnknown:
                 return rpc::striker::
-                    StrikerModeResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN;
+                    StrikerResult_Result_COMMAND_DENIED_LANDED_STATE_UNKNOWN;
             case mavsdk::Striker::Result::CommandDeniedNotLanded:
-                return rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED;
+                return rpc::striker::StrikerResult_Result_COMMAND_DENIED_NOT_LANDED;
             case mavsdk::Striker::Result::Timeout:
-                return rpc::striker::StrikerModeResult_Result_RESULT_TIMEOUT;
+                return rpc::striker::StrikerResult_Result_TIMEOUT;
             case mavsdk::Striker::Result::VtolTransitionSupportUnknown:
-                return rpc::striker::
-                    StrikerModeResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN;
+                return rpc::striker::StrikerResult_Result_VTOL_TRANSITION_SUPPORT_UNKNOWN;
             case mavsdk::Striker::Result::NoVtolTransitionSupport:
-                return rpc::striker::StrikerModeResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT;
+                return rpc::striker::StrikerResult_Result_NO_VTOL_TRANSITION_SUPPORT;
             case mavsdk::Striker::Result::ParameterError:
-                return rpc::striker::StrikerModeResult_Result_RESULT_PARAMETER_ERROR;
+                return rpc::striker::StrikerResult_Result_PARAMETER_ERROR;
             case mavsdk::Striker::Result::Unsupported:
-                return rpc::striker::StrikerModeResult_Result_RESULT_UNSUPPORTED;
+                return rpc::striker::StrikerResult_Result_UNSUPPORTED;
             case mavsdk::Striker::Result::Failed:
-                return rpc::striker::StrikerModeResult_Result_RESULT_FAILED;
+                return rpc::striker::StrikerResult_Result_FAILED;
             case mavsdk::Striker::Result::InvalidArgument:
-                return rpc::striker::StrikerModeResult_Result_RESULT_INVALID_ARGUMENT;
+                return rpc::striker::StrikerResult_Result_INVALID_ARGUMENT;
         }
     }
 
     static mavsdk::Striker::Result
-    translateFromRpcResult(const rpc::striker::StrikerModeResult::Result result)
+    translateFromRpcResult(const rpc::striker::StrikerResult::Result result)
     {
         switch (result) {
             default:
                 LogErr() << "Unknown result enum value: " << static_cast<int>(result);
             // FALLTHROUGH
-            case rpc::striker::StrikerModeResult_Result_RESULT_UNKNOWN:
+            case rpc::striker::StrikerResult_Result_UNKNOWN:
                 return mavsdk::Striker::Result::Unknown;
-            case rpc::striker::StrikerModeResult_Result_RESULT_SUCCESS:
+            case rpc::striker::StrikerResult_Result_SUCCESS:
                 return mavsdk::Striker::Result::Success;
-            case rpc::striker::StrikerModeResult_Result_RESULT_NO_SYSTEM:
+            case rpc::striker::StrikerResult_Result_NO_SYSTEM:
                 return mavsdk::Striker::Result::NoSystem;
-            case rpc::striker::StrikerModeResult_Result_RESULT_CONNECTION_ERROR:
+            case rpc::striker::StrikerResult_Result_CONNECTION_ERROR:
                 return mavsdk::Striker::Result::ConnectionError;
-            case rpc::striker::StrikerModeResult_Result_RESULT_BUSY:
+            case rpc::striker::StrikerResult_Result_BUSY:
                 return mavsdk::Striker::Result::Busy;
-            case rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED:
+            case rpc::striker::StrikerResult_Result_COMMAND_DENIED:
                 return mavsdk::Striker::Result::CommandDenied;
-            case rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN:
+            case rpc::striker::StrikerResult_Result_COMMAND_DENIED_LANDED_STATE_UNKNOWN:
                 return mavsdk::Striker::Result::CommandDeniedLandedStateUnknown;
-            case rpc::striker::StrikerModeResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED:
+            case rpc::striker::StrikerResult_Result_COMMAND_DENIED_NOT_LANDED:
                 return mavsdk::Striker::Result::CommandDeniedNotLanded;
-            case rpc::striker::StrikerModeResult_Result_RESULT_TIMEOUT:
+            case rpc::striker::StrikerResult_Result_TIMEOUT:
                 return mavsdk::Striker::Result::Timeout;
-            case rpc::striker::StrikerModeResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN:
+            case rpc::striker::StrikerResult_Result_VTOL_TRANSITION_SUPPORT_UNKNOWN:
                 return mavsdk::Striker::Result::VtolTransitionSupportUnknown;
-            case rpc::striker::StrikerModeResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT:
+            case rpc::striker::StrikerResult_Result_NO_VTOL_TRANSITION_SUPPORT:
                 return mavsdk::Striker::Result::NoVtolTransitionSupport;
-            case rpc::striker::StrikerModeResult_Result_RESULT_PARAMETER_ERROR:
+            case rpc::striker::StrikerResult_Result_PARAMETER_ERROR:
                 return mavsdk::Striker::Result::ParameterError;
-            case rpc::striker::StrikerModeResult_Result_RESULT_UNSUPPORTED:
+            case rpc::striker::StrikerResult_Result_UNSUPPORTED:
                 return mavsdk::Striker::Result::Unsupported;
-            case rpc::striker::StrikerModeResult_Result_RESULT_FAILED:
+            case rpc::striker::StrikerResult_Result_FAILED:
                 return mavsdk::Striker::Result::Failed;
-            case rpc::striker::StrikerModeResult_Result_RESULT_INVALID_ARGUMENT:
+            case rpc::striker::StrikerResult_Result_INVALID_ARGUMENT:
                 return mavsdk::Striker::Result::InvalidArgument;
         }
     }
@@ -729,6 +756,77 @@ public:
 
         auto result = _lazy_plugin.maybe_plugin()->set_manual_flight_mode(
             request->mode(), request->custom_mode(), request->custom_sub_mode());
+
+        if (response != nullptr) {
+            fillResponseWithResult(response, result);
+        }
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeActuatorServosStatus(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::ActuatorServosStatusResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        const mavsdk::Striker::ActuatorServosStatusHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_actuator_servos_status(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const mavsdk::Striker::ActuatorServosStatus actuator_servos_status) {
+                    rpc::striker::ActuatorServosStatusResponse rpc_response;
+
+                    rpc_response.set_allocated_actuator_servos_status(
+                        translateToRpcActuatorServosStatus(actuator_servos_status).release());
+
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_actuator_servos_status(handle);
+
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SetRateActuatorServosStatus(
+        grpc::ServerContext* /* context */,
+        const rpc::striker::SetRateActuatorServosStatusRequest* request,
+        rpc::striker::SetRateActuatorServosStatusResponse* response) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            if (response != nullptr) {
+                auto result = mavsdk::Striker::Result::NoSystem;
+                fillResponseWithResult(response, result);
+            }
+
+            return grpc::Status::OK;
+        }
+
+        if (request == nullptr) {
+            LogWarn() << "SetRateActuatorServosStatus sent with a null request! Ignoring...";
+            return grpc::Status::OK;
+        }
+
+        auto result =
+            _lazy_plugin.maybe_plugin()->set_rate_actuator_servos_status(request->rate_hz());
 
         if (response != nullptr) {
             fillResponseWithResult(response, result);
