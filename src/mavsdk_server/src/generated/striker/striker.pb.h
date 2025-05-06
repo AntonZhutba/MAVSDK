@@ -147,21 +147,21 @@ namespace mavsdk {
 namespace rpc {
 namespace striker {
 enum StrikerResult_Result : int {
-  StrikerResult_Result_UNKNOWN = 0,
-  StrikerResult_Result_SUCCESS = 1,
-  StrikerResult_Result_NO_SYSTEM = 2,
-  StrikerResult_Result_CONNECTION_ERROR = 3,
-  StrikerResult_Result_BUSY = 4,
-  StrikerResult_Result_COMMAND_DENIED = 5,
-  StrikerResult_Result_COMMAND_DENIED_LANDED_STATE_UNKNOWN = 6,
-  StrikerResult_Result_COMMAND_DENIED_NOT_LANDED = 7,
-  StrikerResult_Result_TIMEOUT = 8,
-  StrikerResult_Result_VTOL_TRANSITION_SUPPORT_UNKNOWN = 9,
-  StrikerResult_Result_NO_VTOL_TRANSITION_SUPPORT = 10,
-  StrikerResult_Result_PARAMETER_ERROR = 11,
-  StrikerResult_Result_UNSUPPORTED = 12,
-  StrikerResult_Result_FAILED = 13,
-  StrikerResult_Result_INVALID_ARGUMENT = 14,
+  StrikerResult_Result_RESULT_UNKNOWN = 0,
+  StrikerResult_Result_RESULT_SUCCESS = 1,
+  StrikerResult_Result_RESULT_NO_SYSTEM = 2,
+  StrikerResult_Result_RESULT_CONNECTION_ERROR = 3,
+  StrikerResult_Result_RESULT_BUSY = 4,
+  StrikerResult_Result_RESULT_COMMAND_DENIED = 5,
+  StrikerResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN = 6,
+  StrikerResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED = 7,
+  StrikerResult_Result_RESULT_TIMEOUT = 8,
+  StrikerResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN = 9,
+  StrikerResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT = 10,
+  StrikerResult_Result_RESULT_PARAMETER_ERROR = 11,
+  StrikerResult_Result_RESULT_UNSUPPORTED = 12,
+  StrikerResult_Result_RESULT_FAILED = 13,
+  StrikerResult_Result_RESULT_INVALID_ARGUMENT = 14,
   StrikerResult_Result_StrikerResult_Result_INT_MIN_SENTINEL_DO_NOT_USE_ =
       std::numeric_limits<::int32_t>::min(),
   StrikerResult_Result_StrikerResult_Result_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -1727,21 +1727,21 @@ class StrikerResult final : public ::google::protobuf::Message
   ::google::protobuf::Metadata GetMetadata() const;
   // nested types ----------------------------------------------------
   using Result = StrikerResult_Result;
-  static constexpr Result UNKNOWN = StrikerResult_Result_UNKNOWN;
-  static constexpr Result SUCCESS = StrikerResult_Result_SUCCESS;
-  static constexpr Result NO_SYSTEM = StrikerResult_Result_NO_SYSTEM;
-  static constexpr Result CONNECTION_ERROR = StrikerResult_Result_CONNECTION_ERROR;
-  static constexpr Result BUSY = StrikerResult_Result_BUSY;
-  static constexpr Result COMMAND_DENIED = StrikerResult_Result_COMMAND_DENIED;
-  static constexpr Result COMMAND_DENIED_LANDED_STATE_UNKNOWN = StrikerResult_Result_COMMAND_DENIED_LANDED_STATE_UNKNOWN;
-  static constexpr Result COMMAND_DENIED_NOT_LANDED = StrikerResult_Result_COMMAND_DENIED_NOT_LANDED;
-  static constexpr Result TIMEOUT = StrikerResult_Result_TIMEOUT;
-  static constexpr Result VTOL_TRANSITION_SUPPORT_UNKNOWN = StrikerResult_Result_VTOL_TRANSITION_SUPPORT_UNKNOWN;
-  static constexpr Result NO_VTOL_TRANSITION_SUPPORT = StrikerResult_Result_NO_VTOL_TRANSITION_SUPPORT;
-  static constexpr Result PARAMETER_ERROR = StrikerResult_Result_PARAMETER_ERROR;
-  static constexpr Result UNSUPPORTED = StrikerResult_Result_UNSUPPORTED;
-  static constexpr Result FAILED = StrikerResult_Result_FAILED;
-  static constexpr Result INVALID_ARGUMENT = StrikerResult_Result_INVALID_ARGUMENT;
+  static constexpr Result RESULT_UNKNOWN = StrikerResult_Result_RESULT_UNKNOWN;
+  static constexpr Result RESULT_SUCCESS = StrikerResult_Result_RESULT_SUCCESS;
+  static constexpr Result RESULT_NO_SYSTEM = StrikerResult_Result_RESULT_NO_SYSTEM;
+  static constexpr Result RESULT_CONNECTION_ERROR = StrikerResult_Result_RESULT_CONNECTION_ERROR;
+  static constexpr Result RESULT_BUSY = StrikerResult_Result_RESULT_BUSY;
+  static constexpr Result RESULT_COMMAND_DENIED = StrikerResult_Result_RESULT_COMMAND_DENIED;
+  static constexpr Result RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN = StrikerResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN;
+  static constexpr Result RESULT_COMMAND_DENIED_NOT_LANDED = StrikerResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED;
+  static constexpr Result RESULT_TIMEOUT = StrikerResult_Result_RESULT_TIMEOUT;
+  static constexpr Result RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN = StrikerResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN;
+  static constexpr Result RESULT_NO_VTOL_TRANSITION_SUPPORT = StrikerResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT;
+  static constexpr Result RESULT_PARAMETER_ERROR = StrikerResult_Result_RESULT_PARAMETER_ERROR;
+  static constexpr Result RESULT_UNSUPPORTED = StrikerResult_Result_RESULT_UNSUPPORTED;
+  static constexpr Result RESULT_FAILED = StrikerResult_Result_RESULT_FAILED;
+  static constexpr Result RESULT_INVALID_ARGUMENT = StrikerResult_Result_RESULT_INVALID_ARGUMENT;
   static inline bool Result_IsValid(int value) {
     return StrikerResult_Result_IsValid(value);
   }

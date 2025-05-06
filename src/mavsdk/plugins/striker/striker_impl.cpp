@@ -399,9 +399,7 @@ void StrikerImpl::request_available_modes(uint32_t modeIndex)
     command.params.maybe_param2 = static_cast<float>(modeIndex);
 
     _system_impl->send_command_async(command, [this](MavlinkCommandSender::Result result, float) {
-        if (result == MavlinkCommandSender::Result::Success) {
-            LogDebug() << "Requesting available modes succeeded";
-        } else {
+        if (result != MavlinkCommandSender::Result::Success) {
             LogErr() << "Requesting available modes failed: "
                      << static_cast<int>(StrikerImpl::mode_result_from_command_result(result));
         }
@@ -456,8 +454,7 @@ void StrikerImpl::process_available_modes(const mavlink_message_t& message)
         name == "Return") { // These are exposed in the UI as separate buttons
         cannotBeSet = true;
     }
-    LogDebug() << "Got mode:" << name << ", idx:" << availableModes.mode_index << ", custom_mode"
-               << availableModes.custom_mode;
+
     _next_modes[availableModes.custom_mode] = Mode{
         name,
         availableModes.standard_mode,
@@ -469,8 +466,7 @@ void StrikerImpl::process_available_modes(const mavlink_message_t& message)
         cannotBeSet};
 
     if (availableModes.mode_index >= availableModes.number_modes) { // We are done
-        LogDebug() << "Completed, num modes:" << _next_modes.size();
-        _modes = _next_modes;
+
         ensureUniqueModeNames();
         std::vector<Striker::AvailableMode> list_available_modes;
         for (const auto& mode : _modes) {

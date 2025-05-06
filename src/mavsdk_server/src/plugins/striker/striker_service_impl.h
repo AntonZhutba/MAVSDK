@@ -408,36 +408,36 @@ public:
                 LogErr() << "Unknown result enum value: " << static_cast<int>(result);
             // FALLTHROUGH
             case mavsdk::Striker::Result::Unknown:
-                return rpc::striker::StrikerResult_Result_UNKNOWN;
+                return rpc::striker::StrikerResult_Result_RESULT_UNKNOWN;
             case mavsdk::Striker::Result::Success:
-                return rpc::striker::StrikerResult_Result_SUCCESS;
+                return rpc::striker::StrikerResult_Result_RESULT_SUCCESS;
             case mavsdk::Striker::Result::NoSystem:
-                return rpc::striker::StrikerResult_Result_NO_SYSTEM;
+                return rpc::striker::StrikerResult_Result_RESULT_NO_SYSTEM;
             case mavsdk::Striker::Result::ConnectionError:
-                return rpc::striker::StrikerResult_Result_CONNECTION_ERROR;
+                return rpc::striker::StrikerResult_Result_RESULT_CONNECTION_ERROR;
             case mavsdk::Striker::Result::Busy:
-                return rpc::striker::StrikerResult_Result_BUSY;
+                return rpc::striker::StrikerResult_Result_RESULT_BUSY;
             case mavsdk::Striker::Result::CommandDenied:
-                return rpc::striker::StrikerResult_Result_COMMAND_DENIED;
+                return rpc::striker::StrikerResult_Result_RESULT_COMMAND_DENIED;
             case mavsdk::Striker::Result::CommandDeniedLandedStateUnknown:
                 return rpc::striker::
-                    StrikerResult_Result_COMMAND_DENIED_LANDED_STATE_UNKNOWN;
+                    StrikerResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN;
             case mavsdk::Striker::Result::CommandDeniedNotLanded:
-                return rpc::striker::StrikerResult_Result_COMMAND_DENIED_NOT_LANDED;
+                return rpc::striker::StrikerResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED;
             case mavsdk::Striker::Result::Timeout:
-                return rpc::striker::StrikerResult_Result_TIMEOUT;
+                return rpc::striker::StrikerResult_Result_RESULT_TIMEOUT;
             case mavsdk::Striker::Result::VtolTransitionSupportUnknown:
-                return rpc::striker::StrikerResult_Result_VTOL_TRANSITION_SUPPORT_UNKNOWN;
+                return rpc::striker::StrikerResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN;
             case mavsdk::Striker::Result::NoVtolTransitionSupport:
-                return rpc::striker::StrikerResult_Result_NO_VTOL_TRANSITION_SUPPORT;
+                return rpc::striker::StrikerResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT;
             case mavsdk::Striker::Result::ParameterError:
-                return rpc::striker::StrikerResult_Result_PARAMETER_ERROR;
+                return rpc::striker::StrikerResult_Result_RESULT_PARAMETER_ERROR;
             case mavsdk::Striker::Result::Unsupported:
-                return rpc::striker::StrikerResult_Result_UNSUPPORTED;
+                return rpc::striker::StrikerResult_Result_RESULT_UNSUPPORTED;
             case mavsdk::Striker::Result::Failed:
-                return rpc::striker::StrikerResult_Result_FAILED;
+                return rpc::striker::StrikerResult_Result_RESULT_FAILED;
             case mavsdk::Striker::Result::InvalidArgument:
-                return rpc::striker::StrikerResult_Result_INVALID_ARGUMENT;
+                return rpc::striker::StrikerResult_Result_RESULT_INVALID_ARGUMENT;
         }
     }
 
@@ -448,35 +448,35 @@ public:
             default:
                 LogErr() << "Unknown result enum value: " << static_cast<int>(result);
             // FALLTHROUGH
-            case rpc::striker::StrikerResult_Result_UNKNOWN:
+            case rpc::striker::StrikerResult_Result_RESULT_UNKNOWN:
                 return mavsdk::Striker::Result::Unknown;
-            case rpc::striker::StrikerResult_Result_SUCCESS:
+            case rpc::striker::StrikerResult_Result_RESULT_SUCCESS:
                 return mavsdk::Striker::Result::Success;
-            case rpc::striker::StrikerResult_Result_NO_SYSTEM:
+            case rpc::striker::StrikerResult_Result_RESULT_NO_SYSTEM:
                 return mavsdk::Striker::Result::NoSystem;
-            case rpc::striker::StrikerResult_Result_CONNECTION_ERROR:
+            case rpc::striker::StrikerResult_Result_RESULT_CONNECTION_ERROR:
                 return mavsdk::Striker::Result::ConnectionError;
-            case rpc::striker::StrikerResult_Result_BUSY:
+            case rpc::striker::StrikerResult_Result_RESULT_BUSY:
                 return mavsdk::Striker::Result::Busy;
-            case rpc::striker::StrikerResult_Result_COMMAND_DENIED:
+            case rpc::striker::StrikerResult_Result_RESULT_COMMAND_DENIED:
                 return mavsdk::Striker::Result::CommandDenied;
-            case rpc::striker::StrikerResult_Result_COMMAND_DENIED_LANDED_STATE_UNKNOWN:
+            case rpc::striker::StrikerResult_Result_RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN:
                 return mavsdk::Striker::Result::CommandDeniedLandedStateUnknown;
-            case rpc::striker::StrikerResult_Result_COMMAND_DENIED_NOT_LANDED:
+            case rpc::striker::StrikerResult_Result_RESULT_COMMAND_DENIED_NOT_LANDED:
                 return mavsdk::Striker::Result::CommandDeniedNotLanded;
-            case rpc::striker::StrikerResult_Result_TIMEOUT:
+            case rpc::striker::StrikerResult_Result_RESULT_TIMEOUT:
                 return mavsdk::Striker::Result::Timeout;
-            case rpc::striker::StrikerResult_Result_VTOL_TRANSITION_SUPPORT_UNKNOWN:
+            case rpc::striker::StrikerResult_Result_RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN:
                 return mavsdk::Striker::Result::VtolTransitionSupportUnknown;
-            case rpc::striker::StrikerResult_Result_NO_VTOL_TRANSITION_SUPPORT:
+            case rpc::striker::StrikerResult_Result_RESULT_NO_VTOL_TRANSITION_SUPPORT:
                 return mavsdk::Striker::Result::NoVtolTransitionSupport;
-            case rpc::striker::StrikerResult_Result_PARAMETER_ERROR:
+            case rpc::striker::StrikerResult_Result_RESULT_PARAMETER_ERROR:
                 return mavsdk::Striker::Result::ParameterError;
-            case rpc::striker::StrikerResult_Result_UNSUPPORTED:
+            case rpc::striker::StrikerResult_Result_RESULT_UNSUPPORTED:
                 return mavsdk::Striker::Result::Unsupported;
-            case rpc::striker::StrikerResult_Result_FAILED:
+            case rpc::striker::StrikerResult_Result_RESULT_FAILED:
                 return mavsdk::Striker::Result::Failed;
-            case rpc::striker::StrikerResult_Result_INVALID_ARGUMENT:
+            case rpc::striker::StrikerResult_Result_RESULT_INVALID_ARGUMENT:
                 return mavsdk::Striker::Result::InvalidArgument;
         }
     }

@@ -1113,47 +1113,50 @@ const char descriptor_table_protodef_striker_2fstriker_2eproto[] ABSL_ATTRIBUTE_
     "mode\030\004 \001(\r\022\022\n\nproperties\030\005 \001(\r\022\021\n\tmode_n"
     "ame\030\006 \001(\t\"X\n\032SetManualFlightModeRequest\022"
     "\014\n\004mode\030\001 \001(\r\022\023\n\013custom_mode\030\002 \001(\r\022\027\n\017cu"
-    "stom_sub_mode\030\003 \001(\r\"\247\003\n\rStrikerResult\0228\n"
+    "stom_sub_mode\030\003 \001(\r\"\220\004\n\rStrikerResult\0228\n"
     "\006result\030\001 \001(\0162(.mavsdk.rpc.striker.Strik"
-    "erResult.Result\022\022\n\nresult_str\030\002 \001(\t\"\307\002\n\006"
-    "Result\022\013\n\007UNKNOWN\020\000\022\013\n\007SUCCESS\020\001\022\r\n\tNO_S"
-    "YSTEM\020\002\022\024\n\020CONNECTION_ERROR\020\003\022\010\n\004BUSY\020\004\022"
-    "\022\n\016COMMAND_DENIED\020\005\022\'\n#COMMAND_DENIED_LA"
-    "NDED_STATE_UNKNOWN\020\006\022\035\n\031COMMAND_DENIED_N"
-    "OT_LANDED\020\007\022\013\n\007TIMEOUT\020\010\022#\n\037VTOL_TRANSIT"
-    "ION_SUPPORT_UNKNOWN\020\t\022\036\n\032NO_VTOL_TRANSIT"
-    "ION_SUPPORT\020\n\022\023\n\017PARAMETER_ERROR\020\013\022\017\n\013UN"
-    "SUPPORTED\020\014\022\n\n\006FAILED\020\r\022\024\n\020INVALID_ARGUM"
-    "ENT\020\0162\372\010\n\016StrikerService\022n\n\022SubscribeHea"
-    "rtbeat\022-.mavsdk.rpc.striker.SubscribeHea"
-    "rtbeatRequest\032%.mavsdk.rpc.striker.Heart"
-    "beatResponse\"\0000\001\022n\n\022SubscribeSysStatus\022-"
-    ".mavsdk.rpc.striker.SubscribeSysStatusRe"
-    "quest\032%.mavsdk.rpc.striker.SysStatusResp"
-    "onse\"\0000\001\022n\n\022SubscribeRcChannel\022-.mavsdk."
-    "rpc.striker.SubscribeRcChannelRequest\032%."
-    "mavsdk.rpc.striker.RcChannelResponse\"\0000\001"
-    "\022w\n\025SubscribeMagnitometer\0220.mavsdk.rpc.s"
-    "triker.SubscribeMagnitometerRequest\032(.ma"
-    "vsdk.rpc.striker.MagnitometerResponse\"\0000"
-    "\001\022\200\001\n\030SubscribeBatteryVoltages\0223.mavsdk."
-    "rpc.striker.SubscribeBatteryVoltagesRequ"
-    "est\032+.mavsdk.rpc.striker.BatteryVoltages"
-    "Response\"\0000\001\022}\n\027SubscribeAvailableModes\022"
-    "2.mavsdk.rpc.striker.SubscribeAvailableM"
-    "odesRequest\032*.mavsdk.rpc.striker.Availab"
-    "leModesResponse\"\0000\001\022x\n\023SetManualFlightMo"
-    "de\022..mavsdk.rpc.striker.SetManualFlightM"
-    "odeRequest\032/.mavsdk.rpc.striker.SetManua"
-    "lFlightModeResponse\"\000\022\217\001\n\035SubscribeActua"
-    "torServosStatus\0228.mavsdk.rpc.striker.Sub"
-    "scribeActuatorServosStatusRequest\0320.mavs"
-    "dk.rpc.striker.ActuatorServosStatusRespo"
-    "nse\"\0000\001\022\220\001\n\033SetRateActuatorServosStatus\022"
-    "6.mavsdk.rpc.striker.SetRateActuatorServ"
-    "osStatusRequest\0327.mavsdk.rpc.striker.Set"
-    "RateActuatorServosStatusResponse\"\000B!\n\021io"
-    ".mavsdk.strikerB\014StrikerProtob\006proto3"
+    "erResult.Result\022\022\n\nresult_str\030\002 \001(\t\"\260\003\n\006"
+    "Result\022\022\n\016RESULT_UNKNOWN\020\000\022\022\n\016RESULT_SUC"
+    "CESS\020\001\022\024\n\020RESULT_NO_SYSTEM\020\002\022\033\n\027RESULT_C"
+    "ONNECTION_ERROR\020\003\022\017\n\013RESULT_BUSY\020\004\022\031\n\025RE"
+    "SULT_COMMAND_DENIED\020\005\022.\n*RESULT_COMMAND_"
+    "DENIED_LANDED_STATE_UNKNOWN\020\006\022$\n RESULT_"
+    "COMMAND_DENIED_NOT_LANDED\020\007\022\022\n\016RESULT_TI"
+    "MEOUT\020\010\022*\n&RESULT_VTOL_TRANSITION_SUPPOR"
+    "T_UNKNOWN\020\t\022%\n!RESULT_NO_VTOL_TRANSITION"
+    "_SUPPORT\020\n\022\032\n\026RESULT_PARAMETER_ERROR\020\013\022\026"
+    "\n\022RESULT_UNSUPPORTED\020\014\022\021\n\rRESULT_FAILED\020"
+    "\r\022\033\n\027RESULT_INVALID_ARGUMENT\020\0162\372\010\n\016Strik"
+    "erService\022n\n\022SubscribeHeartbeat\022-.mavsdk"
+    ".rpc.striker.SubscribeHeartbeatRequest\032%"
+    ".mavsdk.rpc.striker.HeartbeatResponse\"\0000"
+    "\001\022n\n\022SubscribeSysStatus\022-.mavsdk.rpc.str"
+    "iker.SubscribeSysStatusRequest\032%.mavsdk."
+    "rpc.striker.SysStatusResponse\"\0000\001\022n\n\022Sub"
+    "scribeRcChannel\022-.mavsdk.rpc.striker.Sub"
+    "scribeRcChannelRequest\032%.mavsdk.rpc.stri"
+    "ker.RcChannelResponse\"\0000\001\022w\n\025SubscribeMa"
+    "gnitometer\0220.mavsdk.rpc.striker.Subscrib"
+    "eMagnitometerRequest\032(.mavsdk.rpc.strike"
+    "r.MagnitometerResponse\"\0000\001\022\200\001\n\030Subscribe"
+    "BatteryVoltages\0223.mavsdk.rpc.striker.Sub"
+    "scribeBatteryVoltagesRequest\032+.mavsdk.rp"
+    "c.striker.BatteryVoltagesResponse\"\0000\001\022}\n"
+    "\027SubscribeAvailableModes\0222.mavsdk.rpc.st"
+    "riker.SubscribeAvailableModesRequest\032*.m"
+    "avsdk.rpc.striker.AvailableModesResponse"
+    "\"\0000\001\022x\n\023SetManualFlightMode\022..mavsdk.rpc"
+    ".striker.SetManualFlightModeRequest\032/.ma"
+    "vsdk.rpc.striker.SetManualFlightModeResp"
+    "onse\"\000\022\217\001\n\035SubscribeActuatorServosStatus"
+    "\0228.mavsdk.rpc.striker.SubscribeActuatorS"
+    "ervosStatusRequest\0320.mavsdk.rpc.striker."
+    "ActuatorServosStatusResponse\"\0000\001\022\220\001\n\033Set"
+    "RateActuatorServosStatus\0226.mavsdk.rpc.st"
+    "riker.SetRateActuatorServosStatusRequest"
+    "\0327.mavsdk.rpc.striker.SetRateActuatorSer"
+    "vosStatusResponse\"\000B!\n\021io.mavsdk.striker"
+    "B\014StrikerProtob\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_striker_2fstriker_2eproto_deps[1] =
     {
@@ -1163,7 +1166,7 @@ static ::absl::once_flag descriptor_table_striker_2fstriker_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_striker_2fstriker_2eproto = {
     false,
     false,
-    4357,
+    4462,
     descriptor_table_protodef_striker_2fstriker_2eproto,
     "striker/striker.proto",
     &descriptor_table_striker_2fstriker_2eproto_once,
@@ -1191,21 +1194,21 @@ bool StrikerResult_Result_IsValid(int value) {
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
-constexpr StrikerResult_Result StrikerResult::UNKNOWN;
-constexpr StrikerResult_Result StrikerResult::SUCCESS;
-constexpr StrikerResult_Result StrikerResult::NO_SYSTEM;
-constexpr StrikerResult_Result StrikerResult::CONNECTION_ERROR;
-constexpr StrikerResult_Result StrikerResult::BUSY;
-constexpr StrikerResult_Result StrikerResult::COMMAND_DENIED;
-constexpr StrikerResult_Result StrikerResult::COMMAND_DENIED_LANDED_STATE_UNKNOWN;
-constexpr StrikerResult_Result StrikerResult::COMMAND_DENIED_NOT_LANDED;
-constexpr StrikerResult_Result StrikerResult::TIMEOUT;
-constexpr StrikerResult_Result StrikerResult::VTOL_TRANSITION_SUPPORT_UNKNOWN;
-constexpr StrikerResult_Result StrikerResult::NO_VTOL_TRANSITION_SUPPORT;
-constexpr StrikerResult_Result StrikerResult::PARAMETER_ERROR;
-constexpr StrikerResult_Result StrikerResult::UNSUPPORTED;
-constexpr StrikerResult_Result StrikerResult::FAILED;
-constexpr StrikerResult_Result StrikerResult::INVALID_ARGUMENT;
+constexpr StrikerResult_Result StrikerResult::RESULT_UNKNOWN;
+constexpr StrikerResult_Result StrikerResult::RESULT_SUCCESS;
+constexpr StrikerResult_Result StrikerResult::RESULT_NO_SYSTEM;
+constexpr StrikerResult_Result StrikerResult::RESULT_CONNECTION_ERROR;
+constexpr StrikerResult_Result StrikerResult::RESULT_BUSY;
+constexpr StrikerResult_Result StrikerResult::RESULT_COMMAND_DENIED;
+constexpr StrikerResult_Result StrikerResult::RESULT_COMMAND_DENIED_LANDED_STATE_UNKNOWN;
+constexpr StrikerResult_Result StrikerResult::RESULT_COMMAND_DENIED_NOT_LANDED;
+constexpr StrikerResult_Result StrikerResult::RESULT_TIMEOUT;
+constexpr StrikerResult_Result StrikerResult::RESULT_VTOL_TRANSITION_SUPPORT_UNKNOWN;
+constexpr StrikerResult_Result StrikerResult::RESULT_NO_VTOL_TRANSITION_SUPPORT;
+constexpr StrikerResult_Result StrikerResult::RESULT_PARAMETER_ERROR;
+constexpr StrikerResult_Result StrikerResult::RESULT_UNSUPPORTED;
+constexpr StrikerResult_Result StrikerResult::RESULT_FAILED;
+constexpr StrikerResult_Result StrikerResult::RESULT_INVALID_ARGUMENT;
 constexpr StrikerResult_Result StrikerResult::Result_MIN;
 constexpr StrikerResult_Result StrikerResult::Result_MAX;
 constexpr int StrikerResult::Result_ARRAYSIZE;
