@@ -513,6 +513,27 @@ void StrikerImpl::ensureUniqueModeNames()
         }
     }
 }
+// Reset the modes to the default ones
+void StrikerImpl::request_available_modes_async(const Striker::ResultCallback callback)
+{
+    try_request_available_modes();
+
+    if (callback) {
+        auto temp_callback = callback;
+        _system_impl->call_user_callback(
+            [temp_callback]() { temp_callback(Striker::Result::Success); });
+    }
+}
+
+Striker::Result StrikerImpl::request_available_modes()
+{
+    auto prom = std::promise<Striker::Result>();
+    auto fut = prom.get_future();
+
+    request_available_modes_async([&prom](Striker::Result result) { prom.set_value(result); });
+
+    return fut.get();
+}
 
 // -- Set mode --
 

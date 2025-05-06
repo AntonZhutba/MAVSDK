@@ -549,6 +549,25 @@ public:
     Result set_rate_actuator_servos_status(double rate_hz) const;
 
     /**
+     * @brief Request available modes.
+     *
+     * This function is non-blocking. See 'request_available_modes' for the blocking counterpart.
+     */
+    void request_available_modes_async(const ResultCallback callback);
+
+    /**
+     * @brief Request available modes.
+     *
+     * This function is blocking. See 'request_available_modes_async' for the non-blocking
+     counterpart.
+     *
+
+     * @return Result of request.
+
+     */
+    Result request_available_modes() const;
+
+    /**
      * @brief Copy constructor.
      */
     Striker(const Striker& other);

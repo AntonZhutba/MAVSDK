@@ -156,6 +156,16 @@ Striker::Result Striker::set_rate_actuator_servos_status(double rate_hz) const
     return _impl->set_rate_actuator_servos_status(rate_hz);
 }
 
+void Striker::request_available_modes_async(const ResultCallback callback)
+{
+    _impl->request_available_modes_async(callback);
+}
+
+Striker::Result Striker::request_available_modes() const
+{
+    return _impl->request_available_modes();
+}
+
 bool operator==(const Striker::ActuatorServosStatus& lhs, const Striker::ActuatorServosStatus& rhs)
 {
     return (rhs.time_usec == lhs.time_usec) && (rhs.control == lhs.control);

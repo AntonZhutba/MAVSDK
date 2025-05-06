@@ -33,6 +33,7 @@ static const char* StrikerService_method_names[] = {
   "/mavsdk.rpc.striker.StrikerService/SetManualFlightMode",
   "/mavsdk.rpc.striker.StrikerService/SubscribeActuatorServosStatus",
   "/mavsdk.rpc.striker.StrikerService/SetRateActuatorServosStatus",
+  "/mavsdk.rpc.striker.StrikerService/RequestAvailableModes",
 };
 
 std::unique_ptr< StrikerService::Stub> StrikerService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -51,6 +52,7 @@ StrikerService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& cha
   , rpcmethod_SetManualFlightMode_(StrikerService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SubscribeActuatorServosStatus_(StrikerService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SetRateActuatorServosStatus_(StrikerService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RequestAvailableModes_(StrikerService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::ClientReader< ::mavsdk::rpc::striker::HeartbeatResponse>* StrikerService::Stub::SubscribeHeartbeatRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeHeartbeatRequest& request) {
@@ -211,6 +213,29 @@ void StrikerService::Stub::async::SetRateActuatorServosStatus(::grpc::ClientCont
   return result;
 }
 
+::grpc::Status StrikerService::Stub::RequestAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest& request, ::mavsdk::rpc::striker::RequestAvailableModesResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::mavsdk::rpc::striker::RequestAvailableModesRequest, ::mavsdk::rpc::striker::RequestAvailableModesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RequestAvailableModes_, context, request, response);
+}
+
+void StrikerService::Stub::async::RequestAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* request, ::mavsdk::rpc::striker::RequestAvailableModesResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::mavsdk::rpc::striker::RequestAvailableModesRequest, ::mavsdk::rpc::striker::RequestAvailableModesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RequestAvailableModes_, context, request, response, std::move(f));
+}
+
+void StrikerService::Stub::async::RequestAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* request, ::mavsdk::rpc::striker::RequestAvailableModesResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RequestAvailableModes_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::RequestAvailableModesResponse>* StrikerService::Stub::PrepareAsyncRequestAvailableModesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mavsdk::rpc::striker::RequestAvailableModesResponse, ::mavsdk::rpc::striker::RequestAvailableModesRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RequestAvailableModes_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::RequestAvailableModesResponse>* StrikerService::Stub::AsyncRequestAvailableModesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncRequestAvailableModesRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 StrikerService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       StrikerService_method_names[0],
@@ -302,6 +327,16 @@ StrikerService::Service::Service() {
              ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse* resp) {
                return service->SetRateActuatorServosStatus(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StrikerService_method_names[9],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< StrikerService::Service, ::mavsdk::rpc::striker::RequestAvailableModesRequest, ::mavsdk::rpc::striker::RequestAvailableModesResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](StrikerService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mavsdk::rpc::striker::RequestAvailableModesRequest* req,
+             ::mavsdk::rpc::striker::RequestAvailableModesResponse* resp) {
+               return service->RequestAvailableModes(ctx, req, resp);
+             }, this)));
 }
 
 StrikerService::Service::~Service() {
@@ -364,6 +399,13 @@ StrikerService::Service::~Service() {
 }
 
 ::grpc::Status StrikerService::Service::SetRateActuatorServosStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest* request, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StrikerService::Service::RequestAvailableModes(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* request, ::mavsdk::rpc::striker::RequestAvailableModesResponse* response) {
   (void) context;
   (void) request;
   (void) response;

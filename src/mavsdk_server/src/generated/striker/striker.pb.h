@@ -93,6 +93,12 @@ extern RcChannelDefaultTypeInternal _RcChannel_default_instance_;
 class RcChannelResponse;
 struct RcChannelResponseDefaultTypeInternal;
 extern RcChannelResponseDefaultTypeInternal _RcChannelResponse_default_instance_;
+class RequestAvailableModesRequest;
+struct RequestAvailableModesRequestDefaultTypeInternal;
+extern RequestAvailableModesRequestDefaultTypeInternal _RequestAvailableModesRequest_default_instance_;
+class RequestAvailableModesResponse;
+struct RequestAvailableModesResponseDefaultTypeInternal;
+extern RequestAvailableModesResponseDefaultTypeInternal _RequestAvailableModesResponse_default_instance_;
 class SetManualFlightModeRequest;
 struct SetManualFlightModeRequestDefaultTypeInternal;
 extern SetManualFlightModeRequestDefaultTypeInternal _SetManualFlightModeRequest_default_instance_;
@@ -257,7 +263,7 @@ class SysStatus final : public ::google::protobuf::Message
     return reinterpret_cast<const SysStatus*>(
         &_SysStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(SysStatus& a, SysStatus& b) { a.Swap(&b); }
   inline void Swap(SysStatus* other) {
     if (other == this) return;
@@ -1642,7 +1648,7 @@ class StrikerResult final : public ::google::protobuf::Message
     return reinterpret_cast<const StrikerResult*>(
         &_StrikerResult_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 25;
+  static constexpr int kIndexInFileMessages = 27;
   friend void swap(StrikerResult& a, StrikerResult& b) { a.Swap(&b); }
   inline void Swap(StrikerResult* other) {
     if (other == this) return;
@@ -2072,7 +2078,7 @@ class SetManualFlightModeRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const SetManualFlightModeRequest*>(
         &_SetManualFlightModeRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 24;
+  static constexpr int kIndexInFileMessages = 26;
   friend void swap(SetManualFlightModeRequest& a, SetManualFlightModeRequest& b) { a.Swap(&b); }
   inline void Swap(SetManualFlightModeRequest* other) {
     if (other == this) return;
@@ -2227,6 +2233,151 @@ class SetManualFlightModeRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class RequestAvailableModesRequest final : public ::google::protobuf::internal::ZeroFieldsBase
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.RequestAvailableModesRequest) */ {
+ public:
+  inline RequestAvailableModesRequest() : RequestAvailableModesRequest(nullptr) {}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(RequestAvailableModesRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(RequestAvailableModesRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR RequestAvailableModesRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline RequestAvailableModesRequest(const RequestAvailableModesRequest& from) : RequestAvailableModesRequest(nullptr, from) {}
+  inline RequestAvailableModesRequest(RequestAvailableModesRequest&& from) noexcept
+      : RequestAvailableModesRequest(nullptr, std::move(from)) {}
+  inline RequestAvailableModesRequest& operator=(const RequestAvailableModesRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RequestAvailableModesRequest& operator=(RequestAvailableModesRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RequestAvailableModesRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RequestAvailableModesRequest* internal_default_instance() {
+    return reinterpret_cast<const RequestAvailableModesRequest*>(
+        &_RequestAvailableModesRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 17;
+  friend void swap(RequestAvailableModesRequest& a, RequestAvailableModesRequest& b) { a.Swap(&b); }
+  inline void Swap(RequestAvailableModesRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RequestAvailableModesRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RequestAvailableModesRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<RequestAvailableModesRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const RequestAvailableModesRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const RequestAvailableModesRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.RequestAvailableModesRequest"; }
+
+ protected:
+  explicit RequestAvailableModesRequest(::google::protobuf::Arena* arena);
+  RequestAvailableModesRequest(::google::protobuf::Arena* arena, const RequestAvailableModesRequest& from);
+  RequestAvailableModesRequest(::google::protobuf::Arena* arena, RequestAvailableModesRequest&& from) noexcept
+      : RequestAvailableModesRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.RequestAvailableModesRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 0, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const RequestAvailableModesRequest& from_msg);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
 class RcChannel final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.RcChannel) */ {
  public:
@@ -2286,7 +2437,7 @@ class RcChannel final : public ::google::protobuf::Message
     return reinterpret_cast<const RcChannel*>(
         &_RcChannel_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(RcChannel& a, RcChannel& b) { a.Swap(&b); }
   inline void Swap(RcChannel* other) {
     if (other == this) return;
@@ -2716,7 +2867,7 @@ class Magnitometer final : public ::google::protobuf::Message
     return reinterpret_cast<const Magnitometer*>(
         &_Magnitometer_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 21;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(Magnitometer& a, Magnitometer& b) { a.Swap(&b); }
   inline void Swap(Magnitometer* other) {
     if (other == this) return;
@@ -2942,7 +3093,7 @@ class Heartbeat final : public ::google::protobuf::Message
     return reinterpret_cast<const Heartbeat*>(
         &_Heartbeat_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(Heartbeat& a, Heartbeat& b) { a.Swap(&b); }
   inline void Swap(Heartbeat* other) {
     if (other == this) return;
@@ -3192,7 +3343,7 @@ class BatteryVoltages final : public ::google::protobuf::Message
     return reinterpret_cast<const BatteryVoltages*>(
         &_BatteryVoltages_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 22;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(BatteryVoltages& a, BatteryVoltages& b) { a.Swap(&b); }
   inline void Swap(BatteryVoltages* other) {
     if (other == this) return;
@@ -3412,7 +3563,7 @@ class AvailableMode final : public ::google::protobuf::Message
     return reinterpret_cast<const AvailableMode*>(
         &_AvailableMode_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 23;
+  static constexpr int kIndexInFileMessages = 25;
   friend void swap(AvailableMode& a, AvailableMode& b) { a.Swap(&b); }
   inline void Swap(AvailableMode* other) {
     if (other == this) return;
@@ -3668,7 +3819,7 @@ class ActuatorServosStatus final : public ::google::protobuf::Message
     return reinterpret_cast<const ActuatorServosStatus*>(
         &_ActuatorServosStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(ActuatorServosStatus& a, ActuatorServosStatus& b) { a.Swap(&b); }
   inline void Swap(ActuatorServosStatus* other) {
     if (other == this) return;
@@ -4397,6 +4548,202 @@ class SetManualFlightModeResponse final : public ::google::protobuf::Message
     inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const SetManualFlightModeResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::striker::StrikerResult* result_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_striker_2fstriker_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RequestAvailableModesResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.striker.RequestAvailableModesResponse) */ {
+ public:
+  inline RequestAvailableModesResponse() : RequestAvailableModesResponse(nullptr) {}
+  ~RequestAvailableModesResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(RequestAvailableModesResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(RequestAvailableModesResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR RequestAvailableModesResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline RequestAvailableModesResponse(const RequestAvailableModesResponse& from) : RequestAvailableModesResponse(nullptr, from) {}
+  inline RequestAvailableModesResponse(RequestAvailableModesResponse&& from) noexcept
+      : RequestAvailableModesResponse(nullptr, std::move(from)) {}
+  inline RequestAvailableModesResponse& operator=(const RequestAvailableModesResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RequestAvailableModesResponse& operator=(RequestAvailableModesResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RequestAvailableModesResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RequestAvailableModesResponse* internal_default_instance() {
+    return reinterpret_cast<const RequestAvailableModesResponse*>(
+        &_RequestAvailableModesResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 18;
+  friend void swap(RequestAvailableModesResponse& a, RequestAvailableModesResponse& b) { a.Swap(&b); }
+  inline void Swap(RequestAvailableModesResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RequestAvailableModesResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RequestAvailableModesResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<RequestAvailableModesResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const RequestAvailableModesResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const RequestAvailableModesResponse& from) { RequestAvailableModesResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(RequestAvailableModesResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.striker.RequestAvailableModesResponse"; }
+
+ protected:
+  explicit RequestAvailableModesResponse(::google::protobuf::Arena* arena);
+  RequestAvailableModesResponse(::google::protobuf::Arena* arena, const RequestAvailableModesResponse& from);
+  RequestAvailableModesResponse(::google::protobuf::Arena* arena, RequestAvailableModesResponse&& from) noexcept
+      : RequestAvailableModesResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kResultFieldNumber = 1,
+  };
+  // .mavsdk.rpc.striker.StrikerResult result = 1;
+  bool has_result() const;
+  void clear_result() ;
+  const ::mavsdk::rpc::striker::StrikerResult& result() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::StrikerResult* release_result();
+  ::mavsdk::rpc::striker::StrikerResult* mutable_result();
+  void set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value);
+  void unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value);
+  ::mavsdk::rpc::striker::StrikerResult* unsafe_arena_release_result();
+
+  private:
+  const ::mavsdk::rpc::striker::StrikerResult& _internal_result() const;
+  ::mavsdk::rpc::striker::StrikerResult* _internal_mutable_result();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.RequestAvailableModesResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const RequestAvailableModesResponse& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::mavsdk::rpc::striker::StrikerResult* result_;
@@ -6500,6 +6847,110 @@ inline void SetRateActuatorServosStatusResponse::set_allocated_result(::mavsdk::
 
   _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.result)
+}
+
+// -------------------------------------------------------------------
+
+// RequestAvailableModesRequest
+
+// -------------------------------------------------------------------
+
+// RequestAvailableModesResponse
+
+// .mavsdk.rpc.striker.StrikerResult result = 1;
+inline bool RequestAvailableModesResponse::has_result() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.result_ != nullptr);
+  return value;
+}
+inline void RequestAvailableModesResponse::clear_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.result_ != nullptr) _impl_.result_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::striker::StrikerResult& RequestAvailableModesResponse::_internal_result() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::striker::StrikerResult* p = _impl_.result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::striker::StrikerResult&>(::mavsdk::rpc::striker::_StrikerResult_default_instance_);
+}
+inline const ::mavsdk::rpc::striker::StrikerResult& RequestAvailableModesResponse::result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
+  return _internal_result();
+}
+inline void RequestAvailableModesResponse::unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.result_);
+  }
+  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
+}
+inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::release_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::StrikerResult* released = _impl_.result_;
+  _impl_.result_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::unsafe_arena_release_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::striker::StrikerResult* temp = _impl_.result_;
+  _impl_.result_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::_internal_mutable_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.result_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::striker::StrikerResult>(GetArena());
+    _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(p);
+  }
+  return _impl_.result_;
+}
+inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::mutable_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::striker::StrikerResult* _msg = _internal_mutable_result();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
+  return _msg;
+}
+inline void RequestAvailableModesResponse::set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.result_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
 }
 
 // -------------------------------------------------------------------

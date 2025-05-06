@@ -54,6 +54,10 @@ public:
     void unsubscribe_available_modes(Striker::AvailableModesHandle handle);
     std::vector<Striker::AvailableMode> available_modes() const;
 
+    // Request available modes
+    void request_available_modes_async(const Striker::ResultCallback callback);
+    Striker::Result request_available_modes();
+
     // Set mode request
     void set_manual_flight_mode_async(
         uint32_t mode,

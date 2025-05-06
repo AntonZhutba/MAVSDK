@@ -835,6 +835,29 @@ public:
         return grpc::Status::OK;
     }
 
+    grpc::Status RequestAvailableModes(
+        grpc::ServerContext* /* context */,
+        const rpc::striker::RequestAvailableModesRequest* /* request */,
+        rpc::striker::RequestAvailableModesResponse* response) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            if (response != nullptr) {
+                auto result = mavsdk::Striker::Result::NoSystem;
+                fillResponseWithResult(response, result);
+            }
+
+            return grpc::Status::OK;
+        }
+
+        auto result = _lazy_plugin.maybe_plugin()->request_available_modes();
+
+        if (response != nullptr) {
+            fillResponseWithResult(response, result);
+        }
+
+        return grpc::Status::OK;
+    }
+
     void stop()
     {
         _stopped.store(true);
