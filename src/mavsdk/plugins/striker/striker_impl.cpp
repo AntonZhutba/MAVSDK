@@ -466,7 +466,7 @@ void StrikerImpl::process_available_modes(const mavlink_message_t& message)
         cannotBeSet};
 
     if (availableModes.mode_index >= availableModes.number_modes) { // We are done
-
+        _modes = _next_modes;
         ensureUniqueModeNames();
         std::vector<Striker::AvailableMode> list_available_modes;
         for (const auto& mode : _modes) {
