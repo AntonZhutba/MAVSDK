@@ -513,10 +513,12 @@ void StrikerImpl::ensureUniqueModeNames()
         }
     }
 }
-// Reset the modes to the default ones
+
 void StrikerImpl::request_available_modes_async(const Striker::ResultCallback callback)
 {
-    try_request_available_modes();
+    // Start the request for available modes. We will receive them in the
+    // process_available_modes function. We will only request one mode at a time.
+    StrikerImpl::request_available_modes(1);
 
     if (callback) {
         auto temp_callback = callback;
