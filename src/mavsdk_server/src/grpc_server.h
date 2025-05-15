@@ -14,14 +14,14 @@
 #include "mavsdk.h"
 #include "core/core_service_impl.h"
 
-#ifdef ACTION_ENABLED
-#include "plugins/action/action.h"
-#include "action/action_service_impl.h"
-#endif
-
 #ifdef ACTION_SERVER_ENABLED
 #include "plugins/action_server/action_server.h"
 #include "action_server/action_server_service_impl.h"
+#endif
+
+#ifdef ACTION_ENABLED
+#include "plugins/action/action.h"
+#include "action/action_service_impl.h"
 #endif
 
 #ifdef ARM_AUTHORIZER_SERVER_ENABLED
@@ -34,24 +34,24 @@
 #include "calibration/calibration_service_impl.h"
 #endif
 
-#ifdef CAMERA_ENABLED
-#include "plugins/camera/camera.h"
-#include "camera/camera_service_impl.h"
-#endif
-
 #ifdef CAMERA_SERVER_ENABLED
 #include "plugins/camera_server/camera_server.h"
 #include "camera_server/camera_server_service_impl.h"
 #endif
 
-#ifdef COMPONENT_METADATA_ENABLED
-#include "plugins/component_metadata/component_metadata.h"
-#include "component_metadata/component_metadata_service_impl.h"
+#ifdef CAMERA_ENABLED
+#include "plugins/camera/camera.h"
+#include "camera/camera_service_impl.h"
 #endif
 
 #ifdef COMPONENT_METADATA_SERVER_ENABLED
 #include "plugins/component_metadata_server/component_metadata_server.h"
 #include "component_metadata_server/component_metadata_server_service_impl.h"
+#endif
+
+#ifdef COMPONENT_METADATA_ENABLED
+#include "plugins/component_metadata/component_metadata.h"
+#include "component_metadata/component_metadata_service_impl.h"
 #endif
 
 #ifdef EVENTS_ENABLED
@@ -69,14 +69,14 @@
 #include "follow_me/follow_me_service_impl.h"
 #endif
 
-#ifdef FTP_ENABLED
-#include "plugins/ftp/ftp.h"
-#include "ftp/ftp_service_impl.h"
-#endif
-
 #ifdef FTP_SERVER_ENABLED
 #include "plugins/ftp_server/ftp_server.h"
 #include "ftp_server/ftp_server_service_impl.h"
+#endif
+
+#ifdef FTP_ENABLED
+#include "plugins/ftp/ftp.h"
+#include "ftp/ftp_service_impl.h"
 #endif
 
 #ifdef GEOFENCE_ENABLED
@@ -114,9 +114,9 @@
 #include "manual_control/manual_control_service_impl.h"
 #endif
 
-#ifdef MISSION_ENABLED
-#include "plugins/mission/mission.h"
-#include "mission/mission_service_impl.h"
+#ifdef MISSION_RAW_SERVER_ENABLED
+#include "plugins/mission_raw_server/mission_raw_server.h"
+#include "mission_raw_server/mission_raw_server_service_impl.h"
 #endif
 
 #ifdef MISSION_RAW_ENABLED
@@ -124,9 +124,9 @@
 #include "mission_raw/mission_raw_service_impl.h"
 #endif
 
-#ifdef MISSION_RAW_SERVER_ENABLED
-#include "plugins/mission_raw_server/mission_raw_server.h"
-#include "mission_raw_server/mission_raw_server_service_impl.h"
+#ifdef MISSION_ENABLED
+#include "plugins/mission/mission.h"
+#include "mission/mission_service_impl.h"
 #endif
 
 #ifdef MOCAP_ENABLED
@@ -139,14 +139,14 @@
 #include "offboard/offboard_service_impl.h"
 #endif
 
-#ifdef PARAM_ENABLED
-#include "plugins/param/param.h"
-#include "param/param_service_impl.h"
-#endif
-
 #ifdef PARAM_SERVER_ENABLED
 #include "plugins/param_server/param_server.h"
 #include "param_server/param_server_service_impl.h"
+#endif
+
+#ifdef PARAM_ENABLED
+#include "plugins/param/param.h"
+#include "param/param_service_impl.h"
 #endif
 
 #ifdef RTK_ENABLED
@@ -169,14 +169,14 @@
 #include "striker/striker_service_impl.h"
 #endif
 
-#ifdef TELEMETRY_ENABLED
-#include "plugins/telemetry/telemetry.h"
-#include "telemetry/telemetry_service_impl.h"
-#endif
-
 #ifdef TELEMETRY_SERVER_ENABLED
 #include "plugins/telemetry_server/telemetry_server.h"
 #include "telemetry_server/telemetry_server_service_impl.h"
+#endif
+
+#ifdef TELEMETRY_ENABLED
+#include "plugins/telemetry/telemetry.h"
+#include "telemetry/telemetry_service_impl.h"
 #endif
 
 #ifdef TRANSPONDER_ENABLED
@@ -202,14 +202,14 @@ public:
     GrpcServer(Mavsdk& mavsdk) :
         _core(mavsdk),
 
-#ifdef ACTION_ENABLED
-        _action_lazy_plugin(mavsdk),
-        _action_service(_action_lazy_plugin),
-#endif
-
 #ifdef ACTION_SERVER_ENABLED
         _action_server_lazy_plugin(mavsdk),
         _action_server_service(_action_server_lazy_plugin),
+#endif
+
+#ifdef ACTION_ENABLED
+        _action_lazy_plugin(mavsdk),
+        _action_service(_action_lazy_plugin),
 #endif
 
 #ifdef ARM_AUTHORIZER_SERVER_ENABLED
@@ -222,24 +222,24 @@ public:
         _calibration_service(_calibration_lazy_plugin),
 #endif
 
-#ifdef CAMERA_ENABLED
-        _camera_lazy_plugin(mavsdk),
-        _camera_service(_camera_lazy_plugin),
-#endif
-
 #ifdef CAMERA_SERVER_ENABLED
         _camera_server_lazy_plugin(mavsdk),
         _camera_server_service(_camera_server_lazy_plugin),
 #endif
 
-#ifdef COMPONENT_METADATA_ENABLED
-        _component_metadata_lazy_plugin(mavsdk),
-        _component_metadata_service(_component_metadata_lazy_plugin),
+#ifdef CAMERA_ENABLED
+        _camera_lazy_plugin(mavsdk),
+        _camera_service(_camera_lazy_plugin),
 #endif
 
 #ifdef COMPONENT_METADATA_SERVER_ENABLED
         _component_metadata_server_lazy_plugin(mavsdk),
         _component_metadata_server_service(_component_metadata_server_lazy_plugin),
+#endif
+
+#ifdef COMPONENT_METADATA_ENABLED
+        _component_metadata_lazy_plugin(mavsdk),
+        _component_metadata_service(_component_metadata_lazy_plugin),
 #endif
 
 #ifdef EVENTS_ENABLED
@@ -257,14 +257,14 @@ public:
         _follow_me_service(_follow_me_lazy_plugin),
 #endif
 
-#ifdef FTP_ENABLED
-        _ftp_lazy_plugin(mavsdk),
-        _ftp_service(_ftp_lazy_plugin),
-#endif
-
 #ifdef FTP_SERVER_ENABLED
         _ftp_server_lazy_plugin(mavsdk),
         _ftp_server_service(_ftp_server_lazy_plugin),
+#endif
+
+#ifdef FTP_ENABLED
+        _ftp_lazy_plugin(mavsdk),
+        _ftp_service(_ftp_lazy_plugin),
 #endif
 
 #ifdef GEOFENCE_ENABLED
@@ -302,9 +302,9 @@ public:
         _manual_control_service(_manual_control_lazy_plugin),
 #endif
 
-#ifdef MISSION_ENABLED
-        _mission_lazy_plugin(mavsdk),
-        _mission_service(_mission_lazy_plugin),
+#ifdef MISSION_RAW_SERVER_ENABLED
+        _mission_raw_server_lazy_plugin(mavsdk),
+        _mission_raw_server_service(_mission_raw_server_lazy_plugin),
 #endif
 
 #ifdef MISSION_RAW_ENABLED
@@ -312,9 +312,9 @@ public:
         _mission_raw_service(_mission_raw_lazy_plugin),
 #endif
 
-#ifdef MISSION_RAW_SERVER_ENABLED
-        _mission_raw_server_lazy_plugin(mavsdk),
-        _mission_raw_server_service(_mission_raw_server_lazy_plugin),
+#ifdef MISSION_ENABLED
+        _mission_lazy_plugin(mavsdk),
+        _mission_service(_mission_lazy_plugin),
 #endif
 
 #ifdef MOCAP_ENABLED
@@ -327,14 +327,14 @@ public:
         _offboard_service(_offboard_lazy_plugin),
 #endif
 
-#ifdef PARAM_ENABLED
-        _param_lazy_plugin(mavsdk),
-        _param_service(_param_lazy_plugin),
-#endif
-
 #ifdef PARAM_SERVER_ENABLED
         _param_server_lazy_plugin(mavsdk),
         _param_server_service(_param_server_lazy_plugin),
+#endif
+
+#ifdef PARAM_ENABLED
+        _param_lazy_plugin(mavsdk),
+        _param_service(_param_lazy_plugin),
 #endif
 
 #ifdef RTK_ENABLED
@@ -357,14 +357,14 @@ public:
         _striker_service(_striker_lazy_plugin),
 #endif
 
-#ifdef TELEMETRY_ENABLED
-        _telemetry_lazy_plugin(mavsdk),
-        _telemetry_service(_telemetry_lazy_plugin),
-#endif
-
 #ifdef TELEMETRY_SERVER_ENABLED
         _telemetry_server_lazy_plugin(mavsdk),
         _telemetry_server_service(_telemetry_server_lazy_plugin),
+#endif
+
+#ifdef TELEMETRY_ENABLED
+        _telemetry_lazy_plugin(mavsdk),
+        _telemetry_service(_telemetry_lazy_plugin),
 #endif
 
 #ifdef TRANSPONDER_ENABLED
@@ -394,18 +394,18 @@ private:
 
     CoreServiceImpl<> _core;
 
-#ifdef ACTION_ENABLED
-
-    LazyPlugin<Action> _action_lazy_plugin;
-
-    ActionServiceImpl<> _action_service;
-#endif
-
 #ifdef ACTION_SERVER_ENABLED
 
     LazyServerPlugin<ActionServer> _action_server_lazy_plugin;
 
     ActionServerServiceImpl<> _action_server_service;
+#endif
+
+#ifdef ACTION_ENABLED
+
+    LazyPlugin<Action> _action_lazy_plugin;
+
+    ActionServiceImpl<> _action_service;
 #endif
 
 #ifdef ARM_AUTHORIZER_SERVER_ENABLED
@@ -422,13 +422,6 @@ private:
     CalibrationServiceImpl<> _calibration_service;
 #endif
 
-#ifdef CAMERA_ENABLED
-
-    LazyPlugin<Camera> _camera_lazy_plugin;
-
-    CameraServiceImpl<> _camera_service;
-#endif
-
 #ifdef CAMERA_SERVER_ENABLED
 
     LazyServerPlugin<CameraServer> _camera_server_lazy_plugin;
@@ -436,11 +429,11 @@ private:
     CameraServerServiceImpl<> _camera_server_service;
 #endif
 
-#ifdef COMPONENT_METADATA_ENABLED
+#ifdef CAMERA_ENABLED
 
-    LazyPlugin<ComponentMetadata> _component_metadata_lazy_plugin;
+    LazyPlugin<Camera> _camera_lazy_plugin;
 
-    ComponentMetadataServiceImpl<> _component_metadata_service;
+    CameraServiceImpl<> _camera_service;
 #endif
 
 #ifdef COMPONENT_METADATA_SERVER_ENABLED
@@ -448,6 +441,13 @@ private:
     LazyServerPlugin<ComponentMetadataServer> _component_metadata_server_lazy_plugin;
 
     ComponentMetadataServerServiceImpl<> _component_metadata_server_service;
+#endif
+
+#ifdef COMPONENT_METADATA_ENABLED
+
+    LazyPlugin<ComponentMetadata> _component_metadata_lazy_plugin;
+
+    ComponentMetadataServiceImpl<> _component_metadata_service;
 #endif
 
 #ifdef EVENTS_ENABLED
@@ -471,18 +471,18 @@ private:
     FollowMeServiceImpl<> _follow_me_service;
 #endif
 
-#ifdef FTP_ENABLED
-
-    LazyPlugin<Ftp> _ftp_lazy_plugin;
-
-    FtpServiceImpl<> _ftp_service;
-#endif
-
 #ifdef FTP_SERVER_ENABLED
 
     LazyServerPlugin<FtpServer> _ftp_server_lazy_plugin;
 
     FtpServerServiceImpl<> _ftp_server_service;
+#endif
+
+#ifdef FTP_ENABLED
+
+    LazyPlugin<Ftp> _ftp_lazy_plugin;
+
+    FtpServiceImpl<> _ftp_service;
 #endif
 
 #ifdef GEOFENCE_ENABLED
@@ -534,11 +534,11 @@ private:
     ManualControlServiceImpl<> _manual_control_service;
 #endif
 
-#ifdef MISSION_ENABLED
+#ifdef MISSION_RAW_SERVER_ENABLED
 
-    LazyPlugin<Mission> _mission_lazy_plugin;
+    LazyServerPlugin<MissionRawServer> _mission_raw_server_lazy_plugin;
 
-    MissionServiceImpl<> _mission_service;
+    MissionRawServerServiceImpl<> _mission_raw_server_service;
 #endif
 
 #ifdef MISSION_RAW_ENABLED
@@ -548,11 +548,11 @@ private:
     MissionRawServiceImpl<> _mission_raw_service;
 #endif
 
-#ifdef MISSION_RAW_SERVER_ENABLED
+#ifdef MISSION_ENABLED
 
-    LazyServerPlugin<MissionRawServer> _mission_raw_server_lazy_plugin;
+    LazyPlugin<Mission> _mission_lazy_plugin;
 
-    MissionRawServerServiceImpl<> _mission_raw_server_service;
+    MissionServiceImpl<> _mission_service;
 #endif
 
 #ifdef MOCAP_ENABLED
@@ -569,18 +569,18 @@ private:
     OffboardServiceImpl<> _offboard_service;
 #endif
 
-#ifdef PARAM_ENABLED
-
-    LazyPlugin<Param> _param_lazy_plugin;
-
-    ParamServiceImpl<> _param_service;
-#endif
-
 #ifdef PARAM_SERVER_ENABLED
 
     LazyServerPlugin<ParamServer> _param_server_lazy_plugin;
 
     ParamServerServiceImpl<> _param_server_service;
+#endif
+
+#ifdef PARAM_ENABLED
+
+    LazyPlugin<Param> _param_lazy_plugin;
+
+    ParamServiceImpl<> _param_service;
 #endif
 
 #ifdef RTK_ENABLED
@@ -611,18 +611,18 @@ private:
     StrikerServiceImpl<> _striker_service;
 #endif
 
-#ifdef TELEMETRY_ENABLED
-
-    LazyPlugin<Telemetry> _telemetry_lazy_plugin;
-
-    TelemetryServiceImpl<> _telemetry_service;
-#endif
-
 #ifdef TELEMETRY_SERVER_ENABLED
 
     LazyServerPlugin<TelemetryServer> _telemetry_server_lazy_plugin;
 
     TelemetryServerServiceImpl<> _telemetry_server_service;
+#endif
+
+#ifdef TELEMETRY_ENABLED
+
+    LazyPlugin<Telemetry> _telemetry_lazy_plugin;
+
+    TelemetryServiceImpl<> _telemetry_service;
 #endif
 
 #ifdef TRANSPONDER_ENABLED

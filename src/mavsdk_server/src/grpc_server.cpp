@@ -22,12 +22,12 @@ int GrpcServer::run()
 
     builder.RegisterService(&_core);
 
-#ifdef ACTION_ENABLED
-    builder.RegisterService(&_action_service);
-#endif
-
 #ifdef ACTION_SERVER_ENABLED
     builder.RegisterService(&_action_server_service);
+#endif
+
+#ifdef ACTION_ENABLED
+    builder.RegisterService(&_action_service);
 #endif
 
 #ifdef ARM_AUTHORIZER_SERVER_ENABLED
@@ -38,20 +38,20 @@ int GrpcServer::run()
     builder.RegisterService(&_calibration_service);
 #endif
 
-#ifdef CAMERA_ENABLED
-    builder.RegisterService(&_camera_service);
-#endif
-
 #ifdef CAMERA_SERVER_ENABLED
     builder.RegisterService(&_camera_server_service);
 #endif
 
-#ifdef COMPONENT_METADATA_ENABLED
-    builder.RegisterService(&_component_metadata_service);
+#ifdef CAMERA_ENABLED
+    builder.RegisterService(&_camera_service);
 #endif
 
 #ifdef COMPONENT_METADATA_SERVER_ENABLED
     builder.RegisterService(&_component_metadata_server_service);
+#endif
+
+#ifdef COMPONENT_METADATA_ENABLED
+    builder.RegisterService(&_component_metadata_service);
 #endif
 
 #ifdef EVENTS_ENABLED
@@ -66,12 +66,12 @@ int GrpcServer::run()
     builder.RegisterService(&_follow_me_service);
 #endif
 
-#ifdef FTP_ENABLED
-    builder.RegisterService(&_ftp_service);
-#endif
-
 #ifdef FTP_SERVER_ENABLED
     builder.RegisterService(&_ftp_server_service);
+#endif
+
+#ifdef FTP_ENABLED
+    builder.RegisterService(&_ftp_service);
 #endif
 
 #ifdef GEOFENCE_ENABLED
@@ -102,16 +102,16 @@ int GrpcServer::run()
     builder.RegisterService(&_manual_control_service);
 #endif
 
-#ifdef MISSION_ENABLED
-    builder.RegisterService(&_mission_service);
+#ifdef MISSION_RAW_SERVER_ENABLED
+    builder.RegisterService(&_mission_raw_server_service);
 #endif
 
 #ifdef MISSION_RAW_ENABLED
     builder.RegisterService(&_mission_raw_service);
 #endif
 
-#ifdef MISSION_RAW_SERVER_ENABLED
-    builder.RegisterService(&_mission_raw_server_service);
+#ifdef MISSION_ENABLED
+    builder.RegisterService(&_mission_service);
 #endif
 
 #ifdef MOCAP_ENABLED
@@ -122,12 +122,12 @@ int GrpcServer::run()
     builder.RegisterService(&_offboard_service);
 #endif
 
-#ifdef PARAM_ENABLED
-    builder.RegisterService(&_param_service);
-#endif
-
 #ifdef PARAM_SERVER_ENABLED
     builder.RegisterService(&_param_server_service);
+#endif
+
+#ifdef PARAM_ENABLED
+    builder.RegisterService(&_param_service);
 #endif
 
 #ifdef RTK_ENABLED
@@ -146,12 +146,12 @@ int GrpcServer::run()
     builder.RegisterService(&_striker_service);
 #endif
 
-#ifdef TELEMETRY_ENABLED
-    builder.RegisterService(&_telemetry_service);
-#endif
-
 #ifdef TELEMETRY_SERVER_ENABLED
     builder.RegisterService(&_telemetry_server_service);
+#endif
+
+#ifdef TELEMETRY_ENABLED
+    builder.RegisterService(&_telemetry_service);
 #endif
 
 #ifdef TRANSPONDER_ENABLED
@@ -197,12 +197,12 @@ void GrpcServer::stop()
     if (_server != nullptr) {
         _core.stop();
 
-#ifdef ACTION_ENABLED
-        _action_service.stop();
-#endif
-
 #ifdef ACTION_SERVER_ENABLED
         _action_server_service.stop();
+#endif
+
+#ifdef ACTION_ENABLED
+        _action_service.stop();
 #endif
 
 #ifdef ARM_AUTHORIZER_SERVER_ENABLED
@@ -213,20 +213,20 @@ void GrpcServer::stop()
         _calibration_service.stop();
 #endif
 
-#ifdef CAMERA_ENABLED
-        _camera_service.stop();
-#endif
-
 #ifdef CAMERA_SERVER_ENABLED
         _camera_server_service.stop();
 #endif
 
-#ifdef COMPONENT_METADATA_ENABLED
-        _component_metadata_service.stop();
+#ifdef CAMERA_ENABLED
+        _camera_service.stop();
 #endif
 
 #ifdef COMPONENT_METADATA_SERVER_ENABLED
         _component_metadata_server_service.stop();
+#endif
+
+#ifdef COMPONENT_METADATA_ENABLED
+        _component_metadata_service.stop();
 #endif
 
 #ifdef EVENTS_ENABLED
@@ -241,12 +241,12 @@ void GrpcServer::stop()
         _follow_me_service.stop();
 #endif
 
-#ifdef FTP_ENABLED
-        _ftp_service.stop();
-#endif
-
 #ifdef FTP_SERVER_ENABLED
         _ftp_server_service.stop();
+#endif
+
+#ifdef FTP_ENABLED
+        _ftp_service.stop();
 #endif
 
 #ifdef GEOFENCE_ENABLED
@@ -277,16 +277,16 @@ void GrpcServer::stop()
         _manual_control_service.stop();
 #endif
 
-#ifdef MISSION_ENABLED
-        _mission_service.stop();
+#ifdef MISSION_RAW_SERVER_ENABLED
+        _mission_raw_server_service.stop();
 #endif
 
 #ifdef MISSION_RAW_ENABLED
         _mission_raw_service.stop();
 #endif
 
-#ifdef MISSION_RAW_SERVER_ENABLED
-        _mission_raw_server_service.stop();
+#ifdef MISSION_ENABLED
+        _mission_service.stop();
 #endif
 
 #ifdef MOCAP_ENABLED
@@ -297,12 +297,12 @@ void GrpcServer::stop()
         _offboard_service.stop();
 #endif
 
-#ifdef PARAM_ENABLED
-        _param_service.stop();
-#endif
-
 #ifdef PARAM_SERVER_ENABLED
         _param_server_service.stop();
+#endif
+
+#ifdef PARAM_ENABLED
+        _param_service.stop();
 #endif
 
 #ifdef RTK_ENABLED
@@ -321,12 +321,12 @@ void GrpcServer::stop()
         _striker_service.stop();
 #endif
 
-#ifdef TELEMETRY_ENABLED
-        _telemetry_service.stop();
-#endif
-
 #ifdef TELEMETRY_SERVER_ENABLED
         _telemetry_server_service.stop();
+#endif
+
+#ifdef TELEMETRY_ENABLED
+        _telemetry_service.stop();
 #endif
 
 #ifdef TRANSPONDER_ENABLED

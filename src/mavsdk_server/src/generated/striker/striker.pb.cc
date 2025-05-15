@@ -509,7 +509,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr SetRateActuatorServosStatusResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        result_{nullptr} {}
+        striker_result_{nullptr} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR SetRateActuatorServosStatusResponse::SetRateActuatorServosStatusResponse(::_pbi::ConstantInitialized)
@@ -534,7 +534,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr SetManualFlightModeResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        result_{nullptr} {}
+        striker_result_{nullptr} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR SetManualFlightModeResponse::SetManualFlightModeResponse(::_pbi::ConstantInitialized)
@@ -559,7 +559,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr RequestAvailableModesResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        result_{nullptr} {}
+        striker_result_{nullptr} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR RequestAvailableModesResponse::RequestAvailableModesResponse(::_pbi::ConstantInitialized)
@@ -854,7 +854,7 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SetManualFlightModeResponse, _impl_.result_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SetManualFlightModeResponse, _impl_.striker_result_),
         0,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest, _internal_metadata_),
@@ -891,7 +891,7 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse, _impl_.result_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse, _impl_.striker_result_),
         0,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RequestAvailableModesRequest, _internal_metadata_),
@@ -909,7 +909,7 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RequestAvailableModesResponse, _impl_.result_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RequestAvailableModesResponse, _impl_.striker_result_),
         0,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::ActuatorServosStatus, _internal_metadata_),
@@ -1128,106 +1128,107 @@ const char descriptor_table_protodef_striker_2fstriker_2eproto[] ABSL_ATTRIBUTE_
     "ages\" \n\036SubscribeAvailableModesRequest\"T"
     "\n\026AvailableModesResponse\022:\n\017available_mo"
     "des\030\001 \003(\0132!.mavsdk.rpc.striker.Available"
-    "Mode\"P\n\033SetManualFlightModeResponse\0221\n\006r"
-    "esult\030\001 \001(\0132!.mavsdk.rpc.striker.Striker"
-    "Result\"&\n$SubscribeActuatorServosStatusR"
-    "equest\"h\n\034ActuatorServosStatusResponse\022H"
-    "\n\026actuator_servos_status\030\001 \001(\0132(.mavsdk."
-    "rpc.striker.ActuatorServosStatus\"5\n\"SetR"
-    "ateActuatorServosStatusRequest\022\017\n\007rate_h"
-    "z\030\001 \001(\001\"X\n#SetRateActuatorServosStatusRe"
-    "sponse\0221\n\006result\030\001 \001(\0132!.mavsdk.rpc.stri"
-    "ker.StrikerResult\"\036\n\034RequestAvailableMod"
-    "esRequest\"R\n\035RequestAvailableModesRespon"
-    "se\0221\n\006result\030\001 \001(\0132!.mavsdk.rpc.striker."
-    "StrikerResult\":\n\024ActuatorServosStatus\022\021\n"
-    "\ttime_usec\030\001 \001(\004\022\017\n\007control\030\002 \003(\002\"\204\001\n\tHe"
-    "artbeat\022\023\n\013custom_mode\030\001 \001(\r\022\014\n\004type\030\002 \001"
-    "(\r\022\021\n\tautopilot\030\003 \001(\r\022\021\n\tbase_mode\030\004 \001(\r"
-    "\022\025\n\rsystem_status\030\005 \001(\r\022\027\n\017mavlink_versi"
-    "on\030\006 \001(\r\"\376\003\n\tSysStatus\022\'\n\037onboard_contro"
-    "l_sensors_present\030\001 \001(\r\022\'\n\037onboard_contr"
-    "ol_sensors_enabled\030\002 \001(\r\022&\n\036onboard_cont"
-    "rol_sensors_health\030\003 \001(\r\022\014\n\004load\030\004 \001(\r\022\027"
-    "\n\017voltage_battery\030\005 \001(\r\022\027\n\017current_batte"
-    "ry\030\006 \001(\005\022\026\n\016drop_rate_comm\030\007 \001(\r\022\023\n\013erro"
-    "rs_comm\030\010 \001(\r\022\025\n\rerrors_count1\030\t \001(\r\022\025\n\r"
-    "errors_count2\030\n \001(\r\022\025\n\rerrors_count3\030\013 \001"
-    "(\r\022\025\n\rerrors_count4\030\014 \001(\r\022\031\n\021battery_rem"
-    "aining\030\r \001(\005\0220\n(onboard_control_sensors_"
-    "present_extended\030\016 \001(\r\0220\n(onboard_contro"
-    "l_sensors_enabled_extended\030\017 \001(\r\022/\n\'onbo"
-    "ard_control_sensors_health_extended\030\020 \001("
-    "\r\"\264\004\n\tRcChannel\022\033\n\014time_boot_ms\030\001 \001(\rB\005\202"
-    "\265\030\0010\022\030\n\tchan1_raw\030\002 \001(\rB\005\202\265\030\0010\022\030\n\tchan2_"
-    "raw\030\003 \001(\rB\005\202\265\030\0010\022\030\n\tchan3_raw\030\004 \001(\rB\005\202\265\030"
-    "\0010\022\030\n\tchan4_raw\030\005 \001(\rB\005\202\265\030\0010\022\030\n\tchan5_ra"
-    "w\030\006 \001(\rB\005\202\265\030\0010\022\030\n\tchan6_raw\030\007 \001(\rB\005\202\265\030\0010"
-    "\022\030\n\tchan7_raw\030\010 \001(\rB\005\202\265\030\0010\022\030\n\tchan8_raw\030"
-    "\t \001(\rB\005\202\265\030\0010\022\030\n\tchan9_raw\030\n \001(\rB\005\202\265\030\0010\022\031"
-    "\n\nchan10_raw\030\013 \001(\rB\005\202\265\030\0010\022\031\n\nchan11_raw\030"
-    "\014 \001(\rB\005\202\265\030\0010\022\031\n\nchan12_raw\030\r \001(\rB\005\202\265\030\0010\022"
-    "\031\n\nchan13_raw\030\016 \001(\rB\005\202\265\030\0010\022\031\n\nchan14_raw"
-    "\030\017 \001(\rB\005\202\265\030\0010\022\031\n\nchan15_raw\030\020 \001(\rB\005\202\265\030\0010"
-    "\022\031\n\nchan16_raw\030\021 \001(\rB\005\202\265\030\0010\022\031\n\nchan17_ra"
-    "w\030\022 \001(\rB\005\202\265\030\0010\022\031\n\nchan18_raw\030\023 \001(\rB\005\202\265\030\001"
-    "0\022\030\n\tchancount\030\024 \001(\rB\005\202\265\030\0010\022\023\n\004rssi\030\025 \001("
-    "\rB\005\202\265\030\0010\"I\n\014Magnitometer\022\t\n\001x\030\001 \001(\001\022\t\n\001y"
-    "\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\022\030\n\020magnetic_heading\030\004 "
-    "\001(\001\"9\n\017BatteryVoltages\022\020\n\010voltages\030\001 \003(\r"
-    "\022\024\n\014ext_voltages\030\002 \003(\r\"\214\001\n\rAvailableMode"
-    "\022\024\n\014number_modes\030\001 \001(\r\022\022\n\nmode_index\030\002 \001"
-    "(\r\022\025\n\rstandard_mode\030\003 \001(\r\022\023\n\013custom_mode"
-    "\030\004 \001(\r\022\022\n\nproperties\030\005 \001(\r\022\021\n\tmode_name\030"
-    "\006 \001(\t\"X\n\032SetManualFlightModeRequest\022\014\n\004m"
-    "ode\030\001 \001(\r\022\023\n\013custom_mode\030\002 \001(\r\022\027\n\017custom"
-    "_sub_mode\030\003 \001(\r\"\220\004\n\rStrikerResult\0228\n\006res"
-    "ult\030\001 \001(\0162(.mavsdk.rpc.striker.StrikerRe"
-    "sult.Result\022\022\n\nresult_str\030\002 \001(\t\"\260\003\n\006Resu"
-    "lt\022\022\n\016RESULT_UNKNOWN\020\000\022\022\n\016RESULT_SUCCESS"
-    "\020\001\022\024\n\020RESULT_NO_SYSTEM\020\002\022\033\n\027RESULT_CONNE"
-    "CTION_ERROR\020\003\022\017\n\013RESULT_BUSY\020\004\022\031\n\025RESULT"
-    "_COMMAND_DENIED\020\005\022.\n*RESULT_COMMAND_DENI"
-    "ED_LANDED_STATE_UNKNOWN\020\006\022$\n RESULT_COMM"
-    "AND_DENIED_NOT_LANDED\020\007\022\022\n\016RESULT_TIMEOU"
-    "T\020\010\022*\n&RESULT_VTOL_TRANSITION_SUPPORT_UN"
-    "KNOWN\020\t\022%\n!RESULT_NO_VTOL_TRANSITION_SUP"
-    "PORT\020\n\022\032\n\026RESULT_PARAMETER_ERROR\020\013\022\026\n\022RE"
-    "SULT_UNSUPPORTED\020\014\022\021\n\rRESULT_FAILED\020\r\022\033\n"
-    "\027RESULT_INVALID_ARGUMENT\020\0162\372\t\n\016StrikerSe"
-    "rvice\022n\n\022SubscribeHeartbeat\022-.mavsdk.rpc"
-    ".striker.SubscribeHeartbeatRequest\032%.mav"
-    "sdk.rpc.striker.HeartbeatResponse\"\0000\001\022n\n"
-    "\022SubscribeSysStatus\022-.mavsdk.rpc.striker"
-    ".SubscribeSysStatusRequest\032%.mavsdk.rpc."
-    "striker.SysStatusResponse\"\0000\001\022n\n\022Subscri"
-    "beRcChannel\022-.mavsdk.rpc.striker.Subscri"
-    "beRcChannelRequest\032%.mavsdk.rpc.striker."
-    "RcChannelResponse\"\0000\001\022w\n\025SubscribeMagnit"
-    "ometer\0220.mavsdk.rpc.striker.SubscribeMag"
-    "nitometerRequest\032(.mavsdk.rpc.striker.Ma"
-    "gnitometerResponse\"\0000\001\022\200\001\n\030SubscribeBatt"
-    "eryVoltages\0223.mavsdk.rpc.striker.Subscri"
-    "beBatteryVoltagesRequest\032+.mavsdk.rpc.st"
-    "riker.BatteryVoltagesResponse\"\0000\001\022}\n\027Sub"
-    "scribeAvailableModes\0222.mavsdk.rpc.strike"
-    "r.SubscribeAvailableModesRequest\032*.mavsd"
-    "k.rpc.striker.AvailableModesResponse\"\0000\001"
-    "\022x\n\023SetManualFlightMode\022..mavsdk.rpc.str"
-    "iker.SetManualFlightModeRequest\032/.mavsdk"
-    ".rpc.striker.SetManualFlightModeResponse"
-    "\"\000\022\217\001\n\035SubscribeActuatorServosStatus\0228.m"
-    "avsdk.rpc.striker.SubscribeActuatorServo"
-    "sStatusRequest\0320.mavsdk.rpc.striker.Actu"
-    "atorServosStatusResponse\"\0000\001\022\220\001\n\033SetRate"
-    "ActuatorServosStatus\0226.mavsdk.rpc.strike"
-    "r.SetRateActuatorServosStatusRequest\0327.m"
-    "avsdk.rpc.striker.SetRateActuatorServosS"
-    "tatusResponse\"\000\022~\n\025RequestAvailableModes"
-    "\0220.mavsdk.rpc.striker.RequestAvailableMo"
-    "desRequest\0321.mavsdk.rpc.striker.RequestA"
-    "vailableModesResponse\"\000B!\n\021io.mavsdk.str"
-    "ikerB\014StrikerProtob\006proto3"
+    "Mode\"X\n\033SetManualFlightModeResponse\0229\n\016s"
+    "triker_result\030\001 \001(\0132!.mavsdk.rpc.striker"
+    ".StrikerResult\"&\n$SubscribeActuatorServo"
+    "sStatusRequest\"h\n\034ActuatorServosStatusRe"
+    "sponse\022H\n\026actuator_servos_status\030\001 \001(\0132("
+    ".mavsdk.rpc.striker.ActuatorServosStatus"
+    "\"5\n\"SetRateActuatorServosStatusRequest\022\017"
+    "\n\007rate_hz\030\001 \001(\001\"`\n#SetRateActuatorServos"
+    "StatusResponse\0229\n\016striker_result\030\001 \001(\0132!"
+    ".mavsdk.rpc.striker.StrikerResult\"\036\n\034Req"
+    "uestAvailableModesRequest\"Z\n\035RequestAvai"
+    "lableModesResponse\0229\n\016striker_result\030\001 \001"
+    "(\0132!.mavsdk.rpc.striker.StrikerResult\":\n"
+    "\024ActuatorServosStatus\022\021\n\ttime_usec\030\001 \001(\004"
+    "\022\017\n\007control\030\002 \003(\002\"\204\001\n\tHeartbeat\022\023\n\013custo"
+    "m_mode\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022\021\n\tautopilot\030"
+    "\003 \001(\r\022\021\n\tbase_mode\030\004 \001(\r\022\025\n\rsystem_statu"
+    "s\030\005 \001(\r\022\027\n\017mavlink_version\030\006 \001(\r\"\376\003\n\tSys"
+    "Status\022\'\n\037onboard_control_sensors_presen"
+    "t\030\001 \001(\r\022\'\n\037onboard_control_sensors_enabl"
+    "ed\030\002 \001(\r\022&\n\036onboard_control_sensors_heal"
+    "th\030\003 \001(\r\022\014\n\004load\030\004 \001(\r\022\027\n\017voltage_batter"
+    "y\030\005 \001(\r\022\027\n\017current_battery\030\006 \001(\005\022\026\n\016drop"
+    "_rate_comm\030\007 \001(\r\022\023\n\013errors_comm\030\010 \001(\r\022\025\n"
+    "\rerrors_count1\030\t \001(\r\022\025\n\rerrors_count2\030\n "
+    "\001(\r\022\025\n\rerrors_count3\030\013 \001(\r\022\025\n\rerrors_cou"
+    "nt4\030\014 \001(\r\022\031\n\021battery_remaining\030\r \001(\005\0220\n("
+    "onboard_control_sensors_present_extended"
+    "\030\016 \001(\r\0220\n(onboard_control_sensors_enable"
+    "d_extended\030\017 \001(\r\022/\n\'onboard_control_sens"
+    "ors_health_extended\030\020 \001(\r\"\264\004\n\tRcChannel\022"
+    "\033\n\014time_boot_ms\030\001 \001(\rB\005\202\265\030\0010\022\030\n\tchan1_ra"
+    "w\030\002 \001(\rB\005\202\265\030\0010\022\030\n\tchan2_raw\030\003 \001(\rB\005\202\265\030\0010"
+    "\022\030\n\tchan3_raw\030\004 \001(\rB\005\202\265\030\0010\022\030\n\tchan4_raw\030"
+    "\005 \001(\rB\005\202\265\030\0010\022\030\n\tchan5_raw\030\006 \001(\rB\005\202\265\030\0010\022\030"
+    "\n\tchan6_raw\030\007 \001(\rB\005\202\265\030\0010\022\030\n\tchan7_raw\030\010 "
+    "\001(\rB\005\202\265\030\0010\022\030\n\tchan8_raw\030\t \001(\rB\005\202\265\030\0010\022\030\n\t"
+    "chan9_raw\030\n \001(\rB\005\202\265\030\0010\022\031\n\nchan10_raw\030\013 \001"
+    "(\rB\005\202\265\030\0010\022\031\n\nchan11_raw\030\014 \001(\rB\005\202\265\030\0010\022\031\n\n"
+    "chan12_raw\030\r \001(\rB\005\202\265\030\0010\022\031\n\nchan13_raw\030\016 "
+    "\001(\rB\005\202\265\030\0010\022\031\n\nchan14_raw\030\017 \001(\rB\005\202\265\030\0010\022\031\n"
+    "\nchan15_raw\030\020 \001(\rB\005\202\265\030\0010\022\031\n\nchan16_raw\030\021"
+    " \001(\rB\005\202\265\030\0010\022\031\n\nchan17_raw\030\022 \001(\rB\005\202\265\030\0010\022\031"
+    "\n\nchan18_raw\030\023 \001(\rB\005\202\265\030\0010\022\030\n\tchancount\030\024"
+    " \001(\rB\005\202\265\030\0010\022\023\n\004rssi\030\025 \001(\rB\005\202\265\030\0010\"I\n\014Magn"
+    "itometer\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001("
+    "\001\022\030\n\020magnetic_heading\030\004 \001(\001\"9\n\017BatteryVo"
+    "ltages\022\020\n\010voltages\030\001 \003(\r\022\024\n\014ext_voltages"
+    "\030\002 \003(\r\"\214\001\n\rAvailableMode\022\024\n\014number_modes"
+    "\030\001 \001(\r\022\022\n\nmode_index\030\002 \001(\r\022\025\n\rstandard_m"
+    "ode\030\003 \001(\r\022\023\n\013custom_mode\030\004 \001(\r\022\022\n\nproper"
+    "ties\030\005 \001(\r\022\021\n\tmode_name\030\006 \001(\t\"X\n\032SetManu"
+    "alFlightModeRequest\022\014\n\004mode\030\001 \001(\r\022\023\n\013cus"
+    "tom_mode\030\002 \001(\r\022\027\n\017custom_sub_mode\030\003 \001(\r\""
+    "\220\004\n\rStrikerResult\0228\n\006result\030\001 \001(\0162(.mavs"
+    "dk.rpc.striker.StrikerResult.Result\022\022\n\nr"
+    "esult_str\030\002 \001(\t\"\260\003\n\006Result\022\022\n\016RESULT_UNK"
+    "NOWN\020\000\022\022\n\016RESULT_SUCCESS\020\001\022\024\n\020RESULT_NO_"
+    "SYSTEM\020\002\022\033\n\027RESULT_CONNECTION_ERROR\020\003\022\017\n"
+    "\013RESULT_BUSY\020\004\022\031\n\025RESULT_COMMAND_DENIED\020"
+    "\005\022.\n*RESULT_COMMAND_DENIED_LANDED_STATE_"
+    "UNKNOWN\020\006\022$\n RESULT_COMMAND_DENIED_NOT_L"
+    "ANDED\020\007\022\022\n\016RESULT_TIMEOUT\020\010\022*\n&RESULT_VT"
+    "OL_TRANSITION_SUPPORT_UNKNOWN\020\t\022%\n!RESUL"
+    "T_NO_VTOL_TRANSITION_SUPPORT\020\n\022\032\n\026RESULT"
+    "_PARAMETER_ERROR\020\013\022\026\n\022RESULT_UNSUPPORTED"
+    "\020\014\022\021\n\rRESULT_FAILED\020\r\022\033\n\027RESULT_INVALID_"
+    "ARGUMENT\020\0162\372\t\n\016StrikerService\022n\n\022Subscri"
+    "beHeartbeat\022-.mavsdk.rpc.striker.Subscri"
+    "beHeartbeatRequest\032%.mavsdk.rpc.striker."
+    "HeartbeatResponse\"\0000\001\022n\n\022SubscribeSysSta"
+    "tus\022-.mavsdk.rpc.striker.SubscribeSysSta"
+    "tusRequest\032%.mavsdk.rpc.striker.SysStatu"
+    "sResponse\"\0000\001\022n\n\022SubscribeRcChannel\022-.ma"
+    "vsdk.rpc.striker.SubscribeRcChannelReque"
+    "st\032%.mavsdk.rpc.striker.RcChannelRespons"
+    "e\"\0000\001\022w\n\025SubscribeMagnitometer\0220.mavsdk."
+    "rpc.striker.SubscribeMagnitometerRequest"
+    "\032(.mavsdk.rpc.striker.MagnitometerRespon"
+    "se\"\0000\001\022\200\001\n\030SubscribeBatteryVoltages\0223.ma"
+    "vsdk.rpc.striker.SubscribeBatteryVoltage"
+    "sRequest\032+.mavsdk.rpc.striker.BatteryVol"
+    "tagesResponse\"\0000\001\022}\n\027SubscribeAvailableM"
+    "odes\0222.mavsdk.rpc.striker.SubscribeAvail"
+    "ableModesRequest\032*.mavsdk.rpc.striker.Av"
+    "ailableModesResponse\"\0000\001\022x\n\023SetManualFli"
+    "ghtMode\022..mavsdk.rpc.striker.SetManualFl"
+    "ightModeRequest\032/.mavsdk.rpc.striker.Set"
+    "ManualFlightModeResponse\"\000\022\217\001\n\035Subscribe"
+    "ActuatorServosStatus\0228.mavsdk.rpc.strike"
+    "r.SubscribeActuatorServosStatusRequest\0320"
+    ".mavsdk.rpc.striker.ActuatorServosStatus"
+    "Response\"\0000\001\022\220\001\n\033SetRateActuatorServosSt"
+    "atus\0226.mavsdk.rpc.striker.SetRateActuato"
+    "rServosStatusRequest\0327.mavsdk.rpc.strike"
+    "r.SetRateActuatorServosStatusResponse\"\000\022"
+    "~\n\025RequestAvailableModes\0220.mavsdk.rpc.st"
+    "riker.RequestAvailableModesRequest\0321.mav"
+    "sdk.rpc.striker.RequestAvailableModesRes"
+    "ponse\"\000B!\n\021io.mavsdk.strikerB\014StrikerPro"
+    "tob\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_striker_2fstriker_2eproto_deps[1] =
     {
@@ -1237,7 +1238,7 @@ static ::absl::once_flag descriptor_table_striker_2fstriker_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_striker_2fstriker_2eproto = {
     false,
     false,
-    4706,
+    4730,
     descriptor_table_protodef_striker_2fstriker_2eproto,
     "striker/striker.proto",
     &descriptor_table_striker_2fstriker_2eproto_once,
@@ -3435,8 +3436,8 @@ SetManualFlightModeResponse::SetManualFlightModeResponse(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.result_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(
-                              arena, *from._impl_.result_)
+  _impl_.striker_result_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(
+                              arena, *from._impl_.striker_result_)
                         : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.SetManualFlightModeResponse)
@@ -3448,7 +3449,7 @@ inline PROTOBUF_NDEBUG_INLINE SetManualFlightModeResponse::Impl_::Impl_(
 
 inline void SetManualFlightModeResponse::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.result_ = {};
+  _impl_.striker_result_ = {};
 }
 SetManualFlightModeResponse::~SetManualFlightModeResponse() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.SetManualFlightModeResponse)
@@ -3458,7 +3459,7 @@ inline void SetManualFlightModeResponse::SharedDtor(MessageLite& self) {
   SetManualFlightModeResponse& this_ = static_cast<SetManualFlightModeResponse&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  delete this_._impl_.result_;
+  delete this_._impl_.striker_result_;
   this_._impl_.~Impl_();
 }
 
@@ -3516,14 +3517,14 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetManualFlightModeResponse::_table_ =
     ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::SetManualFlightModeResponse>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // .mavsdk.rpc.striker.StrikerResult result = 1;
+    // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
     {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetManualFlightModeResponse, _impl_.result_)}},
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetManualFlightModeResponse, _impl_.striker_result_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // .mavsdk.rpc.striker.StrikerResult result = 1;
-    {PROTOBUF_FIELD_OFFSET(SetManualFlightModeResponse, _impl_.result_), _Internal::kHasBitsOffset + 0, 0,
+    // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+    {PROTOBUF_FIELD_OFFSET(SetManualFlightModeResponse, _impl_.striker_result_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::StrikerResult>()},
@@ -3540,8 +3541,8 @@ PROTOBUF_NOINLINE void SetManualFlightModeResponse::Clear() {
 
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.result_ != nullptr);
-    _impl_.result_->Clear();
+    ABSL_DCHECK(_impl_.striker_result_ != nullptr);
+    _impl_.striker_result_->Clear();
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -3563,10 +3564,10 @@ PROTOBUF_NOINLINE void SetManualFlightModeResponse::Clear() {
           (void)cached_has_bits;
 
           cached_has_bits = this_._impl_._has_bits_[0];
-          // .mavsdk.rpc.striker.StrikerResult result = 1;
+          // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
           if (cached_has_bits & 0x00000001u) {
             target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                1, *this_._impl_.result_, this_._impl_.result_->GetCachedSize(), target,
+                1, *this_._impl_.striker_result_, this_._impl_.striker_result_->GetCachedSize(), target,
                 stream);
           }
 
@@ -3594,11 +3595,11 @@ PROTOBUF_NOINLINE void SetManualFlightModeResponse::Clear() {
           (void)cached_has_bits;
 
            {
-            // .mavsdk.rpc.striker.StrikerResult result = 1;
+            // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
             cached_has_bits = this_._impl_._has_bits_[0];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.result_);
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.striker_result_);
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -3616,12 +3617,12 @@ void SetManualFlightModeResponse::MergeImpl(::google::protobuf::MessageLite& to_
 
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(from._impl_.result_ != nullptr);
-    if (_this->_impl_.result_ == nullptr) {
-      _this->_impl_.result_ =
-          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(arena, *from._impl_.result_);
+    ABSL_DCHECK(from._impl_.striker_result_ != nullptr);
+    if (_this->_impl_.striker_result_ == nullptr) {
+      _this->_impl_.striker_result_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(arena, *from._impl_.striker_result_);
     } else {
-      _this->_impl_.result_->MergeFrom(*from._impl_.result_);
+      _this->_impl_.striker_result_->MergeFrom(*from._impl_.striker_result_);
     }
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
@@ -3640,7 +3641,7 @@ void SetManualFlightModeResponse::InternalSwap(SetManualFlightModeResponse* PROT
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  swap(_impl_.result_, other->_impl_.result_);
+  swap(_impl_.striker_result_, other->_impl_.striker_result_);
 }
 
 ::google::protobuf::Metadata SetManualFlightModeResponse::GetMetadata() const {
@@ -4244,8 +4245,8 @@ SetRateActuatorServosStatusResponse::SetRateActuatorServosStatusResponse(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.result_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(
-                              arena, *from._impl_.result_)
+  _impl_.striker_result_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(
+                              arena, *from._impl_.striker_result_)
                         : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse)
@@ -4257,7 +4258,7 @@ inline PROTOBUF_NDEBUG_INLINE SetRateActuatorServosStatusResponse::Impl_::Impl_(
 
 inline void SetRateActuatorServosStatusResponse::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.result_ = {};
+  _impl_.striker_result_ = {};
 }
 SetRateActuatorServosStatusResponse::~SetRateActuatorServosStatusResponse() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse)
@@ -4267,7 +4268,7 @@ inline void SetRateActuatorServosStatusResponse::SharedDtor(MessageLite& self) {
   SetRateActuatorServosStatusResponse& this_ = static_cast<SetRateActuatorServosStatusResponse&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  delete this_._impl_.result_;
+  delete this_._impl_.striker_result_;
   this_._impl_.~Impl_();
 }
 
@@ -4325,14 +4326,14 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetRateActuatorServosStatusResponse::_
     ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // .mavsdk.rpc.striker.StrikerResult result = 1;
+    // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
     {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetRateActuatorServosStatusResponse, _impl_.result_)}},
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetRateActuatorServosStatusResponse, _impl_.striker_result_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // .mavsdk.rpc.striker.StrikerResult result = 1;
-    {PROTOBUF_FIELD_OFFSET(SetRateActuatorServosStatusResponse, _impl_.result_), _Internal::kHasBitsOffset + 0, 0,
+    // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+    {PROTOBUF_FIELD_OFFSET(SetRateActuatorServosStatusResponse, _impl_.striker_result_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::StrikerResult>()},
@@ -4349,8 +4350,8 @@ PROTOBUF_NOINLINE void SetRateActuatorServosStatusResponse::Clear() {
 
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.result_ != nullptr);
-    _impl_.result_->Clear();
+    ABSL_DCHECK(_impl_.striker_result_ != nullptr);
+    _impl_.striker_result_->Clear();
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -4372,10 +4373,10 @@ PROTOBUF_NOINLINE void SetRateActuatorServosStatusResponse::Clear() {
           (void)cached_has_bits;
 
           cached_has_bits = this_._impl_._has_bits_[0];
-          // .mavsdk.rpc.striker.StrikerResult result = 1;
+          // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
           if (cached_has_bits & 0x00000001u) {
             target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                1, *this_._impl_.result_, this_._impl_.result_->GetCachedSize(), target,
+                1, *this_._impl_.striker_result_, this_._impl_.striker_result_->GetCachedSize(), target,
                 stream);
           }
 
@@ -4403,11 +4404,11 @@ PROTOBUF_NOINLINE void SetRateActuatorServosStatusResponse::Clear() {
           (void)cached_has_bits;
 
            {
-            // .mavsdk.rpc.striker.StrikerResult result = 1;
+            // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
             cached_has_bits = this_._impl_._has_bits_[0];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.result_);
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.striker_result_);
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -4425,12 +4426,12 @@ void SetRateActuatorServosStatusResponse::MergeImpl(::google::protobuf::MessageL
 
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(from._impl_.result_ != nullptr);
-    if (_this->_impl_.result_ == nullptr) {
-      _this->_impl_.result_ =
-          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(arena, *from._impl_.result_);
+    ABSL_DCHECK(from._impl_.striker_result_ != nullptr);
+    if (_this->_impl_.striker_result_ == nullptr) {
+      _this->_impl_.striker_result_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(arena, *from._impl_.striker_result_);
     } else {
-      _this->_impl_.result_->MergeFrom(*from._impl_.result_);
+      _this->_impl_.striker_result_->MergeFrom(*from._impl_.striker_result_);
     }
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
@@ -4449,7 +4450,7 @@ void SetRateActuatorServosStatusResponse::InternalSwap(SetRateActuatorServosStat
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  swap(_impl_.result_, other->_impl_.result_);
+  swap(_impl_.striker_result_, other->_impl_.striker_result_);
 }
 
 ::google::protobuf::Metadata SetRateActuatorServosStatusResponse::GetMetadata() const {
@@ -4597,8 +4598,8 @@ RequestAvailableModesResponse::RequestAvailableModesResponse(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.result_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(
-                              arena, *from._impl_.result_)
+  _impl_.striker_result_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(
+                              arena, *from._impl_.striker_result_)
                         : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.RequestAvailableModesResponse)
@@ -4610,7 +4611,7 @@ inline PROTOBUF_NDEBUG_INLINE RequestAvailableModesResponse::Impl_::Impl_(
 
 inline void RequestAvailableModesResponse::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.result_ = {};
+  _impl_.striker_result_ = {};
 }
 RequestAvailableModesResponse::~RequestAvailableModesResponse() {
   // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.RequestAvailableModesResponse)
@@ -4620,7 +4621,7 @@ inline void RequestAvailableModesResponse::SharedDtor(MessageLite& self) {
   RequestAvailableModesResponse& this_ = static_cast<RequestAvailableModesResponse&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  delete this_._impl_.result_;
+  delete this_._impl_.striker_result_;
   this_._impl_.~Impl_();
 }
 
@@ -4678,14 +4679,14 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> RequestAvailableModesResponse::_table_
     ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::RequestAvailableModesResponse>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // .mavsdk.rpc.striker.StrikerResult result = 1;
+    // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
     {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(RequestAvailableModesResponse, _impl_.result_)}},
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(RequestAvailableModesResponse, _impl_.striker_result_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // .mavsdk.rpc.striker.StrikerResult result = 1;
-    {PROTOBUF_FIELD_OFFSET(RequestAvailableModesResponse, _impl_.result_), _Internal::kHasBitsOffset + 0, 0,
+    // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+    {PROTOBUF_FIELD_OFFSET(RequestAvailableModesResponse, _impl_.striker_result_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::StrikerResult>()},
@@ -4702,8 +4703,8 @@ PROTOBUF_NOINLINE void RequestAvailableModesResponse::Clear() {
 
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.result_ != nullptr);
-    _impl_.result_->Clear();
+    ABSL_DCHECK(_impl_.striker_result_ != nullptr);
+    _impl_.striker_result_->Clear();
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -4725,10 +4726,10 @@ PROTOBUF_NOINLINE void RequestAvailableModesResponse::Clear() {
           (void)cached_has_bits;
 
           cached_has_bits = this_._impl_._has_bits_[0];
-          // .mavsdk.rpc.striker.StrikerResult result = 1;
+          // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
           if (cached_has_bits & 0x00000001u) {
             target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                1, *this_._impl_.result_, this_._impl_.result_->GetCachedSize(), target,
+                1, *this_._impl_.striker_result_, this_._impl_.striker_result_->GetCachedSize(), target,
                 stream);
           }
 
@@ -4756,11 +4757,11 @@ PROTOBUF_NOINLINE void RequestAvailableModesResponse::Clear() {
           (void)cached_has_bits;
 
            {
-            // .mavsdk.rpc.striker.StrikerResult result = 1;
+            // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
             cached_has_bits = this_._impl_._has_bits_[0];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.result_);
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.striker_result_);
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -4778,12 +4779,12 @@ void RequestAvailableModesResponse::MergeImpl(::google::protobuf::MessageLite& t
 
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(from._impl_.result_ != nullptr);
-    if (_this->_impl_.result_ == nullptr) {
-      _this->_impl_.result_ =
-          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(arena, *from._impl_.result_);
+    ABSL_DCHECK(from._impl_.striker_result_ != nullptr);
+    if (_this->_impl_.striker_result_ == nullptr) {
+      _this->_impl_.striker_result_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(arena, *from._impl_.striker_result_);
     } else {
-      _this->_impl_.result_->MergeFrom(*from._impl_.result_);
+      _this->_impl_.striker_result_->MergeFrom(*from._impl_.striker_result_);
     }
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
@@ -4802,7 +4803,7 @@ void RequestAvailableModesResponse::InternalSwap(RequestAvailableModesResponse* 
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  swap(_impl_.result_, other->_impl_.result_);
+  swap(_impl_.striker_result_, other->_impl_.striker_result_);
 }
 
 ::google::protobuf::Metadata RequestAvailableModesResponse::GetMetadata() const {

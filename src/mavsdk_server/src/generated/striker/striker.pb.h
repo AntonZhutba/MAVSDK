@@ -4312,21 +4312,21 @@ class SetRateActuatorServosStatusResponse final : public ::google::protobuf::Mes
 
   // accessors -------------------------------------------------------
   enum : int {
-    kResultFieldNumber = 1,
+    kStrikerResultFieldNumber = 1,
   };
-  // .mavsdk.rpc.striker.StrikerResult result = 1;
-  bool has_result() const;
-  void clear_result() ;
-  const ::mavsdk::rpc::striker::StrikerResult& result() const;
-  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::StrikerResult* release_result();
-  ::mavsdk::rpc::striker::StrikerResult* mutable_result();
-  void set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value);
-  void unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value);
-  ::mavsdk::rpc::striker::StrikerResult* unsafe_arena_release_result();
+  // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+  bool has_striker_result() const;
+  void clear_striker_result() ;
+  const ::mavsdk::rpc::striker::StrikerResult& striker_result() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::StrikerResult* release_striker_result();
+  ::mavsdk::rpc::striker::StrikerResult* mutable_striker_result();
+  void set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value);
+  void unsafe_arena_set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value);
+  ::mavsdk::rpc::striker::StrikerResult* unsafe_arena_release_striker_result();
 
   private:
-  const ::mavsdk::rpc::striker::StrikerResult& _internal_result() const;
-  ::mavsdk::rpc::striker::StrikerResult* _internal_mutable_result();
+  const ::mavsdk::rpc::striker::StrikerResult& _internal_striker_result() const;
+  ::mavsdk::rpc::striker::StrikerResult* _internal_mutable_striker_result();
 
   public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse)
@@ -4354,7 +4354,7 @@ class SetRateActuatorServosStatusResponse final : public ::google::protobuf::Mes
                           const SetRateActuatorServosStatusResponse& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::mavsdk::rpc::striker::StrikerResult* result_;
+    ::mavsdk::rpc::striker::StrikerResult* striker_result_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -4508,21 +4508,21 @@ class SetManualFlightModeResponse final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kResultFieldNumber = 1,
+    kStrikerResultFieldNumber = 1,
   };
-  // .mavsdk.rpc.striker.StrikerResult result = 1;
-  bool has_result() const;
-  void clear_result() ;
-  const ::mavsdk::rpc::striker::StrikerResult& result() const;
-  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::StrikerResult* release_result();
-  ::mavsdk::rpc::striker::StrikerResult* mutable_result();
-  void set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value);
-  void unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value);
-  ::mavsdk::rpc::striker::StrikerResult* unsafe_arena_release_result();
+  // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+  bool has_striker_result() const;
+  void clear_striker_result() ;
+  const ::mavsdk::rpc::striker::StrikerResult& striker_result() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::StrikerResult* release_striker_result();
+  ::mavsdk::rpc::striker::StrikerResult* mutable_striker_result();
+  void set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value);
+  void unsafe_arena_set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value);
+  ::mavsdk::rpc::striker::StrikerResult* unsafe_arena_release_striker_result();
 
   private:
-  const ::mavsdk::rpc::striker::StrikerResult& _internal_result() const;
-  ::mavsdk::rpc::striker::StrikerResult* _internal_mutable_result();
+  const ::mavsdk::rpc::striker::StrikerResult& _internal_striker_result() const;
+  ::mavsdk::rpc::striker::StrikerResult* _internal_mutable_striker_result();
 
   public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.SetManualFlightModeResponse)
@@ -4550,7 +4550,7 @@ class SetManualFlightModeResponse final : public ::google::protobuf::Message
                           const SetManualFlightModeResponse& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::mavsdk::rpc::striker::StrikerResult* result_;
+    ::mavsdk::rpc::striker::StrikerResult* striker_result_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -4704,21 +4704,21 @@ class RequestAvailableModesResponse final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kResultFieldNumber = 1,
+    kStrikerResultFieldNumber = 1,
   };
-  // .mavsdk.rpc.striker.StrikerResult result = 1;
-  bool has_result() const;
-  void clear_result() ;
-  const ::mavsdk::rpc::striker::StrikerResult& result() const;
-  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::StrikerResult* release_result();
-  ::mavsdk::rpc::striker::StrikerResult* mutable_result();
-  void set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value);
-  void unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value);
-  ::mavsdk::rpc::striker::StrikerResult* unsafe_arena_release_result();
+  // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+  bool has_striker_result() const;
+  void clear_striker_result() ;
+  const ::mavsdk::rpc::striker::StrikerResult& striker_result() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::striker::StrikerResult* release_striker_result();
+  ::mavsdk::rpc::striker::StrikerResult* mutable_striker_result();
+  void set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value);
+  void unsafe_arena_set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value);
+  ::mavsdk::rpc::striker::StrikerResult* unsafe_arena_release_striker_result();
 
   private:
-  const ::mavsdk::rpc::striker::StrikerResult& _internal_result() const;
-  ::mavsdk::rpc::striker::StrikerResult* _internal_mutable_result();
+  const ::mavsdk::rpc::striker::StrikerResult& _internal_striker_result() const;
+  ::mavsdk::rpc::striker::StrikerResult* _internal_mutable_striker_result();
 
   public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.striker.RequestAvailableModesResponse)
@@ -4746,7 +4746,7 @@ class RequestAvailableModesResponse final : public ::google::protobuf::Message
                           const RequestAvailableModesResponse& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::mavsdk::rpc::striker::StrikerResult* result_;
+    ::mavsdk::rpc::striker::StrikerResult* striker_result_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -6523,45 +6523,45 @@ AvailableModesResponse::_internal_mutable_available_modes() {
 
 // SetManualFlightModeResponse
 
-// .mavsdk.rpc.striker.StrikerResult result = 1;
-inline bool SetManualFlightModeResponse::has_result() const {
+// .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+inline bool SetManualFlightModeResponse::has_striker_result() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.result_ != nullptr);
+  PROTOBUF_ASSUME(!value || _impl_.striker_result_ != nullptr);
   return value;
 }
-inline void SetManualFlightModeResponse::clear_result() {
+inline void SetManualFlightModeResponse::clear_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.result_ != nullptr) _impl_.result_->Clear();
+  if (_impl_.striker_result_ != nullptr) _impl_.striker_result_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const ::mavsdk::rpc::striker::StrikerResult& SetManualFlightModeResponse::_internal_result() const {
+inline const ::mavsdk::rpc::striker::StrikerResult& SetManualFlightModeResponse::_internal_striker_result() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::mavsdk::rpc::striker::StrikerResult* p = _impl_.result_;
+  const ::mavsdk::rpc::striker::StrikerResult* p = _impl_.striker_result_;
   return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::striker::StrikerResult&>(::mavsdk::rpc::striker::_StrikerResult_default_instance_);
 }
-inline const ::mavsdk::rpc::striker::StrikerResult& SetManualFlightModeResponse::result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
-  return _internal_result();
+inline const ::mavsdk::rpc::striker::StrikerResult& SetManualFlightModeResponse::striker_result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.SetManualFlightModeResponse.striker_result)
+  return _internal_striker_result();
 }
-inline void SetManualFlightModeResponse::unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value) {
+inline void SetManualFlightModeResponse::unsafe_arena_set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (GetArena() == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.result_);
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.striker_result_);
   }
-  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
+  _impl_.striker_result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
   if (value != nullptr) {
     _impl_._has_bits_[0] |= 0x00000001u;
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.SetManualFlightModeResponse.striker_result)
 }
-inline ::mavsdk::rpc::striker::StrikerResult* SetManualFlightModeResponse::release_result() {
+inline ::mavsdk::rpc::striker::StrikerResult* SetManualFlightModeResponse::release_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::striker::StrikerResult* released = _impl_.result_;
-  _impl_.result_ = nullptr;
+  ::mavsdk::rpc::striker::StrikerResult* released = _impl_.striker_result_;
+  _impl_.striker_result_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
     auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
     released = ::google::protobuf::internal::DuplicateIfNonNull(released);
@@ -6575,34 +6575,34 @@ inline ::mavsdk::rpc::striker::StrikerResult* SetManualFlightModeResponse::relea
   }
   return released;
 }
-inline ::mavsdk::rpc::striker::StrikerResult* SetManualFlightModeResponse::unsafe_arena_release_result() {
+inline ::mavsdk::rpc::striker::StrikerResult* SetManualFlightModeResponse::unsafe_arena_release_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.SetManualFlightModeResponse.striker_result)
 
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::striker::StrikerResult* temp = _impl_.result_;
-  _impl_.result_ = nullptr;
+  ::mavsdk::rpc::striker::StrikerResult* temp = _impl_.striker_result_;
+  _impl_.striker_result_ = nullptr;
   return temp;
 }
-inline ::mavsdk::rpc::striker::StrikerResult* SetManualFlightModeResponse::_internal_mutable_result() {
+inline ::mavsdk::rpc::striker::StrikerResult* SetManualFlightModeResponse::_internal_mutable_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.result_ == nullptr) {
+  if (_impl_.striker_result_ == nullptr) {
     auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::striker::StrikerResult>(GetArena());
-    _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(p);
+    _impl_.striker_result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(p);
   }
-  return _impl_.result_;
+  return _impl_.striker_result_;
 }
-inline ::mavsdk::rpc::striker::StrikerResult* SetManualFlightModeResponse::mutable_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::mavsdk::rpc::striker::StrikerResult* SetManualFlightModeResponse::mutable_striker_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   _impl_._has_bits_[0] |= 0x00000001u;
-  ::mavsdk::rpc::striker::StrikerResult* _msg = _internal_mutable_result();
-  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
+  ::mavsdk::rpc::striker::StrikerResult* _msg = _internal_mutable_striker_result();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.SetManualFlightModeResponse.striker_result)
   return _msg;
 }
-inline void SetManualFlightModeResponse::set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value) {
+inline void SetManualFlightModeResponse::set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value) {
   ::google::protobuf::Arena* message_arena = GetArena();
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (message_arena == nullptr) {
-    delete (_impl_.result_);
+    delete (_impl_.striker_result_);
   }
 
   if (value != nullptr) {
@@ -6615,8 +6615,8 @@ inline void SetManualFlightModeResponse::set_allocated_result(::mavsdk::rpc::str
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
 
-  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
-  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.SetManualFlightModeResponse.result)
+  _impl_.striker_result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.SetManualFlightModeResponse.striker_result)
 }
 
 // -------------------------------------------------------------------
@@ -6753,45 +6753,45 @@ inline void SetRateActuatorServosStatusRequest::_internal_set_rate_hz(double val
 
 // SetRateActuatorServosStatusResponse
 
-// .mavsdk.rpc.striker.StrikerResult result = 1;
-inline bool SetRateActuatorServosStatusResponse::has_result() const {
+// .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+inline bool SetRateActuatorServosStatusResponse::has_striker_result() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.result_ != nullptr);
+  PROTOBUF_ASSUME(!value || _impl_.striker_result_ != nullptr);
   return value;
 }
-inline void SetRateActuatorServosStatusResponse::clear_result() {
+inline void SetRateActuatorServosStatusResponse::clear_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.result_ != nullptr) _impl_.result_->Clear();
+  if (_impl_.striker_result_ != nullptr) _impl_.striker_result_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const ::mavsdk::rpc::striker::StrikerResult& SetRateActuatorServosStatusResponse::_internal_result() const {
+inline const ::mavsdk::rpc::striker::StrikerResult& SetRateActuatorServosStatusResponse::_internal_striker_result() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::mavsdk::rpc::striker::StrikerResult* p = _impl_.result_;
+  const ::mavsdk::rpc::striker::StrikerResult* p = _impl_.striker_result_;
   return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::striker::StrikerResult&>(::mavsdk::rpc::striker::_StrikerResult_default_instance_);
 }
-inline const ::mavsdk::rpc::striker::StrikerResult& SetRateActuatorServosStatusResponse::result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.result)
-  return _internal_result();
+inline const ::mavsdk::rpc::striker::StrikerResult& SetRateActuatorServosStatusResponse::striker_result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.striker_result)
+  return _internal_striker_result();
 }
-inline void SetRateActuatorServosStatusResponse::unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value) {
+inline void SetRateActuatorServosStatusResponse::unsafe_arena_set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (GetArena() == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.result_);
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.striker_result_);
   }
-  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
+  _impl_.striker_result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
   if (value != nullptr) {
     _impl_._has_bits_[0] |= 0x00000001u;
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.result)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.striker_result)
 }
-inline ::mavsdk::rpc::striker::StrikerResult* SetRateActuatorServosStatusResponse::release_result() {
+inline ::mavsdk::rpc::striker::StrikerResult* SetRateActuatorServosStatusResponse::release_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::striker::StrikerResult* released = _impl_.result_;
-  _impl_.result_ = nullptr;
+  ::mavsdk::rpc::striker::StrikerResult* released = _impl_.striker_result_;
+  _impl_.striker_result_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
     auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
     released = ::google::protobuf::internal::DuplicateIfNonNull(released);
@@ -6805,34 +6805,34 @@ inline ::mavsdk::rpc::striker::StrikerResult* SetRateActuatorServosStatusRespons
   }
   return released;
 }
-inline ::mavsdk::rpc::striker::StrikerResult* SetRateActuatorServosStatusResponse::unsafe_arena_release_result() {
+inline ::mavsdk::rpc::striker::StrikerResult* SetRateActuatorServosStatusResponse::unsafe_arena_release_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.result)
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.striker_result)
 
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::striker::StrikerResult* temp = _impl_.result_;
-  _impl_.result_ = nullptr;
+  ::mavsdk::rpc::striker::StrikerResult* temp = _impl_.striker_result_;
+  _impl_.striker_result_ = nullptr;
   return temp;
 }
-inline ::mavsdk::rpc::striker::StrikerResult* SetRateActuatorServosStatusResponse::_internal_mutable_result() {
+inline ::mavsdk::rpc::striker::StrikerResult* SetRateActuatorServosStatusResponse::_internal_mutable_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.result_ == nullptr) {
+  if (_impl_.striker_result_ == nullptr) {
     auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::striker::StrikerResult>(GetArena());
-    _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(p);
+    _impl_.striker_result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(p);
   }
-  return _impl_.result_;
+  return _impl_.striker_result_;
 }
-inline ::mavsdk::rpc::striker::StrikerResult* SetRateActuatorServosStatusResponse::mutable_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::mavsdk::rpc::striker::StrikerResult* SetRateActuatorServosStatusResponse::mutable_striker_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   _impl_._has_bits_[0] |= 0x00000001u;
-  ::mavsdk::rpc::striker::StrikerResult* _msg = _internal_mutable_result();
-  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.result)
+  ::mavsdk::rpc::striker::StrikerResult* _msg = _internal_mutable_striker_result();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.striker_result)
   return _msg;
 }
-inline void SetRateActuatorServosStatusResponse::set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value) {
+inline void SetRateActuatorServosStatusResponse::set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value) {
   ::google::protobuf::Arena* message_arena = GetArena();
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (message_arena == nullptr) {
-    delete (_impl_.result_);
+    delete (_impl_.striker_result_);
   }
 
   if (value != nullptr) {
@@ -6845,8 +6845,8 @@ inline void SetRateActuatorServosStatusResponse::set_allocated_result(::mavsdk::
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
 
-  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
-  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.result)
+  _impl_.striker_result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.SetRateActuatorServosStatusResponse.striker_result)
 }
 
 // -------------------------------------------------------------------
@@ -6857,45 +6857,45 @@ inline void SetRateActuatorServosStatusResponse::set_allocated_result(::mavsdk::
 
 // RequestAvailableModesResponse
 
-// .mavsdk.rpc.striker.StrikerResult result = 1;
-inline bool RequestAvailableModesResponse::has_result() const {
+// .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+inline bool RequestAvailableModesResponse::has_striker_result() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.result_ != nullptr);
+  PROTOBUF_ASSUME(!value || _impl_.striker_result_ != nullptr);
   return value;
 }
-inline void RequestAvailableModesResponse::clear_result() {
+inline void RequestAvailableModesResponse::clear_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.result_ != nullptr) _impl_.result_->Clear();
+  if (_impl_.striker_result_ != nullptr) _impl_.striker_result_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const ::mavsdk::rpc::striker::StrikerResult& RequestAvailableModesResponse::_internal_result() const {
+inline const ::mavsdk::rpc::striker::StrikerResult& RequestAvailableModesResponse::_internal_striker_result() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::mavsdk::rpc::striker::StrikerResult* p = _impl_.result_;
+  const ::mavsdk::rpc::striker::StrikerResult* p = _impl_.striker_result_;
   return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::striker::StrikerResult&>(::mavsdk::rpc::striker::_StrikerResult_default_instance_);
 }
-inline const ::mavsdk::rpc::striker::StrikerResult& RequestAvailableModesResponse::result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
-  return _internal_result();
+inline const ::mavsdk::rpc::striker::StrikerResult& RequestAvailableModesResponse::striker_result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.striker.RequestAvailableModesResponse.striker_result)
+  return _internal_striker_result();
 }
-inline void RequestAvailableModesResponse::unsafe_arena_set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value) {
+inline void RequestAvailableModesResponse::unsafe_arena_set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (GetArena() == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.result_);
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.striker_result_);
   }
-  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
+  _impl_.striker_result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
   if (value != nullptr) {
     _impl_._has_bits_[0] |= 0x00000001u;
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.striker.RequestAvailableModesResponse.striker_result)
 }
-inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::release_result() {
+inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::release_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::striker::StrikerResult* released = _impl_.result_;
-  _impl_.result_ = nullptr;
+  ::mavsdk::rpc::striker::StrikerResult* released = _impl_.striker_result_;
+  _impl_.striker_result_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
     auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
     released = ::google::protobuf::internal::DuplicateIfNonNull(released);
@@ -6909,34 +6909,34 @@ inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::rel
   }
   return released;
 }
-inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::unsafe_arena_release_result() {
+inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::unsafe_arena_release_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.striker.RequestAvailableModesResponse.striker_result)
 
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::mavsdk::rpc::striker::StrikerResult* temp = _impl_.result_;
-  _impl_.result_ = nullptr;
+  ::mavsdk::rpc::striker::StrikerResult* temp = _impl_.striker_result_;
+  _impl_.striker_result_ = nullptr;
   return temp;
 }
-inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::_internal_mutable_result() {
+inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::_internal_mutable_striker_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.result_ == nullptr) {
+  if (_impl_.striker_result_ == nullptr) {
     auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::striker::StrikerResult>(GetArena());
-    _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(p);
+    _impl_.striker_result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(p);
   }
-  return _impl_.result_;
+  return _impl_.striker_result_;
 }
-inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::mutable_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::mavsdk::rpc::striker::StrikerResult* RequestAvailableModesResponse::mutable_striker_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   _impl_._has_bits_[0] |= 0x00000001u;
-  ::mavsdk::rpc::striker::StrikerResult* _msg = _internal_mutable_result();
-  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
+  ::mavsdk::rpc::striker::StrikerResult* _msg = _internal_mutable_striker_result();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.striker.RequestAvailableModesResponse.striker_result)
   return _msg;
 }
-inline void RequestAvailableModesResponse::set_allocated_result(::mavsdk::rpc::striker::StrikerResult* value) {
+inline void RequestAvailableModesResponse::set_allocated_striker_result(::mavsdk::rpc::striker::StrikerResult* value) {
   ::google::protobuf::Arena* message_arena = GetArena();
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (message_arena == nullptr) {
-    delete (_impl_.result_);
+    delete (_impl_.striker_result_);
   }
 
   if (value != nullptr) {
@@ -6949,8 +6949,8 @@ inline void RequestAvailableModesResponse::set_allocated_result(::mavsdk::rpc::s
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
 
-  _impl_.result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
-  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.RequestAvailableModesResponse.result)
+  _impl_.striker_result_ = reinterpret_cast<::mavsdk::rpc::striker::StrikerResult*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.striker.RequestAvailableModesResponse.striker_result)
 }
 
 // -------------------------------------------------------------------

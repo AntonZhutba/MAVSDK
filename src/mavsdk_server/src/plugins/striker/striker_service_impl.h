@@ -39,7 +39,7 @@ public:
         ss << result;
         rpc_striker_result->set_result_str(ss.str());
 
-        response->set_allocated_result(rpc_striker_result);
+        response->set_allocated_striker_result(rpc_striker_result);
     }
 
     static std::unique_ptr<rpc::striker::ActuatorServosStatus> translateToRpcActuatorServosStatus(
