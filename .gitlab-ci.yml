@@ -1,0 +1,74 @@
+stages:
+  - check
+  - build
+  - test
+
+include:
+  - local: 'ci/docker-build.yml'
+
+check-docker-changes:
+  stage: check
+  image: ubuntu:24.04
+  before_script:
+    - apt-get update && apt-get install -y git
+  script:
+    - git config --global --add safe.directory "$CI_PROJECT_DIR"
+    - git fetch origin main
+    - |
+      git diff --name-only origin/main...HEAD > changed_files.txt
+      if grep '^docker/' changed_files.txt; then
+        echo "docker_changed=true" > docker_env.txt
+        if [[ "$CI_PIPELINE_SOURCE" == "merge_request_event" ]]; then
+          echo "docker_tag=pr-$CI_MERGE_REQUEST_IID" >> docker_env.txt
+        else
+          echo "docker_tag=latest" >> docker_env.txt
+        fi
+      else
+        echo "docker_changed=false" > docker_env.txt
+        echo "docker_tag=latest" >> docker_env.txt
+      fi
+  artifacts:
+    reports:
+      dotenv: docker_env.txt
+    expire_in: 1 hour
+
+coverage:
+  stage: test
+  image: docker.io/mavsdk/mavsdk-ubuntu-22.04:$docker_tag
+  needs:
+    - job: check-docker-changes
+      artifacts: true
+    - job: docker-build
+      optional: true
+  variables:
+    NODE_OPTIONS: --max_old_space_size=4096
+  cache:
+    key: coverage-third-party
+    paths:
+      - build/third_party/install
+  script:
+    - git config --global --add safe.directory "$CI_PROJECT_DIR"
+    - git fetch --tags
+    - |
+      if [ -d build/third_party/install ]; then
+        echo "superbuild=-DSUPERBUILD=OFF" >> coverage_env.txt
+        echo "cmake_prefix_path=-DCMAKE_PREFIX_PATH=$(pwd)/build/third_party/install" >> coverage_env.txt
+      fi
+    - source coverage_env.txt || true
+    - apt-get update && apt-get install -y lcov curl
+    - cmake $superbuild $cmake_prefix_path -DCMAKE_BUILD_TYPE=Coverage -DASAN=ON -DWERROR=ON -DENABLE_CPPTRACE=On -Bbuild -H.
+    - cmake --build build -j$(nproc)
+    - ./build/src/unit_tests/unit_tests_runner
+    - ./build/src/system_tests/system_tests_runner
+    - lcov --capture --directory . --no-external --exclude "*/third_party/*" --output-file lcov.info
+    - ls -l lcov.info
+    - >
+      curl -s https://codecov.io/bash | bash -s -- -f lcov.info || 
+      echo "Coveralls upload skipped (fallback)"
+  artifacts:
+    paths:
+      - lcov.info
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: lcov.info
