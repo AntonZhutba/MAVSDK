@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <memory>
 #include <fstream>
+#include <sstream>
 
 using namespace mavsdk;
 
@@ -46,30 +47,30 @@ TEST(CameraDefinition, E90CheckDefaultSettings)
         EXPECT_TRUE(cd.get_all_settings(settings));
         EXPECT_EQ(settings.size(), 18);
 
-        EXPECT_EQ(settings["CAM_MODE"].get<uint32_t>(), 1);
-        EXPECT_EQ(settings["CAM_WBMODE"].get<uint32_t>(), 0);
-        EXPECT_EQ(settings["CAM_EXPMODE"].get<uint32_t>(), 0);
+        EXPECT_EQ(settings["CAM_MODE"].get<int32_t>(), 1);
+        EXPECT_EQ(settings["CAM_WBMODE"].get<int32_t>(), 0);
+        EXPECT_EQ(settings["CAM_EXPMODE"].get<int32_t>(), 0);
         EXPECT_FLOAT_EQ(settings["CAM_SHUTTERSPD"].get<float>(), 0.016666f);
-        EXPECT_EQ(settings["CAM_ISO"].get<uint32_t>(), 100);
+        EXPECT_EQ(settings["CAM_ISO"].get<int32_t>(), 100);
         EXPECT_FLOAT_EQ(settings["CAM_EV"].get<float>(), 0.0f);
-        EXPECT_EQ(settings["CAM_VIDRES"].get<uint32_t>(), 0);
-        EXPECT_EQ(settings["CAM_VIDFMT"].get<uint32_t>(), 1);
-        EXPECT_EQ(settings["CAM_PHOTORATIO"].get<uint8_t>(), 1);
+        EXPECT_EQ(settings["CAM_VIDRES"].get<int32_t>(), 0);
+        EXPECT_EQ(settings["CAM_VIDFMT"].get<int32_t>(), 1);
+        EXPECT_EQ(settings["CAM_PHOTORATIO"].get<int8_t>(), 1);
         EXPECT_EQ(settings["CAM_ASPECTRATIO"].get<float>(), 1.78f);
-        EXPECT_EQ(settings["CAM_METERING"].get<uint32_t>(), 0);
-        EXPECT_EQ(settings["CAM_COLORMODE"].get<uint32_t>(), 1);
-        EXPECT_EQ(settings["CAM_FLICKER"].get<uint32_t>(), 0);
-        EXPECT_EQ(settings["CAM_PHOTOFMT"].get<uint32_t>(), 0);
-        EXPECT_EQ(settings["CAM_PHOTOQUAL"].get<uint32_t>(), 1);
-        EXPECT_EQ(settings["CAM_IMAGEDEWARP"].get<uint8_t>(), 0);
-        EXPECT_EQ(settings["CAM_COLORENCODE"].get<uint32_t>(), 0);
-        EXPECT_EQ(settings["CAM_CUSTOMWB"].get<uint16_t>(), 5500);
+        EXPECT_EQ(settings["CAM_METERING"].get<int32_t>(), 0);
+        EXPECT_EQ(settings["CAM_COLORMODE"].get<int32_t>(), 1);
+        EXPECT_EQ(settings["CAM_FLICKER"].get<int32_t>(), 0);
+        EXPECT_EQ(settings["CAM_PHOTOFMT"].get<int32_t>(), 0);
+        EXPECT_EQ(settings["CAM_PHOTOQUAL"].get<int32_t>(), 1);
+        EXPECT_EQ(settings["CAM_IMAGEDEWARP"].get<int8_t>(), 0);
+        EXPECT_EQ(settings["CAM_COLORENCODE"].get<int32_t>(), 0);
+        EXPECT_EQ(settings["CAM_CUSTOMWB"].get<int16_t>(), 5500);
     }
 
     // Get only settings for video mode.
     {
         ParamValue value;
-        value.set<uint32_t>(1);
+        value.set<int32_t>(1);
         EXPECT_TRUE(cd.set_setting("CAM_MODE", value));
     }
 
@@ -86,7 +87,7 @@ TEST(CameraDefinition, E90CheckDefaultSettings)
     // Get only settings for photo mode.
     {
         ParamValue value;
-        value.set<uint32_t>(0);
+        value.set<int32_t>(0);
         EXPECT_TRUE(cd.set_setting("CAM_MODE", value));
     }
 
@@ -113,20 +114,20 @@ TEST(CameraDefinition, E90ChangeSettings)
         // Check default
         ParamValue value;
         ASSERT_TRUE(cd.get_setting("CAM_WBMODE", value));
-        EXPECT_EQ(value.get<uint32_t>(), 0);
+        EXPECT_EQ(value.get<int32_t>(), 0);
     }
 
     {
         // We can only set CAM_COLORMODE in photo mode
         ParamValue value;
-        value.set<uint32_t>(0);
+        value.set<int32_t>(0);
         ASSERT_TRUE(cd.set_setting("CAM_MODE", value));
     }
 
     {
         // Set WBMODE to 1
         ParamValue value;
-        value.set<uint32_t>(1);
+        value.set<int32_t>(1);
         EXPECT_TRUE(cd.set_setting("CAM_WBMODE", value));
     }
 
@@ -134,20 +135,20 @@ TEST(CameraDefinition, E90ChangeSettings)
         // Check if WBMODE was correctly set
         ParamValue value;
         ASSERT_TRUE(cd.get_setting("CAM_WBMODE", value));
-        EXPECT_EQ(value.get<uint32_t>(), 1);
+        EXPECT_EQ(value.get<int32_t>(), 1);
     }
 
     {
         // Interleave COLORMODE, first check default
         ParamValue value;
         ASSERT_TRUE(cd.get_setting("CAM_COLORMODE", value));
-        EXPECT_EQ(value.get<uint32_t>(), 1);
+        EXPECT_EQ(value.get<int32_t>(), 1);
     }
 
     {
         // Then set COLORMODE to 5
         ParamValue value;
-        value.set<uint32_t>(5);
+        value.set<int32_t>(5);
         ASSERT_TRUE(cd.set_setting("CAM_COLORMODE", value));
     }
 
@@ -155,20 +156,20 @@ TEST(CameraDefinition, E90ChangeSettings)
         // COLORMODE should now be 5
         ParamValue value;
         ASSERT_TRUE(cd.get_setting("CAM_COLORMODE", value));
-        EXPECT_EQ(value.get<uint32_t>(), 5);
+        EXPECT_EQ(value.get<int32_t>(), 5);
     }
 
     {
         // WBMODE should still be 1
         ParamValue value;
         ASSERT_TRUE(cd.get_setting("CAM_WBMODE", value));
-        EXPECT_EQ(value.get<uint32_t>(), 1);
+        EXPECT_EQ(value.get<int32_t>(), 1);
     }
 
     {
         // Change WBMODE to 7
         ParamValue value;
-        value.set<uint32_t>(7);
+        value.set<int32_t>(7);
         ASSERT_TRUE(cd.set_setting("CAM_WBMODE", value));
     }
 
@@ -176,7 +177,7 @@ TEST(CameraDefinition, E90ChangeSettings)
         // And check WBMODE again
         ParamValue value;
         ASSERT_TRUE(cd.get_setting("CAM_WBMODE", value));
-        EXPECT_EQ(value.get<uint32_t>(), 7);
+        EXPECT_EQ(value.get<int32_t>(), 7);
     }
 }
 
@@ -210,7 +211,7 @@ TEST(CameraDefinition, E90ShowOptions)
     {
         // Set exposure mode to manual
         ParamValue value;
-        value.set<uint32_t>(1);
+        value.set<int32_t>(1);
         EXPECT_TRUE(cd.set_setting("CAM_EXPMODE", value));
 
         // Currently not applicable because exposure mode is in Auto.
@@ -229,14 +230,14 @@ TEST(CameraDefinition, E90ShowOptions)
     {
         // Set it to one that is allowed.
         ParamValue value;
-        value.set<uint32_t>(3);
+        value.set<int32_t>(3);
         EXPECT_TRUE(cd.set_setting("CAM_VIDRES", value));
     }
 
     {
         // Now switch to HEVC
         ParamValue value;
-        value.set<uint32_t>(3);
+        value.set<int32_t>(3);
         EXPECT_TRUE(cd.set_setting("CAM_VIDFMT", value));
     }
 
@@ -250,14 +251,14 @@ TEST(CameraDefinition, E90ShowOptions)
     {
         // Then one that is allowed.
         ParamValue value;
-        value.set<uint32_t>(5);
+        value.set<int32_t>(5);
         EXPECT_TRUE(cd.set_setting("CAM_VIDRES", value));
     }
 
     {
         // Back to h.264
         ParamValue value;
-        value.set<uint32_t>(1);
+        value.set<int32_t>(1);
         EXPECT_TRUE(cd.set_setting("CAM_VIDFMT", value));
     }
 
@@ -271,7 +272,7 @@ TEST(CameraDefinition, E90ShowOptions)
     {
         // And 4K 60 Hz is now allowed again.
         ParamValue value;
-        value.set<uint32_t>(0);
+        value.set<int32_t>(0);
         EXPECT_TRUE(cd.set_setting("CAM_VIDRES", value));
     }
 }
@@ -290,7 +291,7 @@ TEST(CameraDefinition, E90SettingsToUpdate)
 
     {
         ParamValue value;
-        value.set<uint32_t>(1);
+        value.set<int32_t>(1);
         EXPECT_TRUE(cd.set_setting("CAM_MODE", value));
     }
 
@@ -329,7 +330,7 @@ TEST(CameraDefinition, E90SettingsCauseUpdates)
 
     {
         ParamValue value;
-        value.set<uint32_t>(0);
+        value.set<int32_t>(0);
         EXPECT_TRUE(cd.set_setting("CAM_MODE", value));
     }
 
@@ -397,11 +398,11 @@ TEST(CameraDefinition, E90OptionValues)
     // Try an invalid shutter speed
     EXPECT_FALSE(cd.get_option_value("CAM_SHUTTERSPD", "100", value2));
 
-    value1.set<uint32_t>(100);
+    value1.set<int32_t>(100);
     EXPECT_TRUE(cd.get_option_value("CAM_ISO", "100", value2));
     EXPECT_TRUE(value1 == value2);
 
-    value1.set<uint32_t>(200);
+    value1.set<int32_t>(200);
     EXPECT_TRUE(cd.get_option_value("CAM_ISO", "200", value2));
     EXPECT_TRUE(value1 == value2);
 
@@ -525,7 +526,7 @@ TEST(CameraDefinition, UVCCheckDefaultSettings)
     EXPECT_TRUE(cd.is_setting_range("BRIGHTNESS"));
     EXPECT_FALSE(cd.is_setting_range("EXP_MODE"));
 
-    EXPECT_EQ(settings["CAM_MODE"].get<uint32_t>(), 1);
+    EXPECT_EQ(settings["CAM_MODE"].get<int32_t>(), 1);
     EXPECT_EQ(settings["BRIGHTNESS"].get<int32_t>(), 128);
     EXPECT_EQ(settings["CONTRAST"].get<int32_t>(), 32);
     EXPECT_EQ(settings["SATURATION"].get<int32_t>(), 32);
@@ -641,4 +642,63 @@ TEST(CameraDefinition, UVCCheckOptionHumanReadable)
 
     EXPECT_TRUE(cd.get_option_str("EXP_PRIORITY", "1", description));
     EXPECT_STREQ(description.c_str(), "ON");
+}
+
+TEST(CameraDefinition, GazeboOperatorStream)
+{
+    CameraDefinition cd;
+    ASSERT_TRUE(cd.load_file("src/mavsdk/plugins/camera/gazebo_camera.xml"));
+
+    cd.assume_default_settings();
+
+    // Test operator<< with different parameter types
+    {
+        ParamValue value;
+        ASSERT_TRUE(cd.get_setting("CAM_MODE", value));
+        std::stringstream ss;
+        ss << value;
+        EXPECT_FLOAT_EQ(std::stof(ss.str()), 1.0f); // Default value is 1
+    }
+
+    {
+        ParamValue value;
+        ASSERT_TRUE(cd.get_setting("CAM_ZOOM", value));
+        std::stringstream ss;
+        ss << value;
+        EXPECT_FLOAT_EQ(std::stof(ss.str()), 1.0f); // Default value is 1
+    }
+
+    {
+        ParamValue value;
+        ASSERT_TRUE(cd.get_setting("CAM_Z2F", value));
+        std::stringstream ss;
+        ss << value;
+        EXPECT_FLOAT_EQ(std::stof(ss.str()), 4.3f); // Default value is 4.3
+    }
+
+    // Test setting and getting values
+    {
+        ParamValue value;
+        value.set<uint32_t>(2);
+        ASSERT_TRUE(cd.set_setting("CAM_ZOOM", value));
+
+        ParamValue retrieved;
+        ASSERT_TRUE(cd.get_setting("CAM_ZOOM", retrieved));
+        std::stringstream ss;
+        ss << retrieved;
+        EXPECT_FLOAT_EQ(std::stof(ss.str()), 2.0f);
+    }
+
+    // Test setting a new value
+    {
+        ParamValue new_value;
+        new_value.set(3);
+        EXPECT_TRUE(cd.set_setting("CAM_ZOOM", new_value));
+
+        ParamValue retrieved;
+        EXPECT_TRUE(cd.get_setting("CAM_ZOOM", retrieved));
+        std::stringstream ss;
+        ss << retrieved;
+        EXPECT_FLOAT_EQ(std::stof(ss.str()), 3.0f);
+    }
 }

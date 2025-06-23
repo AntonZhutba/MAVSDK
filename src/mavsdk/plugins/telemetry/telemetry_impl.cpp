@@ -205,6 +205,10 @@ void TelemetryImpl::disable()
         std::lock_guard<std::mutex> lock(_health_mutex);
         _health.is_home_position_ok = false;
     }
+
+    // FIXME: this is a race condition where request_home_position_again
+    //        could still be executing after we have removed it.
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
 }
 
 void TelemetryImpl::request_home_position_again()
@@ -370,6 +374,12 @@ Telemetry::Result TelemetryImpl::set_rate_altitude(double rate_hz)
         _system_impl->set_msg_rate(MAVLINK_MSG_ID_ALTITUDE, rate_hz));
 }
 
+Telemetry::Result TelemetryImpl::set_rate_health(double rate_hz)
+{
+    return telemetry_result_from_command_result(
+        _system_impl->set_msg_rate(MAVLINK_MSG_ID_SYS_STATUS, rate_hz));
+}
+
 void TelemetryImpl::set_rate_position_velocity_ned_async(
     double rate_hz, Telemetry::ResultCallback callback)
 {
@@ -428,6 +438,16 @@ void TelemetryImpl::set_rate_altitude_async(double rate_hz, Telemetry::ResultCal
 {
     _system_impl->set_msg_rate_async(
         MAVLINK_MSG_ID_ALTITUDE,
+        rate_hz,
+        [callback](MavlinkCommandSender::Result command_result, float) {
+            command_result_callback(command_result, callback);
+        });
+}
+
+void TelemetryImpl::set_rate_health_async(double rate_hz, Telemetry::ResultCallback callback)
+{
+    _system_impl->set_msg_rate_async(
+        MAVLINK_MSG_ID_SYS_STATUS,
         rate_hz,
         [callback](MavlinkCommandSender::Result command_result, float) {
             command_result_callback(command_result, callback);
@@ -1151,7 +1171,30 @@ void TelemetryImpl::process_battery_status(const mavlink_message_t& message)
     new_battery.capacity_consumed_ah = (bat_status.current_consumed == -1) ?
                                            static_cast<float>(NAN) :
                                            bat_status.current_consumed * 1e-3f; // mAh to Ah
+    new_battery.time_remaining_s =
+        (bat_status.time_remaining == 0 ? static_cast<float>(NAN) : bat_status.time_remaining);
 
+    Telemetry::BatteryFunction battery_function;
+    switch (bat_status.battery_function) {
+        case MAV_BATTERY_FUNCTION_ALL:
+            battery_function = Telemetry::BatteryFunction::All;
+            break;
+        case MAV_BATTERY_FUNCTION_PROPULSION:
+            battery_function = Telemetry::BatteryFunction::Propulsion;
+            break;
+        case MAV_BATTERY_FUNCTION_AVIONICS:
+            battery_function = Telemetry::BatteryFunction::Avionics;
+            break;
+        case MAV_BATTERY_FUNCTION_PAYLOAD:
+            battery_function = Telemetry::BatteryFunction::Payload;
+            break;
+        case MAV_BATTERY_FUNCTION_UNKNOWN:
+        // Fallthrough
+        default:
+            battery_function = Telemetry::BatteryFunction::Unknown;
+            break;
+    }
+    new_battery.battery_function = battery_function;
     set_battery(new_battery);
 
     {

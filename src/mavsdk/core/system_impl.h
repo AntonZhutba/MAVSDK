@@ -19,6 +19,7 @@
 #include "timeout_handler.h"
 #include "timesync.h"
 #include "system.h"
+#include "vehicle.h"
 #include <cstdint>
 #include <functional>
 #include <atomic>
@@ -133,6 +134,7 @@ public:
     uint8_t get_own_component_id() const;
     uint8_t get_own_mav_type() const;
     MAV_TYPE get_vehicle_type() const;
+    Vehicle vehicle() const;
 
     bool is_armed() const { return _armed; }
 
@@ -370,7 +372,6 @@ private:
 
     static constexpr double HEARTBEAT_TIMEOUT_S = 3.0;
 
-    std::mutex _connection_mutex{};
     std::atomic<bool> _connected{false};
     CallbackList<bool> _is_connected_callbacks{};
     TimeoutHandler::Cookie _heartbeat_timeout_cookie{};

@@ -112,31 +112,32 @@ public:
     MOCK_CONST_METHOD1(subscribe_wind, Telemetry::WindHandle(Telemetry::WindCallback)) {};
     MOCK_CONST_METHOD1(unsubscribe_wind, void(Telemetry::WindHandle)) {};
 
-    MOCK_METHOD1(set_rate_position, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_home, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_in_air, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_landed_state, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_attitude_quaternion, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_attitude_euler, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_velocity_ned, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_gps_info, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_raw_gps, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_battery, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_rc_status, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_actuator_control_target, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_actuator_output_status, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_odometry, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_distance_sensor, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_scaled_pressure, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_position_velocity_ned, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_ground_truth, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_fixedwing_metrics, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_imu, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_scaled_imu, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_raw_imu, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_unix_epoch_time, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_vtol_state, Telemetry::Result(double)) {};
-    MOCK_METHOD1(set_rate_altitude, Telemetry::Result(double)) {};
+    MOCK_METHOD1(set_rate_position, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_home, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_in_air, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_landed_state, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_attitude_quaternion, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_attitude_euler, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_velocity_ned, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_gps_info, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_raw_gps, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_battery, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_rc_status, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_actuator_control_target, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_actuator_output_status, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_odometry, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_distance_sensor, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_scaled_pressure, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_position_velocity_ned, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_ground_truth, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_fixedwing_metrics, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_imu, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_scaled_imu, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_raw_imu, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_unix_epoch_time, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_vtol_state, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_altitude, Telemetry::Result(double)){};
+    MOCK_METHOD1(set_rate_health, Telemetry::Result(double)){};
 
     MOCK_CONST_METHOD2(set_rate_position_async, void(double, Telemetry::ResultCallback)) {};
     MOCK_CONST_METHOD2(set_rate_home_async, void(double, Telemetry::ResultCallback)) {};
@@ -158,15 +159,16 @@ public:
     MOCK_CONST_METHOD2(
         set_rate_scaled_pressure_async, void(double, Telemetry::ScaledPressureCallback)) {};
     MOCK_CONST_METHOD2(
-        set_rate_position_velocity_ned_async, void(double, Telemetry::ResultCallback)) {};
-    MOCK_CONST_METHOD2(set_rate_ground_truth_async, void(double, Telemetry::ResultCallback)) {};
-    MOCK_CONST_METHOD2(set_rate_fixedwing_metrics_async, void(double, Telemetry::ResultCallback)) {
-    };
-    MOCK_CONST_METHOD2(set_rate_imu_async, void(double, Telemetry::ResultCallback)) {};
-    MOCK_CONST_METHOD2(set_rate_scaled_imu_async, void(double, Telemetry::ResultCallback)) {};
-    MOCK_CONST_METHOD2(set_rate_raw_imu_async, void(double, Telemetry::ResultCallback)) {};
-    MOCK_CONST_METHOD2(set_rate_unix_epoch_time_async, void(double, Telemetry::ResultCallback)) {};
-    MOCK_CONST_METHOD2(set_rate_altitude_async, void(double, Telemetry::ResultCallback)) {};
+        set_rate_position_velocity_ned_async, void(double, Telemetry::ResultCallback)){};
+    MOCK_CONST_METHOD2(set_rate_ground_truth_async, void(double, Telemetry::ResultCallback)){};
+    MOCK_CONST_METHOD2(set_rate_fixedwing_metrics_async, void(double, Telemetry::ResultCallback)){};
+    MOCK_CONST_METHOD2(set_rate_imu_async, void(double, Telemetry::ResultCallback)){};
+    MOCK_CONST_METHOD2(set_rate_scaled_imu_async, void(double, Telemetry::ResultCallback)){};
+    MOCK_CONST_METHOD2(set_rate_raw_imu_async, void(double, Telemetry::ResultCallback)){};
+    MOCK_CONST_METHOD2(set_rate_unix_epoch_time_async, void(double, Telemetry::ResultCallback)){};
+    MOCK_CONST_METHOD2(set_rate_altitude_async, void(double, Telemetry::ResultCallback)){};
+    MOCK_CONST_METHOD2(set_rate_health_async, void(double, Telemetry::ResultCallback)){};
+
     MOCK_METHOD0(
         get_gps_global_origin, std::pair<Telemetry::Result, Telemetry::GpsGlobalOrigin>()) {};
     MOCK_METHOD1(get_gps_global_origin_async, void(Telemetry::GetGpsGlobalOriginCallback)) {};

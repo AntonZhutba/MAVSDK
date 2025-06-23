@@ -14,6 +14,7 @@ configure_file(include/mavsdk/mavlink_include.h.in include/mavsdk/mavlink_includ
 
 target_sources(mavsdk
     PRIVATE
+    autopilot.cpp
     base64.cpp
     call_every_handler.cpp
     connection.cpp
@@ -59,6 +60,7 @@ target_sources(mavsdk
     tcp_server_connection.cpp
     timeout_handler.cpp
     udp_connection.cpp
+    vehicle.cpp
     log.cpp
     cli_arg.cpp
     geometry.cpp
@@ -174,6 +176,7 @@ install(FILES
     include/mavsdk/geometry.h
     include/mavsdk/server_component.h
     include/mavsdk/mavlink_address.h
+    include/mavsdk/vehicle.h
     ${CMAKE_CURRENT_BINARY_DIR}/include/mavsdk/mavlink_include.h
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/mavsdk"
 )

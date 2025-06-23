@@ -294,6 +294,12 @@ extern SetRateGroundTruthRequestDefaultTypeInternal _SetRateGroundTruthRequest_d
 class SetRateGroundTruthResponse;
 struct SetRateGroundTruthResponseDefaultTypeInternal;
 extern SetRateGroundTruthResponseDefaultTypeInternal _SetRateGroundTruthResponse_default_instance_;
+class SetRateHealthRequest;
+struct SetRateHealthRequestDefaultTypeInternal;
+extern SetRateHealthRequestDefaultTypeInternal _SetRateHealthRequest_default_instance_;
+class SetRateHealthResponse;
+struct SetRateHealthResponseDefaultTypeInternal;
+extern SetRateHealthResponseDefaultTypeInternal _SetRateHealthResponse_default_instance_;
 class SetRateHomeRequest;
 struct SetRateHomeRequestDefaultTypeInternal;
 extern SetRateHomeRequestDefaultTypeInternal _SetRateHomeRequest_default_instance_;
@@ -621,6 +627,42 @@ inline bool FixType_Parse(absl::string_view name, FixType* value) {
   return ::google::protobuf::internal::ParseNamedEnum<FixType>(
       FixType_descriptor(), name, value);
 }
+enum BatteryFunction : int {
+  BATTERY_FUNCTION_UNKNOWN = 0,
+  BATTERY_FUNCTION_ALL = 1,
+  BATTERY_FUNCTION_PROPULSION = 2,
+  BATTERY_FUNCTION_AVIONICS = 3,
+  BATTERY_FUNCTION_PAYLOAD = 4,
+  BatteryFunction_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  BatteryFunction_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool BatteryFunction_IsValid(int value);
+extern const uint32_t BatteryFunction_internal_data_[];
+constexpr BatteryFunction BatteryFunction_MIN = static_cast<BatteryFunction>(0);
+constexpr BatteryFunction BatteryFunction_MAX = static_cast<BatteryFunction>(4);
+constexpr int BatteryFunction_ARRAYSIZE = 4 + 1;
+const ::google::protobuf::EnumDescriptor*
+BatteryFunction_descriptor();
+template <typename T>
+const std::string& BatteryFunction_Name(T value) {
+  static_assert(std::is_same<T, BatteryFunction>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to BatteryFunction_Name().");
+  return BatteryFunction_Name(static_cast<BatteryFunction>(value));
+}
+template <>
+inline const std::string& BatteryFunction_Name(BatteryFunction value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<BatteryFunction_descriptor,
+                                                 0, 4>(
+      static_cast<int>(value));
+}
+inline bool BatteryFunction_Parse(absl::string_view name, BatteryFunction* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<BatteryFunction>(
+      BatteryFunction_descriptor(), name, value);
+}
 enum FlightMode : int {
   FLIGHT_MODE_UNKNOWN = 0,
   FLIGHT_MODE_READY = 1,
@@ -843,7 +885,7 @@ class Wind final : public ::google::protobuf::Message
     return reinterpret_cast<const Wind*>(
         &_Wind_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 147;
+  static constexpr int kIndexInFileMessages = 149;
   friend void swap(Wind& a, Wind& b) { a.Swap(&b); }
   inline void Swap(Wind* other) {
     if (other == this) return;
@@ -1307,7 +1349,7 @@ class VelocityNed final : public ::google::protobuf::Message
     return reinterpret_cast<const VelocityNed*>(
         &_VelocityNed_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 137;
+  static constexpr int kIndexInFileMessages = 139;
   friend void swap(VelocityNed& a, VelocityNed& b) { a.Swap(&b); }
   inline void Swap(VelocityNed* other) {
     if (other == this) return;
@@ -1521,7 +1563,7 @@ class VelocityBody final : public ::google::protobuf::Message
     return reinterpret_cast<const VelocityBody*>(
         &_VelocityBody_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 131;
+  static constexpr int kIndexInFileMessages = 133;
   friend void swap(VelocityBody& a, VelocityBody& b) { a.Swap(&b); }
   inline void Swap(VelocityBody* other) {
     if (other == this) return;
@@ -1925,7 +1967,7 @@ class TelemetryResult final : public ::google::protobuf::Message
     return reinterpret_cast<const TelemetryResult*>(
         &_TelemetryResult_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 148;
+  static constexpr int kIndexInFileMessages = 150;
   friend void swap(TelemetryResult& a, TelemetryResult& b) { a.Swap(&b); }
   inline void Swap(TelemetryResult* other) {
     if (other == this) return;
@@ -6943,7 +6985,7 @@ class StatusText final : public ::google::protobuf::Message
     return reinterpret_cast<const StatusText*>(
         &_StatusText_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 127;
+  static constexpr int kIndexInFileMessages = 129;
   friend void swap(StatusText& a, StatusText& b) { a.Swap(&b); }
   inline void Swap(StatusText* other) {
     if (other == this) return;
@@ -9752,7 +9794,199 @@ class SetRateHomeRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
-class SetRateGroundTruthRequest final : public ::google::protobuf::Message
+class SetRateHealthRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.telemetry.SetRateHealthRequest) */ {
+ public:
+  inline SetRateHealthRequest() : SetRateHealthRequest(nullptr) {}
+  ~SetRateHealthRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetRateHealthRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetRateHealthRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetRateHealthRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetRateHealthRequest(const SetRateHealthRequest& from) : SetRateHealthRequest(nullptr, from) {}
+  inline SetRateHealthRequest(SetRateHealthRequest&& from) noexcept
+      : SetRateHealthRequest(nullptr, std::move(from)) {}
+  inline SetRateHealthRequest& operator=(const SetRateHealthRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetRateHealthRequest& operator=(SetRateHealthRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetRateHealthRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetRateHealthRequest* internal_default_instance() {
+    return reinterpret_cast<const SetRateHealthRequest*>(
+        &_SetRateHealthRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 117;
+  friend void swap(SetRateHealthRequest& a, SetRateHealthRequest& b) { a.Swap(&b); }
+  inline void Swap(SetRateHealthRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetRateHealthRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetRateHealthRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetRateHealthRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetRateHealthRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetRateHealthRequest& from) { SetRateHealthRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetRateHealthRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.telemetry.SetRateHealthRequest"; }
+
+ protected:
+  explicit SetRateHealthRequest(::google::protobuf::Arena* arena);
+  SetRateHealthRequest(::google::protobuf::Arena* arena, const SetRateHealthRequest& from);
+  SetRateHealthRequest(::google::protobuf::Arena* arena, SetRateHealthRequest&& from) noexcept
+      : SetRateHealthRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kRateHzFieldNumber = 1,
+  };
+  // double rate_hz = 1;
+  void clear_rate_hz() ;
+  double rate_hz() const;
+  void set_rate_hz(double value);
+
+  private:
+  double _internal_rate_hz() const;
+  void _internal_set_rate_hz(double value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.telemetry.SetRateHealthRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetRateHealthRequest& from_msg);
+    double rate_hz_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_telemetry_2ftelemetry_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetRateGroundTruthRequest final
+    : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.telemetry.SetRateGroundTruthRequest) */ {
  public:
   inline SetRateGroundTruthRequest() : SetRateGroundTruthRequest(nullptr) {}
@@ -11901,7 +12135,7 @@ class ScaledPressure final : public ::google::protobuf::Message
     return reinterpret_cast<const ScaledPressure*>(
         &_ScaledPressure_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 135;
+  static constexpr int kIndexInFileMessages = 137;
   friend void swap(ScaledPressure& a, ScaledPressure& b) { a.Swap(&b); }
   inline void Swap(ScaledPressure* other) {
     if (other == this) return;
@@ -12139,7 +12373,7 @@ class RcStatus final : public ::google::protobuf::Message
     return reinterpret_cast<const RcStatus*>(
         &_RcStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 126;
+  static constexpr int kIndexInFileMessages = 128;
   friend void swap(RcStatus& a, RcStatus& b) { a.Swap(&b); }
   inline void Swap(RcStatus* other) {
     if (other == this) return;
@@ -12353,7 +12587,7 @@ class RawGps final : public ::google::protobuf::Message
     return reinterpret_cast<const RawGps*>(
         &_RawGps_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 123;
+  static constexpr int kIndexInFileMessages = 125;
   friend void swap(RawGps& a, RawGps& b) { a.Swap(&b); }
   inline void Swap(RawGps* other) {
     if (other == this) return;
@@ -12699,7 +12933,7 @@ class Quaternion final : public ::google::protobuf::Message
     return reinterpret_cast<const Quaternion*>(
         &_Quaternion_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 119;
+  static constexpr int kIndexInFileMessages = 121;
   friend void swap(Quaternion& a, Quaternion& b) { a.Swap(&b); }
   inline void Swap(Quaternion* other) {
     if (other == this) return;
@@ -12937,7 +13171,7 @@ class PositionNed final : public ::google::protobuf::Message
     return reinterpret_cast<const PositionNed*>(
         &_PositionNed_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 136;
+  static constexpr int kIndexInFileMessages = 138;
   friend void swap(PositionNed& a, PositionNed& b) { a.Swap(&b); }
   inline void Swap(PositionNed* other) {
     if (other == this) return;
@@ -13151,7 +13385,7 @@ class PositionBody final : public ::google::protobuf::Message
     return reinterpret_cast<const PositionBody*>(
         &_PositionBody_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 132;
+  static constexpr int kIndexInFileMessages = 134;
   friend void swap(PositionBody& a, PositionBody& b) { a.Swap(&b); }
   inline void Swap(PositionBody* other) {
     if (other == this) return;
@@ -13365,7 +13599,7 @@ class Position final : public ::google::protobuf::Message
     return reinterpret_cast<const Position*>(
         &_Position_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 117;
+  static constexpr int kIndexInFileMessages = 119;
   friend void swap(Position& a, Position& b) { a.Swap(&b); }
   inline void Swap(Position* other) {
     if (other == this) return;
@@ -13591,7 +13825,7 @@ class MagneticFieldFrd final : public ::google::protobuf::Message
     return reinterpret_cast<const MagneticFieldFrd*>(
         &_MagneticFieldFrd_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 143;
+  static constexpr int kIndexInFileMessages = 145;
   friend void swap(MagneticFieldFrd& a, MagneticFieldFrd& b) { a.Swap(&b); }
   inline void Swap(MagneticFieldFrd* other) {
     if (other == this) return;
@@ -14375,7 +14609,7 @@ class Health final : public ::google::protobuf::Message
     return reinterpret_cast<const Health*>(
         &_Health_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 125;
+  static constexpr int kIndexInFileMessages = 127;
   friend void swap(Health& a, Health& b) { a.Swap(&b); }
   inline void Swap(Health* other) {
     if (other == this) return;
@@ -14637,7 +14871,7 @@ class Heading final : public ::google::protobuf::Message
     return reinterpret_cast<const Heading*>(
         &_Heading_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 118;
+  static constexpr int kIndexInFileMessages = 120;
   friend void swap(Heading& a, Heading& b) { a.Swap(&b); }
   inline void Swap(Heading* other) {
     if (other == this) return;
@@ -14827,7 +15061,7 @@ class GroundTruth final : public ::google::protobuf::Message
     return reinterpret_cast<const GroundTruth*>(
         &_GroundTruth_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 139;
+  static constexpr int kIndexInFileMessages = 141;
   friend void swap(GroundTruth& a, GroundTruth& b) { a.Swap(&b); }
   inline void Swap(GroundTruth* other) {
     if (other == this) return;
@@ -15041,7 +15275,7 @@ class GpsInfo final : public ::google::protobuf::Message
     return reinterpret_cast<const GpsInfo*>(
         &_GpsInfo_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 122;
+  static constexpr int kIndexInFileMessages = 124;
   friend void swap(GpsInfo& a, GpsInfo& b) { a.Swap(&b); }
   inline void Swap(GpsInfo* other) {
     if (other == this) return;
@@ -15243,7 +15477,7 @@ class GpsGlobalOrigin final : public ::google::protobuf::Message
     return reinterpret_cast<const GpsGlobalOrigin*>(
         &_GpsGlobalOrigin_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 145;
+  static constexpr int kIndexInFileMessages = 147;
   friend void swap(GpsGlobalOrigin& a, GpsGlobalOrigin& b) { a.Swap(&b); }
   inline void Swap(GpsGlobalOrigin* other) {
     if (other == this) return;
@@ -15792,7 +16026,7 @@ class FixedwingMetrics final : public ::google::protobuf::Message
     return reinterpret_cast<const FixedwingMetrics*>(
         &_FixedwingMetrics_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 140;
+  static constexpr int kIndexInFileMessages = 142;
   friend void swap(FixedwingMetrics& a, FixedwingMetrics& b) { a.Swap(&b); }
   inline void Swap(FixedwingMetrics* other) {
     if (other == this) return;
@@ -16042,7 +16276,7 @@ class EulerAngle final : public ::google::protobuf::Message
     return reinterpret_cast<const EulerAngle*>(
         &_EulerAngle_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 120;
+  static constexpr int kIndexInFileMessages = 122;
   friend void swap(EulerAngle& a, EulerAngle& b) { a.Swap(&b); }
   inline void Swap(EulerAngle* other) {
     if (other == this) return;
@@ -16268,7 +16502,7 @@ class Covariance final : public ::google::protobuf::Message
     return reinterpret_cast<const Covariance*>(
         &_Covariance_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 130;
+  static constexpr int kIndexInFileMessages = 132;
   friend void swap(Covariance& a, Covariance& b) { a.Swap(&b); }
   inline void Swap(Covariance* other) {
     if (other == this) return;
@@ -16466,7 +16700,7 @@ class Battery final : public ::google::protobuf::Message
     return reinterpret_cast<const Battery*>(
         &_Battery_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 124;
+  static constexpr int kIndexInFileMessages = 126;
   friend void swap(Battery& a, Battery& b) { a.Swap(&b); }
   inline void Swap(Battery* other) {
     if (other == this) return;
@@ -16559,6 +16793,8 @@ class Battery final : public ::google::protobuf::Message
     kCurrentBatteryAFieldNumber = 4,
     kCapacityConsumedAhFieldNumber = 5,
     kRemainingPercentFieldNumber = 6,
+    kTimeRemainingSFieldNumber = 7,
+    kBatteryFunctionFieldNumber = 8,
   };
   // uint32 id = 1 [(.mavsdk.options.default_value) = "0"];
   void clear_id() ;
@@ -16620,12 +16856,32 @@ class Battery final : public ::google::protobuf::Message
   void _internal_set_remaining_percent(float value);
 
   public:
+  // float time_remaining_s = 7 [(.mavsdk.options.default_value) = "NaN"];
+  void clear_time_remaining_s() ;
+  float time_remaining_s() const;
+  void set_time_remaining_s(float value);
+
+  private:
+  float _internal_time_remaining_s() const;
+  void _internal_set_time_remaining_s(float value);
+
+  public:
+  // .mavsdk.rpc.telemetry.BatteryFunction battery_function = 8;
+  void clear_battery_function() ;
+  ::mavsdk::rpc::telemetry::BatteryFunction battery_function() const;
+  void set_battery_function(::mavsdk::rpc::telemetry::BatteryFunction value);
+
+  private:
+  ::mavsdk::rpc::telemetry::BatteryFunction _internal_battery_function() const;
+  void _internal_set_battery_function(::mavsdk::rpc::telemetry::BatteryFunction value);
+
+  public:
   // @@protoc_insertion_point(class_scope:mavsdk.rpc.telemetry.Battery)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 6, 0,
+      3, 8, 0,
       0, 2>
       _table_;
 
@@ -16649,6 +16905,8 @@ class Battery final : public ::google::protobuf::Message
     float current_battery_a_;
     float capacity_consumed_ah_;
     float remaining_percent_;
+    float time_remaining_s_;
+    int battery_function_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -16906,7 +17164,7 @@ class AngularVelocityFrd final : public ::google::protobuf::Message
     return reinterpret_cast<const AngularVelocityFrd*>(
         &_AngularVelocityFrd_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 142;
+  static constexpr int kIndexInFileMessages = 144;
   friend void swap(AngularVelocityFrd& a, AngularVelocityFrd& b) { a.Swap(&b); }
   inline void Swap(AngularVelocityFrd* other) {
     if (other == this) return;
@@ -17120,7 +17378,7 @@ class AngularVelocityBody final : public ::google::protobuf::Message
     return reinterpret_cast<const AngularVelocityBody*>(
         &_AngularVelocityBody_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 121;
+  static constexpr int kIndexInFileMessages = 123;
   friend void swap(AngularVelocityBody& a, AngularVelocityBody& b) { a.Swap(&b); }
   inline void Swap(AngularVelocityBody* other) {
     if (other == this) return;
@@ -17334,7 +17592,7 @@ class Altitude final : public ::google::protobuf::Message
     return reinterpret_cast<const Altitude*>(
         &_Altitude_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 146;
+  static constexpr int kIndexInFileMessages = 148;
   friend void swap(Altitude& a, Altitude& b) { a.Swap(&b); }
   inline void Swap(Altitude* other) {
     if (other == this) return;
@@ -17584,7 +17842,7 @@ class ActuatorOutputStatus final : public ::google::protobuf::Message
     return reinterpret_cast<const ActuatorOutputStatus*>(
         &_ActuatorOutputStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 129;
+  static constexpr int kIndexInFileMessages = 131;
   friend void swap(ActuatorOutputStatus& a, ActuatorOutputStatus& b) { a.Swap(&b); }
   inline void Swap(ActuatorOutputStatus* other) {
     if (other == this) return;
@@ -17794,7 +18052,7 @@ class ActuatorControlTarget final : public ::google::protobuf::Message
     return reinterpret_cast<const ActuatorControlTarget*>(
         &_ActuatorControlTarget_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 128;
+  static constexpr int kIndexInFileMessages = 130;
   friend void swap(ActuatorControlTarget& a, ActuatorControlTarget& b) { a.Swap(&b); }
   inline void Swap(ActuatorControlTarget* other) {
     if (other == this) return;
@@ -18004,7 +18262,7 @@ class AccelerationFrd final : public ::google::protobuf::Message
     return reinterpret_cast<const AccelerationFrd*>(
         &_AccelerationFrd_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 141;
+  static constexpr int kIndexInFileMessages = 143;
   friend void swap(AccelerationFrd& a, AccelerationFrd& b) { a.Swap(&b); }
   inline void Swap(AccelerationFrd* other) {
     if (other == this) return;
@@ -21295,7 +21553,205 @@ class SetRateHomeResponse final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
-class SetRateGroundTruthResponse final : public ::google::protobuf::Message
+class SetRateHealthResponse final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.telemetry.SetRateHealthResponse) */ {
+ public:
+  inline SetRateHealthResponse() : SetRateHealthResponse(nullptr) {}
+  ~SetRateHealthResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetRateHealthResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetRateHealthResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetRateHealthResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetRateHealthResponse(const SetRateHealthResponse& from) : SetRateHealthResponse(nullptr, from) {}
+  inline SetRateHealthResponse(SetRateHealthResponse&& from) noexcept
+      : SetRateHealthResponse(nullptr, std::move(from)) {}
+  inline SetRateHealthResponse& operator=(const SetRateHealthResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetRateHealthResponse& operator=(SetRateHealthResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetRateHealthResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetRateHealthResponse* internal_default_instance() {
+    return reinterpret_cast<const SetRateHealthResponse*>(
+        &_SetRateHealthResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 118;
+  friend void swap(SetRateHealthResponse& a, SetRateHealthResponse& b) { a.Swap(&b); }
+  inline void Swap(SetRateHealthResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetRateHealthResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetRateHealthResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetRateHealthResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetRateHealthResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetRateHealthResponse& from) { SetRateHealthResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetRateHealthResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.telemetry.SetRateHealthResponse"; }
+
+ protected:
+  explicit SetRateHealthResponse(::google::protobuf::Arena* arena);
+  SetRateHealthResponse(::google::protobuf::Arena* arena, const SetRateHealthResponse& from);
+  SetRateHealthResponse(::google::protobuf::Arena* arena, SetRateHealthResponse&& from) noexcept
+      : SetRateHealthResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kTelemetryResultFieldNumber = 1,
+  };
+  // .mavsdk.rpc.telemetry.TelemetryResult telemetry_result = 1;
+  bool has_telemetry_result() const;
+  void clear_telemetry_result() ;
+  const ::mavsdk::rpc::telemetry::TelemetryResult& telemetry_result() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::telemetry::TelemetryResult* release_telemetry_result();
+  ::mavsdk::rpc::telemetry::TelemetryResult* mutable_telemetry_result();
+  void set_allocated_telemetry_result(::mavsdk::rpc::telemetry::TelemetryResult* value);
+  void unsafe_arena_set_allocated_telemetry_result(::mavsdk::rpc::telemetry::TelemetryResult* value);
+  ::mavsdk::rpc::telemetry::TelemetryResult* unsafe_arena_release_telemetry_result();
+
+  private:
+  const ::mavsdk::rpc::telemetry::TelemetryResult& _internal_telemetry_result() const;
+  ::mavsdk::rpc::telemetry::TelemetryResult* _internal_mutable_telemetry_result();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.telemetry.SetRateHealthResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetRateHealthResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::telemetry::TelemetryResult* telemetry_result_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_telemetry_2ftelemetry_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetRateGroundTruthResponse final
+    : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.telemetry.SetRateGroundTruthResponse) */ {
  public:
   inline SetRateGroundTruthResponse() : SetRateGroundTruthResponse(nullptr) {}
@@ -24098,7 +24554,7 @@ class PositionVelocityNed final : public ::google::protobuf::Message
     return reinterpret_cast<const PositionVelocityNed*>(
         &_PositionVelocityNed_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 138;
+  static constexpr int kIndexInFileMessages = 140;
   friend void swap(PositionVelocityNed& a, PositionVelocityNed& b) { a.Swap(&b); }
   inline void Swap(PositionVelocityNed* other) {
     if (other == this) return;
@@ -24507,7 +24963,7 @@ class Odometry final : public ::google::protobuf::Message
     return reinterpret_cast<const Odometry*>(
         &_Odometry_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 133;
+  static constexpr int kIndexInFileMessages = 135;
   friend void swap(Odometry& a, Odometry& b) { a.Swap(&b); }
   inline void Swap(Odometry* other) {
     if (other == this) return;
@@ -24845,7 +25301,7 @@ class Imu final : public ::google::protobuf::Message
     return reinterpret_cast<const Imu*>(
         &_Imu_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 144;
+  static constexpr int kIndexInFileMessages = 146;
   friend void swap(Imu& a, Imu& b) { a.Swap(&b); }
   inline void Swap(Imu* other) {
     if (other == this) return;
@@ -26488,7 +26944,7 @@ class DistanceSensor final : public ::google::protobuf::Message
     return reinterpret_cast<const DistanceSensor*>(
         &_DistanceSensor_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 134;
+  static constexpr int kIndexInFileMessages = 136;
   friend void swap(DistanceSensor& a, DistanceSensor& b) { a.Swap(&b); }
   inline void Swap(DistanceSensor* other) {
     if (other == this) return;
@@ -35386,6 +35842,132 @@ inline void SetRateAltitudeResponse::set_allocated_telemetry_result(::mavsdk::rp
 
 // -------------------------------------------------------------------
 
+// SetRateHealthRequest
+
+// double rate_hz = 1;
+inline void SetRateHealthRequest::clear_rate_hz() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.rate_hz_ = 0;
+}
+inline double SetRateHealthRequest::rate_hz() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.telemetry.SetRateHealthRequest.rate_hz)
+  return _internal_rate_hz();
+}
+inline void SetRateHealthRequest::set_rate_hz(double value) {
+  _internal_set_rate_hz(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.telemetry.SetRateHealthRequest.rate_hz)
+}
+inline double SetRateHealthRequest::_internal_rate_hz() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.rate_hz_;
+}
+inline void SetRateHealthRequest::_internal_set_rate_hz(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.rate_hz_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SetRateHealthResponse
+
+// .mavsdk.rpc.telemetry.TelemetryResult telemetry_result = 1;
+inline bool SetRateHealthResponse::has_telemetry_result() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.telemetry_result_ != nullptr);
+  return value;
+}
+inline void SetRateHealthResponse::clear_telemetry_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.telemetry_result_ != nullptr) _impl_.telemetry_result_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::telemetry::TelemetryResult& SetRateHealthResponse::_internal_telemetry_result() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::telemetry::TelemetryResult* p = _impl_.telemetry_result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::telemetry::TelemetryResult&>(::mavsdk::rpc::telemetry::_TelemetryResult_default_instance_);
+}
+inline const ::mavsdk::rpc::telemetry::TelemetryResult& SetRateHealthResponse::telemetry_result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.telemetry.SetRateHealthResponse.telemetry_result)
+  return _internal_telemetry_result();
+}
+inline void SetRateHealthResponse::unsafe_arena_set_allocated_telemetry_result(::mavsdk::rpc::telemetry::TelemetryResult* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.telemetry_result_);
+  }
+  _impl_.telemetry_result_ = reinterpret_cast<::mavsdk::rpc::telemetry::TelemetryResult*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.telemetry.SetRateHealthResponse.telemetry_result)
+}
+inline ::mavsdk::rpc::telemetry::TelemetryResult* SetRateHealthResponse::release_telemetry_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::telemetry::TelemetryResult* released = _impl_.telemetry_result_;
+  _impl_.telemetry_result_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::telemetry::TelemetryResult* SetRateHealthResponse::unsafe_arena_release_telemetry_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.telemetry.SetRateHealthResponse.telemetry_result)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::telemetry::TelemetryResult* temp = _impl_.telemetry_result_;
+  _impl_.telemetry_result_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::telemetry::TelemetryResult* SetRateHealthResponse::_internal_mutable_telemetry_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.telemetry_result_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::telemetry::TelemetryResult>(GetArena());
+    _impl_.telemetry_result_ = reinterpret_cast<::mavsdk::rpc::telemetry::TelemetryResult*>(p);
+  }
+  return _impl_.telemetry_result_;
+}
+inline ::mavsdk::rpc::telemetry::TelemetryResult* SetRateHealthResponse::mutable_telemetry_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::telemetry::TelemetryResult* _msg = _internal_mutable_telemetry_result();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.telemetry.SetRateHealthResponse.telemetry_result)
+  return _msg;
+}
+inline void SetRateHealthResponse::set_allocated_telemetry_result(::mavsdk::rpc::telemetry::TelemetryResult* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.telemetry_result_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.telemetry_result_ = reinterpret_cast<::mavsdk::rpc::telemetry::TelemetryResult*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.telemetry.SetRateHealthResponse.telemetry_result)
+}
+
+// -------------------------------------------------------------------
+
 // Position
 
 // double latitude_deg = 1 [(.mavsdk.options.default_value) = "NaN"];
@@ -36272,6 +36854,50 @@ inline float Battery::_internal_remaining_percent() const {
 inline void Battery::_internal_set_remaining_percent(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.remaining_percent_ = value;
+}
+
+// float time_remaining_s = 7 [(.mavsdk.options.default_value) = "NaN"];
+inline void Battery::clear_time_remaining_s() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.time_remaining_s_ = 0;
+}
+inline float Battery::time_remaining_s() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.telemetry.Battery.time_remaining_s)
+  return _internal_time_remaining_s();
+}
+inline void Battery::set_time_remaining_s(float value) {
+  _internal_set_time_remaining_s(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.telemetry.Battery.time_remaining_s)
+}
+inline float Battery::_internal_time_remaining_s() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.time_remaining_s_;
+}
+inline void Battery::_internal_set_time_remaining_s(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.time_remaining_s_ = value;
+}
+
+// .mavsdk.rpc.telemetry.BatteryFunction battery_function = 8;
+inline void Battery::clear_battery_function() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.battery_function_ = 0;
+}
+inline ::mavsdk::rpc::telemetry::BatteryFunction Battery::battery_function() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.telemetry.Battery.battery_function)
+  return _internal_battery_function();
+}
+inline void Battery::set_battery_function(::mavsdk::rpc::telemetry::BatteryFunction value) {
+  _internal_set_battery_function(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.telemetry.Battery.battery_function)
+}
+inline ::mavsdk::rpc::telemetry::BatteryFunction Battery::_internal_battery_function() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::mavsdk::rpc::telemetry::BatteryFunction>(_impl_.battery_function_);
+}
+inline void Battery::_internal_set_battery_function(::mavsdk::rpc::telemetry::BatteryFunction value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.battery_function_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -39411,6 +40037,12 @@ struct is_proto_enum<::mavsdk::rpc::telemetry::FixType> : std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor<::mavsdk::rpc::telemetry::FixType>() {
   return ::mavsdk::rpc::telemetry::FixType_descriptor();
+}
+template <>
+struct is_proto_enum<::mavsdk::rpc::telemetry::BatteryFunction> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::mavsdk::rpc::telemetry::BatteryFunction>() {
+  return ::mavsdk::rpc::telemetry::BatteryFunction_descriptor();
 }
 template <>
 struct is_proto_enum<::mavsdk::rpc::telemetry::FlightMode> : std::true_type {};

@@ -89,6 +89,48 @@ public:
         }
     }
 
+    static rpc::telemetry::BatteryFunction
+    translateToRpcBatteryFunction(const mavsdk::Telemetry::BatteryFunction& battery_function)
+    {
+        switch (battery_function) {
+            default:
+                LogErr() << "Unknown battery_function enum value: "
+                         << static_cast<int>(battery_function);
+            // FALLTHROUGH
+            case mavsdk::Telemetry::BatteryFunction::Unknown:
+                return rpc::telemetry::BATTERY_FUNCTION_UNKNOWN;
+            case mavsdk::Telemetry::BatteryFunction::All:
+                return rpc::telemetry::BATTERY_FUNCTION_ALL;
+            case mavsdk::Telemetry::BatteryFunction::Propulsion:
+                return rpc::telemetry::BATTERY_FUNCTION_PROPULSION;
+            case mavsdk::Telemetry::BatteryFunction::Avionics:
+                return rpc::telemetry::BATTERY_FUNCTION_AVIONICS;
+            case mavsdk::Telemetry::BatteryFunction::Payload:
+                return rpc::telemetry::BATTERY_FUNCTION_PAYLOAD;
+        }
+    }
+
+    static mavsdk::Telemetry::BatteryFunction
+    translateFromRpcBatteryFunction(const rpc::telemetry::BatteryFunction battery_function)
+    {
+        switch (battery_function) {
+            default:
+                LogErr() << "Unknown battery_function enum value: "
+                         << static_cast<int>(battery_function);
+            // FALLTHROUGH
+            case rpc::telemetry::BATTERY_FUNCTION_UNKNOWN:
+                return mavsdk::Telemetry::BatteryFunction::Unknown;
+            case rpc::telemetry::BATTERY_FUNCTION_ALL:
+                return mavsdk::Telemetry::BatteryFunction::All;
+            case rpc::telemetry::BATTERY_FUNCTION_PROPULSION:
+                return mavsdk::Telemetry::BatteryFunction::Propulsion;
+            case rpc::telemetry::BATTERY_FUNCTION_AVIONICS:
+                return mavsdk::Telemetry::BatteryFunction::Avionics;
+            case rpc::telemetry::BATTERY_FUNCTION_PAYLOAD:
+                return mavsdk::Telemetry::BatteryFunction::Payload;
+        }
+    }
+
     static rpc::telemetry::FlightMode
     translateToRpcFlightMode(const mavsdk::Telemetry::FlightMode& flight_mode)
     {
@@ -563,6 +605,10 @@ public:
 
         rpc_obj->set_remaining_percent(battery.remaining_percent);
 
+        rpc_obj->set_time_remaining_s(battery.time_remaining_s);
+
+        rpc_obj->set_battery_function(translateToRpcBatteryFunction(battery.battery_function));
+
         return rpc_obj;
     }
 
@@ -582,6 +628,10 @@ public:
         obj.capacity_consumed_ah = battery.capacity_consumed_ah();
 
         obj.remaining_percent = battery.remaining_percent();
+
+        obj.time_remaining_s = battery.time_remaining_s();
+
+        obj.battery_function = translateFromRpcBatteryFunction(battery.battery_function());
 
         return obj;
     }
@@ -3424,6 +3474,34 @@ public:
         }
 
         auto result = _lazy_plugin.maybe_plugin()->set_rate_altitude(request->rate_hz());
+
+        if (response != nullptr) {
+            fillResponseWithResult(response, result);
+        }
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SetRateHealth(
+        grpc::ServerContext* /* context */,
+        const rpc::telemetry::SetRateHealthRequest* request,
+        rpc::telemetry::SetRateHealthResponse* response) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            if (response != nullptr) {
+                auto result = mavsdk::Telemetry::Result::NoSystem;
+                fillResponseWithResult(response, result);
+            }
+
+            return grpc::Status::OK;
+        }
+
+        if (request == nullptr) {
+            LogWarn() << "SetRateHealth sent with a null request! Ignoring...";
+            return grpc::Status::OK;
+        }
+
+        auto result = _lazy_plugin.maybe_plugin()->set_rate_health(request->rate_hz());
 
         if (response != nullptr) {
             fillResponseWithResult(response, result);

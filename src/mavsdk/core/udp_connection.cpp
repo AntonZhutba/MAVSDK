@@ -11,6 +11,7 @@
 #else
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <sys/time.h>
 #include <arpa/inet.h>
 #include <errno.h>
 #endif
@@ -89,6 +90,19 @@ ConnectionResult UdpConnection::setup_port()
         return ConnectionResult::BindError;
     }
 
+    // Set receive timeout cross-platform
+    const unsigned timeout_ms = 500;
+
+#if defined(WINDOWS)
+    setsockopt(
+        _socket_fd.get(), SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout_ms, sizeof(timeout_ms));
+#else
+    struct timeval tv;
+    tv.tv_sec = 0;
+    tv.tv_usec = timeout_ms * 1000;
+    setsockopt(_socket_fd.get(), SOL_SOCKET, SO_RCVTIMEO, (const void*)&tv, sizeof(tv));
+#endif
+
     return ConnectionResult::Success;
 }
 
@@ -101,12 +115,12 @@ ConnectionResult UdpConnection::stop()
 {
     _should_exit = true;
 
-    _socket_fd.close();
-
     if (_recv_thread) {
         _recv_thread->join();
         _recv_thread.reset();
     }
+
+    _socket_fd.close();
 
     // We need to stop this after stopping the receive thread, otherwise
     // it can happen that we interfere with the parsing of a message.
@@ -120,6 +134,29 @@ std::pair<bool, std::string> UdpConnection::send_message(const mavlink_message_t
     std::pair<bool, std::string> result;
 
     std::lock_guard<std::mutex> lock(_remote_mutex);
+
+    // Remove inactive remotes before sending messages
+    auto now = std::chrono::steady_clock::now();
+
+    _remotes.erase(
+        std::remove_if(
+            _remotes.begin(),
+            _remotes.end(),
+            [&now, this](const Remote& remote) {
+                const auto elapsed = now - remote.last_activity;
+                const bool inactive = elapsed > REMOTE_TIMEOUT;
+
+                const bool should_remove = inactive && remote.remote_option == RemoteOption::Found;
+
+                // We can cleanup old/previous remotes if we have
+                if (should_remove) {
+                    LogInfo() << "Removing inactive remote: " << remote.ip << ":"
+                              << remote.port_number;
+                }
+
+                return should_remove;
+            }),
+        _remotes.end());
 
     if (_remotes.size() == 0) {
         result.first = false;
@@ -181,18 +218,23 @@ std::pair<bool, std::string> UdpConnection::send_message(const mavlink_message_t
     return result;
 }
 
-void UdpConnection::add_remote(const std::string& remote_ip, const int remote_port)
+void UdpConnection::add_remote_to_keep(const std::string& remote_ip, const int remote_port)
 {
-    add_remote_with_remote_sysid(remote_ip, remote_port, 0);
+    add_remote_impl(remote_ip, remote_port, 0, RemoteOption::Fixed);
 }
 
-void UdpConnection::add_remote_with_remote_sysid(
-    const std::string& remote_ip, const int remote_port, const uint8_t remote_sysid)
+void UdpConnection::add_remote_impl(
+    const std::string& remote_ip,
+    const int remote_port,
+    const uint8_t remote_sysid,
+    RemoteOption remote_option)
 {
     std::lock_guard<std::mutex> lock(_remote_mutex);
     Remote new_remote;
     new_remote.ip = remote_ip;
     new_remote.port_number = remote_port;
+    new_remote.last_activity = std::chrono::steady_clock::now();
+    new_remote.remote_option = remote_option;
 
     auto existing_remote =
         std::find_if(_remotes.begin(), _remotes.end(), [&new_remote](Remote& remote) {
@@ -207,6 +249,9 @@ void UdpConnection::add_remote_with_remote_sysid(
                       << " (with system ID: " << static_cast<int>(remote_sysid) << ")";
         }
         _remotes.push_back(new_remote);
+    } else {
+        // Update the timestamp for the existing remote
+        existing_remote->last_activity = std::chrono::steady_clock::now();
     }
 }
 
@@ -248,7 +293,7 @@ void UdpConnection::receive()
             if (sysid != 0) {
                 char ip_str[INET_ADDRSTRLEN];
                 if (inet_ntop(AF_INET, &src_addr.sin_addr, ip_str, INET_ADDRSTRLEN) != nullptr) {
-                    add_remote_with_remote_sysid(ip_str, ntohs(src_addr.sin_port), sysid);
+                    add_remote_impl(ip_str, ntohs(src_addr.sin_port), sysid, RemoteOption::Found);
                 } else {
                     LogErr() << "inet_ntop failure for: " << strerror(errno);
                 }

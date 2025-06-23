@@ -1,5 +1,6 @@
 #include "timeout_handler.h"
 #include <algorithm>
+#include <vector>
 
 namespace mavsdk {
 
@@ -7,7 +8,7 @@ TimeoutHandler::TimeoutHandler(Time& time) : _time(time) {}
 
 TimeoutHandler::Cookie TimeoutHandler::add(std::function<void()> callback, double duration_s)
 {
-    std::lock_guard<std::mutex> lock(_timeouts_mutex);
+    std::lock_guard<std::recursive_mutex> lock(_timeouts_mutex);
     auto new_timeout = Timeout{};
     new_timeout.callback = std::move(callback);
     new_timeout.time = _time.steady_time_in_future(duration_s);
@@ -15,14 +16,12 @@ TimeoutHandler::Cookie TimeoutHandler::add(std::function<void()> callback, doubl
     new_timeout.cookie = _next_cookie++;
     _timeouts.push_back(new_timeout);
 
-    _iterator_invalidated = true;
-
     return new_timeout.cookie;
 }
 
 void TimeoutHandler::refresh(Cookie cookie)
 {
-    std::lock_guard<std::mutex> lock(_timeouts_mutex);
+    std::lock_guard<std::recursive_mutex> lock(_timeouts_mutex);
 
     auto it = std::find_if(_timeouts.begin(), _timeouts.end(), [&](const Timeout& timeout) {
         return timeout.cookie == cookie;
@@ -35,7 +34,7 @@ void TimeoutHandler::refresh(Cookie cookie)
 
 void TimeoutHandler::remove(Cookie cookie)
 {
-    std::lock_guard<std::mutex> lock(_timeouts_mutex);
+    std::lock_guard<std::recursive_mutex> lock(_timeouts_mutex);
 
     auto it = std::find_if(_timeouts.begin(), _timeouts.end(), [&](auto& timeout) {
         return timeout.cookie == cookie;
@@ -43,40 +42,46 @@ void TimeoutHandler::remove(Cookie cookie)
 
     if (it != _timeouts.end()) {
         _timeouts.erase(it);
-        _iterator_invalidated = true;
     }
 }
 
 void TimeoutHandler::run_once()
 {
-    std::unique_lock<std::mutex> lock(_timeouts_mutex);
+    // First, identify all timeouts that need to be executed and remove them
+    // while holding the lock
+    std::vector<std::function<void()>> callbacks_to_execute;
 
-    auto now = _time.steady_time();
+    {
+        std::lock_guard<std::recursive_mutex> lock(_timeouts_mutex);
+        auto now = _time.steady_time();
 
-    for (auto it = _timeouts.begin(); it != _timeouts.end(); /* no ++it */) {
-        // If time is passed, call timeout callback.
-        if (it->time < now) {
-            // Get a copy for the callback because we will remove it.
-            auto callback = it->callback;
+        // Identify timeouts that need to be executed
+        std::vector<Cookie> cookies_to_remove;
 
-            // Self-destruct before calling to avoid locking issues.
-            it = _timeouts.erase(it);
-
-            if (callback) {
-                // Unlock while we call back because it might in turn want to add timeouts.
-                lock.unlock();
-                callback();
-                lock.lock();
-
-                // We start over if anyone has messed with this while we called the callback.
-                if (_iterator_invalidated) {
-                    _iterator_invalidated = false;
-                    it = _timeouts.begin();
+        for (const auto& timeout : _timeouts) {
+            if (timeout.time < now) {
+                if (timeout.callback) {
+                    callbacks_to_execute.push_back(timeout.callback);
                 }
+                cookies_to_remove.push_back(timeout.cookie);
             }
-        } else {
-            ++it;
         }
+
+        // Remove all timeouts that need to be executed
+        for (const auto& cookie : cookies_to_remove) {
+            auto it = std::find_if(_timeouts.begin(), _timeouts.end(), [&](auto& timeout) {
+                return timeout.cookie == cookie;
+            });
+
+            if (it != _timeouts.end()) {
+                _timeouts.erase(it);
+            }
+        }
+    }
+
+    // Now execute all callbacks outside the lock to prevent lock-order inversions
+    for (const auto& callback : callbacks_to_execute) {
+        callback();
     }
 }
 

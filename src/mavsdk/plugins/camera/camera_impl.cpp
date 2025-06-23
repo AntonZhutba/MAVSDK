@@ -1,20 +1,25 @@
 #include "camera_impl.h"
 #include "camera_definition.h"
 #include "system.h"
-#include "http_loader.h"
 #include "unused.h"
 #include "callback_list.tpp"
 #include "fs_utils.h"
 #include "string_utils.h"
 #include "math_utils.h"
 
+#if BUILD_WITHOUT_CURL != 1
+#include "http_loader.h"
+#endif
+
 #include <algorithm>
 #include <cassert>
 #include <cmath>
+#include <chrono>
 #include <iterator>
 #include <filesystem>
 #include <functional>
 #include <string>
+#include <thread>
 
 namespace mavsdk {
 
@@ -121,11 +126,16 @@ void CameraImpl::deinit()
 
     _system_impl->cancel_all_param(this);
 
-    std::lock_guard lock(_mutex);
     _system_impl->remove_call_every(_request_missing_capture_info_cookie);
     _system_impl->remove_call_every(_request_slower_call_every_cookie);
     _system_impl->remove_call_every(_request_faster_call_every_cookie);
 
+    // FIXME: There is a race condition here.
+    // We need to wait until all call every calls are done before we go
+    // out of scope.
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    std::lock_guard lock(_mutex);
     _storage_subscription_callbacks.clear();
     _mode_subscription_callbacks.clear();
     _capture_info_callbacks.clear();
@@ -1307,7 +1317,7 @@ void CameraImpl::check_camera_definition_with_lock(PotentialCamera& potential_ca
         } else if (starts_with(url, "http://") || starts_with(url, "https://")) {
 #if BUILD_WITHOUT_CURL == 1
             potential_camera.camera_definition_result = Camera::Result::ProtocolUnsupported;
-            notify_camera_list();
+            notify_camera_list_with_lock();
 #else
             if (_http_loader == nullptr) {
                 _http_loader = std::make_unique<HttpLoader>();
@@ -2533,7 +2543,7 @@ CameraImpl::PotentialCamera* CameraImpl::maybe_potential_camera_for_component_id
 
     const auto it = std::find_if(
         _potential_cameras.begin(), _potential_cameras.end(), [&](auto& potential_camera) {
-            return potential_camera.component_id = component_id;
+            return potential_camera.component_id == component_id;
         });
 
     if (it == _potential_cameras.end()) {

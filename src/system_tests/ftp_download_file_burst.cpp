@@ -1,5 +1,6 @@
 #include "log.h"
 #include "mavsdk.h"
+#include <atomic>
 #include <filesystem>
 #include <gtest/gtest.h>
 #include <chrono>
@@ -124,18 +125,21 @@ TEST(SystemTest, FtpDownloadBurstBigFile)
 
     auto ftp = Ftp{system};
 
+    unsigned slow_down_counter = 0;
     auto prom = std::promise<Ftp::Result>();
     auto fut = prom.get_future();
     ftp.download_async(
         temp_file.string(),
         temp_dir_downloaded.string(),
         true,
-        [&prom](Ftp::Result result, Ftp::ProgressData progress_data) {
+        [&prom, &slow_down_counter](Ftp::Result result, Ftp::ProgressData progress_data) {
             if (result != Ftp::Result::Next) {
                 prom.set_value(result);
             } else {
-                LogDebug() << "Download progress: " << progress_data.bytes_transferred << "/"
-                           << progress_data.total_bytes << " bytes";
+                if (slow_down_counter++ % 10 == 0) {
+                    LogDebug() << "Download progress: " << progress_data.bytes_transferred << "/"
+                               << progress_data.total_bytes << " bytes";
+                }
             }
         });
 
@@ -160,7 +164,7 @@ TEST(SystemTest, FtpDownloadBurstBigFileLossy)
     Mavsdk mavsdk_autopilot{Mavsdk::Configuration{ComponentType::Autopilot}};
     mavsdk_autopilot.set_timeout_s(reduced_timeout_s);
 
-    unsigned counter = 0;
+    std::atomic<unsigned> counter = 0;
     auto drop_some = [&counter](mavlink_message_t&) { return counter++ % 5; };
 
     mavsdk_groundstation.intercept_incoming_messages_async(drop_some);
@@ -184,18 +188,21 @@ TEST(SystemTest, FtpDownloadBurstBigFileLossy)
 
     auto ftp = Ftp{system};
 
+    unsigned slow_down_counter = 0;
     auto prom = std::promise<Ftp::Result>();
     auto fut = prom.get_future();
     ftp.download_async(
         ("" / temp_file).string(),
         temp_dir_downloaded.string(),
         true,
-        [&prom](Ftp::Result result, Ftp::ProgressData progress_data) {
+        [&prom, &slow_down_counter](Ftp::Result result, Ftp::ProgressData progress_data) {
             if (result != Ftp::Result::Next) {
                 prom.set_value(result);
             } else {
-                LogDebug() << "Download progress: " << progress_data.bytes_transferred << "/"
-                           << progress_data.total_bytes << " bytes";
+                if (slow_down_counter++ % 10 == 0) {
+                    LogDebug() << "Download progress: " << progress_data.bytes_transferred << "/"
+                               << progress_data.total_bytes << " bytes";
+                }
             }
         });
 
