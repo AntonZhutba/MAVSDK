@@ -45,11 +45,12 @@ docker-build:
         image: "mavsdk-dockcross-linux-arm64-lts-custom"
   script:
     - echo "Using docker tag: $docker_tag"
-    - >
+    - |
       TAGS="docker.io/mavsdk/${image}:$docker_tag"
       if [ -n "$extra_tag" ] && [ "$CI_PIPELINE_SOURCE" != "merge_request_event" ]; then
         TAGS="$TAGS,docker.io/mavsdk/${extra_tag}:$docker_tag"
       fi
+      echo "TAGS=$TAGS"
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
     - echo "Building and pushing image: $TAGS"
     - docker buildx create --use
