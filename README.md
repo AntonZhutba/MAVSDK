@@ -1,8 +1,5 @@
 <img alt="MAVSDK" src="docs/assets/site/sdk_logo_full.png" width="400">
 
-[![Build and Test](https://github.com/mavlink/MAVSDK/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/mavlink/MAVSDK/actions/workflows/main.yml)
-[![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=main)](https://coveralls.io/github/mavlink/MAVSDK?branch=main)
-
 ## Description
 
 [MAVSDK](https://mavsdk.mavlink.io/main/en/) is a set of libraries providing a high-level API to [MAVLink](https://mavlink.io/en/).
