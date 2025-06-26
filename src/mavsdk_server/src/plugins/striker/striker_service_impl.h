@@ -70,6 +70,30 @@ public:
         return obj;
     }
 
+    static std::unique_ptr<rpc::striker::CaaConfidenceLevel> translateToRpcCaaConfidenceLevel(
+        const mavsdk::Striker::CaaConfidenceLevel& caa_confidence_level)
+    {
+        auto rpc_obj = std::make_unique<rpc::striker::CaaConfidenceLevel>();
+
+        rpc_obj->set_time_usec(caa_confidence_level.time_usec);
+
+        rpc_obj->set_confidence_level(caa_confidence_level.confidence_level);
+
+        return rpc_obj;
+    }
+
+    static mavsdk::Striker::CaaConfidenceLevel
+    translateFromRpcCaaConfidenceLevel(const rpc::striker::CaaConfidenceLevel& caa_confidence_level)
+    {
+        mavsdk::Striker::CaaConfidenceLevel obj;
+
+        obj.time_usec = caa_confidence_level.time_usec();
+
+        obj.confidence_level = caa_confidence_level.confidence_level();
+
+        return obj;
+    }
+
     static std::unique_ptr<rpc::striker::Heartbeat>
     translateToRpcHeartbeat(const mavsdk::Striker::Heartbeat& heartbeat)
     {
@@ -850,6 +874,77 @@ public:
         }
 
         auto result = _lazy_plugin.maybe_plugin()->request_available_modes();
+
+        if (response != nullptr) {
+            fillResponseWithResult(response, result);
+        }
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SubscribeCaaConfidenceLevel(
+        grpc::ServerContext* /* context */,
+        const mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* /* request */,
+        grpc::ServerWriter<rpc::striker::CaaConfidenceLevelResponse>* writer) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            return grpc::Status::OK;
+        }
+
+        auto stream_closed_promise = std::make_shared<std::promise<void>>();
+        auto stream_closed_future = stream_closed_promise->get_future();
+        register_stream_stop_promise(stream_closed_promise);
+
+        auto is_finished = std::make_shared<bool>(false);
+        auto subscribe_mutex = std::make_shared<std::mutex>();
+
+        const mavsdk::Striker::CaaConfidenceLevelHandle handle =
+            _lazy_plugin.maybe_plugin()->subscribe_caa_confidence_level(
+                [this, &writer, &stream_closed_promise, is_finished, subscribe_mutex, &handle](
+                    const mavsdk::Striker::CaaConfidenceLevel caa_confidence_level) {
+                    rpc::striker::CaaConfidenceLevelResponse rpc_response;
+
+                    rpc_response.set_allocated_caa_confidence_level(
+                        translateToRpcCaaConfidenceLevel(caa_confidence_level).release());
+
+                    std::unique_lock<std::mutex> lock(*subscribe_mutex);
+                    if (!*is_finished && !writer->Write(rpc_response)) {
+                        _lazy_plugin.maybe_plugin()->unsubscribe_caa_confidence_level(handle);
+
+                        *is_finished = true;
+                        unregister_stream_stop_promise(stream_closed_promise);
+                        stream_closed_promise->set_value();
+                    }
+                });
+
+        stream_closed_future.wait();
+        std::unique_lock<std::mutex> lock(*subscribe_mutex);
+        *is_finished = true;
+
+        return grpc::Status::OK;
+    }
+
+    grpc::Status SetRateCaaConfidenceLevel(
+        grpc::ServerContext* /* context */,
+        const rpc::striker::SetRateCaaConfidenceLevelRequest* request,
+        rpc::striker::SetRateCaaConfidenceLevelResponse* response) override
+    {
+        if (_lazy_plugin.maybe_plugin() == nullptr) {
+            if (response != nullptr) {
+                auto result = mavsdk::Striker::Result::NoSystem;
+                fillResponseWithResult(response, result);
+            }
+
+            return grpc::Status::OK;
+        }
+
+        if (request == nullptr) {
+            LogWarn() << "SetRateCaaConfidenceLevel sent with a null request! Ignoring...";
+            return grpc::Status::OK;
+        }
+
+        auto result =
+            _lazy_plugin.maybe_plugin()->set_rate_caa_confidence_level(request->rate_hz());
 
         if (response != nullptr) {
             fillResponseWithResult(response, result);

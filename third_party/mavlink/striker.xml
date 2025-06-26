@@ -129,10 +129,15 @@
       </description>
       <field type="uint8_t" name="seq">Sequence number. The value iterates sequentially whenever AVAILABLE_MODES changes (e.g. support for a new mode is added/removed dynamically).</field>
     </message>
-        <message id="22001" name="ACTUATOR_SERVOS_STATUS">
+    <message id="22001" name="ACTUATOR_SERVOS_STATUS">
        <description>Raw actuator servo values from PX4 actuator_servos uORB topic.</description>
        <field type="uint64_t" name="time_usec">Timestamp (microseconds since boot or Unix epoch)</field>
        <field type="float[8]" name="control">Servo control values, normalized [-1..1]</field>
      </message>
+     <message id="22002" name="CAA_CONFIDENCE_LEVEL">
+      <description>Confidence level from computer vision or tracking system. Value from PX4 caa_confidence_level uORB topic</description>
+      <field type="float" name="confidence_level">Confidence level between 0.0 and 1.0</field>
+      <field type="uint64_t" name="time_usec">Timestamp (microseconds since boot or Unix epoch)</field>
+    </message>
   </messages>
 </mavlink>

@@ -71,6 +71,11 @@ void StrikerImpl::init()
         MAVLINK_MSG_ID_ACTUATOR_SERVOS_STATUS,
         [this](const mavlink_message_t& message) { process_actuator_servos_status(message); },
         this);
+
+    _system_impl->register_mavlink_message_handler(
+        MAVLINK_MSG_ID_CAA_CONFIDENCE_LEVEL,
+        [this](const mavlink_message_t& message) { process_caa_confidence_level(message); },
+        this);
 }
 
 void StrikerImpl::deinit()
@@ -711,5 +716,67 @@ void StrikerImpl::set_rate_actuator_servos_status_async(
                 command_rate_result_callback(command_result, callback);
             });
     }
+}
+
+
+// -- CAA Confidence Level --
+Striker::CaaConfidenceLevelHandle
+StrikerImpl::subscribe_caa_confidence_level(const Striker::CaaConfidenceLevelCallback& callback)
+{
+    std::lock_guard<std::mutex> lock(_subscription_caa_confidence_level_mutex);
+    return _caa_confidence_level_subscriptions.subscribe(callback);
+}
+
+void StrikerImpl::unsubscribe_caa_confidence_level(Striker::CaaConfidenceLevelHandle handle)
+{
+    std::lock_guard<std::mutex> lock(_subscription_caa_confidence_level_mutex);
+    _caa_confidence_level_subscriptions.unsubscribe(handle);
+}
+
+Striker::CaaConfidenceLevel StrikerImpl::caa_confidence_level() const
+{
+    std::lock_guard<std::mutex> lock(_caa_confidence_level_mutex);
+    return _caa_confidence_level;
+}
+
+void StrikerImpl::set_caa_confidence_level(Striker::CaaConfidenceLevel caa_confidence_level)
+{
+    std::lock_guard<std::mutex> lock(_caa_confidence_level_mutex);
+    _caa_confidence_level = caa_confidence_level;
+}
+
+void StrikerImpl::process_caa_confidence_level(const mavlink_message_t& message)
+{
+    mavlink_caa_confidence_level_t caa_confidence_level_msg;
+    mavlink_msg_caa_confidence_level_decode(&message, &caa_confidence_level_msg);
+
+    Striker::CaaConfidenceLevel received_caa_confidence_level{};
+    received_caa_confidence_level.time_usec = caa_confidence_level_msg.time_usec;
+    received_caa_confidence_level.confidence_level = caa_confidence_level_msg.confidence_level;
+    set_caa_confidence_level(received_caa_confidence_level);
+
+    std::lock_guard<std::mutex> lock(_subscription_caa_confidence_level_mutex);
+    _caa_confidence_level_subscriptions.queue(caa_confidence_level(), [this](const auto& func) {
+        _system_impl->call_user_callback(func);
+    });
+}
+
+void StrikerImpl::set_rate_caa_confidence_level_async(
+    double rate_hz, const Striker::ResultCallback callback)
+{
+    {
+        _system_impl->set_msg_rate_async(
+            MAVLINK_MSG_ID_CAA_CONFIDENCE_LEVEL,
+            rate_hz,
+            [callback](MavlinkCommandSender::Result command_result, float) {
+                command_rate_result_callback(command_result, callback);
+            });
+    }
+}
+
+Striker::Result StrikerImpl::set_rate_caa_confidence_level(double rate_hz)
+{
+    return rate_result_from_command_result(
+        _system_impl->set_msg_rate(MAVLINK_MSG_ID_CAA_CONFIDENCE_LEVEL, rate_hz));
 }
 } // namespace mavsdk

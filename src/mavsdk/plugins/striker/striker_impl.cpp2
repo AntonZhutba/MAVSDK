@@ -1,0 +1,197 @@
+#include "striker_impl.h"
+
+namespace mavsdk {
+
+StrikerImpl::StrikerImpl(System& system) : PluginImplBase(system)
+{
+    _system_impl->register_plugin(this);
+}
+
+StrikerImpl::StrikerImpl(std::shared_ptr<System> system) : PluginImplBase(std::move(system))
+{
+    _system_impl->register_plugin(this);
+}
+
+StrikerImpl::~StrikerImpl()
+{
+    _system_impl->unregister_plugin(this);
+}
+
+void StrikerImpl::init() {}
+
+void StrikerImpl::deinit() {}
+
+void StrikerImpl::enable() {}
+
+void StrikerImpl::disable() {}
+
+Striker::HeartbeatHandle
+StrikerImpl::subscribe_heartbeat(const Striker::HeartbeatCallback& callback)
+{
+    UNUSED(callback);
+}
+
+void StrikerImpl::unsubscribe_heartbeat(Striker::HeartbeatHandle handle)
+{
+    UNUSED(handle);
+}
+
+Striker::Heartbeat StrikerImpl::heartbeat() const
+{
+    return {};
+}
+
+Striker::SysStatusHandle
+StrikerImpl::subscribe_sys_status(const Striker::SysStatusCallback& callback)
+{
+    UNUSED(callback);
+}
+
+void StrikerImpl::unsubscribe_sys_status(Striker::SysStatusHandle handle)
+{
+    UNUSED(handle);
+}
+
+Striker::SysStatus StrikerImpl::sys_status() const
+{
+    return {};
+}
+
+Striker::RcChannelHandle
+StrikerImpl::subscribe_rc_channel(const Striker::RcChannelCallback& callback)
+{
+    UNUSED(callback);
+}
+
+void StrikerImpl::unsubscribe_rc_channel(Striker::RcChannelHandle handle)
+{
+    UNUSED(handle);
+}
+
+Striker::RcChannel StrikerImpl::rc_channel() const
+{
+    return {};
+}
+
+Striker::MagnitometerHandle
+StrikerImpl::subscribe_magnitometer(const Striker::MagnitometerCallback& callback)
+{
+    UNUSED(callback);
+}
+
+void StrikerImpl::unsubscribe_magnitometer(Striker::MagnitometerHandle handle)
+{
+    UNUSED(handle);
+}
+
+Striker::Magnitometer StrikerImpl::magnitometer() const
+{
+    return {};
+}
+
+Striker::BatteryVoltagesHandle
+StrikerImpl::subscribe_battery_voltages(const Striker::BatteryVoltagesCallback& callback)
+{
+    UNUSED(callback);
+}
+
+void StrikerImpl::unsubscribe_battery_voltages(Striker::BatteryVoltagesHandle handle)
+{
+    UNUSED(handle);
+}
+
+Striker::BatteryVoltages StrikerImpl::battery_voltages() const
+{
+    return {};
+}
+
+Striker::AvailableModesHandle
+StrikerImpl::subscribe_available_modes(const Striker::AvailableModesCallback& callback)
+{
+    UNUSED(callback);
+}
+
+void StrikerImpl::unsubscribe_available_modes(Striker::AvailableModesHandle handle)
+{
+    UNUSED(handle);
+}
+
+std::vector<Striker::AvailableMode> StrikerImpl::available_modes() const
+{
+    return {};
+}
+
+void StrikerImpl::set_manual_flight_mode_async(
+    uint32_t mode,
+    uint32_t custom_mode,
+    uint32_t custom_sub_mode,
+    const Striker::ResultCallback callback)
+{
+    UNUSED(mode);
+
+    UNUSED(custom_mode);
+
+    UNUSED(custom_sub_mode);
+
+    UNUSED(callback);
+}
+
+Striker::Result
+StrikerImpl::set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode)
+{
+    UNUSED(mode);
+
+    UNUSED(custom_mode);
+
+    UNUSED(custom_sub_mode);
+
+    // TODO :)
+    return {};
+}
+
+Striker::ActuatorServosStatusHandle
+StrikerImpl::subscribe_actuator_servos_status(const Striker::ActuatorServosStatusCallback& callback)
+{
+    UNUSED(callback);
+}
+
+void StrikerImpl::unsubscribe_actuator_servos_status(Striker::ActuatorServosStatusHandle handle)
+{
+    UNUSED(handle);
+}
+
+Striker::ActuatorServosStatus StrikerImpl::actuator_servos_status() const
+{
+    return {};
+}
+
+void StrikerImpl::set_rate_actuator_servos_status_async(
+    double rate_hz, const Striker::ResultCallback callback)
+{
+    UNUSED(rate_hz);
+
+    UNUSED(callback);
+}
+
+Striker::Result StrikerImpl::set_rate_actuator_servos_status(double rate_hz)
+{
+    UNUSED(rate_hz);
+
+    // TODO :)
+    return {};
+}
+
+void StrikerImpl::request_available_modes_async(const Striker::ResultCallback callback)
+{
+    UNUSED(callback);
+}
+
+Striker::Result StrikerImpl::request_available_modes()
+{
+    // TODO :)
+    return {};
+}
+
+
+
+} // namespace mavsdk
