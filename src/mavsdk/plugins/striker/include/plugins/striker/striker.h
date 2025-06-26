@@ -83,6 +83,31 @@ public:
     operator<<(std::ostream& str, Striker::ActuatorServosStatus const& actuator_servos_status);
 
     /**
+     * @brief CAA confidence level.
+     */
+    struct CaaConfidenceLevel {
+        uint64_t time_usec{}; /**< @brief Time since system start [in microseconds]. */
+        float confidence_level{}; /**< @brief Single float confidence level value, between 0.0 (no
+                                     confidence) and 1.0 (max confidence), (NaN if unavailable). */
+    };
+
+    /**
+     * @brief Equal operator to compare two `Striker::CaaConfidenceLevel` objects.
+     *
+     * @return `true` if items are equal.
+     */
+    friend bool
+    operator==(const Striker::CaaConfidenceLevel& lhs, const Striker::CaaConfidenceLevel& rhs);
+
+    /**
+     * @brief Stream operator to print information about a `Striker::CaaConfidenceLevel`.
+     *
+     * @return A reference to the stream.
+     */
+    friend std::ostream&
+    operator<<(std::ostream& str, Striker::CaaConfidenceLevel const& caa_confidence_level);
+
+    /**
      * @brief Heartbeat type.
      */
     struct Heartbeat {
@@ -566,6 +591,54 @@ public:
 
      */
     Result request_available_modes() const;
+
+    /**
+     * @brief Callback type for subscribe_caa_confidence_level.
+     */
+    using CaaConfidenceLevelCallback = std::function<void(CaaConfidenceLevel)>;
+
+    /**
+     * @brief Handle type for subscribe_caa_confidence_level.
+     */
+    using CaaConfidenceLevelHandle = Handle<CaaConfidenceLevel>;
+
+    /**
+     * @brief Subscribe to 'CAA confidence level' updates.
+     */
+    CaaConfidenceLevelHandle
+    subscribe_caa_confidence_level(const CaaConfidenceLevelCallback& callback);
+
+    /**
+     * @brief Unsubscribe from subscribe_caa_confidence_level
+     */
+    void unsubscribe_caa_confidence_level(CaaConfidenceLevelHandle handle);
+
+    /**
+     * @brief Poll for 'CaaConfidenceLevel' (blocking).
+     *
+     * @return One CaaConfidenceLevel update.
+     */
+    CaaConfidenceLevel caa_confidence_level() const;
+
+    /**
+     * @brief Set the caa confidence level target.
+     *
+     * This function is non-blocking. See 'set_rate_caa_confidence_level' for the blocking
+     * counterpart.
+     */
+    void set_rate_caa_confidence_level_async(double rate_hz, const ResultCallback callback);
+
+    /**
+     * @brief Set the caa confidence level target.
+     *
+     * This function is blocking. See 'set_rate_caa_confidence_level_async' for the non-blocking
+     counterpart.
+     *
+
+     * @return Result of request.
+
+     */
+    Result set_rate_caa_confidence_level(double rate_hz) const;
 
     /**
      * @brief Copy constructor.

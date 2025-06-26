@@ -1,0 +1,90 @@
+#pragma once
+
+#include "plugins/striker/striker.h"
+
+#include "plugin_impl_base.h"
+
+namespace mavsdk {
+
+class StrikerImpl : public PluginImplBase {
+public:
+    explicit StrikerImpl(System& system);
+    explicit StrikerImpl(std::shared_ptr<System> system);
+
+    ~StrikerImpl() override;
+
+    void init() override;
+    void deinit() override;
+
+    void enable() override;
+    void disable() override;
+
+    Striker::HeartbeatHandle subscribe_heartbeat(const Striker::HeartbeatCallback& callback);
+
+    void unsubscribe_heartbeat(Striker::HeartbeatHandle handle);
+
+    Striker::Heartbeat heartbeat() const;
+
+    Striker::SysStatusHandle subscribe_sys_status(const Striker::SysStatusCallback& callback);
+
+    void unsubscribe_sys_status(Striker::SysStatusHandle handle);
+
+    Striker::SysStatus sys_status() const;
+
+    Striker::RcChannelHandle subscribe_rc_channel(const Striker::RcChannelCallback& callback);
+
+    void unsubscribe_rc_channel(Striker::RcChannelHandle handle);
+
+    Striker::RcChannel rc_channel() const;
+
+    Striker::MagnitometerHandle
+    subscribe_magnitometer(const Striker::MagnitometerCallback& callback);
+
+    void unsubscribe_magnitometer(Striker::MagnitometerHandle handle);
+
+    Striker::Magnitometer magnitometer() const;
+
+    Striker::BatteryVoltagesHandle
+    subscribe_battery_voltages(const Striker::BatteryVoltagesCallback& callback);
+
+    void unsubscribe_battery_voltages(Striker::BatteryVoltagesHandle handle);
+
+    Striker::BatteryVoltages battery_voltages() const;
+
+    Striker::AvailableModesHandle
+    subscribe_available_modes(const Striker::AvailableModesCallback& callback);
+
+    void unsubscribe_available_modes(Striker::AvailableModesHandle handle);
+
+    Striker::std::vector<AvailableMode> available_modes() const;
+
+    void set_manual_flight_mode_async(
+        uint32_t mode,
+        uint32_t custom_mode,
+        uint32_t custom_sub_mode,
+        const Striker::ResultCallback callback);
+
+    Striker::Result
+    set_manual_flight_mode(uint32_t mode, uint32_t custom_mode, uint32_t custom_sub_mode);
+
+    Striker::ActuatorServosStatusHandle
+    subscribe_actuator_servos_status(const Striker::ActuatorServosStatusCallback& callback);
+
+    void unsubscribe_actuator_servos_status(Striker::ActuatorServosStatusHandle handle);
+
+    Striker::ActuatorServosStatus actuator_servos_status() const;
+
+    void
+    set_rate_actuator_servos_status_async(double rate_hz, const Striker::ResultCallback callback);
+
+    Striker::Result set_rate_actuator_servos_status(double rate_hz);
+
+    void request_available_modes_async(const Striker::ResultCallback callback);
+
+    Striker::Result request_available_modes();
+
+
+private:
+};
+
+} // namespace mavsdk

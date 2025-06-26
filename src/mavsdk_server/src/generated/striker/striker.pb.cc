@@ -140,6 +140,24 @@ struct SubscribeHeartbeatRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeHeartbeatRequestDefaultTypeInternal _SubscribeHeartbeatRequest_default_instance_;
               template <typename>
+PROTOBUF_CONSTEXPR SubscribeCaaConfidenceLevelRequest::SubscribeCaaConfidenceLevelRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct SubscribeCaaConfidenceLevelRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeCaaConfidenceLevelRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeCaaConfidenceLevelRequestDefaultTypeInternal() {}
+  union {
+    SubscribeCaaConfidenceLevelRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeCaaConfidenceLevelRequestDefaultTypeInternal _SubscribeCaaConfidenceLevelRequest_default_instance_;
+              template <typename>
 PROTOBUF_CONSTEXPR SubscribeBatteryVoltagesRequest::SubscribeBatteryVoltagesRequest(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
@@ -221,6 +239,31 @@ struct StrikerResultDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StrikerResultDefaultTypeInternal _StrikerResult_default_instance_;
+
+inline constexpr SetRateCaaConfidenceLevelRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : rate_hz_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetRateCaaConfidenceLevelRequest::SetRateCaaConfidenceLevelRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SetRateCaaConfidenceLevelRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetRateCaaConfidenceLevelRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetRateCaaConfidenceLevelRequestDefaultTypeInternal() {}
+  union {
+    SetRateCaaConfidenceLevelRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetRateCaaConfidenceLevelRequestDefaultTypeInternal _SetRateCaaConfidenceLevelRequest_default_instance_;
 
 inline constexpr SetRateActuatorServosStatusRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -395,6 +438,32 @@ struct HeartbeatDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HeartbeatDefaultTypeInternal _Heartbeat_default_instance_;
 
+inline constexpr CaaConfidenceLevel::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : time_usec_{::uint64_t{0u}},
+        confidence_level_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CaaConfidenceLevel::CaaConfidenceLevel(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct CaaConfidenceLevelDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CaaConfidenceLevelDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CaaConfidenceLevelDefaultTypeInternal() {}
+  union {
+    CaaConfidenceLevel _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CaaConfidenceLevelDefaultTypeInternal _CaaConfidenceLevel_default_instance_;
+
 inline constexpr BatteryVoltages::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : voltages_{},
@@ -505,6 +574,31 @@ struct SysStatusResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SysStatusResponseDefaultTypeInternal _SysStatusResponse_default_instance_;
+
+inline constexpr SetRateCaaConfidenceLevelResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        striker_result_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetRateCaaConfidenceLevelResponse::SetRateCaaConfidenceLevelResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SetRateCaaConfidenceLevelResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetRateCaaConfidenceLevelResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetRateCaaConfidenceLevelResponseDefaultTypeInternal() {}
+  union {
+    SetRateCaaConfidenceLevelResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetRateCaaConfidenceLevelResponseDefaultTypeInternal _SetRateCaaConfidenceLevelResponse_default_instance_;
 
 inline constexpr SetRateActuatorServosStatusResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -655,6 +749,31 @@ struct HeartbeatResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HeartbeatResponseDefaultTypeInternal _HeartbeatResponse_default_instance_;
+
+inline constexpr CaaConfidenceLevelResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        caa_confidence_level_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CaaConfidenceLevelResponse::CaaConfidenceLevelResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct CaaConfidenceLevelResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CaaConfidenceLevelResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CaaConfidenceLevelResponseDefaultTypeInternal() {}
+  union {
+    CaaConfidenceLevelResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CaaConfidenceLevelResponseDefaultTypeInternal _CaaConfidenceLevelResponse_default_instance_;
 
 inline constexpr BatteryVoltagesResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -912,6 +1031,43 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::RequestAvailableModesResponse, _impl_.striker_result_),
         0,
         ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::CaaConfidenceLevelResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::CaaConfidenceLevelResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::CaaConfidenceLevelResponse, _impl_.caa_confidence_level_),
+        0,
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest, _impl_.rate_hz_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse, _impl_.striker_result_),
+        0,
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::ActuatorServosStatus, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -921,6 +1077,16 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::ActuatorServosStatus, _impl_.time_usec_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::ActuatorServosStatus, _impl_.control_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::CaaConfidenceLevel, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::CaaConfidenceLevel, _impl_.time_usec_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::CaaConfidenceLevel, _impl_.confidence_level_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::striker::Heartbeat, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -1068,15 +1234,20 @@ static const ::_pbi::MigrationSchema
         {144, 153, -1, sizeof(::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse)},
         {154, -1, -1, sizeof(::mavsdk::rpc::striker::RequestAvailableModesRequest)},
         {162, 171, -1, sizeof(::mavsdk::rpc::striker::RequestAvailableModesResponse)},
-        {172, -1, -1, sizeof(::mavsdk::rpc::striker::ActuatorServosStatus)},
-        {182, -1, -1, sizeof(::mavsdk::rpc::striker::Heartbeat)},
-        {196, -1, -1, sizeof(::mavsdk::rpc::striker::SysStatus)},
-        {220, -1, -1, sizeof(::mavsdk::rpc::striker::RcChannel)},
-        {249, -1, -1, sizeof(::mavsdk::rpc::striker::Magnitometer)},
-        {261, -1, -1, sizeof(::mavsdk::rpc::striker::BatteryVoltages)},
-        {271, -1, -1, sizeof(::mavsdk::rpc::striker::AvailableMode)},
-        {285, -1, -1, sizeof(::mavsdk::rpc::striker::SetManualFlightModeRequest)},
-        {296, -1, -1, sizeof(::mavsdk::rpc::striker::StrikerResult)},
+        {172, -1, -1, sizeof(::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest)},
+        {180, 189, -1, sizeof(::mavsdk::rpc::striker::CaaConfidenceLevelResponse)},
+        {190, -1, -1, sizeof(::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest)},
+        {199, 208, -1, sizeof(::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse)},
+        {209, -1, -1, sizeof(::mavsdk::rpc::striker::ActuatorServosStatus)},
+        {219, -1, -1, sizeof(::mavsdk::rpc::striker::CaaConfidenceLevel)},
+        {229, -1, -1, sizeof(::mavsdk::rpc::striker::Heartbeat)},
+        {243, -1, -1, sizeof(::mavsdk::rpc::striker::SysStatus)},
+        {267, -1, -1, sizeof(::mavsdk::rpc::striker::RcChannel)},
+        {296, -1, -1, sizeof(::mavsdk::rpc::striker::Magnitometer)},
+        {308, -1, -1, sizeof(::mavsdk::rpc::striker::BatteryVoltages)},
+        {318, -1, -1, sizeof(::mavsdk::rpc::striker::AvailableMode)},
+        {332, -1, -1, sizeof(::mavsdk::rpc::striker::SetManualFlightModeRequest)},
+        {343, -1, -1, sizeof(::mavsdk::rpc::striker::StrikerResult)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::striker::_SubscribeHeartbeatRequest_default_instance_._instance,
@@ -1098,7 +1269,12 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::striker::_SetRateActuatorServosStatusResponse_default_instance_._instance,
     &::mavsdk::rpc::striker::_RequestAvailableModesRequest_default_instance_._instance,
     &::mavsdk::rpc::striker::_RequestAvailableModesResponse_default_instance_._instance,
+    &::mavsdk::rpc::striker::_SubscribeCaaConfidenceLevelRequest_default_instance_._instance,
+    &::mavsdk::rpc::striker::_CaaConfidenceLevelResponse_default_instance_._instance,
+    &::mavsdk::rpc::striker::_SetRateCaaConfidenceLevelRequest_default_instance_._instance,
+    &::mavsdk::rpc::striker::_SetRateCaaConfidenceLevelResponse_default_instance_._instance,
     &::mavsdk::rpc::striker::_ActuatorServosStatus_default_instance_._instance,
+    &::mavsdk::rpc::striker::_CaaConfidenceLevel_default_instance_._instance,
     &::mavsdk::rpc::striker::_Heartbeat_default_instance_._instance,
     &::mavsdk::rpc::striker::_SysStatus_default_instance_._instance,
     &::mavsdk::rpc::striker::_RcChannel_default_instance_._instance,
@@ -1140,95 +1316,111 @@ const char descriptor_table_protodef_striker_2fstriker_2eproto[] ABSL_ATTRIBUTE_
     ".mavsdk.rpc.striker.StrikerResult\"\036\n\034Req"
     "uestAvailableModesRequest\"Z\n\035RequestAvai"
     "lableModesResponse\0229\n\016striker_result\030\001 \001"
-    "(\0132!.mavsdk.rpc.striker.StrikerResult\":\n"
-    "\024ActuatorServosStatus\022\021\n\ttime_usec\030\001 \001(\004"
-    "\022\017\n\007control\030\002 \003(\002\"\204\001\n\tHeartbeat\022\023\n\013custo"
-    "m_mode\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022\021\n\tautopilot\030"
-    "\003 \001(\r\022\021\n\tbase_mode\030\004 \001(\r\022\025\n\rsystem_statu"
-    "s\030\005 \001(\r\022\027\n\017mavlink_version\030\006 \001(\r\"\376\003\n\tSys"
-    "Status\022\'\n\037onboard_control_sensors_presen"
-    "t\030\001 \001(\r\022\'\n\037onboard_control_sensors_enabl"
-    "ed\030\002 \001(\r\022&\n\036onboard_control_sensors_heal"
-    "th\030\003 \001(\r\022\014\n\004load\030\004 \001(\r\022\027\n\017voltage_batter"
-    "y\030\005 \001(\r\022\027\n\017current_battery\030\006 \001(\005\022\026\n\016drop"
-    "_rate_comm\030\007 \001(\r\022\023\n\013errors_comm\030\010 \001(\r\022\025\n"
-    "\rerrors_count1\030\t \001(\r\022\025\n\rerrors_count2\030\n "
-    "\001(\r\022\025\n\rerrors_count3\030\013 \001(\r\022\025\n\rerrors_cou"
-    "nt4\030\014 \001(\r\022\031\n\021battery_remaining\030\r \001(\005\0220\n("
-    "onboard_control_sensors_present_extended"
-    "\030\016 \001(\r\0220\n(onboard_control_sensors_enable"
-    "d_extended\030\017 \001(\r\022/\n\'onboard_control_sens"
-    "ors_health_extended\030\020 \001(\r\"\264\004\n\tRcChannel\022"
-    "\033\n\014time_boot_ms\030\001 \001(\rB\005\202\265\030\0010\022\030\n\tchan1_ra"
-    "w\030\002 \001(\rB\005\202\265\030\0010\022\030\n\tchan2_raw\030\003 \001(\rB\005\202\265\030\0010"
-    "\022\030\n\tchan3_raw\030\004 \001(\rB\005\202\265\030\0010\022\030\n\tchan4_raw\030"
-    "\005 \001(\rB\005\202\265\030\0010\022\030\n\tchan5_raw\030\006 \001(\rB\005\202\265\030\0010\022\030"
-    "\n\tchan6_raw\030\007 \001(\rB\005\202\265\030\0010\022\030\n\tchan7_raw\030\010 "
-    "\001(\rB\005\202\265\030\0010\022\030\n\tchan8_raw\030\t \001(\rB\005\202\265\030\0010\022\030\n\t"
-    "chan9_raw\030\n \001(\rB\005\202\265\030\0010\022\031\n\nchan10_raw\030\013 \001"
-    "(\rB\005\202\265\030\0010\022\031\n\nchan11_raw\030\014 \001(\rB\005\202\265\030\0010\022\031\n\n"
-    "chan12_raw\030\r \001(\rB\005\202\265\030\0010\022\031\n\nchan13_raw\030\016 "
-    "\001(\rB\005\202\265\030\0010\022\031\n\nchan14_raw\030\017 \001(\rB\005\202\265\030\0010\022\031\n"
-    "\nchan15_raw\030\020 \001(\rB\005\202\265\030\0010\022\031\n\nchan16_raw\030\021"
-    " \001(\rB\005\202\265\030\0010\022\031\n\nchan17_raw\030\022 \001(\rB\005\202\265\030\0010\022\031"
-    "\n\nchan18_raw\030\023 \001(\rB\005\202\265\030\0010\022\030\n\tchancount\030\024"
-    " \001(\rB\005\202\265\030\0010\022\023\n\004rssi\030\025 \001(\rB\005\202\265\030\0010\"I\n\014Magn"
-    "itometer\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001("
-    "\001\022\030\n\020magnetic_heading\030\004 \001(\001\"9\n\017BatteryVo"
-    "ltages\022\020\n\010voltages\030\001 \003(\r\022\024\n\014ext_voltages"
-    "\030\002 \003(\r\"\214\001\n\rAvailableMode\022\024\n\014number_modes"
-    "\030\001 \001(\r\022\022\n\nmode_index\030\002 \001(\r\022\025\n\rstandard_m"
-    "ode\030\003 \001(\r\022\023\n\013custom_mode\030\004 \001(\r\022\022\n\nproper"
-    "ties\030\005 \001(\r\022\021\n\tmode_name\030\006 \001(\t\"X\n\032SetManu"
-    "alFlightModeRequest\022\014\n\004mode\030\001 \001(\r\022\023\n\013cus"
-    "tom_mode\030\002 \001(\r\022\027\n\017custom_sub_mode\030\003 \001(\r\""
-    "\220\004\n\rStrikerResult\0228\n\006result\030\001 \001(\0162(.mavs"
-    "dk.rpc.striker.StrikerResult.Result\022\022\n\nr"
-    "esult_str\030\002 \001(\t\"\260\003\n\006Result\022\022\n\016RESULT_UNK"
-    "NOWN\020\000\022\022\n\016RESULT_SUCCESS\020\001\022\024\n\020RESULT_NO_"
-    "SYSTEM\020\002\022\033\n\027RESULT_CONNECTION_ERROR\020\003\022\017\n"
-    "\013RESULT_BUSY\020\004\022\031\n\025RESULT_COMMAND_DENIED\020"
-    "\005\022.\n*RESULT_COMMAND_DENIED_LANDED_STATE_"
-    "UNKNOWN\020\006\022$\n RESULT_COMMAND_DENIED_NOT_L"
-    "ANDED\020\007\022\022\n\016RESULT_TIMEOUT\020\010\022*\n&RESULT_VT"
-    "OL_TRANSITION_SUPPORT_UNKNOWN\020\t\022%\n!RESUL"
-    "T_NO_VTOL_TRANSITION_SUPPORT\020\n\022\032\n\026RESULT"
-    "_PARAMETER_ERROR\020\013\022\026\n\022RESULT_UNSUPPORTED"
-    "\020\014\022\021\n\rRESULT_FAILED\020\r\022\033\n\027RESULT_INVALID_"
-    "ARGUMENT\020\0162\372\t\n\016StrikerService\022n\n\022Subscri"
-    "beHeartbeat\022-.mavsdk.rpc.striker.Subscri"
-    "beHeartbeatRequest\032%.mavsdk.rpc.striker."
-    "HeartbeatResponse\"\0000\001\022n\n\022SubscribeSysSta"
-    "tus\022-.mavsdk.rpc.striker.SubscribeSysSta"
-    "tusRequest\032%.mavsdk.rpc.striker.SysStatu"
-    "sResponse\"\0000\001\022n\n\022SubscribeRcChannel\022-.ma"
-    "vsdk.rpc.striker.SubscribeRcChannelReque"
-    "st\032%.mavsdk.rpc.striker.RcChannelRespons"
-    "e\"\0000\001\022w\n\025SubscribeMagnitometer\0220.mavsdk."
-    "rpc.striker.SubscribeMagnitometerRequest"
-    "\032(.mavsdk.rpc.striker.MagnitometerRespon"
-    "se\"\0000\001\022\200\001\n\030SubscribeBatteryVoltages\0223.ma"
-    "vsdk.rpc.striker.SubscribeBatteryVoltage"
-    "sRequest\032+.mavsdk.rpc.striker.BatteryVol"
-    "tagesResponse\"\0000\001\022}\n\027SubscribeAvailableM"
-    "odes\0222.mavsdk.rpc.striker.SubscribeAvail"
-    "ableModesRequest\032*.mavsdk.rpc.striker.Av"
-    "ailableModesResponse\"\0000\001\022x\n\023SetManualFli"
-    "ghtMode\022..mavsdk.rpc.striker.SetManualFl"
-    "ightModeRequest\032/.mavsdk.rpc.striker.Set"
-    "ManualFlightModeResponse\"\000\022\217\001\n\035Subscribe"
-    "ActuatorServosStatus\0228.mavsdk.rpc.strike"
-    "r.SubscribeActuatorServosStatusRequest\0320"
-    ".mavsdk.rpc.striker.ActuatorServosStatus"
-    "Response\"\0000\001\022\220\001\n\033SetRateActuatorServosSt"
-    "atus\0226.mavsdk.rpc.striker.SetRateActuato"
-    "rServosStatusRequest\0327.mavsdk.rpc.strike"
-    "r.SetRateActuatorServosStatusResponse\"\000\022"
-    "~\n\025RequestAvailableModes\0220.mavsdk.rpc.st"
-    "riker.RequestAvailableModesRequest\0321.mav"
-    "sdk.rpc.striker.RequestAvailableModesRes"
-    "ponse\"\000B!\n\021io.mavsdk.strikerB\014StrikerPro"
-    "tob\006proto3"
+    "(\0132!.mavsdk.rpc.striker.StrikerResult\"$\n"
+    "\"SubscribeCaaConfidenceLevelRequest\"b\n\032C"
+    "aaConfidenceLevelResponse\022D\n\024caa_confide"
+    "nce_level\030\001 \001(\0132&.mavsdk.rpc.striker.Caa"
+    "ConfidenceLevel\"3\n SetRateCaaConfidenceL"
+    "evelRequest\022\017\n\007rate_hz\030\001 \001(\001\"^\n!SetRateC"
+    "aaConfidenceLevelResponse\0229\n\016striker_res"
+    "ult\030\001 \001(\0132!.mavsdk.rpc.striker.StrikerRe"
+    "sult\":\n\024ActuatorServosStatus\022\021\n\ttime_use"
+    "c\030\001 \001(\004\022\017\n\007control\030\002 \003(\002\"A\n\022CaaConfidenc"
+    "eLevel\022\021\n\ttime_usec\030\001 \001(\004\022\030\n\020confidence_"
+    "level\030\002 \001(\002\"\204\001\n\tHeartbeat\022\023\n\013custom_mode"
+    "\030\001 \001(\r\022\014\n\004type\030\002 \001(\r\022\021\n\tautopilot\030\003 \001(\r\022"
+    "\021\n\tbase_mode\030\004 \001(\r\022\025\n\rsystem_status\030\005 \001("
+    "\r\022\027\n\017mavlink_version\030\006 \001(\r\"\376\003\n\tSysStatus"
+    "\022\'\n\037onboard_control_sensors_present\030\001 \001("
+    "\r\022\'\n\037onboard_control_sensors_enabled\030\002 \001"
+    "(\r\022&\n\036onboard_control_sensors_health\030\003 \001"
+    "(\r\022\014\n\004load\030\004 \001(\r\022\027\n\017voltage_battery\030\005 \001("
+    "\r\022\027\n\017current_battery\030\006 \001(\005\022\026\n\016drop_rate_"
+    "comm\030\007 \001(\r\022\023\n\013errors_comm\030\010 \001(\r\022\025\n\rerror"
+    "s_count1\030\t \001(\r\022\025\n\rerrors_count2\030\n \001(\r\022\025\n"
+    "\rerrors_count3\030\013 \001(\r\022\025\n\rerrors_count4\030\014 "
+    "\001(\r\022\031\n\021battery_remaining\030\r \001(\005\0220\n(onboar"
+    "d_control_sensors_present_extended\030\016 \001(\r"
+    "\0220\n(onboard_control_sensors_enabled_exte"
+    "nded\030\017 \001(\r\022/\n\'onboard_control_sensors_he"
+    "alth_extended\030\020 \001(\r\"\264\004\n\tRcChannel\022\033\n\014tim"
+    "e_boot_ms\030\001 \001(\rB\005\202\265\030\0010\022\030\n\tchan1_raw\030\002 \001("
+    "\rB\005\202\265\030\0010\022\030\n\tchan2_raw\030\003 \001(\rB\005\202\265\030\0010\022\030\n\tch"
+    "an3_raw\030\004 \001(\rB\005\202\265\030\0010\022\030\n\tchan4_raw\030\005 \001(\rB"
+    "\005\202\265\030\0010\022\030\n\tchan5_raw\030\006 \001(\rB\005\202\265\030\0010\022\030\n\tchan"
+    "6_raw\030\007 \001(\rB\005\202\265\030\0010\022\030\n\tchan7_raw\030\010 \001(\rB\005\202"
+    "\265\030\0010\022\030\n\tchan8_raw\030\t \001(\rB\005\202\265\030\0010\022\030\n\tchan9_"
+    "raw\030\n \001(\rB\005\202\265\030\0010\022\031\n\nchan10_raw\030\013 \001(\rB\005\202\265"
+    "\030\0010\022\031\n\nchan11_raw\030\014 \001(\rB\005\202\265\030\0010\022\031\n\nchan12"
+    "_raw\030\r \001(\rB\005\202\265\030\0010\022\031\n\nchan13_raw\030\016 \001(\rB\005\202"
+    "\265\030\0010\022\031\n\nchan14_raw\030\017 \001(\rB\005\202\265\030\0010\022\031\n\nchan1"
+    "5_raw\030\020 \001(\rB\005\202\265\030\0010\022\031\n\nchan16_raw\030\021 \001(\rB\005"
+    "\202\265\030\0010\022\031\n\nchan17_raw\030\022 \001(\rB\005\202\265\030\0010\022\031\n\nchan"
+    "18_raw\030\023 \001(\rB\005\202\265\030\0010\022\030\n\tchancount\030\024 \001(\rB\005"
+    "\202\265\030\0010\022\023\n\004rssi\030\025 \001(\rB\005\202\265\030\0010\"I\n\014Magnitomet"
+    "er\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\022\030\n\020m"
+    "agnetic_heading\030\004 \001(\001\"9\n\017BatteryVoltages"
+    "\022\020\n\010voltages\030\001 \003(\r\022\024\n\014ext_voltages\030\002 \003(\r"
+    "\"\214\001\n\rAvailableMode\022\024\n\014number_modes\030\001 \001(\r"
+    "\022\022\n\nmode_index\030\002 \001(\r\022\025\n\rstandard_mode\030\003 "
+    "\001(\r\022\023\n\013custom_mode\030\004 \001(\r\022\022\n\nproperties\030\005"
+    " \001(\r\022\021\n\tmode_name\030\006 \001(\t\"X\n\032SetManualFlig"
+    "htModeRequest\022\014\n\004mode\030\001 \001(\r\022\023\n\013custom_mo"
+    "de\030\002 \001(\r\022\027\n\017custom_sub_mode\030\003 \001(\r\"\220\004\n\rSt"
+    "rikerResult\0228\n\006result\030\001 \001(\0162(.mavsdk.rpc"
+    ".striker.StrikerResult.Result\022\022\n\nresult_"
+    "str\030\002 \001(\t\"\260\003\n\006Result\022\022\n\016RESULT_UNKNOWN\020\000"
+    "\022\022\n\016RESULT_SUCCESS\020\001\022\024\n\020RESULT_NO_SYSTEM"
+    "\020\002\022\033\n\027RESULT_CONNECTION_ERROR\020\003\022\017\n\013RESUL"
+    "T_BUSY\020\004\022\031\n\025RESULT_COMMAND_DENIED\020\005\022.\n*R"
+    "ESULT_COMMAND_DENIED_LANDED_STATE_UNKNOW"
+    "N\020\006\022$\n RESULT_COMMAND_DENIED_NOT_LANDED\020"
+    "\007\022\022\n\016RESULT_TIMEOUT\020\010\022*\n&RESULT_VTOL_TRA"
+    "NSITION_SUPPORT_UNKNOWN\020\t\022%\n!RESULT_NO_V"
+    "TOL_TRANSITION_SUPPORT\020\n\022\032\n\026RESULT_PARAM"
+    "ETER_ERROR\020\013\022\026\n\022RESULT_UNSUPPORTED\020\014\022\021\n\r"
+    "RESULT_FAILED\020\r\022\033\n\027RESULT_INVALID_ARGUME"
+    "NT\020\0162\223\014\n\016StrikerService\022n\n\022SubscribeHear"
+    "tbeat\022-.mavsdk.rpc.striker.SubscribeHear"
+    "tbeatRequest\032%.mavsdk.rpc.striker.Heartb"
+    "eatResponse\"\0000\001\022n\n\022SubscribeSysStatus\022-."
+    "mavsdk.rpc.striker.SubscribeSysStatusReq"
+    "uest\032%.mavsdk.rpc.striker.SysStatusRespo"
+    "nse\"\0000\001\022n\n\022SubscribeRcChannel\022-.mavsdk.r"
+    "pc.striker.SubscribeRcChannelRequest\032%.m"
+    "avsdk.rpc.striker.RcChannelResponse\"\0000\001\022"
+    "w\n\025SubscribeMagnitometer\0220.mavsdk.rpc.st"
+    "riker.SubscribeMagnitometerRequest\032(.mav"
+    "sdk.rpc.striker.MagnitometerResponse\"\0000\001"
+    "\022\200\001\n\030SubscribeBatteryVoltages\0223.mavsdk.r"
+    "pc.striker.SubscribeBatteryVoltagesReque"
+    "st\032+.mavsdk.rpc.striker.BatteryVoltagesR"
+    "esponse\"\0000\001\022}\n\027SubscribeAvailableModes\0222"
+    ".mavsdk.rpc.striker.SubscribeAvailableMo"
+    "desRequest\032*.mavsdk.rpc.striker.Availabl"
+    "eModesResponse\"\0000\001\022x\n\023SetManualFlightMod"
+    "e\022..mavsdk.rpc.striker.SetManualFlightMo"
+    "deRequest\032/.mavsdk.rpc.striker.SetManual"
+    "FlightModeResponse\"\000\022\217\001\n\035SubscribeActuat"
+    "orServosStatus\0228.mavsdk.rpc.striker.Subs"
+    "cribeActuatorServosStatusRequest\0320.mavsd"
+    "k.rpc.striker.ActuatorServosStatusRespon"
+    "se\"\0000\001\022\220\001\n\033SetRateActuatorServosStatus\0226"
+    ".mavsdk.rpc.striker.SetRateActuatorServo"
+    "sStatusRequest\0327.mavsdk.rpc.striker.SetR"
+    "ateActuatorServosStatusResponse\"\000\022~\n\025Req"
+    "uestAvailableModes\0220.mavsdk.rpc.striker."
+    "RequestAvailableModesRequest\0321.mavsdk.rp"
+    "c.striker.RequestAvailableModesResponse\""
+    "\000\022\211\001\n\033SubscribeCaaConfidenceLevel\0226.mavs"
+    "dk.rpc.striker.SubscribeCaaConfidenceLev"
+    "elRequest\032..mavsdk.rpc.striker.CaaConfid"
+    "enceLevelResponse\"\0000\001\022\212\001\n\031SetRateCaaConf"
+    "idenceLevel\0224.mavsdk.rpc.striker.SetRate"
+    "CaaConfidenceLevelRequest\0325.mavsdk.rpc.s"
+    "triker.SetRateCaaConfidenceLevelResponse"
+    "\"\000B!\n\021io.mavsdk.strikerB\014StrikerProtob\006p"
+    "roto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_striker_2fstriker_2eproto_deps[1] =
     {
@@ -1238,13 +1430,13 @@ static ::absl::once_flag descriptor_table_striker_2fstriker_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_striker_2fstriker_2eproto = {
     false,
     false,
-    4730,
+    5365,
     descriptor_table_protodef_striker_2fstriker_2eproto,
     "striker/striker.proto",
     &descriptor_table_striker_2fstriker_2eproto_once,
     descriptor_table_striker_2fstriker_2eproto_deps,
     1,
-    28,
+    33,
     schemas,
     file_default_instances,
     TableStruct_striker_2fstriker_2eproto::offsets,
@@ -4811,6 +5003,815 @@ void RequestAvailableModesResponse::InternalSwap(RequestAvailableModesResponse* 
 }
 // ===================================================================
 
+class SubscribeCaaConfidenceLevelRequest::_Internal {
+ public:
+};
+
+SubscribeCaaConfidenceLevelRequest::SubscribeCaaConfidenceLevelRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.SubscribeCaaConfidenceLevelRequest)
+}
+SubscribeCaaConfidenceLevelRequest::SubscribeCaaConfidenceLevelRequest(
+    ::google::protobuf::Arena* arena,
+    const SubscribeCaaConfidenceLevelRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SubscribeCaaConfidenceLevelRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.SubscribeCaaConfidenceLevelRequest)
+}
+
+inline void* SubscribeCaaConfidenceLevelRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SubscribeCaaConfidenceLevelRequest(arena);
+}
+constexpr auto SubscribeCaaConfidenceLevelRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SubscribeCaaConfidenceLevelRequest),
+                                            alignof(SubscribeCaaConfidenceLevelRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SubscribeCaaConfidenceLevelRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SubscribeCaaConfidenceLevelRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SubscribeCaaConfidenceLevelRequest::MergeImpl,
+        ::google::protobuf::internal::ZeroFieldsBase::GetNewImpl<SubscribeCaaConfidenceLevelRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SubscribeCaaConfidenceLevelRequest::SharedDtor,
+        ::google::protobuf::internal::ZeroFieldsBase::GetClearImpl<SubscribeCaaConfidenceLevelRequest>(), &SubscribeCaaConfidenceLevelRequest::ByteSizeLong,
+            &SubscribeCaaConfidenceLevelRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SubscribeCaaConfidenceLevelRequest, _impl_._cached_size_),
+        false,
+    },
+    &SubscribeCaaConfidenceLevelRequest::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SubscribeCaaConfidenceLevelRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 0, 0, 0, 2> SubscribeCaaConfidenceLevelRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    0, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967295,  // skipmap
+    offsetof(decltype(_table_), field_names),  // no field_entries
+    0,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }},
+  // no field_entries, or aux_entries
+  {{
+  }},
+};
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata SubscribeCaaConfidenceLevelRequest::GetMetadata() const {
+  return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class CaaConfidenceLevelResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<CaaConfidenceLevelResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(CaaConfidenceLevelResponse, _impl_._has_bits_);
+};
+
+CaaConfidenceLevelResponse::CaaConfidenceLevelResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.CaaConfidenceLevelResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE CaaConfidenceLevelResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::mavsdk::rpc::striker::CaaConfidenceLevelResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+CaaConfidenceLevelResponse::CaaConfidenceLevelResponse(
+    ::google::protobuf::Arena* arena,
+    const CaaConfidenceLevelResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  CaaConfidenceLevelResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.caa_confidence_level_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::CaaConfidenceLevel>(
+                              arena, *from._impl_.caa_confidence_level_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.CaaConfidenceLevelResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE CaaConfidenceLevelResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void CaaConfidenceLevelResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.caa_confidence_level_ = {};
+}
+CaaConfidenceLevelResponse::~CaaConfidenceLevelResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.CaaConfidenceLevelResponse)
+  SharedDtor(*this);
+}
+inline void CaaConfidenceLevelResponse::SharedDtor(MessageLite& self) {
+  CaaConfidenceLevelResponse& this_ = static_cast<CaaConfidenceLevelResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.caa_confidence_level_;
+  this_._impl_.~Impl_();
+}
+
+inline void* CaaConfidenceLevelResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) CaaConfidenceLevelResponse(arena);
+}
+constexpr auto CaaConfidenceLevelResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(CaaConfidenceLevelResponse),
+                                            alignof(CaaConfidenceLevelResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull CaaConfidenceLevelResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_CaaConfidenceLevelResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &CaaConfidenceLevelResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<CaaConfidenceLevelResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &CaaConfidenceLevelResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<CaaConfidenceLevelResponse>(), &CaaConfidenceLevelResponse::ByteSizeLong,
+            &CaaConfidenceLevelResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(CaaConfidenceLevelResponse, _impl_._cached_size_),
+        false,
+    },
+    &CaaConfidenceLevelResponse::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* CaaConfidenceLevelResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> CaaConfidenceLevelResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(CaaConfidenceLevelResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::CaaConfidenceLevelResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .mavsdk.rpc.striker.CaaConfidenceLevel caa_confidence_level = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(CaaConfidenceLevelResponse, _impl_.caa_confidence_level_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.striker.CaaConfidenceLevel caa_confidence_level = 1;
+    {PROTOBUF_FIELD_OFFSET(CaaConfidenceLevelResponse, _impl_.caa_confidence_level_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::CaaConfidenceLevel>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void CaaConfidenceLevelResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.striker.CaaConfidenceLevelResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.caa_confidence_level_ != nullptr);
+    _impl_.caa_confidence_level_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* CaaConfidenceLevelResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const CaaConfidenceLevelResponse& this_ = static_cast<const CaaConfidenceLevelResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* CaaConfidenceLevelResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const CaaConfidenceLevelResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.striker.CaaConfidenceLevelResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .mavsdk.rpc.striker.CaaConfidenceLevel caa_confidence_level = 1;
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.caa_confidence_level_, this_._impl_.caa_confidence_level_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.striker.CaaConfidenceLevelResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t CaaConfidenceLevelResponse::ByteSizeLong(const MessageLite& base) {
+          const CaaConfidenceLevelResponse& this_ = static_cast<const CaaConfidenceLevelResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t CaaConfidenceLevelResponse::ByteSizeLong() const {
+          const CaaConfidenceLevelResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.striker.CaaConfidenceLevelResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .mavsdk.rpc.striker.CaaConfidenceLevel caa_confidence_level = 1;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.caa_confidence_level_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void CaaConfidenceLevelResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<CaaConfidenceLevelResponse*>(&to_msg);
+  auto& from = static_cast<const CaaConfidenceLevelResponse&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.striker.CaaConfidenceLevelResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.caa_confidence_level_ != nullptr);
+    if (_this->_impl_.caa_confidence_level_ == nullptr) {
+      _this->_impl_.caa_confidence_level_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::CaaConfidenceLevel>(arena, *from._impl_.caa_confidence_level_);
+    } else {
+      _this->_impl_.caa_confidence_level_->MergeFrom(*from._impl_.caa_confidence_level_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CaaConfidenceLevelResponse::CopyFrom(const CaaConfidenceLevelResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.striker.CaaConfidenceLevelResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void CaaConfidenceLevelResponse::InternalSwap(CaaConfidenceLevelResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.caa_confidence_level_, other->_impl_.caa_confidence_level_);
+}
+
+::google::protobuf::Metadata CaaConfidenceLevelResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SetRateCaaConfidenceLevelRequest::_Internal {
+ public:
+};
+
+SetRateCaaConfidenceLevelRequest::SetRateCaaConfidenceLevelRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.SetRateCaaConfidenceLevelRequest)
+}
+SetRateCaaConfidenceLevelRequest::SetRateCaaConfidenceLevelRequest(
+    ::google::protobuf::Arena* arena, const SetRateCaaConfidenceLevelRequest& from)
+    : SetRateCaaConfidenceLevelRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE SetRateCaaConfidenceLevelRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetRateCaaConfidenceLevelRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.rate_hz_ = {};
+}
+SetRateCaaConfidenceLevelRequest::~SetRateCaaConfidenceLevelRequest() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.SetRateCaaConfidenceLevelRequest)
+  SharedDtor(*this);
+}
+inline void SetRateCaaConfidenceLevelRequest::SharedDtor(MessageLite& self) {
+  SetRateCaaConfidenceLevelRequest& this_ = static_cast<SetRateCaaConfidenceLevelRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* SetRateCaaConfidenceLevelRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SetRateCaaConfidenceLevelRequest(arena);
+}
+constexpr auto SetRateCaaConfidenceLevelRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetRateCaaConfidenceLevelRequest),
+                                            alignof(SetRateCaaConfidenceLevelRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SetRateCaaConfidenceLevelRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SetRateCaaConfidenceLevelRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SetRateCaaConfidenceLevelRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SetRateCaaConfidenceLevelRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SetRateCaaConfidenceLevelRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SetRateCaaConfidenceLevelRequest>(), &SetRateCaaConfidenceLevelRequest::ByteSizeLong,
+            &SetRateCaaConfidenceLevelRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SetRateCaaConfidenceLevelRequest, _impl_._cached_size_),
+        false,
+    },
+    &SetRateCaaConfidenceLevelRequest::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SetRateCaaConfidenceLevelRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> SetRateCaaConfidenceLevelRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // double rate_hz = 1;
+    {::_pbi::TcParser::FastF64S1,
+     {9, 63, 0, PROTOBUF_FIELD_OFFSET(SetRateCaaConfidenceLevelRequest, _impl_.rate_hz_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // double rate_hz = 1;
+    {PROTOBUF_FIELD_OFFSET(SetRateCaaConfidenceLevelRequest, _impl_.rate_hz_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SetRateCaaConfidenceLevelRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.rate_hz_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SetRateCaaConfidenceLevelRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SetRateCaaConfidenceLevelRequest& this_ = static_cast<const SetRateCaaConfidenceLevelRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SetRateCaaConfidenceLevelRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SetRateCaaConfidenceLevelRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // double rate_hz = 1;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_rate_hz()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                1, this_._internal_rate_hz(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.striker.SetRateCaaConfidenceLevelRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SetRateCaaConfidenceLevelRequest::ByteSizeLong(const MessageLite& base) {
+          const SetRateCaaConfidenceLevelRequest& this_ = static_cast<const SetRateCaaConfidenceLevelRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SetRateCaaConfidenceLevelRequest::ByteSizeLong() const {
+          const SetRateCaaConfidenceLevelRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // double rate_hz = 1;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_rate_hz()) != 0) {
+              total_size += 9;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SetRateCaaConfidenceLevelRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SetRateCaaConfidenceLevelRequest*>(&to_msg);
+  auto& from = static_cast<const SetRateCaaConfidenceLevelRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (::absl::bit_cast<::uint64_t>(from._internal_rate_hz()) != 0) {
+    _this->_impl_.rate_hz_ = from._impl_.rate_hz_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetRateCaaConfidenceLevelRequest::CopyFrom(const SetRateCaaConfidenceLevelRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SetRateCaaConfidenceLevelRequest::InternalSwap(SetRateCaaConfidenceLevelRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+        swap(_impl_.rate_hz_, other->_impl_.rate_hz_);
+}
+
+::google::protobuf::Metadata SetRateCaaConfidenceLevelRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SetRateCaaConfidenceLevelResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<SetRateCaaConfidenceLevelResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(SetRateCaaConfidenceLevelResponse, _impl_._has_bits_);
+};
+
+SetRateCaaConfidenceLevelResponse::SetRateCaaConfidenceLevelResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.SetRateCaaConfidenceLevelResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE SetRateCaaConfidenceLevelResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+SetRateCaaConfidenceLevelResponse::SetRateCaaConfidenceLevelResponse(
+    ::google::protobuf::Arena* arena,
+    const SetRateCaaConfidenceLevelResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SetRateCaaConfidenceLevelResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.striker_result_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(
+                              arena, *from._impl_.striker_result_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.striker.SetRateCaaConfidenceLevelResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE SetRateCaaConfidenceLevelResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetRateCaaConfidenceLevelResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.striker_result_ = {};
+}
+SetRateCaaConfidenceLevelResponse::~SetRateCaaConfidenceLevelResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.SetRateCaaConfidenceLevelResponse)
+  SharedDtor(*this);
+}
+inline void SetRateCaaConfidenceLevelResponse::SharedDtor(MessageLite& self) {
+  SetRateCaaConfidenceLevelResponse& this_ = static_cast<SetRateCaaConfidenceLevelResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.striker_result_;
+  this_._impl_.~Impl_();
+}
+
+inline void* SetRateCaaConfidenceLevelResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SetRateCaaConfidenceLevelResponse(arena);
+}
+constexpr auto SetRateCaaConfidenceLevelResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetRateCaaConfidenceLevelResponse),
+                                            alignof(SetRateCaaConfidenceLevelResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SetRateCaaConfidenceLevelResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SetRateCaaConfidenceLevelResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SetRateCaaConfidenceLevelResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SetRateCaaConfidenceLevelResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SetRateCaaConfidenceLevelResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SetRateCaaConfidenceLevelResponse>(), &SetRateCaaConfidenceLevelResponse::ByteSizeLong,
+            &SetRateCaaConfidenceLevelResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SetRateCaaConfidenceLevelResponse, _impl_._cached_size_),
+        false,
+    },
+    &SetRateCaaConfidenceLevelResponse::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SetRateCaaConfidenceLevelResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetRateCaaConfidenceLevelResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SetRateCaaConfidenceLevelResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetRateCaaConfidenceLevelResponse, _impl_.striker_result_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+    {PROTOBUF_FIELD_OFFSET(SetRateCaaConfidenceLevelResponse, _impl_.striker_result_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::StrikerResult>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SetRateCaaConfidenceLevelResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.striker_result_ != nullptr);
+    _impl_.striker_result_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SetRateCaaConfidenceLevelResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SetRateCaaConfidenceLevelResponse& this_ = static_cast<const SetRateCaaConfidenceLevelResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SetRateCaaConfidenceLevelResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SetRateCaaConfidenceLevelResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.striker_result_, this_._impl_.striker_result_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.striker.SetRateCaaConfidenceLevelResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SetRateCaaConfidenceLevelResponse::ByteSizeLong(const MessageLite& base) {
+          const SetRateCaaConfidenceLevelResponse& this_ = static_cast<const SetRateCaaConfidenceLevelResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SetRateCaaConfidenceLevelResponse::ByteSizeLong() const {
+          const SetRateCaaConfidenceLevelResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .mavsdk.rpc.striker.StrikerResult striker_result = 1;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.striker_result_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SetRateCaaConfidenceLevelResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SetRateCaaConfidenceLevelResponse*>(&to_msg);
+  auto& from = static_cast<const SetRateCaaConfidenceLevelResponse&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.striker_result_ != nullptr);
+    if (_this->_impl_.striker_result_ == nullptr) {
+      _this->_impl_.striker_result_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::striker::StrikerResult>(arena, *from._impl_.striker_result_);
+    } else {
+      _this->_impl_.striker_result_->MergeFrom(*from._impl_.striker_result_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetRateCaaConfidenceLevelResponse::CopyFrom(const SetRateCaaConfidenceLevelResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.striker.SetRateCaaConfidenceLevelResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SetRateCaaConfidenceLevelResponse::InternalSwap(SetRateCaaConfidenceLevelResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.striker_result_, other->_impl_.striker_result_);
+}
+
+::google::protobuf::Metadata SetRateCaaConfidenceLevelResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 class ActuatorServosStatus::_Internal {
  public:
 };
@@ -5072,6 +6073,246 @@ void ActuatorServosStatus::InternalSwap(ActuatorServosStatus* PROTOBUF_RESTRICT 
 }
 
 ::google::protobuf::Metadata ActuatorServosStatus::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class CaaConfidenceLevel::_Internal {
+ public:
+};
+
+CaaConfidenceLevel::CaaConfidenceLevel(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.striker.CaaConfidenceLevel)
+}
+CaaConfidenceLevel::CaaConfidenceLevel(
+    ::google::protobuf::Arena* arena, const CaaConfidenceLevel& from)
+    : CaaConfidenceLevel(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE CaaConfidenceLevel::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void CaaConfidenceLevel::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, time_usec_),
+           0,
+           offsetof(Impl_, confidence_level_) -
+               offsetof(Impl_, time_usec_) +
+               sizeof(Impl_::confidence_level_));
+}
+CaaConfidenceLevel::~CaaConfidenceLevel() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.striker.CaaConfidenceLevel)
+  SharedDtor(*this);
+}
+inline void CaaConfidenceLevel::SharedDtor(MessageLite& self) {
+  CaaConfidenceLevel& this_ = static_cast<CaaConfidenceLevel&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* CaaConfidenceLevel::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) CaaConfidenceLevel(arena);
+}
+constexpr auto CaaConfidenceLevel::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(CaaConfidenceLevel),
+                                            alignof(CaaConfidenceLevel));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull CaaConfidenceLevel::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_CaaConfidenceLevel_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &CaaConfidenceLevel::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<CaaConfidenceLevel>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &CaaConfidenceLevel::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<CaaConfidenceLevel>(), &CaaConfidenceLevel::ByteSizeLong,
+            &CaaConfidenceLevel::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(CaaConfidenceLevel, _impl_._cached_size_),
+        false,
+    },
+    &CaaConfidenceLevel::kDescriptorMethods,
+    &descriptor_table_striker_2fstriker_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* CaaConfidenceLevel::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> CaaConfidenceLevel::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::striker::CaaConfidenceLevel>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // float confidence_level = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(CaaConfidenceLevel, _impl_.confidence_level_)}},
+    // uint64 time_usec = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(CaaConfidenceLevel, _impl_.time_usec_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(CaaConfidenceLevel, _impl_.time_usec_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint64 time_usec = 1;
+    {PROTOBUF_FIELD_OFFSET(CaaConfidenceLevel, _impl_.time_usec_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // float confidence_level = 2;
+    {PROTOBUF_FIELD_OFFSET(CaaConfidenceLevel, _impl_.confidence_level_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void CaaConfidenceLevel::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.striker.CaaConfidenceLevel)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.time_usec_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.confidence_level_) -
+      reinterpret_cast<char*>(&_impl_.time_usec_)) + sizeof(_impl_.confidence_level_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* CaaConfidenceLevel::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const CaaConfidenceLevel& this_ = static_cast<const CaaConfidenceLevel&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* CaaConfidenceLevel::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const CaaConfidenceLevel& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.striker.CaaConfidenceLevel)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint64 time_usec = 1;
+          if (this_._internal_time_usec() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+                1, this_._internal_time_usec(), target);
+          }
+
+          // float confidence_level = 2;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_confidence_level()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                2, this_._internal_confidence_level(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.striker.CaaConfidenceLevel)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t CaaConfidenceLevel::ByteSizeLong(const MessageLite& base) {
+          const CaaConfidenceLevel& this_ = static_cast<const CaaConfidenceLevel&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t CaaConfidenceLevel::ByteSizeLong() const {
+          const CaaConfidenceLevel& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.striker.CaaConfidenceLevel)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // uint64 time_usec = 1;
+            if (this_._internal_time_usec() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+                  this_._internal_time_usec());
+            }
+            // float confidence_level = 2;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_confidence_level()) != 0) {
+              total_size += 5;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void CaaConfidenceLevel::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<CaaConfidenceLevel*>(&to_msg);
+  auto& from = static_cast<const CaaConfidenceLevel&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.striker.CaaConfidenceLevel)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_time_usec() != 0) {
+    _this->_impl_.time_usec_ = from._impl_.time_usec_;
+  }
+  if (::absl::bit_cast<::uint32_t>(from._internal_confidence_level()) != 0) {
+    _this->_impl_.confidence_level_ = from._impl_.confidence_level_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CaaConfidenceLevel::CopyFrom(const CaaConfidenceLevel& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.striker.CaaConfidenceLevel)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void CaaConfidenceLevel::InternalSwap(CaaConfidenceLevel* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(CaaConfidenceLevel, _impl_.confidence_level_)
+      + sizeof(CaaConfidenceLevel::_impl_.confidence_level_)
+      - PROTOBUF_FIELD_OFFSET(CaaConfidenceLevel, _impl_.time_usec_)>(
+          reinterpret_cast<char*>(&_impl_.time_usec_),
+          reinterpret_cast<char*>(&other->_impl_.time_usec_));
+}
+
+::google::protobuf::Metadata CaaConfidenceLevel::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

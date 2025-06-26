@@ -133,6 +133,24 @@ class StrikerService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::RequestAvailableModesResponse>> PrepareAsyncRequestAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::RequestAvailableModesResponse>>(PrepareAsyncRequestAvailableModesRaw(context, request, cq));
     }
+    // Subscribe to 'CAA confidence level' updates.
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>> SubscribeCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>>(SubscribeCaaConfidenceLevelRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>> AsyncSubscribeCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>>(AsyncSubscribeCaaConfidenceLevelRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>> PrepareAsyncSubscribeCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>>(PrepareAsyncSubscribeCaaConfidenceLevelRaw(context, request, cq));
+    }
+    // Set the caa confidence level target. 
+    virtual ::grpc::Status SetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>> AsyncSetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>>(AsyncSetRateCaaConfidenceLevelRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>> PrepareAsyncSetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>>(PrepareAsyncSetRateCaaConfidenceLevelRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -159,6 +177,11 @@ class StrikerService final {
       // Request available modes.
       virtual void RequestAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* request, ::mavsdk::rpc::striker::RequestAvailableModesResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void RequestAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* request, ::mavsdk::rpc::striker::RequestAvailableModesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // Subscribe to 'CAA confidence level' updates.
+      virtual void SubscribeCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* reactor) = 0;
+      // Set the caa confidence level target. 
+      virtual void SetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* request, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* request, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -191,6 +214,11 @@ class StrikerService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse>* PrepareAsyncSetRateActuatorServosStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::RequestAvailableModesResponse>* AsyncRequestAvailableModesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::RequestAvailableModesResponse>* PrepareAsyncRequestAvailableModesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* SubscribeCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* AsyncSubscribeCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* PrepareAsyncSubscribeCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>* AsyncSetRateCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>* PrepareAsyncSetRateCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -279,6 +307,22 @@ class StrikerService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::RequestAvailableModesResponse>> PrepareAsyncRequestAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::RequestAvailableModesResponse>>(PrepareAsyncRequestAvailableModesRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>> SubscribeCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>>(SubscribeCaaConfidenceLevelRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>> AsyncSubscribeCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>>(AsyncSubscribeCaaConfidenceLevelRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>> PrepareAsyncSubscribeCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>>(PrepareAsyncSubscribeCaaConfidenceLevelRaw(context, request, cq));
+    }
+    ::grpc::Status SetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>> AsyncSetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>>(AsyncSetRateCaaConfidenceLevelRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>> PrepareAsyncSetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>>(PrepareAsyncSetRateCaaConfidenceLevelRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -295,6 +339,9 @@ class StrikerService final {
       void SetRateActuatorServosStatus(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest* request, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void RequestAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* request, ::mavsdk::rpc::striker::RequestAvailableModesResponse* response, std::function<void(::grpc::Status)>) override;
       void RequestAvailableModes(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* request, ::mavsdk::rpc::striker::RequestAvailableModesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SubscribeCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* request, ::grpc::ClientReadReactor< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* reactor) override;
+      void SetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* request, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetRateCaaConfidenceLevel(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* request, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -333,6 +380,11 @@ class StrikerService final {
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse>* PrepareAsyncSetRateActuatorServosStatusRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::RequestAvailableModesResponse>* AsyncRequestAvailableModesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::RequestAvailableModesResponse>* PrepareAsyncRequestAvailableModesRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* SubscribeCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* AsyncSubscribeCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* PrepareAsyncSubscribeCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>* AsyncSetRateCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>* PrepareAsyncSetRateCaaConfidenceLevelRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeHeartbeat_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeSysStatus_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeRcChannel_;
@@ -343,6 +395,8 @@ class StrikerService final {
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeActuatorServosStatus_;
     const ::grpc::internal::RpcMethod rpcmethod_SetRateActuatorServosStatus_;
     const ::grpc::internal::RpcMethod rpcmethod_RequestAvailableModes_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubscribeCaaConfidenceLevel_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetRateCaaConfidenceLevel_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -370,6 +424,10 @@ class StrikerService final {
     virtual ::grpc::Status SetRateActuatorServosStatus(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SetRateActuatorServosStatusRequest* request, ::mavsdk::rpc::striker::SetRateActuatorServosStatusResponse* response);
     // Request available modes.
     virtual ::grpc::Status RequestAvailableModes(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* request, ::mavsdk::rpc::striker::RequestAvailableModesResponse* response);
+    // Subscribe to 'CAA confidence level' updates.
+    virtual ::grpc::Status SubscribeCaaConfidenceLevel(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* request, ::grpc::ServerWriter< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* writer);
+    // Set the caa confidence level target. 
+    virtual ::grpc::Status SetRateCaaConfidenceLevel(::grpc::ServerContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* request, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_SubscribeHeartbeat : public BaseClass {
@@ -571,7 +629,47 @@ class StrikerService final {
       ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SubscribeHeartbeat<WithAsyncMethod_SubscribeSysStatus<WithAsyncMethod_SubscribeRcChannel<WithAsyncMethod_SubscribeMagnitometer<WithAsyncMethod_SubscribeBatteryVoltages<WithAsyncMethod_SubscribeAvailableModes<WithAsyncMethod_SetManualFlightMode<WithAsyncMethod_SubscribeActuatorServosStatus<WithAsyncMethod_SetRateActuatorServosStatus<WithAsyncMethod_RequestAvailableModes<Service > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SubscribeCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SubscribeCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodAsync(10);
+    }
+    ~WithAsyncMethod_SubscribeCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeCaaConfidenceLevel(::grpc::ServerContext* context, ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* request, ::grpc::ServerAsyncWriter< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(10, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SetRateCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetRateCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodAsync(11);
+    }
+    ~WithAsyncMethod_SetRateCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRateCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* /*request*/, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRateCaaConfidenceLevel(::grpc::ServerContext* context, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SubscribeHeartbeat<WithAsyncMethod_SubscribeSysStatus<WithAsyncMethod_SubscribeRcChannel<WithAsyncMethod_SubscribeMagnitometer<WithAsyncMethod_SubscribeBatteryVoltages<WithAsyncMethod_SubscribeAvailableModes<WithAsyncMethod_SetManualFlightMode<WithAsyncMethod_SubscribeActuatorServosStatus<WithAsyncMethod_SetRateActuatorServosStatus<WithAsyncMethod_RequestAvailableModes<WithAsyncMethod_SubscribeCaaConfidenceLevel<WithAsyncMethod_SetRateCaaConfidenceLevel<Service > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SubscribeHeartbeat : public BaseClass {
    private:
@@ -807,7 +905,56 @@ class StrikerService final {
     virtual ::grpc::ServerUnaryReactor* RequestAvailableModes(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* /*request*/, ::mavsdk::rpc::striker::RequestAvailableModesResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SubscribeHeartbeat<WithCallbackMethod_SubscribeSysStatus<WithCallbackMethod_SubscribeRcChannel<WithCallbackMethod_SubscribeMagnitometer<WithCallbackMethod_SubscribeBatteryVoltages<WithCallbackMethod_SubscribeAvailableModes<WithCallbackMethod_SetManualFlightMode<WithCallbackMethod_SubscribeActuatorServosStatus<WithCallbackMethod_SetRateActuatorServosStatus<WithCallbackMethod_RequestAvailableModes<Service > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SubscribeCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SubscribeCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodCallback(10,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest, ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* request) { return this->SubscribeCaaConfidenceLevel(context, request); }));
+    }
+    ~WithCallbackMethod_SubscribeCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* SubscribeCaaConfidenceLevel(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_SetRateCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetRateCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodCallback(11,
+          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* request, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* response) { return this->SetRateCaaConfidenceLevel(context, request, response); }));}
+    void SetMessageAllocatorFor_SetRateCaaConfidenceLevel(
+        ::grpc::MessageAllocator< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetRateCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRateCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* /*request*/, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetRateCaaConfidenceLevel(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* /*request*/, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SubscribeHeartbeat<WithCallbackMethod_SubscribeSysStatus<WithCallbackMethod_SubscribeRcChannel<WithCallbackMethod_SubscribeMagnitometer<WithCallbackMethod_SubscribeBatteryVoltages<WithCallbackMethod_SubscribeAvailableModes<WithCallbackMethod_SetManualFlightMode<WithCallbackMethod_SubscribeActuatorServosStatus<WithCallbackMethod_SetRateActuatorServosStatus<WithCallbackMethod_RequestAvailableModes<WithCallbackMethod_SubscribeCaaConfidenceLevel<WithCallbackMethod_SetRateCaaConfidenceLevel<Service > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SubscribeHeartbeat : public BaseClass {
@@ -975,6 +1122,40 @@ class StrikerService final {
     }
     // disable synchronous version of this method
     ::grpc::Status RequestAvailableModes(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::RequestAvailableModesRequest* /*request*/, ::mavsdk::rpc::striker::RequestAvailableModesResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubscribeCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SubscribeCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodGeneric(10);
+    }
+    ~WithGenericMethod_SubscribeCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SetRateCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetRateCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodGeneric(11);
+    }
+    ~WithGenericMethod_SetRateCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRateCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* /*request*/, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1177,6 +1358,46 @@ class StrikerService final {
     }
     void RequestRequestAvailableModes(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubscribeCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SubscribeCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodRaw(10);
+    }
+    ~WithRawMethod_SubscribeCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeCaaConfidenceLevel(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(10, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SetRateCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetRateCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodRaw(11);
+    }
+    ~WithRawMethod_SetRateCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRateCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* /*request*/, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRateCaaConfidenceLevel(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1400,6 +1621,50 @@ class StrikerService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_SubscribeCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SubscribeCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodRawCallback(10,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->SubscribeCaaConfidenceLevel(context, request); }));
+    }
+    ~WithRawCallbackMethod_SubscribeCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SubscribeCaaConfidenceLevel(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SetRateCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetRateCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodRawCallback(11,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetRateCaaConfidenceLevel(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetRateCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRateCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* /*request*/, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetRateCaaConfidenceLevel(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetManualFlightMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -1480,7 +1745,34 @@ class StrikerService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedRequestAvailableModes(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::striker::RequestAvailableModesRequest,::mavsdk::rpc::striker::RequestAvailableModesResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SetManualFlightMode<WithStreamedUnaryMethod_SetRateActuatorServosStatus<WithStreamedUnaryMethod_RequestAvailableModes<Service > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SetRateCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetRateCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodStreamed(11,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>* streamer) {
+                       return this->StreamedSetRateCaaConfidenceLevel(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetRateCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetRateCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest* /*request*/, ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetRateCaaConfidenceLevel(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::striker::SetRateCaaConfidenceLevelRequest,::mavsdk::rpc::striker::SetRateCaaConfidenceLevelResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_SetManualFlightMode<WithStreamedUnaryMethod_SetRateActuatorServosStatus<WithStreamedUnaryMethod_RequestAvailableModes<WithStreamedUnaryMethod_SetRateCaaConfidenceLevel<Service > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_SubscribeHeartbeat : public BaseClass {
    private:
@@ -1670,8 +1962,35 @@ class StrikerService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSubscribeActuatorServosStatus(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::striker::SubscribeActuatorServosStatusRequest,::mavsdk::rpc::striker::ActuatorServosStatusResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<WithSplitStreamingMethod_SubscribeMagnitometer<WithSplitStreamingMethod_SubscribeBatteryVoltages<WithSplitStreamingMethod_SubscribeAvailableModes<WithSplitStreamingMethod_SubscribeActuatorServosStatus<Service > > > > > > > SplitStreamedService;
-  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<WithSplitStreamingMethod_SubscribeMagnitometer<WithSplitStreamingMethod_SubscribeBatteryVoltages<WithSplitStreamingMethod_SubscribeAvailableModes<WithStreamedUnaryMethod_SetManualFlightMode<WithSplitStreamingMethod_SubscribeActuatorServosStatus<WithStreamedUnaryMethod_SetRateActuatorServosStatus<WithStreamedUnaryMethod_RequestAvailableModes<Service > > > > > > > > > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_SubscribeCaaConfidenceLevel : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_SubscribeCaaConfidenceLevel() {
+      ::grpc::Service::MarkMethodStreamed(10,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest, ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest, ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* streamer) {
+                       return this->StreamedSubscribeCaaConfidenceLevel(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_SubscribeCaaConfidenceLevel() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubscribeCaaConfidenceLevel(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest* /*request*/, ::grpc::ServerWriter< ::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribeCaaConfidenceLevel(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::mavsdk::rpc::striker::SubscribeCaaConfidenceLevelRequest,::mavsdk::rpc::striker::CaaConfidenceLevelResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<WithSplitStreamingMethod_SubscribeMagnitometer<WithSplitStreamingMethod_SubscribeBatteryVoltages<WithSplitStreamingMethod_SubscribeAvailableModes<WithSplitStreamingMethod_SubscribeActuatorServosStatus<WithSplitStreamingMethod_SubscribeCaaConfidenceLevel<Service > > > > > > > > SplitStreamedService;
+  typedef WithSplitStreamingMethod_SubscribeHeartbeat<WithSplitStreamingMethod_SubscribeSysStatus<WithSplitStreamingMethod_SubscribeRcChannel<WithSplitStreamingMethod_SubscribeMagnitometer<WithSplitStreamingMethod_SubscribeBatteryVoltages<WithSplitStreamingMethod_SubscribeAvailableModes<WithStreamedUnaryMethod_SetManualFlightMode<WithSplitStreamingMethod_SubscribeActuatorServosStatus<WithStreamedUnaryMethod_SetRateActuatorServosStatus<WithStreamedUnaryMethod_RequestAvailableModes<WithSplitStreamingMethod_SubscribeCaaConfidenceLevel<WithStreamedUnaryMethod_SetRateCaaConfidenceLevel<Service > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace striker

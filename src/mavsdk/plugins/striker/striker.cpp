@@ -10,6 +10,7 @@
 namespace mavsdk {
 
 using ActuatorServosStatus = Striker::ActuatorServosStatus;
+using CaaConfidenceLevel = Striker::CaaConfidenceLevel;
 using Heartbeat = Striker::Heartbeat;
 using SysStatus = Striker::SysStatus;
 using RcChannel = Striker::RcChannel;
@@ -166,6 +167,32 @@ Striker::Result Striker::request_available_modes() const
     return _impl->request_available_modes();
 }
 
+Striker::CaaConfidenceLevelHandle
+Striker::subscribe_caa_confidence_level(const CaaConfidenceLevelCallback& callback)
+{
+    return _impl->subscribe_caa_confidence_level(callback);
+}
+
+void Striker::unsubscribe_caa_confidence_level(CaaConfidenceLevelHandle handle)
+{
+    _impl->unsubscribe_caa_confidence_level(handle);
+}
+
+Striker::CaaConfidenceLevel Striker::caa_confidence_level() const
+{
+    return _impl->caa_confidence_level();
+}
+
+void Striker::set_rate_caa_confidence_level_async(double rate_hz, const ResultCallback callback)
+{
+    _impl->set_rate_caa_confidence_level_async(rate_hz, callback);
+}
+
+Striker::Result Striker::set_rate_caa_confidence_level(double rate_hz) const
+{
+    return _impl->set_rate_caa_confidence_level(rate_hz);
+}
+
 bool operator==(const Striker::ActuatorServosStatus& lhs, const Striker::ActuatorServosStatus& rhs)
 {
     return (rhs.time_usec == lhs.time_usec) && (rhs.control == lhs.control);
@@ -184,6 +211,23 @@ operator<<(std::ostream& str, Striker::ActuatorServosStatus const& actuator_serv
         str << *it;
         str << (it + 1 != actuator_servos_status.control.end() ? ", " : "]\n");
     }
+    str << '}';
+    return str;
+}
+
+bool operator==(const Striker::CaaConfidenceLevel& lhs, const Striker::CaaConfidenceLevel& rhs)
+{
+    return (rhs.time_usec == lhs.time_usec) &&
+           ((std::isnan(rhs.confidence_level) && std::isnan(lhs.confidence_level)) ||
+            rhs.confidence_level == lhs.confidence_level);
+}
+
+std::ostream& operator<<(std::ostream& str, Striker::CaaConfidenceLevel const& caa_confidence_level)
+{
+    str << std::setprecision(15);
+    str << "caa_confidence_level:" << '\n' << "{\n";
+    str << "    time_usec: " << caa_confidence_level.time_usec << '\n';
+    str << "    confidence_level: " << caa_confidence_level.confidence_level << '\n';
     str << '}';
     return str;
 }
